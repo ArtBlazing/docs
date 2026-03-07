@@ -1,0 +1,51 @@
+---
+title: Limit Orders
+description: Automate your trading with precision limits, take profits, and stop losses
+---
+
+Cove provides institutional-grade limit orders directly within Telegram. You sequence complex entry and exit strategies without staying glued to the chart.
+
+<Tabs>
+  <Tab title="Limit Buys">
+    Deploy capital at specific price targets when the market drops.
+
+    1. Open the Buy panel array to view the integrated targets.
+       <Frame><img src="/assets/buy%20panel_limit%20orders.png" alt="Selecting Limit Order on Buy Panel" /></Frame>
+    2. Click the **Limit** button to open the limit order configuration menu.
+    3. Enter the target price and the amount to deploy. Cove calculates the expected tokens received.
+       <Frame><img src="/assets/buy%20panel_limit%20orders_data%20filled.png" alt="Filled Limit Buy Order Data" /></Frame>
+    4. Confirm the order. Cove monitors the mempool and executes when the target hits.
+  </Tab>
+
+  <Tab title="Take Profit">
+    Secure gains by specifying target percentage exits.
+
+    1. Open the **Sell** panel for an active position.
+       <Frame><img src="/assets/sell%20panel.png" alt="The Sell Panel" /></Frame>
+    2. Click **Create Take Profit**.
+       <Frame><img src="/assets/sell%20panel_limit%20orders_create%20take%20profit.png" alt="Opening Take Profit Menu" /></Frame>
+    3. Specify the target percentage gain and the amount of tokens to sell. 
+       <Frame><img src="/assets/sell%20panel_limit%20orders_create%20take%20profit_filled%20data.png" alt="Take Profit Data Filled" /></Frame>
+  </Tab>
+
+  <Tab title="Stop Loss">
+    Limit downside risk by executing automated liquidations if the market dumps.
+
+    1. Return to the **Sell** panel.
+    2. Click **Create Stop Loss**.
+       <Frame><img src="/assets/sell%20panel_limit%20orders_create%20stop%20loss.png" alt="Opening Stop Loss Menu" /></Frame>
+    3. Specify the target percentage loss to trigger the liquidation.
+       <Frame><img src="/assets/sell%20panel_limit%20orders_create%20stop%20loss_filled%20data.png" alt="Stop Loss Data Filled" /></Frame>
+    4. Cove confirms both limits are successfully created and attached to the position.
+       <Frame><img src="/assets/sell%20panel_limit%20orders_limits%20created.png" alt="Take Profit and Stop Loss Limits Created successfully" /></Frame>
+  </Tab>
+
+  <Tab title="Active Limits">
+    View and cancel your pending orders before they execute.
+
+    1. Click **Limit Orders** from the main menu. If you have no active orders, Cove displays an empty state.
+       <Frame><img src="/assets/limit%20orders_menu_no%20limit%20orders.png" alt="Empty Limit Orders Menu" /></Frame>
+    2. Active limit orders display the status, triggers, and targets. Click an order to manage or cancel it.
+       <Frame><img src="/assets/limit%20orders%20menu_active%20limit%20orders.png" alt="Active Limit Orders Dashboard" /></Frame>
+  </Tab>
+</Tabs>

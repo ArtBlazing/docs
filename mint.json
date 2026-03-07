@@ -1,0 +1,63 @@
+{
+  "name": "Cove Docs",
+  "logo": {
+    "dark": "/assets/logo.jpg",
+    "light": "/assets/logo.jpg"
+  },
+  "favicon": "/assets/logo.jpg",
+  "colors": {
+    "primary": "#007aff",
+    "light": "#F4F7FF",
+    "dark": "#00061A",
+    "anchors": {
+      "from": "#007aff",
+      "to": "#007aff"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "https://t.me/cove_support"
+    }
+  ],
+  "topbarCtaButton": {
+    "type": "github",
+    "url": "https://github.com/ArtBlazing/cove-docs"
+  },
+  "navigation": [
+    {
+      "group": "Essentials",
+      "pages": [
+        "essentials/introduction",
+        "essentials/getting-started",
+        "essentials/accounts",
+        "essentials/settings"
+      ]
+    },
+    {
+      "group": "Trading Operations",
+      "pages": [
+        "features/trading",
+        "features/limit-orders",
+        "features/positions"
+      ]
+    },
+    {
+      "group": "Finances & Networking",
+      "pages": [
+        "features/transfers",
+        "features/referrals"
+      ]
+    },
+    {
+      "group": "Support",
+      "pages": [
+        "features/support"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "telegram": "https://t.me/cove_trading_staging_bot",
+    "github": "https://github.com/ArtBlazing"
+  }
+}

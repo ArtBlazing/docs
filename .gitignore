@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+Cove Brandbook.pdf
+Cove UI screenshots/
+Telegram Desktop/
+anti AI text rules.txt
+brandbook.txt
+guide.txt
+*.docx
+*.pdf
+cove logo.jpg

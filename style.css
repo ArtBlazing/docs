@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'Roboto Mono', monospace;
+    --radius: 20px;
+    --primary: #007aff;
+    --bg-light: #F4F7F5;
+    --bg-dark: #000618;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  code,
+  pre,
+  .mono {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer components {
+
+  /* Global border radius override */
+  .mintlify-container,
+  .mintlify-card,
+  article img,
+  article video,
+  .rounded-lg,
+  .rounded-xl,
+  .rounded-2xl {
+    border-radius: var(--radius) !important;
+  }
+
+  /* Cove Premium Borders */
+  .mintlify-card,
+  article img,
+  .border-b,
+  .border,
+  hr {
+    border-color: rgba(0, 122, 255, 0.15) !important;
+  }
+
+  .dark .mintlify-card,
+  .dark article img {
+    border: 1px solid rgba(0, 122, 255, 0.2) !important;
+  }
+
+  /* Cove Noise Texture Application from DOCX */
+  .dark body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    background-color: #4d4d4d;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.2;
+    mix-blend-mode: soft-light;
+  }
+}
+
+/* Aggressively override Mintlify's dusty asphalt dark mode */
+html.dark,
+.dark body,
+.dark #__next,
+.dark main {
+  background-color: var(--bg-dark) !important;
+}
+
+html.light,
+.light body,
+.light #__next,
+.light main {
+  background-color: var(--bg-light) !important;
+}
