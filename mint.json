@@ -16,14 +16,10 @@
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "https://t.me/cove_support"
+      "name": "Launch Cove",
+      "url": "https://t.me/cove_trading_staging_bot"
     }
   ],
-  "topbarCtaButton": {
-    "type": "github",
-    "url": "https://github.com/ArtBlazing/cove-docs"
-  },
   "navigation": [
     {
       "group": "Essentials",
