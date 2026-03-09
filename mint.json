@@ -1,10 +1,10 @@
 {
   "name": "Cove Docs",
   "logo": {
-    "dark": "/assets/logo.jpg",
-    "light": "/assets/logo.jpg"
+    "dark": "/assets/logo-white.png",
+    "light": "/assets/logo-white.png"
   },
-  "favicon": "/assets/logo.jpg",
+  "favicon": "/assets/logo-white.png",
   "colors": {
     "primary": "#007aff",
     "light": "#F4F7FF",
