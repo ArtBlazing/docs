@@ -1,0 +1,222 @@
+---
+title: "MCP Tools"
+description: "Cove also offers a Model Context Protocol (MCP) server for builders to integrate trading tools directly into their AI agents."
+icon: "cube"
+---
+
+The `cove-trading` MCP Server allows AI agents to execute trades, manage limits, and query token analytics directly through the Cove infrastructure.
+
+<Note>
+  **Server Version**: `v0.1.0` <br/>
+  **Endpoint**: `POST /mcp` <br/>
+  **Transport**: Streamable HTTP (SSE)
+</Note>
+
+## Authentication & Tokens
+
+Each account gets a **token pair** when created via `/agent` in Telegram or `POST /agent/tokens`:
+
+- **Read-only token** (`permission: "read"`) — can call all read tools. Cannot execute trades.
+- **Read-write token** (`permission: "readwrite"`) — full access including order execution, limit orders, and cancellations.
+
+<Warning>
+  Tokens are shown **once** at creation. Creating new tokens for an account **automatically revokes** the previous pair.
+</Warning>
+
+### MCP Config Example
+
+```json
+{
+  "cove-trading": {
+    "url": "https://your-endpoint/api/mcp",
+    "headers": {
+      "Authorization": "Bearer <your-read-write-token>"
+    }
+  }
+}
+```
+
+## Permissions & Limits
+
+Write tools return an error when called with a read-only token. 
+
+<CardGroup cols={2}>
+  <Card title="Write Tools" icon="pen" color="#ef4444">
+    `buy_token`, `sell_token`, `create_limit_buy`, `create_stop_loss`, `create_take_profit`, `create_trailing_stop`, `cancel_limit_order`, `simulate_swap`, `batch_order`
+  </Card>
+  <Card title="Read Tools" icon="book" color="#3b82f6">
+    All other tools like `get_balance`, `get_positions`, `search_tokens`, analytics, etc.
+  </Card>
+</CardGroup>
+
+### Spending Limits
+
+Configurable per write token via Telegram `/agent` or `PATCH /agent/tokens/:id/limits`.
+*Only buy operations are gated* — sells and protection parameters are never blocked so users can always exit positions.
+
+| Limit | Description |
+|-------|-------------|
+| `maxPerTradeUsd` | Maximum USD per single buy order |
+| `maxHourlyUsd` | Maximum USD spent on buys in a rolling 1-hour window |
+| `maxDailyUsd` | Maximum USD spent on buys in a rolling 24-hour window |
+
+## Webhook Callbacks
+
+Optional webhook callback (set via Telegram `/agent` or `PATCH /agent/tokens/:id/webhook`). Delivers POST events for:
+- `order_filled`
+- `order_failed`
+- `trade_reconciled`
+
+<Accordion title="Webhook Payload Example">
+```json
+{
+  "event": "order_filled",
+  "orderId": "01JQXYZ...",
+  "status": "success",
+  "tokenSymbol": "BONK",
+  "tokenAddress": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+  "chainId": 1399811149,
+  "side": "buy",
+  "amountUsd": "100.00",
+  "tokenAmount": "1234567.89",
+  "priceUsd": "0.000081",
+  "txHashes": ["5k2F..."],
+  "timestamp": "2026-03-26T18:30:00.000Z"
+}
+```
+</Accordion>
+
+---
+
+## Tool Reference
+
+### Account & Portfolio
+
+<ResponseField name="get_balance" type="tool">
+  Get the available USDC balance (in USD) for trading.
+</ResponseField>
+
+<ResponseField name="get_positions" type="tool">
+  Get all open token positions with PnL for the connected account.
+</ResponseField>
+
+<ResponseField name="get_trading_history" type="tool">
+  Get recent order history. Parameters: `limit` (default: 20), `status` filter.
+</ResponseField>
+
+<ResponseField name="get_order_status" type="tool">
+  Check a specific order by ID. Requires `orderId`.
+</ResponseField>
+
+### Order Execution
+
+<ResponseField name="buy_token" type="tool">
+  Buy a token with USDC. Requires `tokenAddress`, `chainId`, `amountUsd`.
+</ResponseField>
+
+<ResponseField name="sell_token" type="tool">
+  Sell a token position for USDC. Requires `tokenAddress`, `chainId`, and either `percent` or `amountUsd`.
+</ResponseField>
+
+<ResponseField name="simulate_swap" type="tool">
+  Preview a swap without executing. Returns routing, output estimate, price impact, fees.
+</ResponseField>
+
+### Limit & Batch Orders
+
+<ResponseField name="get_limit_orders" type="tool">
+  Get all active limit orders (limit buys, stop losses, take profits, trailing stops).
+</ResponseField>
+
+<ResponseField name="create_limit_buy" type="tool">
+  Limit buy that triggers on price movement (`pct_dip`, `pct_rise`) or `mcap`.
+</ResponseField>
+
+<ResponseField name="create_stop_loss / create_take_profit" type="tool">
+  Sell when price drops or rises by a specified `triggerPercent`. Requires existing position.
+</ResponseField>
+
+<ResponseField name="create_trailing_stop" type="tool">
+  Tracks the highest price since creation. Sells when price drops X% from peak.
+</ResponseField>
+
+<ResponseField name="cancel_limit_order" type="tool">
+  Cancel an active limit order using `orderId`.
+</ResponseField>
+
+<ResponseField name="batch_order" type="tool">
+  Buy a token and set stop-loss and/or take-profit in one call. If buy fails, nothing is created. 
+</ResponseField>
+
+### Token Info & Market Scanning
+
+You can search and fetch data across supported chains like Solana (`1399811149`), Base (`8453`), Ethereum (`1`), and BNB Chain (`56`).
+
+<AccordionGroup>
+  <Accordion title="Token Search & Security" icon="shield-check">
+    - `search_tokens`: Search by query (name/symbol).
+    - `get_token_info`: Basic info by contract address.
+    - `get_pump_bonding_curve`: Check launchpad/bonding curve status.
+    - `get_token_security_report`: Comprehensive security report including scam flag, mint/freeze authority, locks.
+  </Accordion>
+
+  <Accordion title="Market Scanners" icon="radar">
+    - `scan_trending_tokens`: Scan trending tokens on a specific network.
+    - `scan_new_tokens`: Find newly created tokens with minimum liquidity.
+    - `scan_top_volume_tokens`: Scan tokens sorted by highest volume.
+  </Accordion>
+
+  <Accordion title="Token Analytics" icon="chart-simple">
+    - `get_token_stats`: Comprehensive stats (price, volume, holders, flags, DEX pools).
+    - `get_price_history`: OHLCV candles for technical analysis.
+    - `get_recent_trades`: Recent swap events (buys/sells with prices).
+    - `get_token_holders`, `get_top_holders_pct`, `get_token_top_traders`: Holder & trader analytics.
+    - `get_pair_stats`, `get_token_pairs`: DEX pool and pair statistics.
+    - `get_liquidity_locks`: Check liquidity lock status.
+  </Accordion>
+</AccordionGroup>
+
+### Wallet Analytics
+
+Evaluate the performance and trading activity of individual wallets.
+
+<CardGroup cols={2}>
+  <Card title="Wallet Stats" icon="wallet">
+    `get_wallet_stats` to verify PnL, win rate, and bot/scammer scores.
+  </Card>
+  <Card title="Wallet Trades" icon="arrow-right-arrow-left">
+    `get_wallet_trades` to fetch recent trades by a specific wallet.
+  </Card>
+  <Card title="Bulk Analysis" icon="magnifying-glass-chart">
+    `analyze_wallets` to compare up to 50 addresses by PnL or win rate.
+  </Card>
+  <Card title="Find Alpha" icon="gem">
+    `find_smart_wallets` to discover the most profitable non-bot traders.
+  </Card>
+</CardGroup>
+
+---
+
+## REST API — Token Management
+
+Used to manage agent tokens programmatically (not via MCP).
+
+<ResponseField name="POST /agent/tokens" type="REST">
+  Create a new token pair. Requires Privy JWT auth. Body: `accountId`, `chatId`, `label`
+</ResponseField>
+
+<ResponseField name="GET /agent/tokens" type="REST">
+  List all active tokens for the user.
+</ResponseField>
+
+<ResponseField name="DELETE /agent/tokens/:id" type="REST">
+  Revoke a single token or `/all` to revoke all tokens. 
+</ResponseField>
+
+<ResponseField name="PATCH /agent/tokens/:id/limits" type="REST">
+  Update spending limits on a write token.
+</ResponseField>
+
+<ResponseField name="PATCH /agent/tokens/:id/webhook" type="REST">
+  Set or remove webhook URL.
+</ResponseField>

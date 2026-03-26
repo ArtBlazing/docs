@@ -50,6 +50,12 @@
       "pages": [
         "features/support"
       ]
+    },
+    {
+      "group": "For Builders",
+      "pages": [
+        "builders/mcp-tools"
+      ]
     }
   ],
   "footerSocials": {
