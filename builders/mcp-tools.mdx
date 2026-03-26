@@ -12,6 +12,18 @@ The `cove-trading` MCP Server allows AI agents to execute trades, manage limits,
   **Transport**: Streamable HTTP (SSE)
 </Note>
 
+## Quick Start
+
+It's incredibly easy to get your agent connected to Cove's MCP server:
+
+1. **Get Credentials**: Run the `/agent` command in the Cove Telegram Bot to generate your unique read-write token pair and endpoint URL.
+2. **Configure your Agent**: Provide the URL and headers to your agent's configuration.
+3. **Start Exploring**: Instruct your agent to explore all available tools on the Cove MCP server.
+
+<Tip>
+  Cove's MCP server works seamlessly with tools like **[mcporter](https://github.com/steipete/mcporter)**, which is the standard used by frameworks like **OpenClaw** to connect agents to MCP servers.
+</Tip>
+
 ## Authentication & Tokens
 
 Each account gets a **token pair** when created via `/agent` in Telegram or `POST /agent/tokens`:
