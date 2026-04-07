@@ -17,7 +17,7 @@
   "topbarLinks": [
     {
       "name": "Launch Cove",
-      "url": "https://t.me/cove_trading_staging_bot"
+      "url": "https://t.me/cove_trading_bot"
     }
   ],
   "navigation": [
@@ -59,7 +59,7 @@
     }
   ],
   "footerSocials": {
-    "telegram": "https://t.me/cove_trading_staging_bot",
+    "telegram": "https://t.me/cove_trading_bot",
     "x": "https://x.com/covetrade",
     "website": "https://cove.trade"
   }
