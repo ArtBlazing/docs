@@ -35,7 +35,8 @@
       "pages": [
         "features/trading",
         "features/limit-orders",
-        "features/positions"
+        "features/positions",
+        "features/cove-buy"
       ]
     },
     {
