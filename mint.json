@@ -35,8 +35,7 @@
       "pages": [
         "features/trading",
         "features/limit-orders",
-        "features/positions",
-        "features/cove-buy"
+        "features/positions"
       ]
     },
     {
@@ -50,6 +49,12 @@
       "group": "Support",
       "pages": [
         "features/support"
+      ]
+    },
+    {
+      "group": "For Groups & Channels",
+      "pages": [
+        "groups/cove-buy"
       ]
     },
     {

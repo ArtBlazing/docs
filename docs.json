@@ -1,0 +1,76 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Cove Docs",
+  "colors": {
+    "primary": "#007aff",
+    "light": "#F4F7FF",
+    "dark": "#00061A"
+  },
+  "favicon": "/assets/favicon.svg",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Essentials",
+        "pages": [
+          "essentials/introduction",
+          "essentials/getting-started",
+          "essentials/accounts",
+          "essentials/settings"
+        ]
+      },
+      {
+        "group": "Trading Operations",
+        "pages": [
+          "features/trading",
+          "features/limit-orders",
+          "features/positions"
+        ]
+      },
+      {
+        "group": "Finances & Networking",
+        "pages": [
+          "features/transfers",
+          "features/referrals"
+        ]
+      },
+      {
+        "group": "Support",
+        "pages": [
+          "features/support"
+        ]
+      },
+      {
+        "group": "For Groups & Channels",
+        "pages": [
+          "groups/cove-buy"
+        ]
+      },
+      {
+        "group": "For Builders",
+        "pages": [
+          "builders/mcp-tools"
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/assets/logo-white.png",
+    "dark": "/assets/logo-white.png"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Launch Cove",
+        "href": "https://t.me/cove_trading_bot"
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "telegram": "https://t.me/cove_trading_bot",
+      "x": "https://x.com/covetrade",
+      "website": "https://cove.trade"
+    }
+  }
+}
