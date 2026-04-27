@@ -62,6 +62,12 @@
       "pages": [
         "builders/mcp-tools"
       ]
+    },
+    {
+      "group": "Brand Kit",
+      "pages": [
+        "design-system/brand-kit"
+      ]
     }
   ],
   "footerSocials": {
