@@ -1,0 +1,237 @@
+---
+title: Fees & Gas Sponsorship
+description: How Cove fees, minimums, and gas sponsorship work across every supported chain
+icon: receipt
+---
+
+Cove handles cross-chain execution behind the scenes so you can focus on trading. Every chain has different gas costs, so Cove uses a transparent fee model designed to keep small trades possible, protect against failed transactions, and make cross-chain trading feel seamless.
+
+<Info>This page reflects the current fee structure. Cove is working on a simpler experience with tiers and cashback for active users.</Info>
+
+---
+
+## At a glance
+
+<CardGroup cols={3}>
+  <Card title="Platform Fee" icon="percent">
+    **1%** on most chains
+    <br />**2%** on Ethereum buys
+  </Card>
+  <Card title="Gas Sponsorship" icon="gas-pump">
+    Up to **5 USD** in gas sponsored per trade — no need to hold native gas tokens
+  </Card>
+  <Card title="Minimum Trade" icon="arrow-down-1-9">
+    From **1 USD** for buys
+    <br />From **0.50 USD** for sells
+    <br />From **2.50 USD** for Solana sells
+  </Card>
+</CardGroup>
+
+---
+
+## Buy fees
+
+Cove charges a **percentage fee** above the threshold and a **flat minimum** below it.
+
+<Tabs>
+  <Tab title="Standard Chains">
+    Applies to **Solana, Base, BNB, Tempo, MegaETH**, and most other supported networks.
+
+    | Buy size | Fee applied |
+    |---|---:|
+    | Below \$95 | **\$0.95** minimum fee |
+    | \$95 or above | **1%** of trade size |
+
+    <Accordion title="See examples">
+      | Buy size | You pay |
+      |---:|---:|
+      | \$10 | \$0.95 |
+      | \$50 | \$0.95 |
+      | \$95 | \$0.95 |
+      | \$100 | \$1.00 |
+      | \$1,000 | \$10.00 |
+    </Accordion>
+  </Tab>
+  <Tab title="Ethereum">
+    Ethereum has higher gas costs, so the fee multiplier is **2×**.
+
+    | Buy size | Fee applied |
+    |---|---:|
+    | Below \$95 | **\$1.90** minimum fee |
+    | \$95 or above | **2%** of trade size |
+
+    <Note>The \$95 threshold stays the same — both the percentage and the minimum are doubled.</Note>
+
+    <Accordion title="See examples">
+      | ETH buy size | You pay |
+      |---:|---:|
+      | \$10 | \$1.90 |
+      | \$50 | \$1.90 |
+      | \$95 | \$1.90 |
+      | \$100 | \$2.00 |
+      | \$1,000 | \$20.00 |
+    </Accordion>
+  </Tab>
+</Tabs>
+
+---
+
+## Sell fees
+
+<Tabs>
+  <Tab title="Standard & Ethereum">
+    For most chains, Cove charges a **flat percentage** on sells.
+
+    | Chain | Sell fee |
+    |---|---:|
+    | Most chains (Base, BNB, Tempo, MegaETH, etc.) | **1%** |
+    | Ethereum | **1.5%** |
+  </Tab>
+  <Tab title="Solana (Tiered)">
+    Solana sells use a **tiered model** so the minimum dollar fee stays around **\$0.25**, even on tiny positions.
+
+    | Solana sell size | Fee rate |
+    |---:|---:|
+    | \$2.50 – \$5 | 10% |
+    | \$5 – \$10 | 5% |
+    | \$10 – \$25 | 2.5% |
+    | \$25+ | 1% |
+
+    <Accordion title="See examples">
+      | Sell size | You pay |
+      |---:|---:|
+      | \$2.50 | \$0.25 |
+      | \$5 | \$0.25 |
+      | \$10 | \$0.25 |
+      | \$25 | \$0.25 |
+      | \$100 | \$1.00 |
+    </Accordion>
+  </Tab>
+</Tabs>
+
+---
+
+## Minimum order sizes
+
+Minimums prevent spam, failed transactions, and trades that would cost more to execute than the trade itself.
+
+| Trade type | Minimum size |
+|---|---:|
+| Buys | **\$1** |
+| Sells | **\$0.50** |
+| Solana sells | **\$2.50** |
+
+<Tip>Solana sells have a higher minimum because the tiered fee floor is designed to keep fees at roughly \$0.25.</Tip>
+
+---
+
+## Gas sponsorship
+
+Cove sponsors gas so you never need to manually manage native gas tokens on each chain.
+
+<CardGroup cols={2}>
+  <Card title="Buys" icon="cart-shopping">
+    Up to **5 USD** sponsored per trade
+  </Card>
+  <Card title="Sells" icon="money-bill-transfer">
+    Up to **5 USD** sponsored per trade
+  </Card>
+  <Card title="Withdrawals" icon="arrow-right-from-bracket">
+    Up to **5 USD** sponsored per action
+  </Card>
+  <Card title="Transfers" icon="arrow-right-arrow-left">
+    Up to **5 USD** sponsored per action
+  </Card>
+</CardGroup>
+
+For **buys**, the platform fee helps offset the sponsored gas cost.
+
+For **sells, withdrawals, and transfers**, gas can be harder to offset. If the estimated gas exceeds the \$5 cap, Cove asks you to approve a **gas surplus** before the transaction is submitted.
+
+---
+
+## Gas surplus
+
+A gas surplus is an extra amount you approve when network costs exceed Cove's sponsorship limit.
+
+<Steps>
+  <Step title="Cove estimates gas">
+    Before submitting your transaction, Cove checks the current network gas price.
+  </Step>
+  <Step title="Surplus required?">
+    If gas exceeds the \$5 sponsorship cap, Cove shows the extra cost — for example, a Telegram inline prompt like **"Pay \$X"**.
+  </Step>
+  <Step title="You approve or skip">
+    If you approve, the trade is submitted. If you decline, the trade is rejected **before** it hits the chain — you pay nothing.
+  </Step>
+</Steps>
+
+<Warning>If you have already set a `gasSurplusBudgetUsd`, trades within that budget are approved automatically without an extra prompt.</Warning>
+
+<Accordion title="High-gas scenario: 1,000 USD Ethereum buy">
+  | Item | Amount |
+  |---|---:|
+  | Trade size | \$1,000 |
+  | Cove fee (2%) | \$20 |
+  | Estimated gas | \$18 |
+  | Net remaining after gas | \$2 |
+
+  In this case, Cove can still support the trade because the fee offsets most of the gas cost.
+
+  If gas were **higher** than the fee, Cove would ask you to cover the surplus. In extreme cases, the platform fee may be waived entirely so the transaction stays economical.
+</Accordion>
+
+---
+
+## Bridging & consolidation
+
+Cove may perform bridge or consolidation actions behind the scenes to keep cross-chain trading seamless. These are treated as **infrastructure operations**, not user trades.
+
+| Detail | Auto-bridge consolidation |
+|---|---|
+| User fee | **\$0** |
+| User confirmation | Not required |
+| Sponsorship cap | Bypassed |
+| Gas cost | Covered by Cove as infrastructure |
+| Abuse protection | 30-second cooldown per account, chain, and token |
+
+<Note>Auto-bridge moves keep your balances and routing infrastructure efficient without requiring you to manually bridge funds.</Note>
+
+---
+
+## Why this model?
+
+On-chain execution has real costs — gas can spike, small trades can be abused, and some transactions cost more to process than the fee they generate.
+
+<AccordionGroup>
+  <Accordion title="Keeps small trades possible">
+    The minimum fee structure means you can trade amounts as low as \$1 without being locked out by percentage-based fees.
+  </Accordion>
+  <Accordion title="Prevents abuse & spam">
+    Minimum order sizes and tiered fees filter out transactions that would be unprofitable to execute or could be used to exploit the system.
+  </Accordion>
+  <Accordion title="Protects against gas spikes">
+    The gas surplus system ensures no trade is submitted that would lose money for either side. You always see the cost before confirming.
+  </Accordion>
+  <Accordion title="Sustainable gas sponsorship">
+    Platform fees help offset the gas Cove sponsors on your behalf, keeping the free-gas experience viable long-term.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Full summary
+
+| Category | Current rule |
+|---|---|
+| Standard buy fee | 1% above \$95, \$0.95 minimum below |
+| Ethereum buy fee | 2% above \$95, \$1.90 minimum below |
+| Standard sell fee | 1% |
+| Ethereum sell fee | 1.5% |
+| Solana sell fee | Tiered: 10% → 5% → 2.5% → 1% |
+| Minimum buy | \$1 |
+| Minimum sell | \$0.50 |
+| Minimum Solana sell | \$2.50 |
+| Gas sponsorship | Up to \$5 per trade / action |
+| Over-cap gas | Requires gas surplus approval |
+| Auto-bridge consolidation | No user fee, gas covered by Cove |
