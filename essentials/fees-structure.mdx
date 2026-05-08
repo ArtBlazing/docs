@@ -195,6 +195,34 @@ For **sells, withdrawals, and transfers**, gas can be harder to offset. If the e
 
 ---
 
+## Solana rent deposit
+
+When you send a token to a wallet that **doesn't already hold that token**, Solana requires a one-time **rent deposit** (~\$0.36 in SOL) to open the recipient's token account on-chain.
+
+<CardGroup cols={3}>
+  <Card title="When it applies" icon="circle-check">
+    Only if the **recipient's token account is new** — existing accounts cost nothing extra
+  </Card>
+  <Card title="Which actions" icon="arrow-right-from-bracket">
+    **Withdrawals** and **transfers** out of Cove
+  </Card>
+  <Card title="Deposits" icon="arrow-down-to-bracket">
+    When you send tokens **in** to Cove, you pay the rent deposit yourself through your own wallet
+  </Card>
+</CardGroup>
+
+Cove fronts the rent deposit on-chain and recoups it as part of the withdrawal or transfer fee.
+
+<Accordion title="Why is this charged?">
+  Solana's rent mechanism reserves a small SOL balance to keep a token account alive. Without recouping this cost, an attacker could repeatedly open and close token accounts to drain sponsored funds — effectively harvesting the rent deposit each time.
+
+  By passing the cost through to the user, Cove keeps gas sponsorship sustainable and prevents abuse.
+</Accordion>
+
+<Tip>This is a **one-time cost per token per recipient**. Once the account exists, future transfers of the same token to the same wallet won't incur a rent deposit.</Tip>
+
+---
+
 ## Gas surplus
 
 A gas surplus is an extra amount you approve when network costs exceed Cove's sponsorship limit.
@@ -282,5 +310,6 @@ On-chain execution has real costs — gas can spike, small trades can be abused,
 | Minimum sell | \$0.50 |
 | Minimum Solana sell | \$2.50 |
 | Gas sponsorship | Up to \$5 per trade / action |
+| Solana rent deposit | ~\$0.36 one-time per new token account (withdrawals & transfers only) |
 | Over-cap gas | Requires gas surplus approval |
 | Auto-bridge consolidation | No user fee, gas covered by Cove |
