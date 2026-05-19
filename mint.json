@@ -25,6 +25,7 @@
       "group": "Essentials",
       "pages": [
         "essentials/introduction",
+        "essentials/supported-chains",
         "essentials/getting-started",
         "essentials/accounts",
         "essentials/settings",
