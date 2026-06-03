@@ -18,7 +18,8 @@
           "essentials/getting-started",
           "essentials/accounts",
           "essentials/settings",
-          "essentials/fees-structure"
+          "essentials/fees-structure",
+          "features/referrals"
         ]
       },
       {
@@ -26,14 +27,8 @@
         "pages": [
           "features/trading",
           "features/limit-orders",
-          "features/positions"
-        ]
-      },
-      {
-        "group": "Finances & Networking",
-        "pages": [
-          "features/transfers",
-          "features/referrals"
+          "features/positions",
+          "features/transfers"
         ]
       },
       {
