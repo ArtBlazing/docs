@@ -57,6 +57,7 @@
     {
       "group": "For Builders",
       "pages": [
+        "builders/deep-links",
         "builders/mcp-tools"
       ]
     },

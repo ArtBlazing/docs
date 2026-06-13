@@ -1,0 +1,312 @@
+---
+title: "Deep Links"
+description: "Generate Telegram deep links that open Cove buy, sell, and referral flows from external apps, bots, groups, and channels."
+icon: "link"
+---
+
+Cove deep links encode the full action inside the Telegram `/start` payload. They are self-contained, so your app can generate them without storing shared state or calling Cove before the user clicks.
+
+<Info>
+Telegram limits the `/start` parameter to **64 characters**. Cove deep links use fixed-width Base62 segments so payloads stay compact enough for Telegram links.
+</Info>
+
+## Quick reference
+
+For token links, encode the token address into Base62 first: **27 chars** for EVM tokens, **43 chars** for Solana tokens. Use the chain code table below to choose `e`, `b`, `n`, `m`, `s`, and other supported networks.
+
+<CardGroup cols={2}>
+  <Card title="Group buy" icon="cart-shopping">
+    Fixed-size buy that can execute immediately for onboarded users.
+
+    ```text
+    g_{amount}{chainCode}{base62Token}
+    ```
+
+    ```text
+    https://t.me/cove_trading_bot?start=g_10s<43-char-base62-token>
+    ```
+  </Card>
+  <Card title="Group sell" icon="rotate">
+    Sells a percentage of the clicker's own token position.
+
+    ```text
+    gs_{percent}{chainCode}{base62Token}
+    ```
+
+    ```text
+    https://t.me/cove_trading_bot?start=gs_50e<27-char-base62-token>
+    ```
+  </Card>
+</CardGroup>
+
+Need attribution? Append both optional IDs as a 14-character tail:
+
+```text
+{base62AffiliateId}{base62GroupId}
+```
+
+Use `0000000` when one of the two values is intentionally empty.
+
+```text
+https://t.me/cove_trading_bot?start=g_0d5b<27-char-base62-token><7-char-affiliate>0000000
+```
+
+## Link types
+
+<CardGroup cols={2}>
+  <Card title="Group Buy" icon="cart-shopping">
+    `g_` links execute a buy for a fixed USD amount.
+  </Card>
+  <Card title="Market Buy Panel" icon="chart-line">
+    `b_` links open the token buy panel so the user can choose the amount.
+  </Card>
+  <Card title="Group Sell" icon="rotate">
+    `gs_` links sell a percentage of the clicker's own token position.
+  </Card>
+  <Card title="Referral" icon="user-plus">
+    `ref_` links set a pending referrer for onboarding.
+  </Card>
+</CardGroup>
+
+Base URL:
+
+```text
+https://t.me/cove_trading_bot?start={payload}
+```
+
+---
+
+## Shared encoding
+
+All token-based deep links use the same chain codes, address encoding, and optional affiliate/group tail.
+
+### Chain codes
+
+| Code | Chain | Chain ID |
+|---|---|---:|
+| `e` | Ethereum | 1 |
+| `b` | Base | 8453 |
+| `n` | BNB Chain | 56 |
+| `m` | MegaETH | 4326 |
+| `s` | Solana | 1399811149 |
+| `t` | Tempo | 4217 |
+| `o` | Monad | 143 |
+| `y` | Story | 1514 |
+| `h` | HyperEVM | 999 |
+| `p` | Plasma | 9745 |
+
+### Token address width
+
+| Chain type | Raw address bytes | Base62 width |
+|---|---:|---:|
+| EVM | 20 bytes | 27 chars |
+| Solana | 32 bytes | 43 chars |
+
+<Note>
+For EVM addresses, strip `0x` and hex-decode the address bytes before Base62 encoding. For Solana addresses, base58-decode the address into 32 bytes before Base62 encoding.
+</Note>
+
+### Optional affiliate and group IDs
+
+Token links can optionally include an affiliate Telegram user ID and a source Telegram group ID.
+
+| Segment | Width | Description |
+|---|---:|---|
+| `base62AffiliateId` | 7 chars | Affiliate Telegram user ID |
+| `base62GroupId` | 7 chars | Source Telegram group ID |
+
+The affiliate and group segments are either **both present** (`14` chars total) or **both absent**. Use `0000000` as the sentinel when only one value is needed.
+
+Encode Telegram IDs by converting the numeric ID to Base62 and left-padding it to 7 characters. For Telegram group IDs, remove the `-100` prefix before encoding. For example, `-1002036764921` becomes `2036764921`.
+
+---
+
+## Group buy links
+
+Use `g_` links when you want a click to buy a token for a fixed USD amount.
+
+```text
+g_{amount}{chainCode}{base62Token}[{base62AffiliateId}{base62GroupId}]
+```
+
+| Field | Width | Description |
+|---|---:|---|
+| `g_` | 2 chars | Fixed prefix |
+| `amount` | 1-4 chars | USD amount. Use `d` instead of a decimal point, e.g. `10`, `0d5`, `1d5`, `9999` |
+| `chainCode` | 1 char | Chain identifier |
+| `base62Token` | 27 or 43 chars | Base62-encoded token address |
+| `base62AffiliateId` | 7 chars | Optional affiliate Telegram user ID |
+| `base62GroupId` | 7 chars | Optional source Telegram group ID |
+
+Behavior:
+
+- Onboarded users execute the buy immediately.
+- New users enter onboarding first. If an affiliate is present, Cove can attach it during onboarding, but the buy does not auto-execute.
+- If affiliate or group metadata is present, Cove records it for attribution and reporting.
+
+<Accordion title="Length limits">
+  | Chain type | Worst-case length |
+  |---|---:|
+  | Solana | `g_` + `9999` + `s` + 43-char token + 14-char tail = **64 chars** |
+  | EVM | `g_` + `9999` + `b` + 27-char token + 14-char tail = **48 chars** |
+</Accordion>
+
+Examples:
+
+```text
+https://t.me/cove_trading_bot?start=g_10s<43-char-base62-token>
+https://t.me/cove_trading_bot?start=g_0d5b<27-char-base62-token><7-char-affiliate>0000000
+```
+
+---
+
+## Market buy panel links
+
+Use `b_` links when you want to open the Cove buy panel for a token and let the user choose the amount.
+
+```text
+b_{chainCode}{base62Token}[{base62AffiliateId}{base62GroupId}]
+```
+
+| Field | Width | Description |
+|---|---:|---|
+| `b_` | 2 chars | Fixed prefix |
+| `chainCode` | 1 char | Chain identifier |
+| `base62Token` | 27 or 43 chars | Base62-encoded token address |
+| `base62AffiliateId` | 7 chars | Optional affiliate Telegram user ID |
+| `base62GroupId` | 7 chars | Optional source Telegram group ID |
+
+Behavior:
+
+- Onboarded users open the market panel in buy mode.
+- The user selects the amount and confirms from inside Cove.
+- New users enter onboarding first. If an affiliate is present, Cove can attach it during onboarding, then the user starts from the main menu.
+
+<Accordion title="Length limits">
+  | Chain type | Worst-case length |
+  |---|---:|
+  | Solana | `b_` + `s` + 43-char token + 14-char tail = **60 chars** |
+  | EVM | `b_` + `b` + 27-char token + 14-char tail = **44 chars** |
+</Accordion>
+
+Examples:
+
+```text
+https://t.me/cove_trading_bot?start=b_s<43-char-base62-token><7-char-affiliate><7-char-group>
+https://t.me/cove_trading_bot?start=b_b<27-char-base62-token>
+```
+
+---
+
+## Group sell links
+
+Use `gs_` links when you want a click to sell a percentage of the user's own position in a token. The link does not transfer or sell a shared group wallet position.
+
+```text
+gs_{percent}{chainCode}{base62Token}[{base62AffiliateId}{base62GroupId}]
+```
+
+| Field | Width | Description |
+|---|---:|---|
+| `gs_` | 3 chars | Fixed prefix |
+| `percent` | 1-3 chars | Integer from `1` to `100`, representing the share of the position to sell |
+| `chainCode` | 1 char | Chain identifier |
+| `base62Token` | 27 or 43 chars | Base62-encoded token address |
+| `base62AffiliateId` | 7 chars | Optional affiliate Telegram user ID |
+| `base62GroupId` | 7 chars | Optional source Telegram group ID |
+
+Behavior:
+
+- Cove sells the selected percentage of the clicker's own position from a real trading account.
+- If the user holds the token in one account, Cove can select that account automatically.
+- If the user holds the token in multiple accounts, Cove shows a wallet picker.
+- If the user does not hold the token, Cove shows that there is nothing to sell.
+- New users can be onboarded through the link, but no sell is executed because there is no existing position.
+
+<Warning>
+Group sell links are opt-in for users. The first time a user clicks one while group sells are disabled, Cove asks them to enable group sell links. After enabling, future group sell links can execute directly.
+</Warning>
+
+<Accordion title="Length limit">
+  Worst-case Solana payload:
+
+  ```text
+  gs_ + 100 + s + <43-char-base62-token> + <7-char-affiliate> + <7-char-group> = 64 chars
+  ```
+</Accordion>
+
+Example:
+
+```text
+https://t.me/cove_trading_bot?start=gs_50e<27-char-base62-token>
+```
+
+---
+
+## Referral links
+
+Use `ref_` links when you only want to set a pending referrer by Telegram username.
+
+```text
+ref_{username}
+```
+
+Referral links are consumed during onboarding. Token links with affiliate metadata use the same permanent referrer concept: whichever valid referral source reaches a new user first can become their referrer.
+
+---
+
+## Base62 helpers
+
+Cove uses this alphabet:
+
+```text
+0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+```
+
+All fixed-width Base62 strings are left-padded with `0`.
+
+```js
+const ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+function bytesToBase62(bytes, width) {
+  let n = 0n;
+
+  for (const byte of bytes) {
+    n = (n << 8n) | BigInt(byte);
+  }
+
+  if (n === 0n) {
+    return "0".repeat(width);
+  }
+
+  let result = "";
+
+  while (n > 0n) {
+    result = ALPHABET[Number(n % 62n)] + result;
+    n = n / 62n;
+  }
+
+  return result.padStart(width, "0");
+}
+
+function base62ToBytes(str, byteLength) {
+  let n = 0n;
+
+  for (const ch of str) {
+    n = n * 62n + BigInt(ALPHABET.indexOf(ch));
+  }
+
+  const bytes = new Uint8Array(byteLength);
+
+  for (let i = byteLength - 1; i >= 0; i--) {
+    bytes[i] = Number(n & 0xffn);
+    n = n >> 8n;
+  }
+
+  return bytes;
+}
+```
+
+<Tip>
+Validate payload length before publishing a link. Invalid optional-tail lengths or payloads above Telegram's limit will not resolve into a Cove action.
+</Tip>
