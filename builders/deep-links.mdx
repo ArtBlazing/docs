@@ -14,7 +14,7 @@ Telegram limits the `/start` parameter to **64 characters**. Cove deep links use
 
 For token links, encode the token address into Base62 first: **27 chars** for EVM tokens, **43 chars** for Solana tokens. Use the chain code table below to choose `e`, `b`, `n`, `m`, `s`, and other supported networks.
 
-<CardGroup cols={2}>
+<CardGroup cols={3}>
   <Card title="Group buy" icon="cart-shopping">
     Fixed-size buy that can execute immediately for onboarded users.
 
@@ -35,6 +35,17 @@ For token links, encode the token address into Base62 first: **27 chars** for EV
 
     ```text
     https://t.me/cove_trading_bot?start=gs_50e<27-char-base62-token>
+    ```
+  </Card>
+  <Card title="Referral" icon="user-plus">
+    Share a token link with referral attribution.
+
+    ```text
+    ref_{ref}-{tokenAddress}
+    ```
+
+    ```text
+    https://t.me/cove_trading_bot?start=ref_alice-0xf30bf00edd0c22db54c9274b90d2a4c21fc09b07
     ```
   </Card>
 </CardGroup>
@@ -64,7 +75,7 @@ https://t.me/cove_trading_bot?start=g_0d5b<27-char-base62-token><7-char-affiliat
     `gs_` links sell a percentage of the clicker's own token position.
   </Card>
   <Card title="Referral" icon="user-plus">
-    `ref_` links set a pending referrer for onboarding.
+    `ref_` links share a token with referral attribution.
   </Card>
 </CardGroup>
 
@@ -78,7 +89,7 @@ https://t.me/cove_trading_bot?start={payload}
 
 ## Shared encoding
 
-All token-based deep links use the same chain codes, address encoding, and optional affiliate/group tail.
+The `g_`, `b_`, and `gs_` token-action links use the same chain codes, address encoding, and optional affiliate/group tail.
 
 ### Chain codes
 
@@ -245,13 +256,34 @@ https://t.me/cove_trading_bot?start=gs_50e<27-char-base62-token>
 
 ## Referral links
 
-Use `ref_` links when you only want to set a pending referrer by Telegram username.
+Use `ref_` links when you want to share a token link with referral attribution. The ref value goes before the hyphen, and the token address goes after it.
+
+Full link format:
 
 ```text
-ref_{username}
+https://t.me/cove_trading_bot?start=ref_{ref}-{tokenAddress}
 ```
 
-Referral links are consumed during onboarding. Token links with affiliate metadata use the same permanent referrer concept: whichever valid referral source reaches a new user first can become their referrer.
+Payload format:
+
+```text
+ref_{ref}-{tokenAddress}
+```
+
+| Field | Description |
+|---|---|
+| `ref` | Your referral name or code, without `@` |
+| `tokenAddress` | Raw token address or mint address |
+
+The token address format is the same for EVM and Solana links: replace it with the token address you want the user to open.
+
+Example:
+
+```text
+https://t.me/cove_trading_bot?start=ref_alice-0xf30bf00edd0c22db54c9274b90d2a4c21fc09b07
+```
+
+In this example, replace `alice` with your own ref and replace the token address with the token you want to share.
 
 ---
 
