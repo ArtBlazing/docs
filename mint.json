@@ -37,6 +37,8 @@
       "group": "Trading Operations",
       "pages": [
         "features/trading",
+        "features/options",
+        "features/multi-wallet-trading",
         "features/limit-orders",
         "features/positions",
         "features/transfers"

@@ -1,52 +1,74 @@
 ---
-title: Active Positions
-description: Monitor and manage your portfolio across all integrated chains
+title: Positions
+description: Monitor holdings, sort by worth, hide dust, and manage positions across accounts
 icon: chart-pie
 ---
 
-Cove centralizes your entire portfolio into a single, cohesive dashboard. You track performance in real-time without switching between block explorers.
+Cove's Positions panel gives you a compact portfolio view across your selected accounts. Use it to monitor token value, PnL, account balances, and position-level actions without leaving Telegram.
 
 Click the **Positions** button on the main menu to open your portfolio.
 
-<Frame>
-  <img src="/assets/positions%20menu.png" alt="Main Positions Dashboard" />
-</Frame>
+<Frame><img src="/assets/positions-new/positions-panel.png" alt="Cove Positions panel" /></Frame>
 
-The dashboard displays:
-1. Total portfolio value.
-2. Individual token balances.
-3. Unrealized PnL (Profit and Loss).
-4. Current token market cap.
+## What you see
 
-## Advanced Filtering
+Each token row shows the chain, token name, market cap, PnL, position worth, and the account that holds it.
 
-When managing massive portfolios across supported chains and multiple wallets, you need precise filtering to locate specific assets. 
+<CardGroup cols={2}>
+  <Card title="Token snapshot" icon="coins">
+    Token, chain, market cap, PnL, and position worth at a glance.
+  </Card>
+  <Card title="Account context" icon="wallet">
+    See which account owns each position and which accounts are currently visible.
+  </Card>
+  <Card title="Portfolio totals" icon="chart-column">
+    Account balance and total positions value appear below the token list.
+  </Card>
+  <Card title="Fast actions" icon="bolt">
+    Sell, move, refresh, sort, hide, and open the Positions Mini App.
+  </Card>
+</CardGroup>
 
-1. Click the **Filters** menu at the top of the Positions tab.
-   <Frame><img src="/assets/positions_filters%20menu.png" alt="Opening Advanced Filters" /></Frame>
+## Panel actions
 
-You filter your active positions using three main categories:
+| Action | Use it for |
+|---|---|
+| Refresh | Reload the latest balances and PnL |
+| Positions Mini App | Open the expanded position experience |
+| Filters | Choose which accounts or position groups are visible |
+| Sort by Worth | Sort positions by current value |
+| History | Review past position activity |
+| Hide positions | Hide positions you do not want in the main list |
+| Sell 100% | Sell an entire position when enabled in Options |
+| Move | Move a position between accounts or destinations |
 
-<Tabs>
-  <Tab title="By Account">
-    Isolate positions held in specific generated wallets.
-    
-    Select the checkboxes next to the accounts you wish to view. Cove dynamically updates the list.
-    <Frame><img src="/assets/positions_filters_by%20accounts.png" alt="Filtering positions by Account" /></Frame>
-  </Tab>
-  <Tab title="By Chain">
-    Filter tokens residing on specific blockchains.
+## Hiding positions
 
-    Cove displays supported chains natively. 
-    <Frame><img src="/assets/positions_filters_by%20chain.png" alt="Filtering positions by Chain" /></Frame>
-    
-    Deselect specific chains (e.g., turning off BNB) to hide those assets from the main view.
-    <Frame><img src="/assets/positions_filters_by%20chain_deselect%20chains.png" alt="Deselecting BNB chain filter" /></Frame>
-  </Tab>
-  <Tab title="Other Metrics">
-    Sort and filter the list based on performance and size.
+Use **Hide positions** to keep dust, inactive, or low-priority positions out of your main portfolio view.
 
-    Sort by PnL (Highest/Lowest) or sort by Value (Highest/Lowest) to identify your best and worst performing assets instantly.
-    <Frame><img src="/assets/positions_filters_others.png" alt="Sorting positions by Value and PnL" /></Frame>
-  </Tab>
-</Tabs>
+<Frame><img src="/assets/positions-new/hide-positions.png" alt="Hide positions menu" /></Frame>
+
+From the hide menu:
+
+1. Click **Hide** next to any visible position.
+2. Use **Show hidden** to switch into hidden-position view.
+3. Click **Unhide** to return a hidden position to the main list.
+
+<Frame><img src="/assets/positions-new/show-hidden.png" alt="Showing hidden positions" /></Frame>
+
+<Note>
+Hidden positions are not sold or moved. They are only removed from the default view until you unhide them.
+</Note>
+
+## Options that affect Positions
+
+The Positions panel respects your position panel settings from **Options**.
+
+<CardGroup cols={2}>
+  <Card title="Sell 100% in Positions" icon="percent">
+    Shows a direct full-sell action next to positions in the panel.
+  </Card>
+  <Card title="Sell 100% Links" icon="link">
+    Enables full-position sell links for position actions.
+  </Card>
+</CardGroup>
