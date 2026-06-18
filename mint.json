@@ -28,7 +28,6 @@
         "essentials/supported-chains",
         "essentials/getting-started",
         "essentials/accounts",
-        "essentials/settings",
         "essentials/fees-structure",
         "features/referrals"
       ]
@@ -37,7 +36,7 @@
       "group": "Trading Operations",
       "pages": [
         "features/trading",
-        "features/options",
+        "features/settings",
         "features/multi-wallet-trading",
         "features/limit-orders",
         "features/positions",
