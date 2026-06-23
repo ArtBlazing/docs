@@ -5,7 +5,7 @@ icon: "bolt"
 ---
 
 <Frame>
-  <img src="/assets/cove_buy/cove%20buy%20main.png" alt="Cove Buy Main" />
+  <img src="/assets/cove_buy/current%20look.png" alt="Cove Buy Main" />
 </Frame>
 
 Cove Buy turns every token scan in your group/channel into a 1-click buy experience (no copy-paste, no switching apps). Cove Buy is a Telegram tool that adds Quick Buy buttons under scanned tokens so your members can enter faster — and you can earn from the activity in your community.
@@ -26,34 +26,211 @@ Cove Buy turns every token scan in your group/channel into a 1-click buy experie
 
 ---
 
-## How Cove Buy Works
+## Available Features
 
-<Steps>
-  <Step title="Add to Group">
-    Add [@cove_buy_bot](https://t.me/cove_buy_bot) to your group/channel and give admin rights.
-  </Step>
-  <Step title="Configure Settings">
-    Configure your Group Settings according to your community's needs.
-  </Step>
-  <Step title="Start Earning">
-    Members see Quick Buy buttons under scanned tokens → they tap → trade executes through Cove. All referral fees go directly to your Cove account.
-  </Step>
-</Steps>
+Explore the extensive toolset Cove Buy brings directly to your Telegram community. We've organized the commands into categories so you can quickly find what you need.
 
-<Note>
-  Cove Buy is a user-facing tool. Your members don’t need to understand setup — they just tap Buy.
-</Note>
+### 🔎 Discovery & Search
 
-### Quick start (2 minutes)
-**Requirements** — Cove account.
+<AccordionGroup>
+  <Accordion title="/ds <query> — Search pairs by name/ticker" icon="magnifying-glass">
+    Search pairs by name or ticker. Includes data on chain, volume, new pairs, and market cap.
+    <Frame><img src="/assets/cove_buy/ds.png" alt="Discovery Search" /></Frame>
+  </Accordion>
 
-<Frame>
-  <img src="/assets/cove_buy/cove%20buy%20scan.%20default%20buy%20amounts.png" alt="Cove Buy Quick Start" />
-</Frame>
+  <Accordion title="/dt — Trending tokens by recent scans" icon="fire">
+    See the most scanned and trending tokens in the last 24 hours.
+    <Frame><img src="/assets/cove_buy/dt.png" alt="Daily Trends" /></Frame>
+  </Accordion>
+
+  <Accordion title="/pfs <query> — Search Pump.fun tokens" icon="pump-soap">
+    Find newly created tokens specifically on Pump.fun.
+    <Frame><img src="/assets/cove_buy/pfs.png" alt="Pump.fun Search" /></Frame>
+  </Accordion>
+
+  <Accordion title="/old & /new — Search by age" icon="clock">
+    Search the oldest or newest tokens by ticker, with chain, volume, and fuzzy matching.
+    <Tabs>
+      <Tab title="/old <ticker>">
+        <Frame><img src="/assets/cove_buy/old.png" alt="Old Ticker Search" /></Frame>
+      </Tab>
+      <Tab title="/new <ticker>">
+        <Frame><img src="/assets/cove_buy/new.png" alt="New Ticker Search" /></Frame>
+      </Tab>
+    </Tabs>
+  </Accordion>
+
+  <Accordion title="/c 0x… — Token card + chart" icon="chart-line">
+    View a detailed token card and a price chart with 15m and 4h intervals.
+    <Frame><img src="/assets/cove_buy/c.png" alt="Token Card" /></Frame>
+  </Accordion>
+
+  <Accordion title="/cc 0x… — Dex chart image" icon="image">
+    Get an instant snapshot of the Dex chart for a specific token.
+    <Frame><img src="/assets/cove_buy/cc.png" alt="Dex Chart Image" /></Frame>
+  </Accordion>
+
+  <Accordion title="/web <url> — Scan a site" icon="globe">
+    Scan a website to get WHOIS, DNS records, and perform a clone/scam check.
+    <Frame><img src="/assets/cove_buy/web.png" alt="Web Scan" /></Frame>
+  </Accordion>
+
+  <Accordion title="/moni <@handle> — Scan a Twitter/X profile" icon="twitter">
+    Scan a Twitter/X profile to get its Moni score, smart followers, and bio.
+    <Frame><img src="/assets/cove_buy/moni.png" alt="Moni Scan" /></Frame>
+  </Accordion>
+
+  <Accordion title="/now — Global news roundup" icon="newspaper">
+    Get a roundup of the most important crypto news from the last 24 hours.
+    <Frame><img src="/assets/cove_buy/now.png" alt="News Roundup" /></Frame>
+  </Accordion>
+
+  <Accordion title="Market Overviews (/index & /vol)" icon="list-ol">
+    Check the top 10 coins or see volume statistics across launchpads.
+    <Tabs>
+      <Tab title="/index">
+        <Frame><img src="/assets/cove_buy/index.png" alt="Index" /></Frame>
+      </Tab>
+      <Tab title="/vol">
+        <Frame><img src="/assets/cove_buy/vol.png" alt="Volume" /></Frame>
+      </Tab>
+    </Tabs>
+  </Accordion>
+</AccordionGroup>
+
+
+### 🕵️ Token Intel
+
+<AccordionGroup>
+  <Accordion title="/nh 0x… — Notable holders" icon="users">
+    Analyze the top and notable holders of a token.
+    <Frame><img src="/assets/cove_buy/nh.png" alt="Notable Holders" /></Frame>
+  </Accordion>
+
+  <Accordion title="/dp 0x… — DexPaid & CTO status" icon="money-bill">
+    Check if Dex is paid, view boosts, ads, and Community Takeover (CTO) status.
+    <Frame><img src="/assets/cove_buy/dp.png" alt="DexPaid Check" /></Frame>
+  </Accordion>
+
+  <Accordion title="/dev <token|wallet> — Dev’s launches" icon="code">
+    Investigate a developer's past launches and their all-time highs (ATHs).
+    <Frame><img src="/assets/cove_buy/dev.png" alt="Dev Intel" /></Frame>
+  </Accordion>
+
+  <Accordion title="/wallet <addr> — Wallet PnL & stats" icon="wallet">
+    Check a wallet's profit and loss (PnL) and other statistics over a specific timeframe.
+    <Frame><img src="/assets/cove_buy/wallet.png" alt="Wallet Intel" /></Frame>
+  </Accordion>
+
+  <Accordion title="/wl <name> — Label a wallet" icon="tag">
+    Label a wallet by replying to a panel, making tracking easier.
+    <Frame><img src="/assets/cove_buy/wl.png" alt="Wallet Label" /></Frame>
+  </Accordion>
+</AccordionGroup>
+
+
+### 🎨 Social & Fun
+
+<AccordionGroup>
+  <Accordion title="Leaderboards (/ga & /runners)" icon="trophy">
+    Check the group's leaderboard and reports on tokens that ran the highest.
+    <Tabs>
+      <Tab title="/ga (Leaderboard)">
+        <Frame><img src="/assets/cove_buy/ga.png" alt="Leaderboard" /></Frame>
+      </Tab>
+      <Tab title="/runners">
+        <Frame><img src="/assets/cove_buy/runners.png" alt="Runners Report" /></Frame>
+      </Tab>
+    </Tabs>
+  </Accordion>
+
+  <Accordion title="/flex 0x… — Flexcard" icon="sparkles">
+    Create a custom flex card to show off your wins. Use `/fleximg` and `/flexfont` to customize it.
+    *(Requires a winning trade to generate)*
+  </Accordion>
+
+  <Accordion title="/img <prompt> — Generate an image" icon="image">
+    Generate images using AI directly in the chat.
+    <Frame><img src="/assets/cove_buy/img.png" alt="Generate Image" /></Frame>
+  </Accordion>
+
+  <Accordion title="/ask — Ask a question" icon="circle-question">
+    Ask general questions right in the chat.
+    <Frame><img src="/assets/cove_buy/ask.png" alt="Ask Question" /></Frame>
+  </Accordion>
+
+  <Accordion title="/translate — Translate text" icon="language">
+    Quickly translate text by replying to a message with the command.
+    <Frame><img src="/assets/cove_buy/translate.png" alt="Translate" /></Frame>
+  </Accordion>
+</AccordionGroup>
+
+
+### ⚙️ Group Admin
+
+<AccordionGroup>
+  <Accordion title="/scansonly on|off" icon="shield-halved">
+    Limit the group functionality to token scans only, keeping the chat clean.
+    <Frame><img src="/assets/cove_buy/scansonly.png" alt="Scans Only" /></Frame>
+  </Accordion>
+
+  <Accordion title="/compact on|off" icon="compress">
+    Make scan panels smaller to save space in the chat.
+    <Tabs>
+      <Tab title="Compact ON">
+        <Frame><img src="/assets/cove_buy/compact%20on%20.png" alt="Compact On" /></Frame>
+      </Tab>
+      <Tab title="Compact OFF">
+        <Frame><img src="/assets/cove_buy/compact%20off.png" alt="Compact Off" /></Frame>
+      </Tab>
+    </Tabs>
+  </Accordion>
+
+  <Accordion title="/autoimg — Default banners & charts" icon="image">
+    Configure what images automatically appear with token scans.
+    <Tabs>
+      <Tab title="Chart (c)">
+        <Frame><img src="/assets/cove_buy/autoimg%20c.png" alt="Autoimg Chart" /></Frame>
+      </Tab>
+      <Tab title="Wide Chart (cwide)">
+        <Frame><img src="/assets/cove_buy/autoimg%20cwide.png" alt="Autoimg Wide Chart" /></Frame>
+      </Tab>
+      <Tab title="Image (img)">
+        <Frame><img src="/assets/cove_buy/autoimg%20img.png" alt="Autoimg Image" /></Frame>
+      </Tab>
+      <Tab title="Big Banner">
+        <Frame><img src="/assets/cove_buy/autoimg%20bigbanner.png" alt="Autoimg Big Banner" /></Frame>
+      </Tab>
+      <Tab title="Menu">
+        <Frame><img src="/assets/cove_buy/autoimg.png" alt="Autoimg Menu" /></Frame>
+      </Tab>
+    </Tabs>
+  </Accordion>
+
+  <Accordion title="/covefix & /showfixes — Token filters" icon="filter">
+    Fix specific contract addresses for tickers to prevent wrong token scans.
+    <Tabs>
+      <Tab title="/covefix">
+        <Frame><img src="/assets/cove_buy/covefix.png" alt="Covefix" /></Frame>
+      </Tab>
+      <Tab title="/showfixes">
+        <Frame><img src="/assets/cove_buy/showfixes.png" alt="Show Fixes" /></Frame>
+      </Tab>
+      <Tab title="Misphorse Fix">
+        <Frame><img src="/assets/cove_buy/covefix%20misphorse.png" alt="Misphorse Fix" /></Frame>
+      </Tab>
+    </Tabs>
+  </Accordion>
+  
+  <Accordion title="/group_settings" icon="gear">
+    Open the group settings panel directly from the group.
+    <Frame><img src="/assets/cove_buy/group%20settings.png" alt="Group Settings" /></Frame>
+  </Accordion>
+</AccordionGroup>
 
 ---
 
-## How to Set Up Cove Buy
+## 🛠️ How to Set Up Cove Buy
 
 <Steps>
   <Step title="Start the Bot">
@@ -62,20 +239,38 @@ Cove Buy turns every token scan in your group/channel into a 1-click buy experie
   </Step>
 
   <Step title="Add to your group/channel">
-    <Frame><img src="/assets/cove_buy/select%20group%20to%20where%20to%20add%20cove.png" alt="Select Group" /></Frame>
-    <Frame><img src="/assets/cove_buy/add%20cove%20to%20community_ok.png" alt="Add to Group OK" /></Frame>
+    <Tabs>
+      <Tab title="Select Group">
+        <Frame><img src="/assets/cove_buy/select%20group%20to%20where%20to%20add%20cove.png" alt="Select Group" /></Frame>
+      </Tab>
+      <Tab title="Confirm">
+        <Frame><img src="/assets/cove_buy/add%20cove%20to%20community_ok.png" alt="Add to Group OK" /></Frame>
+      </Tab>
+    </Tabs>
   </Step>
 
   <Step title="Give it an Admin role">
     Right click on the bot's profile and Promote to admin. Configure the rules and click **Save**. You can give it a Custom title if you want.
-    <Frame><img src="/assets/cove_buy/promote%20cove%20to%20admin.png" alt="Promote to Admin" /></Frame>
-    <Frame><img src="/assets/cove_buy/save%20admin%20rights.png" alt="Save Admin Rights" /></Frame>
+    <Tabs>
+      <Tab title="Promote to Admin">
+        <Frame><img src="/assets/cove_buy/promote%20cove%20to%20admin.png" alt="Promote to Admin" /></Frame>
+      </Tab>
+      <Tab title="Save Rights">
+        <Frame><img src="/assets/cove_buy/save%20admin%20rights.png" alt="Save Admin Rights" /></Frame>
+      </Tab>
+    </Tabs>
   </Step>
 
   <Step title="Configure your Group">
-    Click **Configure Group**. It will redirect you to the Bot and Group Settings message will pop up.
-    <Frame><img src="/assets/cove_buy/cove%20successfully%20added.png" alt="Cove Successfully Added" /></Frame>
-    <Frame><img src="/assets/cove_buy/come%20main%20menu.png" alt="Main Menu" /></Frame>
+    Use `/group_settings` to open the settings interface.
+    <Tabs>
+      <Tab title="Settings">
+        <Frame><img src="/assets/cove_buy/group%20settings.png" alt="Group Settings" /></Frame>
+      </Tab>
+      <Tab title="Select Community">
+        <Frame><img src="/assets/cove_buy/group%20settings_community%20selected.png" alt="Community Selected" /></Frame>
+      </Tab>
+    </Tabs>
     
     <Check>
       Cove Buy is now added to your community. To increase your user experience even more, you can configure your group in Bot Settings.
@@ -85,60 +280,57 @@ Cove Buy turns every token scan in your group/channel into a 1-click buy experie
 
 ---
 
-## Custom Buy Amounts
+## 💰 Custom Buy Amounts
 
 You can set custom Buy Amounts for your group that better suit your members. Everyone in this group will see the same.
 
 <Steps>
   <Step title="Open Group Settings">
     Use `/group_settings` command from Bot menu to launch your Group Settings. Here, click **Custom Buy Amounts**.
-    <Frame><img src="/assets/cove_buy/custom%20buy%20amounts%20menu.png" alt="Open Group Settings" /></Frame>
+    <Frame><img src="/assets/cove_buy/group%20settings_community%20selected_custom%20buy%20amount.png" alt="Open Group Settings" /></Frame>
   </Step>
 
   <Step title="Select amount to change">
     Each chain has its own custom Buy Amounts. Make sure to select a proper chain before editing.
-    <Frame><img src="/assets/cove_buy/enter%20custom%20buy%20amount%20to%20change.png" alt="Select Amount" /></Frame>
+    <Frame><img src="/assets/cove_buy/group%20settings_community%20selected_custom%20buy%20amount_change.png" alt="Select Amount" /></Frame>
   </Step>
 
   <Step title="Apply the new amount">
-    <Frame><img src="/assets/cove_buy/enter%20amount%205.png" alt="Apply Amount" /></Frame>
-  </Step>
-
-  <Step title="Buy amount is changed">
     Your group Buy Amounts have been changed successfully. Now your members will see the updated amount once you send a new contract address in your group.
-    <Frame><img src="/assets/cove_buy/changed%20buy%20amounts.png" alt="Amount Changed" /></Frame>
+    <Frame><img src="/assets/cove_buy/group%20settings_community%20selected_custom%20buy%20amount_change_updated.png" alt="Amount Changed" /></Frame>
   </Step>
 </Steps>
 
 ---
 
-## Custom Links Setup
+## 🔗 Custom Links Setup
 
 We understand that people prefer different trading bots. With Cove Buy, you decide which bots you want to keep as quick buy links, and all referral fees from these links will go straight to your account.
 
 Cove Buy lets you set your own referral links for each scan in your community.
 
-<Frame><img src="/assets/cove_buy/custom%20links%20setup%20menu.png" alt="Custom Links Setup" /></Frame>
+<Frame><img src="/assets/cove_buy/group%20settings_custom%20links.png" alt="Custom Links Setup" /></Frame>
 
 <Steps>
   <Step title="Select a chain to find a trading bot">
-    <Frame><img src="/assets/cove_buy/custom%20links%20menu_select%20other%20chain.png" alt="Select Chain" /></Frame>
+    <Frame><img src="/assets/cove_buy/group%20settings_custom%20links_select%20other%20chain.png" alt="Select Chain" /></Frame>
   </Step>
 
   <Step title="Select trading bot">
     Tap on the trading bot name to launch a custom ref link setup menu.
-    <Frame><img src="/assets/cove_buy/custom%20links%20menu_sol%20chain%20selected.png" alt="Select Bot" /></Frame>
+    <Frame><img src="/assets/cove_buy/group%20settings_custom%20links_add%20custom%20link.png" alt="Select Bot" /></Frame>
   </Step>
 
   <Step title="Set Referral & Get your Referral code">
-    Get your Referral code (referral username) from another trading bot.
-    <Frame><img src="/assets/cove_buy/set%20custom%20link%20beign.png" alt="Set Custom Link Begin" /></Frame>
-  </Step>
-
-  <Step title="Enter this code to Cove Buy menu">
-    Done. You've set a custom referral link. Although we set a custom link for the SOL chain, it will apply to all chains supported by the trading bot from your custom ref link.
-    <Frame><img src="/assets/cove_buy/custom%20links%20menu_referral%20set%20successfully.png" alt="Referral Set Successfully" /></Frame>
-    <Frame><img src="/assets/cove_buy/custom%20ref%20link%20in%20in%20scans.png" alt="Ref Link in Scans" /></Frame>
+    Enter your referral code for the selected bot.
+    <Tabs>
+      <Tab title="Setup">
+        <Frame><img src="/assets/cove_buy/group%20settings_custom%20links_add%20custom%20link_done.png" alt="Referral Set Successfully" /></Frame>
+      </Tab>
+      <Tab title="How It Looks">
+        <Frame><img src="/assets/cove_buy/group%20settings_custom%20links_add%20custom%20link_done_how%20it%20looks.png" alt="Ref Link in Scans" /></Frame>
+      </Tab>
+    </Tabs>
   </Step>
 </Steps>
 
