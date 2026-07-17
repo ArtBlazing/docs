@@ -86,6 +86,25 @@
     box-shadow: none !important;
   }
 
+  .chain-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.7rem !important;
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .chain-mark-arbitrum {
+    background: linear-gradient(135deg, #016be5, #10e1ff);
+  }
+
+  .chain-mark-robinhood {
+    background: linear-gradient(135deg, #00c805, #008f20);
+  }
+
   .chain-card [data-rmiz],
   .chain-card [data-rmiz-content] {
     display: block;
