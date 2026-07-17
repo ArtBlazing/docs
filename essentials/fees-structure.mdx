@@ -195,6 +195,42 @@ For **sells, withdrawals, and transfers**, gas can be harder to offset. If the e
 
 ---
 
+## EVM deposit bridge fee
+
+When you deposit through an **EVM network**, Cove routes the funds into your unified balance. If that route requires bridging from EVM to Solana, a small bridge fee is deducted from the deposit to cover the underlying infrastructure cost.
+
+<CardGroup cols={3}>
+  <Card title="When it applies" icon="arrow-down-to-bracket">
+    **Inbound EVM deposits** that must be bridged into Cove's unified balance
+  </Card>
+  <Card title="What it covers" icon="bridge">
+    **Bridging infrastructure costs**, including the destination account creation cost
+  </Card>
+  <Card title="Typical amount" icon="coins">
+    Around **\$0.19** per deposit; the exact cost can vary with the route and provider
+  </Card>
+</CardGroup>
+
+This is a **pass-through infrastructure cost**, not an additional Cove trading fee. The amount credited to your Cove balance is the deposit amount after the bridging cost has been deducted.
+
+<Accordion title="Example: a $100 EVM deposit">
+  | Calculation | Amount |
+  |---|---:|
+  | Amount sent | \$100.00 |
+  | Example bridging fee | −\$0.19 |
+  | **Amount credited** | **\$99.81** |
+
+  This example uses the typical fee. The actual amount may vary slightly depending on the route and current provider cost.
+</Accordion>
+
+<Accordion title="Why isn't this fee sponsored?">
+  Cove subsidizes outbound traffic, but not inbound EVM-to-Solana deposits. Each inbound route can create a real account and bridging cost of roughly \$0.20.
+
+  If Cove covered that cost for every deposit, automated accounts could repeatedly trigger new deposit routes and shift all of those costs to Cove. Passing through the small provider fee prevents this type of abuse while keeping deposits reliable.
+</Accordion>
+
+---
+
 ## Solana rent deposit
 
 When you send a token to a wallet that **doesn't already hold that token**, Solana requires a one-time **rent deposit** (~\$0.36 in SOL) to open the recipient's token account on-chain.
@@ -272,7 +308,7 @@ Cove may perform bridge or consolidation actions behind the scenes to keep cross
 | Gas cost | Covered by Cove as infrastructure |
 | Abuse protection | 30-second cooldown per account, chain, and token |
 
-<Note>Auto-bridge moves keep your balances and routing infrastructure efficient without requiring you to manually bridge funds.</Note>
+<Note>Auto-bridge consolidation is separate from the EVM deposit bridge fee. Consolidation moves initiated by Cove remain free, while an inbound EVM deposit may include the pass-through bridging cost described above.</Note>
 
 ---
 
@@ -310,6 +346,7 @@ On-chain execution has real costs — gas can spike, small trades can be abused,
 | Minimum sell | \$0.50 |
 | Minimum Solana sell | \$2.50 |
 | Gas sponsorship | Up to \$5 per trade / action |
+| EVM deposit bridge fee | Pass-through bridging cost, typically ~\$0.19 for an EVM-to-Solana deposit |
 | Solana rent deposit | ~\$0.36 one-time per new token account (withdrawals & transfers only) |
 | Over-cap gas | Requires gas surplus approval |
 | Auto-bridge consolidation | No user fee, gas covered by Cove |
