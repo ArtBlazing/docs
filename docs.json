@@ -25,24 +25,46 @@
         "group": "Trading Operations",
         "pages": [
           "features/trading",
-          "features/settings",
           "features/multi-wallet-trading",
-          "features/limit-orders",
-          "features/positions",
+          {
+            "group": "Orders",
+            "icon": "list-ol",
+            "pages": [
+              "features/limit-orders",
+              "features/dca-orders"
+            ]
+          },
+          {
+            "group": "Positions",
+            "icon": "chart-pie",
+            "pages": [
+              "features/positions",
+              "features/pnl-cards"
+            ]
+          },
+          {
+            "group": "Settings",
+            "icon": "sliders",
+            "root": "features/settings",
+            "pages": [
+              "features/settings/guardrails",
+              "features/settings/trade-panel",
+              "features/settings/auto-tp-sl",
+              "features/settings/position-panel",
+              "features/settings/group-links",
+              "features/settings/language"
+            ]
+          },
           "features/transfers"
         ]
       },
       {
         "group": "Support",
-        "pages": [
-          "features/support"
-        ]
+        "pages": ["features/support"]
       },
       {
         "group": "For Groups & Channels",
-        "pages": [
-          "groups/cove-buy"
-        ]
+        "pages": ["groups/cove-buy"]
       },
       {
         "group": "For Builders",
@@ -53,14 +75,12 @@
       },
       {
         "group": "Brand Kit",
-        "pages": [
-          "design-system/brand-kit"
-        ]
+        "pages": ["design-system/brand-kit"]
       }
     ]
   },
   "logo": {
-    "light": "/assets/logo-white.png",
+    "light": "/assets/brand-kit/BlackCoveHorizontal.png",
     "dark": "/assets/logo-white.png"
   },
   "navbar": {

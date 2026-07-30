@@ -1,32 +1,27 @@
 ---
 title: Security
-description: Understanding Cove's security and protection features
+description: Understand wallet access, execution checks, and the limits of Cove's protections
+icon: shield-check
 ---
 
-Security is the cornerstone of Cove. In 2026, relying solely on public mempools and standard routing is a risk few can afford. Cove architecture utilizes advanced, proprietary transaction routing and validation to preserve your capital.
+Cove combines wallet access controls, pre-trade checks, and execution routing. No single control removes the risks of token trading.
 
-## Architecture Highlights
+## Wallet access
 
-Our security approach is proactive, operating on the transaction level *before* execution.
+Cove uses Privy and secure Mini App flows for wallet access and signing. A wallet can remain under your control after Cove or Privy signing access is revoked. Smart-wallet and downgrade behavior depends on the account flow. See [Accounts & Wallets](/essentials/accounts).
 
-<AccordionGroup>
-  <Accordion title="Self-Custodial Architecture">
-    Cove operates on a strictly self-custodial basis. While we provide the interface via Telegram, your private keys are encrypted and stored locally via the Telegram Mini App environment or your imported external wallet. Cove servers never have access to your raw private keys, meaning your funds are always under your control.
-  </Accordion>
+Do not share private keys, seed phrases, authentication codes, or export screenshots.
 
-  <Accordion title="MEV Protection (Private RPCs)">
-    Maximal Extractable Value (MEV) bots operate by frontrunning and sandwiching standard transactions, siphoning off your profits.
-    
-    Cove completely bypasses the public mempool. When you submit a trade via Cove, the transaction is routed through our network of **Private RPCs**, directly to trusted block builders. By keeping the transaction hidden from the mempool until it is included in a block, we guarantee 100% MEV protection for standard operations.
-  </Accordion>
+## Execution protections
 
-  <Accordion title="Anti-Rug Mechanism">
-    Honeypots, extreme taxes, and malicious contract functions are commonplace. 
-    
-    Cove utilizes an **Anti-Rug simulation engine**. Before your buy transaction is executed on-chain, our engine simulates the purchase *and the subsequent sale* of the token. If the token is a honeypot (cannot be sold) or has a hidden transfer tax over a predefined threshold, Cove automatically rejects the transaction and warns you.
-  </Accordion>
-</AccordionGroup>
+The product includes slippage, liquidity protection, max-buy adjustment, high price-impact confirmation, token data checks, and gas surplus controls. These settings have different scopes and do not guarantee a successful or profitable trade.
 
-<Warning>
-**Always verify the token contract address.** While our anti-rug system provides substantial protection, it cannot prevent you from buying a legitimate (tradeable) token that simply loses value due to market mechanics. Always DYOR.
-</Warning>
+Private routing and simulation can reduce certain execution risks, but they do not guarantee a fill or prevent loss.
+
+## Token risk
+
+Token checks can identify some contract or execution risks. They cannot prevent a legitimate token from losing value, becoming illiquid, or behaving differently after deployment. Verify the contract address and review the token and liquidity data before submitting a trade.
+
+## Gas sponsorship
+
+The UI describes Cove as gasless for supported flows, but sponsorship has a cap. If the network cost exceeds the sponsored amount, Cove can ask you to approve a gas surplus according to Settings, Guardrails.

@@ -4,7 +4,7 @@ description: Networks currently supported by Cove
 icon: globe
 ---
 
-Cove currently supports trading and unified balance routing across the following chains.
+Cove currently shows the following networks in the product UI. Availability for a specific token, order type, deposit route, or withdrawal route can depend on current product configuration.
 
 <div className="chain-grid">
   <div className="chain-card">
@@ -91,6 +91,13 @@ Cove currently supports trading and unified balance routing across the following
       <div className="chain-name">Robinhood Chain</div>
     </div>
   </div>
+  <div className="chain-card">
+    <div className="chain-logo chain-mark chain-mark-stable" role="img" aria-label="Stable network label shown in Cove">STABLE</div>
+    <div>
+      <div className="chain-code">STABLE</div>
+      <div className="chain-name">Shown in Cove UI</div>
+    </div>
+  </div>
 </div>
 
 ## Current list
@@ -109,7 +116,8 @@ Cove currently supports trading and unified balance routing across the following
 | PLASMA | Plasma |
 | HYPEREVM | HyperEVM |
 | ROBINHOOD | Robinhood Chain |
+| STABLE | Stable |
 
 <Note>
-You do not need to bridge manually or hold native gas tokens on every chain. Cove handles routing and gasless execution behind the scenes.
+Cove presents a unified balance and handles routing for supported flows. Gas sponsorship has a cap. If a trade needs more gas than the sponsored amount, Cove can ask for a gas surplus according to your settings.
 </Note>

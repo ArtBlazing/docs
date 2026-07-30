@@ -1,74 +1,53 @@
 ---
 title: Positions
-description: Monitor holdings, sort by worth, hide dust, and manage positions across accounts
+description: Filter, sort, hide, and manage token positions across accounts
 icon: chart-pie
 ---
 
-Cove's Positions panel gives you a compact portfolio view across your selected accounts. Use it to monitor token value, PnL, account balances, and position-level actions without leaving Telegram.
+Open `Positions` from the home screen to view holdings across your selected accounts.
 
-Click the **Positions** button on the main menu to open your portfolio.
+<Frame><img src="/assets/current-ui/positions-overview.png" alt="Current Cove Positions panel with position values" /></Frame>
 
-<Frame><img src="/assets/positions-new/positions-panel.png" alt="Cove Positions panel" /></Frame>
+## Position view
 
-## What you see
+Each row can show the token, chain, market cap, PnL, worth, and account context. The panel also exposes total balance and position value.
 
-Each token row shows the chain, token name, market cap, PnL, position worth, and the account that holds it.
+## Filter and sort
 
-<CardGroup cols={2}>
-  <Card title="Token snapshot" icon="coins">
-    Token, chain, market cap, PnL, and position worth at a glance.
-  </Card>
-  <Card title="Account context" icon="wallet">
-    See which account owns each position and which accounts are currently visible.
-  </Card>
-  <Card title="Portfolio totals" icon="chart-column">
-    Account balance and total positions value appear below the token list.
-  </Card>
-  <Card title="Fast actions" icon="bolt">
-    Sell, move, refresh, sort, hide, and open the Positions Mini App.
-  </Card>
-</CardGroup>
+The current panel includes:
 
-## Panel actions
+- Sort by Worth.
+- Sort by Age.
+- Account filters.
+- Chain filters.
+- Other filters shown in the filter menu.
+- Pagination.
+- History.
+- Refresh.
 
-| Action | Use it for |
-|---|---|
-| Refresh | Reload the latest balances and PnL |
-| Positions Mini App | Open the expanded position experience |
-| Filters | Choose which accounts or position groups are visible |
-| Sort by Worth | Sort positions by current value |
-| History | Review past position activity |
-| Hide positions | Hide positions you do not want in the main list |
-| Sell 100% | Sell an entire position when enabled in Settings |
-| Move | Move a position between accounts or destinations |
+<Frame><img src="/assets/current-ui/positions-sort-by-age.png" alt="Current Positions controls after switching the sort order to Age" /></Frame>
 
-## Hiding positions
+## Hide and show positions
 
-Use **Hide positions** to keep dust, inactive, or low-priority positions out of your main portfolio view.
+Use `Hide positions` to remove a position from the default list. Use `Show hidden` to view hidden positions, then unhide a position when you want it back in the main list.
 
-<Frame><img src="/assets/positions-new/hide-positions.png" alt="Hide positions menu" /></Frame>
+<Frame><img src="/assets/current-ui/positions-hide.png" alt="Current Hide positions view" /></Frame>
 
-From the hide menu:
+<Frame><img src="/assets/current-ui/positions-show-hidden.png" alt="Current Show hidden positions view" /></Frame>
 
-1. Click **Hide** next to any visible position.
-2. Use **Show hidden** to switch into hidden-position view.
-3. Click **Unhide** to return a hidden position to the main list.
+Hiding a position does not sell or move it.
 
-<Frame><img src="/assets/positions-new/show-hidden.png" alt="Showing hidden positions" /></Frame>
+## Position actions
 
-<Note>
-Hidden positions are not sold or moved. They are only removed from the default view until you unhide them.
-</Note>
+Depending on the settings and current position, the row can expose:
 
-## Settings that affect Positions
+- Sell 100%.
+- Sell 100% across selected wallets when the position spans selected accounts.
+- Move.
+- View detailed.
+- Generate PnL.
+- Open the Positions Mini App.
 
-The Positions panel respects your position panel settings from **Settings**.
+`Sell 100%` and `Sell 100% Links` are controlled from Settings, Position panel settings. Confirm the selected accounts and final amount before a full sell.
 
-<CardGroup cols={2}>
-  <Card title="Sell 100% in Positions" icon="percent">
-    Shows a direct full-sell action next to positions in the panel.
-  </Card>
-  <Card title="Sell 100% Links" icon="link">
-    Enables full-position sell links for position actions.
-  </Card>
-</CardGroup>
+See [PnL Cards](/features/pnl-cards) for the generated image workflow.

@@ -52,6 +52,15 @@
     border: 1px solid rgba(0, 122, 255, 0.2) !important;
   }
 
+  article img[src*="/assets/current-ui/"] {
+    display: block;
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
   .chain-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -103,6 +112,12 @@
 
   .chain-mark-robinhood {
     background: linear-gradient(135deg, #00c805, #008f20);
+  }
+
+  .chain-mark-stable {
+    background: #07111f;
+    font-size: 0.5rem;
+    letter-spacing: -0.04em;
   }
 
   .chain-card [data-rmiz],

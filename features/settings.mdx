@@ -1,149 +1,39 @@
 ---
 title: Settings
-description: Configure execution behavior, automation, confirmations, and group-link safety controls
+description: Configure guardrails, trade panels, positions, group links, and language
 icon: sliders
 ---
 
-Settings let you tune how Cove behaves before, during, and after every trade. Use this page when you want to change default amounts, add confirmations, automate exits, or control how shared group links execute.
+Settings follow the same five sections shown in the Cove UI.
 
-<Frame><img src="/assets/options/settings-panel.png" alt="Cove Settings panel" /></Frame>
-
-## At a glance
+<Frame><img src="/assets/current-ui/settings-overview.png" alt="Current Cove Settings panel with Guardrails, Trade panel settings, Position panel settings, Group buy or sell, and Language" /></Frame>
 
 <CardGroup cols={2}>
-  <Card title="Trade Panel" icon="sliders">
-    Configure buy/sell presets, confirmations, post-buy behavior, degen mode, and extra trading links.
+  <Card title="Guardrails" icon="shield-check">
+    Set slippage, liquidity protection, max-buy adjustment, price-impact confirmation, Degen mode, and the gas surplus budget.
   </Card>
-  <Card title="Protection" icon="shield-check">
-    Control slippage, liquidity protection, max-buy adjustment, and gas surplus behavior.
+  <Card title="Trade panel settings" icon="sliders">
+    Change buy and sell presets, confirmations, panel defaults, links, and Auto TP/SL.
   </Card>
-  <Card title="Automation" icon="wand-sparkles">
-    Automatically attach take-profit and stop-loss orders to future market buys.
+  <Card title="Position panel settings" icon="chart-pie">
+    Control full-sell actions in Positions and position links.
   </Card>
-  <Card title="Group Links" icon="users">
-    Set limits for group buys and enable or disable group sell links.
+  <Card title="Group buy/sell" icon="users">
+    Set the instant group-buy limit and control group-sell links.
+  </Card>
+  <Card title="Language" icon="language">
+    Open the language selector and choose an available interface language.
   </Card>
 </CardGroup>
 
-## Trade panel settings
+## Find a setting
 
-Trade panel settings control how the token trading panel behaves after you paste a contract address or open a token link.
-
-<Frame><img src="/assets/options/trade-panel-settings.png" alt="Trade panel settings in Cove" /></Frame>
-
-| Option | What it controls |
+| UI section | Use it for |
 |---|---|
-| Buy Presets | Quick buy amounts shown on the buy panel |
-| Sell Presets | Quick sell percentages shown on the sell panel |
-| Buy Confirm | Requires confirmation before a buy executes |
-| Sell Confirm | Requires confirmation before a sell executes |
-| Capital at Risk / Profit Taken | Shows capital-at-risk and profit-taken information in the panel |
-| Stay on buy after buying | Keeps the panel on the buy side after a buy completes |
-| Auto-buy on paste | Automatically starts the buy flow when a token address is pasted |
-| Extra links | Shows additional token links in the panel |
+| Guardrails | Reduce avoidable execution risk and approve gas surplus behavior |
+| Trade panel settings | Change the controls and defaults shown while trading |
+| Position panel settings | Choose quick full-sell actions |
+| Group buy/sell | Control shared buy and sell links |
+| Language | Change the interface language when available |
 
-### Buy presets
-
-Buy presets are the quick amount buttons shown on the buy panel. Tap a preset in settings to change its value, or reset the full preset set to defaults.
-
-<Frame><img src="/assets/options/buy-presets.png" alt="Buy preset amounts in Cove" /></Frame>
-
-### Degen mode
-
-Degen mode is a fast-execution mode for users who intentionally want fewer protections.
-
-<Warning>
-Degen mode forces 100% slippage, turns liquidity protection off, and keeps auto max-buy clamp on. Your stored slippage, liquidity protection, and clamp settings are restored when degen mode is turned off.
-</Warning>
-
-## Auto TP/SL
-
-Auto TP/SL automatically creates matching limit orders for future market buys across supported chains. When enabled, every new market buy can attach a take-profit order, a stop-loss order, or both.
-
-<Frame><img src="/assets/options/auto-tp-sl.png" alt="Auto TP SL overview in Cove" /></Frame>
-
-<Tabs>
-  <Tab title="Auto take profit">
-    Auto take profit creates a sell order once the token moves up by your selected profit percentage.
-
-    In the example below, Cove sells **50%** of the position when the token is up **100%**.
-
-    <Frame><img src="/assets/options/auto-take-profit.png" alt="Auto take profit settings" /></Frame>
-  </Tab>
-  <Tab title="Auto stop loss">
-    Auto stop loss creates a sell order once the token moves down by your selected loss percentage.
-
-    In the example below, Cove sells **100%** of the position when the token is down **30%**.
-
-    <Frame><img src="/assets/options/auto-stop-loss.png" alt="Auto stop loss settings" /></Frame>
-  </Tab>
-</Tabs>
-
-<Note>
-Auto TP/SL applies to future market buys. Existing positions are not changed retroactively.
-</Note>
-
-## Execution protection
-
-These options help keep execution predictable during volatile markets and unusual liquidity conditions.
-
-<AccordionGroup>
-  <Accordion title="Slippage" icon="gauge">
-    Slippage is the maximum price movement Cove will tolerate between submission and execution.
-
-    Use presets such as **10%**, **20%**, **40%**, or **80%**, or set a custom value. The custom range is **1% to 100%** with up to 2 decimals.
-
-    <Frame><img src="/assets/options/slippage.png" alt="Slippage settings" /></Frame>
-  </Accordion>
-  <Accordion title="Liquidity protection" icon="shield">
-    Liquidity protection blocks buys that would consume too much of the token's reported liquidity pool.
-
-    Cove blocks a trade when your buy is more than roughly **33%** of the pool's reported liquidity. For example, a **\$30** pool blocks buys above **\$10**.
-
-    <Frame><img src="/assets/options/liquidity-protection.png" alt="Liquidity protection settings" /></Frame>
-  </Accordion>
-  <Accordion title="Auto-adjust max buy" icon="arrow-down">
-    Auto-adjust max buy reduces your order to the contract's maximum allowed buy amount when you try to buy more than the token allows.
-
-    <Frame><img src="/assets/options/auto-adjust-max-buy.png" alt="Auto-adjust max buy settings" /></Frame>
-  </Accordion>
-  <Accordion title="Gas surplus budget" icon="gas-pump">
-    Gas surplus budget lets Cove cover network fees above the sponsored cap up to a per-trade limit from your USDC balance instead of failing the trade.
-
-    Set it to **Off** to always ask before charging surplus. Presets include **\$1**, **\$3**, **\$5**, **\$10**, and custom.
-
-    <Frame><img src="/assets/options/gas-surplus-budget.png" alt="Gas surplus budget settings" /></Frame>
-  </Accordion>
-</AccordionGroup>
-
-## Group link controls
-
-Group link controls define how shared buy and sell links behave when someone opens them from a group, channel, or external post.
-
-<Tabs>
-  <Tab title="Group buys">
-    Group buy sets the maximum amount that can execute instantly from a shared group buy link.
-
-    Trades above your limit ask for confirmation first. Set the option to **Off** to disable group buys entirely.
-
-    <Frame><img src="/assets/options/group-buy.png" alt="Group buy settings" /></Frame>
-  </Tab>
-  <Tab title="Group sells">
-    Group sell enables or disables group sell links.
-
-    When enabled, group sell links can sell the configured percentage of your own position. When disabled, Cove asks before enabling group sells.
-
-    <Frame><img src="/assets/options/group-sell.png" alt="Group sell settings" /></Frame>
-  </Tab>
-</Tabs>
-
-## Position panel settings
-
-Position panel settings control which quick sell actions appear in the Positions screen and generated position links.
-
-<Frame><img src="/assets/options/position-panel-settings.png" alt="Position panel settings" /></Frame>
-
-| Option | What it does |
-|---|---|
-| Sell 100% in Positions | Shows a one-tap full-sell action from the Positions panel |
-| Sell 100% Links | Enables full-sell links for position actions |
+The current UI label is `Always open on Buy`. The older label `Stay on buy after buying` no longer matches the product and does not appear in the current Settings pages.

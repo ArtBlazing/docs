@@ -1,0 +1,43 @@
+---
+title: Auto TP/SL
+description: Add automatic take-profit and stop-loss levels to future market buys
+icon: wand-sparkles
+---
+
+Auto TP/SL adds configured exit orders to future market buys.
+
+<Frame><img src="/assets/current-ui/auto-tp-sl-overview.png" alt="Current Auto TP or SL overview with take-profit, stop-loss, and sell-sizing controls" /></Frame>
+
+## How it works
+
+1. Open Trade panel settings and choose Auto TP/SL.
+2. Enable Auto take profit, Auto stop loss, or both.
+3. Add one or more levels for each side.
+4. Set a trigger percentage and the percentage to sell.
+5. Save the levels.
+
+Auto take profit triggers after the configured gain. Auto stop loss triggers after the configured loss.
+
+<Tabs>
+  <Tab title="Auto take profit">
+    <Frame><img src="/assets/current-ui/auto-take-profit.png" alt="Current Auto take profit level settings" /></Frame>
+  </Tab>
+  <Tab title="Auto stop loss">
+    <Frame><img src="/assets/current-ui/auto-stop-loss.png" alt="Current Auto stop loss level settings" /></Frame>
+  </Tab>
+</Tabs>
+
+## Sell sizing
+
+The current UI offers two sizing modes.
+
+| Mode | Meaning |
+|---|---|
+| `% of entry` | Each level sells a fixed percentage of the original position |
+| `% of remaining` | Each level sells a percentage of the position left when the level triggers |
+
+The UI warns that `% of entry` levels cannot total more than 100%. Levels can be added and deleted. Auto take profit and Auto stop loss can be enabled independently.
+
+## Scope
+
+Auto TP/SL applies to new market buys. Existing positions are not changed retroactively. Manual limit sells remain available separately.

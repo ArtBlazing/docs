@@ -2,7 +2,7 @@
   "name": "Cove Docs",
   "logo": {
     "dark": "/assets/logo-white.png",
-    "light": "/assets/logo-white.png"
+    "light": "/assets/brand-kit/BlackCoveHorizontal.png"
   },
   "favicon": "/assets/favicon.svg",
   "colors": {
@@ -36,37 +36,45 @@
       "group": "Trading Operations",
       "pages": [
         "features/trading",
-        "features/settings",
         "features/multi-wallet-trading",
-        "features/limit-orders",
-        "features/positions",
+        {
+          "group": "Orders",
+          "pages": ["features/limit-orders", "features/dca-orders"]
+        },
+        {
+          "group": "Positions",
+          "pages": ["features/positions", "features/pnl-cards"]
+        },
+        {
+          "group": "Settings",
+          "pages": [
+            "features/settings",
+            "features/settings/guardrails",
+            "features/settings/trade-panel",
+            "features/settings/auto-tp-sl",
+            "features/settings/position-panel",
+            "features/settings/group-links",
+            "features/settings/language"
+          ]
+        },
         "features/transfers"
       ]
     },
     {
       "group": "Support",
-      "pages": [
-        "features/support"
-      ]
+      "pages": ["features/support"]
     },
     {
       "group": "For Groups & Channels",
-      "pages": [
-        "groups/cove-buy"
-      ]
+      "pages": ["groups/cove-buy"]
     },
     {
       "group": "For Builders",
-      "pages": [
-        "builders/deep-links",
-        "builders/mcp-tools"
-      ]
+      "pages": ["builders/deep-links", "builders/mcp-tools"]
     },
     {
       "group": "Brand Kit",
-      "pages": [
-        "design-system/brand-kit"
-      ]
+      "pages": ["design-system/brand-kit"]
     }
   ],
   "footerSocials": {

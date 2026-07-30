@@ -1,51 +1,57 @@
 ---
 title: Trading
-description: Execute buys, sells, custom orders, and view charts
+description: Open token panels, review token data, and execute buys or sells
 icon: chart-line
 ---
 
-Cove provides instant, gasless execution natively within Telegram. 
-
-Paste a token contract address (CA) into the chat to summon the trading panel.
+Send a token contract address to Cove or open a supported token link. Cove resolves the token and chain, then opens the trading panel.
 
 <Frame>
-  <img src="/assets/sendCA%20to%20start%20trading.png" alt="Prompt to send Contract Address" />
+  <img src="/assets/current-ui/trading-buy-panel.png" alt="Current Cove Buy panel with token data and quick-buy controls" />
 </Frame>
+
+## Before you submit
+
+Review the token name, ticker, chain, contract address, market cap, liquidity, token tax when available, and burned percentage when available. Cove also shows account context and the current token position when you hold it.
+
+The panel can include:
+
+- Buy and Sell tabs.
+- Account selector, including multiple selected accounts.
+- Degen mode.
+- Configured buy and sell presets.
+- Custom amount.
+- Chart.
+- Limit action.
+- Extra links.
+- PnL, Cost, Worth, supply percentage, and entry market cap when a position exists.
 
 <Tabs>
   <Tab title="Buy">
-    The buy panel shows your configured custom presets. 
-    
-    <Frame><img src="/assets/buy%20panel_limit%20orders.png" alt="The Clean Buy Panel" /></Frame>
+    Choose a buy preset or open the custom amount control. If Buy Confirm is enabled, review the confirmation card before submitting.
 
-    Click a preset button (e.g., **$1**) to execute the trade instantly. Cove outputs an execution receipt upon completion.
+    <Frame><img src="/assets/current-ui/trading-buy-panel.png" alt="Current Cove Buy panel with presets, Chart, Limit, and account controls" /></Frame>
 
-    <Frame><img src="/assets/click%201$%20buy_buy%20executed.png" alt="Preset buy executed" /></Frame>
-
-    **Custom Buy**
-    
-    To buy a specific amount outside of your presets:
-    
-    1. Click the **$x** button on the trading panel.
-    2. Enter the exact order amount.
-    3. Cove executes the trade and sends a receipt card confirming the entry price and token amount.
-
-    <Frame><img src="/assets/custom%20buy%20amount_executed.png" alt="Custom buy successful" /></Frame>
+    <Frame><img src="/assets/current-ui/trading-buy-receipt.png" alt="Current Cove Buy Executed receipt" /></Frame>
   </Tab>
   <Tab title="Sell">
-    Manage your active deployment via the dedicated **Sell** panel.
+    Choose a sell preset or enter a custom amount. If Sell Confirm is enabled, review the confirmation card before submitting.
 
-    <Frame><img src="/assets/sell%20panel.png" alt="The Sell interface" /></Frame>
+    <Frame><img src="/assets/current-ui/trading-sell-panel.png" alt="Current Cove Sell panel with position values, contract address, and balance" /></Frame>
 
-    Select a percentage button (25%, 50%, 75%, 100%) or enter a custom amount to dump. Cove outputs a confirmation receipt when the sell executes successfully.
-
-    <Frame><img src="/assets/sell%20executed.png" alt="Sell execution success" /></Frame>
+    <Frame><img src="/assets/current-ui/trading-sell-receipt.png" alt="Current Cove Sell Executed receipt" /></Frame>
   </Tab>
   <Tab title="Chart">
-    Cove includes an integrated chart. You view real-time market structure and candlestick action without leaving the messenger app.
-    
-    Click **Chart** from the trading panel to open the modal.
-
-    <Frame><img src="/assets/chart%20in-app.png" alt="Native token charting" /></Frame>
+    Select Chart to open the chart inside the Telegram flow.
   </Tab>
 </Tabs>
+
+## Receipts and routes
+
+After a submitted order, Cove can show Buy Executed, Sell Executed, or Stop Loss Executed. A receipt can include the route, positions, and a Close action. Multi-hop routes include a Learn more link.
+
+## More actions
+
+Use Limit for entry orders, take profit, stop loss, or DCA. Use View detailed to open the position details. Use Generate PnL to create a shareable PnL card. Active orders expose Edit and Cancel where supported.
+
+See [Limit Orders](/features/limit-orders), [DCA Orders](/features/dca-orders), [Positions](/features/positions), and [PnL Cards](/features/pnl-cards).

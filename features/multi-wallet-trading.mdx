@@ -4,11 +4,9 @@ description: Execute buys from multiple Cove accounts with account selection, sp
 icon: wallet
 ---
 
-<Frame><img src="/assets/multi-wallet/multiwallet-intro.gif" alt="Multi-wallet Trading Overview" /></Frame>
+<Frame><img src="/assets/current-ui/multiwallet-account-selector.png" alt="Current multi-wallet account selector with account balances" /></Frame>
 
 Multi-wallet trading lets you execute token buys across more than one Cove account from the same trading panel. It is useful when you want to distribute entries, keep account behavior separated, or avoid every buy looking identical.
-
-<Frame><img src="/assets/multi-wallet/multiwallet-in-action-preview.gif" alt="Multi-wallet trading flow in Cove" /></Frame>
 
 ## How it works
 
@@ -29,16 +27,14 @@ Multi-wallet trading lets you execute token buys across more than one Cove accou
 
 ## Account selection
 
-The account selector shows each account's deployable balance and the current multi-wallet settings.
-
-<Frame><img src="/assets/multi-wallet/select-accounts.gif" alt="Selecting accounts for multi-wallet trading" /></Frame>
+The account selector shows the selected account count and the deployable total for the selected accounts.
 
 In the selector, you can:
 
 - Select or deselect individual accounts.
 - Use **Select all** or **Deselect all**.
 - See total deployable balance for the selected accounts.
-- Open **Set up delay and variance** before executing.
+- Open **Multi-account preferences** before executing.
 
 <Note>
 Only selected accounts participate in the trade. If one account is selected, the flow behaves like a normal single-account trade.
@@ -46,15 +42,13 @@ Only selected accounts participate in the trade. If one account is selected, the
 
 ## Multi-account settings
 
-Tap **Set up delay and variance** to configure how Cove spreads the buy across accounts.
+Open **Multi-account preferences** to configure how Cove spreads the buy across accounts.
 
-<Frame><img src="/assets/multi-wallet/delay-spend-type-variance-preview.gif" alt="Configuring multi-wallet spend type, variance, and delay" /></Frame>
+<Frame><img src="/assets/current-ui/multiwallet-settings.png" alt="Current Multi-account settings panel with spend type, buy variance, and transaction delay" /></Frame>
 
 <Tabs>
   <Tab title="Spend type">
     Spend type controls how the amount on the buy panel is interpreted across selected accounts.
-
-    <Frame><img src="/assets/multi-wallet/spend-type.png" alt="Spend type settings" /></Frame>
 
     | Mode | Behavior |
     |---|---|
@@ -66,16 +60,14 @@ Tap **Set up delay and variance** to configure how Cove spreads the buy across a
   <Tab title="Buy variance">
     Buy variance adds randomness to how buys are split across selected accounts.
 
-    <Frame><img src="/assets/multi-wallet/buy-variance.png" alt="Buy variance settings" /></Frame>
+    <Frame><img src="/assets/current-ui/multiwallet-buy-variance.png" alt="Current Buy variance panel with preset and custom variance controls" /></Frame>
 
-    For example, with a **\$50** split across 2 wallets, a **25%** variance might split the buy as **\$20 / \$30** or **\$28 / \$22** while keeping the same total amount.
+    Buy variance changes account-level amounts in Split Total mode.
   </Tab>
   <Tab title="Transaction delay">
     Transaction delay spaces account transactions apart so they are not all sent at the same instant.
 
-    <Frame><img src="/assets/multi-wallet/transaction-delay.png" alt="Transaction delay settings" /></Frame>
-
-    Presets include **Off**, **250ms**, **500ms**, **1000ms**, and a custom delay. With a **1000ms** delay, each account transaction is sent exactly 1 second after the previous one.
+    Presets include **Off**, **250ms**, **500ms**, **1000ms**, and a custom delay.
   </Tab>
 </Tabs>
 
@@ -85,7 +77,9 @@ Buy variance and transaction delay apply to buys only.
 
 ## Executing a multi-wallet buy
 
-After accounts and settings are selected, return to the trading panel and submit the buy. Cove shows an execution message with one transaction per selected account.
+After accounts and settings are selected, return to the trading panel and submit the buy. Cove shows a multi-wallet receipt with the number of selected wallets that bought successfully.
+
+<Frame><img src="/assets/current-ui/multiwallet-success.png" alt="Current multi-wallet buy receipt showing successful execution across selected accounts" /></Frame>
 
 <CardGroup cols={2}>
   <Card title="Split Total" icon="split">

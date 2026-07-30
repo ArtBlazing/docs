@@ -1,41 +1,45 @@
 ---
 title: Getting Started
-description: Launch the bot, fund your account, and execute your first trade
+description: Open Cove, fund a unified balance, and execute your first trade
 icon: rocket
 ---
 
-Cove is designed to be completely gasless. It requires zero bridging. It supports an instant, unified USDC balance across all supported chains.
+Cove gives you a unified balance for supported trading flows. You do not need to prepare a separate gas balance for every trade, but gas sponsorship has a cap and some deposit routes have their own requirements.
 
-<Stepper steps={[{label: 'Start'}, {label: 'Fund'}, {label: 'Trade'}]} currentStep={1} />
+<Stepper steps={[{label: 'Start'}, {label: 'Deposit'}, {label: 'Trade'}]} currentStep={1} />
 
-## 1. Start the Bot
+## 1. Start the bot
 
-Open [Cove Bot](https://t.me/cove_trading_bot) in Telegram. Click **Start**. The dashboard opens instantly.
+Open [Cove Bot](https://t.me/cove_trading_bot) in Telegram and select `Start`.
 
-<Frame>
-  <img src="/assets/cove_start.png" alt="Cove Start Screen" />
-</Frame>
+<Frame><img src="/assets/current-ui/home-menu.png" alt="Current Cove home screen with unified balance and position values" /></Frame>
 
-The home screen shows your balance, active positions, and main action menus.
+The home screen shows your unified balance, positions, and actions such as Deposit, Transfer, Withdraw, Accounts, Settings, and Contact.
 
-## 2. Make a Deposit
+## 2. Deposit
 
-You must fund your account before trading. Cove uses a Unified USDC Balance. You do not need specific gas tokens for different chains. Deposit funds on any chain. Trade on any other chain instantly.
+Select `Deposit` and review the address and network shown in the panel before sending funds.
 
-1. Click **Deposit** on the main menu.
-2. Select the chain you want to deposit from.
-3. Send any token to the generated secure deposit address. Cove automatically swaps it into USDC.
+The current UI states that you can deposit any token, including memecoins. It also shows:
 
-<Frame>
-  <img src="/assets/deposit.png" alt="Deposit menu" />
-</Frame>
+- A dedicated Deposit SOL address.
+- A dedicated Deposit HyperEVM address.
+- A shared Deposit EVM address for other EVM chains.
+- USDC deposits that can route into the Solana trading balance.
+- Solana deposits described as instant in the current panel.
+- A displayed minimum of $25 on Ethereum and $1 on other chains.
+- Card Top Up through MoonPay.
 
-## 3. Execute a Trade
+Some chains use smart wallets, where funds sit in a contract wallet controlled by your wallet access. Review the current Deposit panel for the exact route, asset, minimum, and fee before sending.
 
-Send any token contract address (CA) directly to the bot to summon the trading panel. You can find CAs on platforms like Dexscreener or in official project channels. Cove fetches the chart and liquidity data instantly.
+<Frame><img src="/assets/current-ui/deposit.png" alt="Current Cove Deposit panel with funding routes and deposit addresses" /></Frame>
 
-<Frame>
-  <img src="/assets/sendCA%20to%20start%20trading.png" alt="Prompt to send Contract Address" />
-</Frame>
+## 3. Trade
 
-The trading panel appears. Click your configured preset button (e.g., $50) to instantly fill the order. You are now managing an active position. Monitor it in the **Positions** tab.
+Send a token contract address to the bot or open a supported token link.
+
+<Frame><img src="/assets/current-ui/trading-buy-panel.png" alt="Current Cove Buy panel after a token contract has been resolved" /></Frame>
+
+Review the chain, token data, account, amount, slippage, and confirmation settings. Then select a buy or sell action. Follow the receipt and open Positions to review the result.
+
+See [Trading](/features/trading) for the panel controls.

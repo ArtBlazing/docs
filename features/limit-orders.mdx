@@ -1,52 +1,45 @@
 ---
 title: Limit Orders
-description: Automate your trading with precision limits, take profits, and stop losses
+description: Create and manage limit buys, take-profit orders, and stop-loss orders
 icon: crosshairs
 ---
 
-Cove provides institutional-grade limit orders directly within Telegram. You sequence complex entry and exit strategies without staying glued to the chart.
+Limit orders let you define an entry or exit condition and review the order later from the active orders view.
 
-<Tabs>
-  <Tab title="Limit Buys">
-    Deploy capital at specific price targets when the market drops.
+## Limit buy
 
-    1. Open the Buy panel array to view the integrated targets.
-       <Frame><img src="/assets/buy%20panel_limit%20orders.png" alt="Selecting Limit Order on Buy Panel" /></Frame>
-    2. Click the **Limit** button to open the limit order configuration menu.
-    3. Enter the target price and the amount to deploy. Cove calculates the expected tokens received.
-       <Frame><img src="/assets/buy%20panel_limit%20orders_data%20filled.png" alt="Filled Limit Buy Order Data" /></Frame>
-    4. Confirm the order. Cove monitors the mempool and executes when the target hits.
-  </Tab>
+1. Open the Buy panel for a token.
+2. Select `Limit`.
+3. Enter the target and amount.
+4. Review the expected output.
+5. Confirm the order.
 
-  <Tab title="Take Profit">
-    Secure gains by specifying target percentage exits.
+<Frame><img src="/assets/current-ui/limit-buy.png" alt="Current limit-buy order form with trigger and spend controls" /></Frame>
 
-    1. Open the **Sell** panel for an active position.
-       <Frame><img src="/assets/sell%20panel.png" alt="The Sell Panel" /></Frame>
-    2. Click **Create Take Profit**.
-       <Frame><img src="/assets/sell%20panel_limit%20orders_create%20take%20profit.png" alt="Opening Take Profit Menu" /></Frame>
-    3. Specify the target percentage gain and the amount of tokens to sell. 
-       <Frame><img src="/assets/sell%20panel_limit%20orders_create%20take%20profit_filled%20data.png" alt="Take Profit Data Filled" /></Frame>
-  </Tab>
+Cove shows the order in the active orders list after it is created.
 
-  <Tab title="Stop Loss">
-    Limit downside risk by executing automated liquidations if the market dumps.
+## Take profit
 
-    1. Return to the **Sell** panel.
-    2. Click **Create Stop Loss**.
-       <Frame><img src="/assets/sell%20panel_limit%20orders_create%20stop%20loss.png" alt="Opening Stop Loss Menu" /></Frame>
-    3. Specify the target percentage loss to trigger the liquidation.
-       <Frame><img src="/assets/sell%20panel_limit%20orders_create%20stop%20loss_filled%20data.png" alt="Stop Loss Data Filled" /></Frame>
-    4. Cove confirms both limits are successfully created and attached to the position.
-       <Frame><img src="/assets/sell%20panel_limit%20orders_limits%20created.png" alt="Take Profit and Stop Loss Limits Created successfully" /></Frame>
-  </Tab>
+1. Open the Sell panel for an active position.
+2. Select `Create Take Profit`.
+3. Enter the gain target and sell percentage.
+4. Review and confirm.
 
-  <Tab title="Active Limits">
-    View and cancel your pending orders before they execute.
+Multiple levels can appear in the position card.
 
-    1. Click **Limit Orders** from the main menu. If you have no active orders, Cove displays an empty state.
-       <Frame><img src="/assets/limit%20orders_menu_no%20limit%20orders.png" alt="Empty Limit Orders Menu" /></Frame>
-    2. Active limit orders display the status, triggers, and targets. Click an order to manage or cancel it.
-       <Frame><img src="/assets/limit%20orders%20menu_active%20limit%20orders.png" alt="Active Limit Orders Dashboard" /></Frame>
-  </Tab>
-</Tabs>
+<Frame><img src="/assets/current-ui/take-profit.png" alt="Current take-profit order form with target and sell-percentage controls" /></Frame>
+
+## Stop loss
+
+1. Open the Sell panel for an active position.
+2. Select `Create Stop Loss`.
+3. Enter the loss target and sell percentage.
+4. Review and confirm.
+
+<Frame><img src="/assets/current-ui/stop-loss.png" alt="Current stop-loss order form with target and sell-percentage controls" /></Frame>
+
+## Active orders
+
+Open `Limit Orders` from the main menu to see active orders grouped by token. Each order exposes its trigger and target with Edit and Cancel where supported. The dashboard also includes `Cancel all orders` with a confirmation step.
+
+<Frame><img src="/assets/current-ui/active-orders.png" alt="Current Active Orders panel with Edit and Cancel actions" /></Frame>
