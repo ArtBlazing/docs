@@ -15,7 +15,7 @@ Cove handles cross-chain execution behind the scenes so you can focus on trading
 <CardGroup cols={3}>
   <Card title="Platform Fee" icon="percent">
     **1%** on most chains
-    <br />**1–2%** on Ethereum and HyperEVM (tiered by order size)
+    <br />**1–2%** on Ethereum and HyperEVM, with a **1.90 USD minimum on buys**
   </Card>
   <Card title="Gas Sponsorship" icon="gas-pump">
     Up to **5 USD** in gas sponsored per trade — no need to hold native gas tokens
@@ -57,15 +57,18 @@ Cove charges a **percentage fee** above the threshold and a **flat minimum** bel
 
     | Buy size | Fee rate |
     |---|---:|
-    | Under \$500 | **2.0%** |
+    | Under \$500 | **2.0%**, with a **\$1.90 minimum fee** |
     | \$500 – \$2,500 | **1.5%** |
     | \$2,500 and above | **1.0%** |
 
-    <Note>Larger orders benefit from lower percentage fees. The tier is determined by the total order size — there is no split billing across tiers.</Note>
+    <Note>The fee is never lower than **\$1.90**. Larger orders benefit from lower percentage fees. The tier is determined by the total order size — there is no split billing across tiers.</Note>
 
     <Accordion title="See examples">
       | ETH / HyperEVM buy size | Fee rate | You pay |
       |---:|---:|---:|
+      | \$10 | \$1.90 minimum | \$1.90 |
+      | \$50 | \$1.90 minimum | \$1.90 |
+      | \$95 | 2.0% | \$1.90 |
       | \$100 | 2.0% | \$2.00 |
       | \$400 | 2.0% | \$8.00 |
       | \$500 | 1.5% | \$7.50 |
@@ -338,7 +341,7 @@ On-chain execution has real costs — gas can spike, small trades can be abused,
 | Category | Current rule |
 |---|---|
 | Standard buy fee | 1% above \$95, \$0.95 minimum below |
-| Ethereum & HyperEVM buy fee | 2% under \$500 → 1.5% \$500–\$2,500 → 1% at \$2,500+ |
+| Ethereum & HyperEVM buy fee | \$1.90 minimum; 2% under \$500 → 1.5% \$500–\$2,500 → 1% at \$2,500+ |
 | Standard sell fee | 1% |
 | Ethereum & HyperEVM sell fee | 1.5% under \$2,500 → 1% at \$2,500+ |
 | Solana sell fee | Tiered: 10% → 5% → 2.5% → 1% |
