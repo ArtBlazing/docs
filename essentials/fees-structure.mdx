@@ -15,7 +15,7 @@ Cove handles cross-chain execution behind the scenes so you can focus on trading
 <CardGroup cols={3}>
   <Card title="Platform Fee" icon="percent">
     **1%** on most chains
-    <br />**1–2%** on Ethereum (tiered by order size)
+    <br />**1–2%** on Ethereum and HyperEVM (tiered by order size)
   </Card>
   <Card title="Gas Sponsorship" icon="gas-pump">
     Up to **5 USD** in gas sponsored per trade — no need to hold native gas tokens
@@ -35,7 +35,7 @@ Cove charges a **percentage fee** above the threshold and a **flat minimum** bel
 
 <Tabs>
   <Tab title="Standard Chains">
-    Applies to **Solana, Base, BNB, Tempo, MegaETH**, and most other supported networks.
+    Applies to **Solana, Base, BNB, Tempo, MegaETH**, and most other supported networks. **Ethereum and HyperEVM use the tiered model in the next tab.**
 
     | Buy size | Fee applied |
     |---|---:|
@@ -52,8 +52,8 @@ Cove charges a **percentage fee** above the threshold and a **flat minimum** bel
       | \$1,000 | \$10.00 |
     </Accordion>
   </Tab>
-  <Tab title="Ethereum (Tiered)">
-    Ethereum uses a **tiered fee model** based on order size, designed to match mainnet gas costs and optimized from real trading bot order-size data.
+  <Tab title="Ethereum & HyperEVM (Tiered)">
+    Ethereum and HyperEVM use the same **tiered fee model** based on order size, designed to account for network execution costs and optimized from real trading bot order-size data.
 
     | Buy size | Fee rate |
     |---|---:|
@@ -64,7 +64,7 @@ Cove charges a **percentage fee** above the threshold and a **flat minimum** bel
     <Note>Larger orders benefit from lower percentage fees. The tier is determined by the total order size — there is no split billing across tiers.</Note>
 
     <Accordion title="See examples">
-      | ETH buy size | Fee rate | You pay |
+      | ETH / HyperEVM buy size | Fee rate | You pay |
       |---:|---:|---:|
       | \$100 | 2.0% | \$2.00 |
       | \$400 | 2.0% | \$8.00 |
@@ -82,14 +82,14 @@ Cove charges a **percentage fee** above the threshold and a **flat minimum** bel
 
 <Tabs>
   <Tab title="Standard Chains">
-    For most chains, Cove charges a **flat 1%** on sells.
+    For most chains, Cove charges a **flat 1%** on sells. **Ethereum and HyperEVM use the tiered model in the next tab.**
 
     | Chain | Sell fee |
     |---|---:|
     | Base, BNB, Tempo, MegaETH, and others | **1%** |
   </Tab>
-  <Tab title="Ethereum (Tiered)">
-    Ethereum sells use a **tiered model** that matches gas fees on mainnet.
+  <Tab title="Ethereum & HyperEVM (Tiered)">
+    Ethereum and HyperEVM sells use the same **tiered model** to account for network execution costs.
 
     | Sell size | Fee rate |
     |---|---:|
@@ -97,7 +97,7 @@ Cove charges a **percentage fee** above the threshold and a **flat minimum** bel
     | \$2,500 and above | **1.0%** |
 
     <Accordion title="See examples">
-      | ETH sell size | Fee rate | You pay |
+      | ETH / HyperEVM sell size | Fee rate | You pay |
       |---:|---:|---:|
       | \$100 | 1.5% | \$1.50 |
       | \$500 | 1.5% | \$7.50 |
@@ -338,9 +338,9 @@ On-chain execution has real costs — gas can spike, small trades can be abused,
 | Category | Current rule |
 |---|---|
 | Standard buy fee | 1% above \$95, \$0.95 minimum below |
-| Ethereum buy fee | 2% under \$500 → 1.5% \$500–\$2,500 → 1% at \$2,500+ |
+| Ethereum & HyperEVM buy fee | 2% under \$500 → 1.5% \$500–\$2,500 → 1% at \$2,500+ |
 | Standard sell fee | 1% |
-| Ethereum sell fee | 1.5% under \$2,500 → 1% at \$2,500+ |
+| Ethereum & HyperEVM sell fee | 1.5% under \$2,500 → 1% at \$2,500+ |
 | Solana sell fee | Tiered: 10% → 5% → 2.5% → 1% |
 | Minimum buy | \$1 |
 | Minimum sell | \$0.50 |
