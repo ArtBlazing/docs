@@ -7,7 +7,7 @@ icon: "cube"
 Cove Agent MCP connects an AI agent to your Cove trading profile through the [Model Context Protocol](https://modelcontextprotocol.io/). The agent can inspect balances and positions, research tokens, execute trades, manage automated orders, and—with an additional permission—move funds.
 
 <Warning>
-  **Access is invite-only and disabled by default.** Cove must enable agent access for each profile before you can mint agent tokens. Withdrawals and transfers require a separate **money-out** permission.
+  **Access is invite-only and disabled by default.** Cove must grant MCP access to the wallets you want to connect before you can mint agent tokens. After that grant, you control each wallet's trade and money-out capabilities from `/agent` in Telegram.
 </Warning>
 
 ## At a glance
@@ -18,40 +18,49 @@ Cove Agent MCP connects an AI agent to your Cove trading profile through the [Mo
 | **Authorization** | `Authorization: Bearer <your-token>` |
 | **Protocol** | Model Context Protocol over Streamable HTTP (JSON-RPC 2.0) |
 | **Default rate limit** | 30 requests per minute across all of your agent tokens |
-| **Access scope** | One agent token pair per enabled profile |
-| **Wallet scope** | One or more wallets in the connected profile |
+| **Access scope** | A newly minted token pair is pinned to one profile |
+| **Wallet scope** | One or more selected wallets from that profile |
+| **Trading mode** | Real and paper wallets require separate token pairs |
 
 An MCP client discovers the tools available to its token automatically after connecting.
 
-## How profile access works
+## How profile and wallet scope works
 
-One agent token connects to **one Cove profile** and can reach one or many wallets inside it. You do not need to mint a separate token for every wallet.
+When you mint a token pair, you select one or more wallets. Cove derives their profile and pins the new token to it. You do not need a separate token for every wallet, but a token cannot span profiles.
 
-<Columns cols={3}>
-  <Card title="One profile" icon="layer-group">
-    Each agent token pair is scoped to one enabled Cove profile.
+<Columns cols={2}>
+  <Card title="One profile per token" icon="layer-group">
+    Select wallets from one profile. Mint a separate token pair for each additional profile.
   </Card>
 
-  <Card title="Up to 10 wallets" icon="wallet">
-    Each profile can contain up to 10 wallets. Additional profiles have their own wallet sets.
+  <Card title="Selected wallet scope" icon="wallet">
+    A token reaches only the wallet IDs selected during minting, not every wallet added to the profile later.
   </Card>
 
   <Card title="Per-wallet capabilities" icon="shield-check">
     Every wallet in scope reports its own `read`, `trade`, or `money_out` capability.
   </Card>
+
+  <Card title="Profile limits" icon="folder-tree">
+    A user can have up to 5 non-paper profiles with 10 wallets each and up to 10 archived profiles. The paper profile sits outside the 5-profile cap.
+  </Card>
 </Columns>
 
-Within the connected profile, the agent can inspect tokens across its in-scope wallets, research assets, trade permitted wallets, and buy new tokens with one token. Manage profiles with `/profiles` in Cove and enable only the profiles the agent needs.
+Manage profiles with `/profiles` in Cove and wallet access with `/agent` in Telegram.
+
+<Note>
+  Tokens minted before profile pinning remain scoped to the wallets they were originally issued over. Re-mint the pair to pin it to a profile. `get_profile` reports legacy scope instead of inventing a profile.
+</Note>
 
 ## Quick start
 
 <Steps>
   <Step title="Request profile access">
-    [Open a support ticket](/features/support) and list the profile names you want to connect. State whether each profile needs read/trade access only or the additional money-out permission.
+    [Open a support ticket](/features/support) and list the profile and wallets you want enabled for MCP. This is the admin grant that allows those wallets to participate in agent access.
   </Step>
 
-  <Step title="Mint an agent token pair">
-    After Cove enables the profile, call `POST /agent/tokens` using your normal authenticated Cove/Privy session. Minting returns one **read** token and one **read-write** token for that profile.
+  <Step title="Choose wallets and mint tokens">
+    After Cove enables the wallets, open `/agent` in Telegram, choose the wallet scope, and mint a **read** / **read-write** pair. For programmatic setup, call `POST /agent/tokens` with `accountIds`; see [Mint and manage tokens](#mint-and-manage-tokens).
 
     Your Cove account must be linked to Telegram before you can mint tokens. Cove sends trade notifications there.
   </Step>
@@ -86,23 +95,27 @@ Within the connected profile, the agent can inspect tokens across its in-scope w
   </Step>
 </Steps>
 
-## Request access
+## Enable access
 
-MCP access is granted per profile. In your [support ticket](/features/support), include:
+Agent access has two layers:
 
-- The name of every profile that needs agent access.
-- Whether the profile needs **read and trading access** only.
-- Whether the profile also needs **money-out access** for withdrawals and transfers.
+<Columns cols={2}>
+  <Card title="1. Cove access grant" icon="user-shield">
+    [Ask support](/features/support) to enable MCP for the intended profile and wallets. Without this grant, the wallets cannot be included in an agent token.
+  </Card>
 
-Cove will enable the requested profiles and confirm when you can mint tokens.
+  <Card title="2. Your wallet capabilities" icon="sliders">
+    Use `/agent` to choose the wallet scope and turn trading or money-out on or off for each wallet independently.
+  </Card>
+</Columns>
 
-<Info>
-  Money-out is intentionally separate. Without it, a read-write agent can trade and automate orders but cannot withdraw or transfer funds.
-</Info>
+<Warning>
+  REST token minting starts selected wallets with trading enabled and money-out disabled. To allow withdrawals or transfers, the user must enable money-out for each wallet in `/agent`; a support ticket does not turn on that user capability.
+</Warning>
 
 ## Tokens and permissions
 
-Minting creates a pair of tokens for the selected profile.
+Minting creates a read/read-write pair for the selected wallet scope. Cove pins a newly minted pair to the profile that owns those wallets.
 
 <Columns cols={2}>
   <Card title="Read token" icon="eye">
@@ -131,21 +144,72 @@ Write tools return a permission error when called with a read token.
   Token permission and wallet capability are separate checks. A read-write token can trade only the wallets whose capability permits trading. Call `list_accounts` instead of assuming every wallet has the same access.
 </Note>
 
-### Manage and rotate tokens
+### Mint and manage tokens
 
-Token management uses the REST API, not MCP tools.
+Use `/agent` in Telegram for normal setup and lifecycle management. Use the REST API when your application needs to automate token creation or revocation. These are management surfaces, not MCP tools.
 
-| Endpoint | Purpose |
-|---|---|
-| `POST /agent/tokens` | Mint a read/read-write pair for an enabled profile. A new pair replaces the old pair for that profile. |
-| `GET /agent/tokens` | List your active agent tokens. |
-| `DELETE /agent/tokens/:id` | Revoke one token. |
-| `DELETE /agent/tokens/all` | Revoke all of your agent tokens. |
+<Tabs sync={false}>
+  <Tab title="Telegram /agent" icon="message-circle">
+    The `/agent` panel lets the user:
 
-Minting requires a profile you own, agent access enabled on that profile, an authenticated Cove/Privy session, and a Cove account linked to Telegram.
+    - Choose the wallets included in the token scope.
+    - Toggle trading and money-out for each wallet.
+    - Set or clear per-trade, hourly, daily, and per-batch spending limits.
+    - Configure an agent webhook.
+    - Mint or rotate the read/read-write token pair.
+    - Revoke all agent tokens.
+
+    Use this panel whenever the user must change a wallet capability. REST minting cannot enable money-out.
+  </Tab>
+
+  <Tab title="REST API" icon="code">
+    | Endpoint | Purpose |
+    |---|---|
+    | `POST /agent/tokens` | Mint or replace a read/read-write pair for the selected wallets. Returns `isPaper`. |
+    | `GET /agent/tokens` | List active tokens, including `isPaper`. |
+    | `DELETE /agent/tokens/:id` | Revoke one token. |
+    | `DELETE /agent/tokens/all` | Revoke all agent tokens. |
+
+    Authenticate these endpoints with the user's normal Cove/Privy session. The Cove account must be linked to Telegram.
+
+    Request body:
+
+    ```jsonc
+    {
+      "accountIds": ["<walletId>", "<walletId>"],
+      "label": "my-agent"
+    }
+    ```
+
+    | Field | Required | Rules |
+    |---|---|---|
+    | `accountIds` | Yes, unless using `accountId` | Array of 1–25 wallet IDs. All wallets must belong to one profile and all must be either real or paper. |
+    | `accountId` | Deprecated alternative | Single-wallet alias. Send exactly one of `accountIds` or `accountId`. |
+    | `label` | No | Human-readable label, up to 64 characters. |
+
+    The request schema is strict: unknown keys are rejected. In particular, `chatId` is no longer accepted because notifications go to the linked Telegram account.
+  </Tab>
+</Tabs>
+
+<Info>
+  Token-management endpoints have their own 30-requests-per-minute limit. It is separate from the MCP tool-call limit and cannot be increased by an admin override.
+</Info>
+
+### Paper trading tokens
+
+An agent token is either **all real** or **all paper**. Do not mix real and paper wallet IDs in one mint request; create a separate pair for each mode.
+
+- `POST /agent/tokens` and `GET /agent/tokens` return `isPaper`.
+- Paper accounts never expose wallet addresses through `list_accounts`.
+- `export_trades` always excludes paper trades.
+- The paper profile is a first-class profile and does not count toward the five non-paper profile limit.
+
+### Webhooks
+
+Configure an optional agent webhook from `/agent`. Webhooks cover market and transfer orders. Cove encrypts webhook credentials at rest, and rotating a token pair carries the webhook configuration forward.
 
 <Warning>
-  Treat read-write tokens as secrets. If a token may have been exposed, mint a fresh pair immediately. Rotation does not reset your rate limits or spending caps; those limits follow your account rather than an individual token.
+  Treat read-write tokens as secrets. If a token may have been exposed, rotate the pair immediately from `/agent`. Rotation does not reset rate limits or spending caps; those limits follow your account rather than an individual token.
 </Warning>
 
 ## Work across wallets
@@ -232,10 +296,14 @@ A trade with unusually high price impact pauses and asks for confirmation. Re-su
   A confirmation response that mentions a **ceiling** is a hard Cove safety floor. No user setting can disable it. Escalate the decision to the user; do not auto-confirm it.
 </Warning>
 
+<Danger>
+  Treat a read-write token as capable of irreversible loss even when money-out is disabled. A high-slippage swap against an attacker-controlled pool can consume the full input, and a read-write token may update slippage settings. Prompt injection through attacker-authored token metadata is a realistic trigger. Use strict spending caps, isolate untrusted content, and require human approval for high-risk changes.
+</Danger>
+
 ### Additional protections
 
-- **Sellability check:** Cove refuses a buy that would leave a position below the chain's minimum sellable size.
-- **Optional spending caps:** Ask Cove to set maximum spend per trade, per hour, and/or per day for read-write access.
+- **Sellability check:** Cove refuses a buy that would leave a position below the sell floor: **$2.50 on Solana** and **$0.50 on other chains**.
+- **Optional spending caps:** Use `/agent` to set maximum spend per trade, per hour, per day, and per batch. The batch cap bounds the total fan-out.
 - **Fail closed:** If Cove cannot verify the agent's open exposure, it refuses new trades instead of risking an overspend.
 - **Read isolation:** A read token cannot spend or move funds.
 - **Telegram notifications:** Every trade fill sends a message to the Telegram account linked to Cove.
@@ -253,14 +321,43 @@ The tables below show both the minimum token access and how each tool targets wa
 
 | Tool | Access | Wallet targeting | Description |
 |---|---|---|---|
-| `get_balance` | Read | One | Return one wallet's available USDC balance in USD. `accountId` may be omitted only when the token reaches one wallet. |
+| `get_balance` | Read | One | Return one wallet's spendable USDC and the state of funds bridging or waiting to bridge. `accountId` may be omitted only when the token reaches one wallet. |
 | `get_positions` | Read | All | Return open positions with live PnL and cost basis. Every row identifies its wallet. |
-| `get_trading_history` | Read | All | Return recent filled, failed, pending, and cancelled orders with amounts, fees, status, transaction hashes, and wallet IDs. |
+| `get_trading_history` | Read | All | Return recent orders with amounts, fees, status, transaction hashes, and wallet IDs. Supports exact status filtering. |
 | `sync_positions` | Read | One | Refresh one wallet's positions from on-chain data, like **Refresh** in `/positions`. |
 | `get_order_status` | Read | By order ID | Return the status of one order. |
 | `list_accounts` | Read | Profile | List the wallets this token can use, their IDs and capabilities, and optional per-wallet USDC balances. |
 | `get_deposit_addresses` | Read | One | Return one wallet's deposit addresses by chain. On ERC-4337 chains, this is the smart-account address. |
 | `get_profile` | Read | Profile | Return the profile connected to the agent token. |
+
+<AccordionGroup>
+  <Accordion title="get_balance bridging fields" icon="arrow-right-arrow-left">
+    `get_balance` separates non-primary-chain funds by what happens next:
+
+    | Field | Meaning | Client behavior |
+    |---|---|---|
+    | `consolidatingUsd` | Funds are bridging now. | Safe to poll. |
+    | `parkedUsd` | Funds are waiting for the user's `/bridge` approval. | Do not poll as if arrival were automatic. |
+    | `stuckUsd` | Funds are below the bridge floor. | Ask the user to top up. |
+    | `autoBridgeMode` | `auto`, `manual`, or `unknown`. | Use it to explain why funds are moving or parked. |
+  </Accordion>
+
+  <Accordion title="list_accounts byChain totals" icon="coins">
+    `byChain` contains one row per **chain and stable token**, not one row per chain. A chain may have separate USDC and USDT/alias rows.
+
+    Do not select a chain with only `.find(chainName)`. Match `tokenSymbol`, or sum every row for the intended `chainId`. Use `spendableUsd` and `totalUsd` as the authoritative wallet totals.
+  </Accordion>
+
+  <Accordion title="get_trading_history status values" icon="clock-rotate-left">
+    The `status` filter accepts:
+
+    ```text
+    pending | claiming | executing | triggered | success | failed | cancelled | expired
+    ```
+
+    Use `success`, not `filled`. When automatic TP/SL is enabled, unfilled protective rungs can appear as `cancelled` rows with zero amounts after the position is fully sold. These are orders that never executed, not lost trades.
+  </Accordion>
+</AccordionGroup>
 
 ### Token research
 
@@ -276,7 +373,13 @@ The tables below show both the minimum token access and how each tool targets wa
 |---|---|---|---|
 | `buy_token` | Read-write | Fan-out, 1–25 | Market-buy independently across `accountIds`. Requires `tokenAddress`, `chainId`, `amountUsd`, and `idempotencyKey`. |
 | `sell_token` | Read-write | Fan-out, 1–25 | Market-sell each wallet's position by `percent` from 1–100 or by `amountUsd`. Also requires `idempotencyKey`. |
-| `batch_order` | Read-write | Fan-out, 1–25 | Open a new position for each selected wallet and attach a stop-loss, take-profit, or both. |
+| `batch_order` | Read-write | Fan-out, 1–25 | Open a new position for each eligible wallet and attach a stop-loss, take-profit, or both. Refuses wallets that already hold the token. |
+
+<Accordion title="batch_order execution details" icon="layer-group" defaultOpen>
+  - For an existing position, use `buy_token` and then `create_stop_loss` / `create_take_profit` instead.
+  - TP/SL triggers are anchored to the market price when the buy is **accepted**, not the later realized fill price, because execution is asynchronous.
+  - If a wallet's buy ultimately fails, its protective orders find no balance and are cancelled automatically.
+</Accordion>
 
 ### Automated and limit orders
 
@@ -298,21 +401,29 @@ The tables below show both the minimum token access and how each tool targets wa
 | Tool | Access | Wallet targeting | Description |
 |---|---|---|---|
 | `get_settings` | Read | Profile | Return profile-wide trade and position settings. Execution settings include `stored` and `effective` values. **Always size trades from `effective`** because degen mode can override slippage and protections at read time. |
-| `update_settings` | Read-write | Profile | Update only the supplied profile-wide fields. Changing slippage, the max-buy clamp, or liquidity protection disables degen mode in the same write. |
+| `update_settings` | Read-write | Profile | Update supplied profile-wide fields. Slippage, max-buy clamp, and liquidity protection each disable degen mode in the same write. |
 | `get_earnings` | Read | User | Return cashback and affiliate earnings, including pending balance, lifetime paid, rate or tier, and payout eligibility. |
 | `request_payout` | Read-write | User | Request a payout of pending earnings to the primary wallet. The request is audited and consumes the 24-hour cooldown. |
 | `export_trades` | Read | All | Export trade history as `koinly` CSV for tax import or `generic` CSV for spreadsheets. Every row identifies its wallet. |
 
+<Warning>
+  In one `update_settings` call, send at most one of `slippageBps`, `clampToMaxBuy`, or `liquidityProtectionEnabled`. Never send any of those fields together with `degenMode: true`.
+</Warning>
+
 ### Withdrawals and transfers
 
-These tools require a read-write token **and** money-out enabled for the connected profile. All operations are irreversible, act on one `accountId`, and require an `idempotencyKey`.
+These tools require a read-write token and money-out enabled for the source wallet. All operations are irreversible, act on one `accountId`, and require an `idempotencyKey`.
 
 | Tool | Access | Wallet targeting | Description |
 |---|---|---|---|
 | `withdraw_usdc` | Read-write + money-out | One | Withdraw a fixed USDC `amount` from one wallet to an external wallet, or use `max` to withdraw the full available amount. |
-| `withdraw_token` | Read-write + money-out | One | Send a position token from one wallet to an external address on the same chain. Supports native SOL, ETH, and HYPE. |
+| `withdraw_token` | Read-write + money-out | One | Send a non-stablecoin position token from one wallet to an external address on the same chain. Supports native SOL, ETH, and HYPE. |
 | `transfer_usdc` | Read-write + money-out | One | Send Solana USDC from one wallet to another Cove user by Telegram username. |
-| `transfer_token` | Read-write + money-out | One | Move a token to another wallet you own on the same chain. |
+| `transfer_token` | Read-write + money-out | One | Move 1–100% of the source wallet's token balance, including USDC, to another in-scope wallet on the same chain. Transfers never cross the profile boundary. |
+
+<Note>
+  Cross-chain `withdraw_usdc` has a **$0.25 flat fee**. Same-chain Solana withdrawals have no flat fee; on-chain rent applies only when the recipient does not already have a USDC token account. `withdraw_token` rejects stablecoins—use `withdraw_usdc` for external stablecoin withdrawals.
+</Note>
 
 ## Errors and availability
 
@@ -324,18 +435,41 @@ Tool failures include a readable message and a machine-readable `code`, such as:
 | `no_position` | The connected profile does not have the required position. |
 | `price_unavailable` | Cove cannot currently determine a usable token price. |
 | `invalid_input` | One or more request fields are invalid. |
+| `confirmation_mismatch` | A high-impact confirmation does not match the original operation. |
+| `confirmation_expired` | The high-impact confirmation window has expired. |
+| `token_not_found` | Cove cannot resolve the requested token. |
+| `insufficient_balance` | The selected wallet does not have enough spendable balance. |
+| `position_exists` | The operation requires a new position, but the wallet already holds the token. |
+
+### Token mint refusals
+
+REST token management uses regular HTTP responses:
+
+| HTTP status | Response detail | What to do |
+|---:|---|---|
+| `400` | Invalid body, both wallet selectors, mixed paper/real wallets, or another scope violation | Correct the request. Use exactly one selector and one trading mode. |
+| `403` | `ungrantedAccountIds` | Ask Cove support to enable MCP for those wallets. |
+| `409` | `signerLostAccountIds` | The user must restore signing access for those wallets in Cove. |
 
 <Warning>
   If a withdrawal result is uncertain—for example, the connection drops after signing—an idempotent retry returns an error rather than reporting success. Check `get_order_status` before assuming the withdrawal completed or submitting another one.
 </Warning>
 
-Cove may pause MCP globally for maintenance or an emergency. Clients receive a clear **temporarily paused** or **disabled** response and should stop writes until service resumes.
+Cove may pause MCP globally for maintenance or an emergency. The endpoint returns **HTTP 503** with JSON-RPC error code `-32000` and one of these messages:
+
+```text
+MCP endpoint is temporarily paused
+MCP endpoint is disabled
+```
+
+Clients should stop writes and retry only after service resumes.
 
 ## Need help?
 
 [Open a support ticket](/features/support) to:
 
-- Enable MCP for a profile.
-- Add money-out permission.
-- Request a higher rate limit or spending caps.
+- Enable MCP for a profile's wallets.
+- Request a higher MCP request limit.
 - Get help connecting an MCP client.
+
+Use `/agent` in Telegram for wallet scope, trade and money-out toggles, spending limits, webhooks, token rotation, and revocation.
