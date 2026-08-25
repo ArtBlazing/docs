@@ -395,6 +395,8 @@ Comprehensive security report: scam flag, mint/freeze authority, holder concentr
 | Ethereum | `1` |
 | BNB Chain | `56` |
 
+This convenience table is not an exhaustive network list. Call `get_networks` for the current set of networks and their IDs.
+
 ### `scan_trending_tokens`
 
 | Parameter | Type | Required | Default | Description |

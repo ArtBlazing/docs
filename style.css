@@ -110,6 +110,10 @@
     background: linear-gradient(135deg, #016be5, #10e1ff);
   }
 
+  .chain-mark-ink {
+    background: linear-gradient(135deg, #7132f5, #b56cff);
+  }
+
   .chain-mark-robinhood {
     background: linear-gradient(135deg, #00c805, #008f20);
   }

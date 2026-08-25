@@ -4,7 +4,7 @@ description: Networks currently supported by Cove
 icon: globe
 ---
 
-Cove currently shows the following networks in the product UI. Availability for a specific token, order type, deposit route, or withdrawal route can depend on current product configuration.
+This page is the source of truth for networks currently shown in Cove. Availability for a specific token, order type, deposit route, or withdrawal route can depend on current product configuration.
 
 <div className="chain-grid">
   <div className="chain-card">
@@ -19,6 +19,13 @@ Cove currently shows the following networks in the product UI. Availability for 
     <div>
       <div className="chain-code">BASE</div>
       <div className="chain-name">Base</div>
+    </div>
+  </div>
+  <div className="chain-card">
+    <div className="chain-logo chain-mark chain-mark-ink" role="img" aria-label="Ink network mark">INK</div>
+    <div>
+      <div className="chain-code">INK</div>
+      <div className="chain-name">Ink</div>
     </div>
   </div>
   <div className="chain-card">
@@ -99,24 +106,6 @@ Cove currently shows the following networks in the product UI. Availability for 
     </div>
   </div>
 </div>
-
-## Current list
-
-| Chain | Network |
-|---|---|
-| SOL | Solana |
-| BASE | Base |
-| ETH | Ethereum |
-| ARBITRUM | Arbitrum One |
-| BNB | BNB Chain |
-| MONAD | Monad |
-| STORY | Story |
-| MEGAETH | MegaETH |
-| TEMPO | Tempo |
-| PLASMA | Plasma |
-| HYPEREVM | HyperEVM |
-| ROBINHOOD | Robinhood Chain |
-| STABLE | Stable |
 
 <Note>
 Cove presents a unified balance and handles routing for supported flows. Gas sponsorship has a cap. If a trade needs more gas than the sponsored amount, Cove can ask for a gas surplus according to your settings.
