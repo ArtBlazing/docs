@@ -1,101 +1,79 @@
 ---
-title: Multi-wallet Trading
-description: Execute buys from multiple Cove accounts with account selection, spend mode, variance, and transaction delay
-icon: wallet
+title: "Trade with multiple wallets"
+description: "Choose wallets and control how a buy amount is divided."
+icon: "wallet"
 ---
 
-<Frame><img src="/assets/current-ui/multiwallet-account-selector.png" alt="Current multi-wallet account selector with account balances" /></Frame>
+A multi-wallet trade acts on selected wallets in **one profile**, up to **10 wallets**. It does not combine wallets from different profiles.
 
-Multi-wallet trading lets you execute token buys across more than one Cove account from the same trading panel. It is useful when you want to distribute entries, keep account behavior separated, or avoid every buy looking identical.
-
-## How it works
+## Set up a multi-wallet buy
 
 <Steps>
-  <Step title="Open a token panel">
-    Paste a token address or open a token link to bring up the trading panel.
+  <Step title="Select the wallets">
+    Open `/wallets` and tap the wallets you want to include. Check their ✅ marks and **Deployable (selected)**.
   </Step>
-  <Step title="Choose accounts">
-    Tap the account selector at the bottom of the panel, then choose one or more accounts to trade with.
+  <Step title="Open the token and wallet settings">
+    Paste the token address. Open the wallet picker and its **Multi-account settings** or preferences.
   </Step>
-  <Step title="Set execution behavior">
-    Configure spend type, buy variance, and transaction delay before submitting the trade.
+  <Step title="Choose Spend type">
+    Select **Split Total** or **Per Wallet**. Check the total cost before choosing the amount on the trading panel.
   </Step>
-  <Step title="Execute">
-    Cove sends one transaction per selected account and reports the result back in Telegram.
+  <Step title="Set optional timing and variance">
+    Review **Buy variance**, **Transaction delay**, and **Primary wallet first**, where offered.
+  </Step>
+  <Step title="Buy and check each result">
+    Return to the panel, choose the size, and submit. The combined receipt shows success, actual spending, and failures per wallet.
   </Step>
 </Steps>
 
-## Account selection
+{/* Screenshot: multiwallet-settings.png | Multi-account settings for spend type, variance, transaction delay, and wallet priority. */}
+<div className="cove-guide-figure">
+  <Frame caption="Multi-account settings for spend type, variance, transaction delay, and wallet priority.">
+    <img src="/assets/guide-screenshots/multiwallet-settings.png" alt="Multi-account settings for spend type, variance, transaction delay, and wallet priority." width={712} height={742} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-The account selector shows the selected account count and the deployable total for the selected accounts.
+## Split Total versus Per Wallet
 
-In the selector, you can:
+For an illustrative **\$100** buy with **two wallets**:
 
-- Select or deselect individual accounts.
-- Use **Select all** or **Deselect all**.
-- See total deployable balance for the selected accounts.
-- Open **Multi-account preferences** before executing.
+| Mode | What the amount means | Example total |
+|---|---|---|
+| **Split Total** — default | One total divided between selected wallets | **\$100** across both |
+| **Per Wallet** | Each wallet uses the full amount | **\$200** across both |
 
-<Note>
-Only selected accounts participate in the trade. If one account is selected, the flow behaves like a normal single-account trade.
-</Note>
+<Warning>In Per Wallet mode, adding wallets increases the combined amount spent. Check the count and mode before every buy.</Warning>
 
-## Multi-account settings
+## Other settings
 
-Open **Multi-account preferences** to configure how Cove spreads the buy across accounts.
+| Setting | Effect |
+|---|---|
+| **Buy variance** | Varies wallet-level amounts in Split Total mode; ignored in Per Wallet mode |
+| **Transaction delay** | Spaces buys apart; offered choices include Off, 250 ms, 500 ms, 1000 ms, and Custom |
+| **Primary wallet first** | Gives the primary wallet a head start when it participates |
 
-<Frame><img src="/assets/current-ui/multiwallet-settings.png" alt="Current Multi-account settings panel with spend type, buy variance, and transaction delay" /></Frame>
+Variance and delay apply to buys. Use the values offered in the current picker; it shows which custom inputs are accepted.
 
-<Tabs>
-  <Tab title="Spend type">
-    Spend type controls how the amount on the buy panel is interpreted across selected accounts.
+## Sell across wallets
 
-    | Mode | Behavior |
-    |---|---|
-    | Split Total | The panel amount is divided across selected accounts. With **\$50** across 2 accounts, each spends **\$25** plus any variance. |
-    | Per Wallet | Every selected account spends the full panel amount. With **\$50** across 2 accounts, each spends **\$50**, for **\$100** total. |
+Choose a sell percentage. Each selected wallet sells that percentage of its own holding. **\$-denominated sells are unavailable with multiple wallets**; use a percentage or select one wallet.
 
-    <Note>Buy variance is ignored in **Per Wallet** mode.</Note>
-  </Tab>
-  <Tab title="Buy variance">
-    Buy variance adds randomness to how buys are split across selected accounts.
+## Review wallet holdings
 
-    <Frame><img src="/assets/current-ui/multiwallet-buy-variance.png" alt="Current Buy variance panel with preset and custom variance controls" /></Frame>
+Expand the token panel's wallet details to compare each wallet's position and PnL. This is a holdings view, not the trade receipt.
 
-    Buy variance changes account-level amounts in Split Total mode.
-  </Tab>
-  <Tab title="Transaction delay">
-    Transaction delay spaces account transactions apart so they are not all sent at the same instant.
+{/* Screenshot: multiwallet-holdings.png | Expanded token holdings showing each wallet's position and performance. */}
+<div className="cove-guide-figure">
+  <Frame caption="Expanded token holdings showing each wallet's position and performance.">
+    <img src="/assets/guide-screenshots/multiwallet-holdings.png" alt="Expanded token holdings showing each wallet's position and performance." width={712} height={1136} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-    Presets include **Off**, **250ms**, **500ms**, **1000ms**, and a custom delay.
-  </Tab>
-</Tabs>
+## Check partial success
 
-<Info>
-Buy variance and transaction delay apply to buys only.
-</Info>
+The receipt can report **Bought X/Y Successfully**. Review each wallet's actual spend and received amount. A **max-buy cap** note means the token limited the purchase below the requested amount.
 
-## Executing a multi-wallet buy
 
-After accounts and settings are selected, return to the trading panel and submit the buy. Cove shows a multi-wallet receipt with the number of selected wallets that bought successfully.
+Do not repeat the whole batch without checking successful wallets. Reopen the selection and retry only what still needs attention.
 
-<Frame><img src="/assets/current-ui/multiwallet-success.png" alt="Current multi-wallet buy receipt showing successful execution across selected accounts" /></Frame>
-
-<CardGroup cols={2}>
-  <Card title="Split Total" icon="split">
-    Use this when you want the selected accounts to share one total buy amount.
-  </Card>
-  <Card title="Per Wallet" icon="copy">
-    Use this when you want every selected account to place the same-sized buy.
-  </Card>
-  <Card title="Variance" icon="shuffle">
-    Use this to make account-level buy amounts less uniform.
-  </Card>
-  <Card title="Delay" icon="timer">
-    Use this to space transactions apart by a fixed interval.
-  </Card>
-</CardGroup>
-
-<Warning>
-Multi-wallet execution increases total exposure when **Per Wallet** is selected. Always check the deployable total and selected account count before confirming.
-</Warning>
+[DCA buys](/features/dca-orders) always split their total across wallets, regardless of Per Wallet mode. Use [Disperse/Collect](/features/transfers) to organize balances beforehand.

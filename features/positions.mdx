@@ -1,53 +1,77 @@
 ---
-title: Positions
-description: Filter, sort, hide, and manage token positions across accounts
-icon: chart-pie
+title: "View and manage positions"
+description: "Find holdings, read wallet coverage, and open the action you need."
+icon: "chart-pie"
 ---
 
-Open `Positions` from the home screen to view holdings across your selected accounts.
+Send `/positions` or choose **Positions**. The list shows holdings in the **active profile**, grouped by token and chain and aggregated across its wallets.
 
-<Frame><img src="/assets/current-ui/positions-overview.png" alt="Current Cove Positions panel with position values" /></Frame>
+## Read a position
 
-## Position view
+| Field | Meaning |
+|---|---|
+| Ticker | Tap to open the token's trading panel |
+| **mc** | Current market cap |
+| **PnL % / PnL \$** | Reported profit or loss for the displayed scope |
+| **Worth** | Estimated current value |
+| **Supply %** | Holding as a share of token supply |
+| Wallet count / **View detailed** | Expand the wallets that hold the token |
 
-Each row can show the token, chain, market cap, PnL, worth, and account context. The panel also exposes total balance and position value.
+The footer shows spendable balance, positions value, any parked funds, and the profile you are viewing.
 
-## Filter and sort
+{/* Screenshot: positions-list.png | The Telegram positions list with token values, PnL, and portfolio controls. */}
+<div className="cove-guide-figure">
+  <Frame caption="The Telegram positions list with token values, PnL, and portfolio controls.">
+    <img src="/assets/guide-screenshots/positions-list.png" alt="The Telegram positions list with token values, PnL, and portfolio controls." width={712} height={1184} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: positions-wallet-detail.png | Detailed view of one token's holdings across wallets, with sell and transfer links. */}
+<div className="cove-guide-figure">
+  <Frame caption="Detailed view of one token's holdings across wallets, with sell and transfer links.">
+    <img src="/assets/guide-screenshots/positions-wallet-detail.png" alt="Detailed view of one token's holdings across wallets, with sell and transfer links." width={712} height={702} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-The current panel includes:
+## Open or act on a holding
 
-- Sort by Worth.
-- Sort by Age.
-- Account filters.
-- Chain filters.
-- Other filters shown in the filter menu.
-- Pagination.
-- History.
-- Refresh.
+1. Check the profile beside **Viewing**; use **Change profile** if needed.
+2. Tap the token to buy more, sell, or [create an order](/features/orders-overview).
+3. Expand **View detailed** for wallet-specific values and actions.
+4. Use **Transfer** to [send the token without selling](/funds/token-transfers).
+5. Use **Generate PnL** for a [share card](/features/pnl-cards).
 
-<Frame><img src="/assets/current-ui/positions-sort-by-age.png" alt="Current Positions controls after switching the sort order to Age" /></Frame>
+**Sell 100%** links are shown only if enabled. The Positions **Sell confirmation** setting is on by default. A link sells the holding in its displayed scope, so check whether you are in an aggregate or wallet detail.
 
-## Hide and show positions
+## Filter, sort, and hide
 
-Use `Hide positions` to remove a position from the default list. Use `Show hidden` to view hidden positions, then unhide a position when you want it back in the main list.
+Open **Filters** for chains, wallets, dust, liquidity, suspicious tokens, and native/wrapped tokens. **Sort** offers Worth, Age, and PnL. See [Position filters](/features/settings/position-panel).
 
-<Frame><img src="/assets/current-ui/positions-hide.png" alt="Current Hide positions view" /></Frame>
+**Hide** removes a token from the visible list. **View hidden** or the Mini App's **Hidden** list lets you **Unhide** it. Hiding does not sell it.
 
-<Frame><img src="/assets/current-ui/positions-show-hidden.png" alt="Current Show hidden positions view" /></Frame>
+## Understand incomplete numbers
 
-Hiding a position does not sell or move it.
+A token received from outside Cove may lack a reliable cost basis. A row can disclose **tracked / untracked** or **covered / total wallets**. Treat its PnL as partial, even if a balance is visible.
 
-## Position actions
+**Unavailable** does not mean zero profit or zero holdings. Native and wrapped-native tokens may show unavailable PnL.
 
-Depending on the settings and current position, the row can expose:
+Use [History and PnL](/features/history) for the difference between current-cycle and lifetime figures.
 
-- Sell 100%.
-- Sell 100% across selected wallets when the position spans selected accounts.
-- Move.
-- View detailed.
-- Generate PnL.
-- Open the Positions Mini App.
+## More ways to view and exit
 
-`Sell 100%` and `Sell 100% Links` are controlled from Settings, Position panel settings. Confirm the selected accounts and final amount before a full sell.
+- **Positions Mini App:** a visual holdings interface.
+- **History:** lifetime portfolio and PnL Calendar.
+- **SWITCH TO BULK SELL:** [sell selected positions in one run](/features/bulk-sell).
+- **Refresh:** update the list.
 
-See [PnL Cards](/features/pnl-cards) for the generated image workflow.
+If the list is empty, check profile, wallet/chain filters, and hidden positions before assuming a token is gone.
+
+## Open the visual positions view
+
+Tap **Positions Mini App** to browse the same portfolio visually. Check the profile, then select a token for its details. See [Use the Mini Apps](/essentials/mini-apps).
+
+{/* Screenshot: positions-miniapp-overview.png | The Positions Mini App groups holdings by token and shows PnL, worth, and account counts. */}
+<div className="cove-guide-figure">
+  <Frame caption="The Positions Mini App groups holdings by token and shows PnL, worth, and account counts.">
+    <img src="/assets/guide-screenshots/positions-miniapp-overview.png" alt="The Positions Mini App groups holdings by token and shows PnL, worth, and account counts." width={549} height={1029} className="cove-guide-screenshot" />
+  </Frame>
+</div>

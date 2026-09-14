@@ -1,25 +1,50 @@
 ---
-title: PnL Cards
-description: Generate a shareable image from a position's current PnL
-icon: image
+title: "Share a PnL card"
+description: "Create a full performance card or share only the percentage gain."
+icon: "image"
 ---
 
-Use `Generate PnL` from a position or token panel to create a branded image card.
+A PnL card is an image of a token position's performance. You can generate one from the token panel or a full-sell receipt.
 
-The current output shows:
+## Create a card
 
-- Token name and ticker.
-- PnL percentage.
-- Invested amount.
-- Current position value.
-- Absolute PnL.
-- A user handle in the footer.
+<Steps>
+  <Step title="Open the right position">
+    In the intended profile, open the token or its 100%-sell receipt.
+  </Step>
+  <Step title="Choose Generate PnL">
+    Tap **Generate PnL**. Portfolio and position Mini Apps can also offer this action.
+  </Step>
+  <Step title="Choose a format">
+    Select **Regular PnL** for the full card, or **Only % gain** to omit dollar figures. **Cancel** leaves the flow.
+  </Step>
+  <Step title="Review before sharing">
+    Cove sends the image to your chat. Check the token, numbers, and any partial-coverage caption before forwarding or downloading it.
+  </Step>
+</Steps>
 
-<Tabs>
-  <Tab title="Loss">
-    <Frame><img src="/assets/current-ui/pnl-card-loss.png" alt="Current red Cove PnL card for a position at a loss" /></Frame>
-  </Tab>
-  <Tab title="Gain">
-    <Frame><img src="/assets/current-ui/pnl-card-gain.png" alt="Current green Cove PnL card for a position at a gain" /></Frame>
-  </Tab>
-</Tabs>
+{/* Screenshot: pnl-card-choice.png | Choose Regular PnL or Only % gain before generating a card. */}
+<div className="cove-guide-figure">
+  <Frame caption="Choose Regular PnL or Only % gain before generating a card.">
+    <img src="/assets/guide-screenshots/pnl-card-choice.png" alt="Choose Regular PnL or Only % gain before generating a card." width={712} height={947} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+
+## Which format should I use?
+
+| Format | Shows |
+|---|---|
+| **Regular PnL** | Percentage plus invested, position, and PnL amounts |
+| **Only % gain** | Percentage without dollar-size figures |
+
+{/* Screenshot: pnl-card-regular.png | A Regular PnL card: percentage gain plus invested, position, and PnL amounts. */}
+<div className="cove-guide-figure">
+  <Frame caption="A Regular PnL card: percentage gain plus invested, position, and PnL amounts.">
+    <img src="/assets/guide-screenshots/pnl-card-regular.png" alt="A Regular PnL card: percentage gain plus invested, position, and PnL amounts." width={712} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+Multi-wallet cards may disclose that not every wallet has complete PnL data. Read [PnL scope](/features/history) when a card differs from another view.
+
+Custom backgrounds are not a documented self-service upload feature. Use the available designs or contact support about your account's options.

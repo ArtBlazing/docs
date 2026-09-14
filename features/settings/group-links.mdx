@@ -1,17 +1,43 @@
 ---
-title: Group buy/sell
-description: Control shared group-buy limits and group-sell links
-icon: users
+title: "Group buy and sell links"
+description: "Control the trades that shared group links can start in your account."
+icon: "users"
 ---
 
-Group buy/sell settings control actions opened from a group, channel, or shared link.
+Shared Cove links can open a token panel or request a fixed buy or percentage sell. The funds and positions belong to the person clicking the link.
 
-## Group buy
+Open **Settings → Group buy/sell** to control these actions.
 
-Set a maximum instant group-buy amount. A buy above the limit asks for confirmation. Set the control to `Off` to disable group buys.
+## Set a group-buy limit
 
-## Group sell
+1. Open **Group buy**.
+2. Choose **Off**, **\$100**, **\$500**, **\$1,000**, **\$5,000**, or **Custom**.
+3. For Custom, follow the prompt; the supported maximum is **\$100,000**.
+4. Review the new state and amount.
 
-Group sell controls links that sell a percentage of your own position. The link does not sell a shared group wallet position.
+The documented initial setting is **Off**. When enabled, the amount is a cap for group-link buys, not an amount to spend on every click.
 
-For link formats and account behavior, see [Deep Links](/builders/deep-links) and [Cove Buy](/groups/cove-buy).
+## Enable group sells
+
+Open **Group sell** and toggle it on only if you want shared sell links to be able to act on your holdings. It is **off by default**.
+
+A group sell applies the requested percentage to your own token position. When several wallets hold the token, a wallet picker may appear.
+
+{/* Screenshot: settings-group-links.png | Group buy/sell controls with a buy limit and independent sell toggle. */}
+<div className="cove-guide-figure">
+  <Frame caption="Group buy/sell controls with a buy limit and independent sell toggle.">
+    <img src="/assets/guide-screenshots/settings-group-links.png" alt="Group buy/sell controls with a buy limit and independent sell toggle." width={712} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+<Warning>After authorization, eligible group links can execute directly. Check the token, requested size, and wallet/profile context before opening a trading link.</Warning>
+
+## How shared links behave
+
+A panel-only link opens a token so you choose the amount. A group-buy link requests a fixed USD buy. A group-sell link requests a percentage of the clicker's holding.
+
+New users complete onboarding first. A link does not create a holding out of nothing. While **Scam warning** is on, flagged panel-less group buys are refused.
+
+The group-buy maximum and Group sell preference are account-wide; group-buy authorizations can follow the profile. Check the 👤 indicator in the current panel.
+
+Group owners can set scan buttons and referral links in [Cove Buy](/groups/cove-buy). Builders can read [Deep links](/builders/deep-links).

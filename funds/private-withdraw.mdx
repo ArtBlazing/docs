@@ -1,0 +1,52 @@
+---
+title: "Private Withdraw"
+description: "Send USDC to one external address through separately routed payments."
+icon: "arrow-up-right-from-square"
+---
+
+Private Withdraw routes a payment through exchanges, with optional splits and delays, to **one external address**.
+
+<Note>This feature is available only on enabled accounts. Look for **Private Withdraw** in `/withdraw`. Standard [Withdraw](/funds/withdraw) remains the alternative.</Note>
+
+## Create a private withdrawal
+
+<Steps>
+  <Step title="Choose the paying wallet">
+    Open `/withdraw` → **Private Withdraw**. In Cove Wallets, choose a source holding **Solana USDC**.
+  </Step>
+  <Step title="Enter the destination">
+    Under **Where does it go?**, enter the address and select its network. Check both carefully.
+  </Step>
+  <Step title="Set the total and splits">
+    Choose **1–5 splits**, the total amount, and any **Randomize**, **Spread**, or **Over** options. Review each exchange, minimum, and delay.
+
+    {/* Screenshot: private-withdraw-amounts.png | Step 3: configure the withdrawal total, splits, exchanges, and delays before final review. */}
+    <div className="cove-guide-figure">
+      <Frame caption="Step 3: configure the withdrawal total, splits, exchanges, and delays before final review.">
+        <img src="/assets/guide-screenshots/private-withdraw-amounts.png" alt="Step 3: configure the withdrawal total, splits, exchanges, and delays before final review." width={683} height={1341} className="cove-guide-screenshot" />
+      </Frame>
+    </div>
+  </Step>
+  <Step title="Review and send">
+    Check destination, network, **You send**, **They receive**, **Exchange fee**, and final estimated delivery. Use **Withdraw** with the displayed amount to submit.
+  </Step>
+</Steps>
+
+
+## Networks and fees
+
+The documented destination networks are **Solana, Base, Ethereum, BNB Chain, and Arbitrum**. Only matching address/network combinations are offered.
+
+Cove does not add an app fee for Private Withdraw. Exchange fees and route minimums are shown before confirmation and vary by network and provider. Check the final quote for the amount you will receive.
+
+## Track and resolve
+
+Reopen the run for per-split progress, **Send now**, or **Track on Husher**. Telegram reports sent, complete, partially complete, or failed.
+
+If a split fails, open [Support](/features/support) with the withdrawal reference to arrange the next step or refund. Other splits may already have arrived. A pause on new withdrawals does not stop ones already underway.
+
+If the provider rejects the address or cannot confirm the minimum, check the error and contact support if needed. Do not repeatedly submit the same withdrawal.
+
+<Warning>
+A sent payment cannot be recalled. Routing is not a guarantee of anonymity. Check the recipient, network, costs, and total before sending.
+</Warning>

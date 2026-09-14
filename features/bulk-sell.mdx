@@ -1,0 +1,58 @@
+---
+title: "Bulk sell positions"
+description: "Select up to 100 positions and review them before a full exit."
+icon: "layer-group"
+---
+
+Bulk sell attempts to sell **100% of each selected token** across the active profile's wallets that hold it. It is available in the Telegram Positions list.
+
+## Select and sell
+
+<Steps>
+  <Step title="Open bulk-sell mode">
+    Send `/positions`, confirm the profile, and tap **SWITCH TO BULK SELL**.
+  </Step>
+  <Step title="Set a worth filter if useful">
+    Choose **Worth filter** and a value such as **\$50**, **\$100**, **\$500**, or **\$x**. **No filter** removes it.
+
+    Changing the worth filter clears the current selection.
+  </Step>
+  <Step title="Select positions">
+    Use **Select** on individual rows or **Select current page positions**. Tokens marked **❌** are selected for selling.
+
+    **Select all pages positions** requires a worth filter and selects up to the 100-position cap.
+  </Step>
+  <Step title="Review the full list">
+    Tap **Bulk sell N tokens**. Read **Confirm bulk sell**, including every page of the list and displayed worth.
+  </Step>
+  <Step title="Confirm and follow results">
+    Tap **Confirm bulk sell**. Follow the single progress receipt until complete.
+  </Step>
+</Steps>
+
+{/* Screenshot: bulk-sell-selection.png | Select positions in bulk-sell mode and check the selected count. */}
+<div className="cove-guide-figure">
+  <Frame caption="Select positions in bulk-sell mode and check the selected count.">
+    <img src="/assets/guide-screenshots/bulk-sell-selection.png" alt="Select positions in bulk-sell mode and check the selected count." width={712} height={1181} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: bulk-sell-confirm.png | Review the selected positions and total before confirming a bulk sell. */}
+<div className="cove-guide-figure">
+  <Frame caption="Review the selected positions and total before confirming a bulk sell.">
+    <img src="/assets/guide-screenshots/bulk-sell-confirm.png" alt="Review the selected positions and total before confirming a bulk sell." width={712} height={769} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Understand selection and results
+
+The maximum is **100 positions per run**. If more match the worth filter, Cove selects the largest matching positions within the cap. Read the selection summary rather than assuming every holding is included.
+
+The receipt reports **Sold X of Y positions** and total USDC received. **Partly sold** means some wallets still hold the token.
+
+<Warning>Displayed worth is an estimate. Low liquidity, price impact, token restrictions, or failed sells can change the amount received and leave positions behind.</Warning>
+
+## If you need to retry
+
+Check the completed results in `/positions` first. Then select only the remaining holdings you intend to sell.
+
+For **Selection or filter changed**, review the current list again. For **Selection expired**, reopen Positions. If another sell is already processing, wait for its receipt before starting another run.

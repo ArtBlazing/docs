@@ -1,0 +1,48 @@
+---
+title: "Choose an order type"
+description: "Match your goal to a limit buy, take-profit, stop-loss, trailing stop, or DCA ladder."
+icon: "list-ol"
+---
+
+Automated orders wait for a condition, then attempt a trade. In Cove, targets use **market capitalization** or a **percentage move**, not an absolute token-price field.
+
+## Which order do I need?
+
+| I want to… | Use |
+|---|---|
+| Buy below today's market cap | [Limit buy on a dip](/features/limit-orders) |
+| Buy if the token rises to a target | [Breakout buy](/features/limit-orders#buy-a-breakout) |
+| Sell after a gain | [Take-profit](/features/take-profit-stop-loss) |
+| Sell after a fall | [Stop-loss](/features/take-profit-stop-loss) |
+| Sell after a fall from a new peak | [Trailing stop](/features/trailing-stop) |
+| Spread buys or sells over a market-cap range | [DCA ladder](/features/dca-orders) |
+| Add protective orders after future buys | [Auto TP/SL](/features/settings/auto-tp-sl) |
+| Receive a notification without trading | [Price alert](/features/price-alerts) |
+
+## Understand triggers and execution
+
+For example, a **\$1 million market-cap target** means the order waits for the token's market cap to reach that level. It is not a request to trade \$1 million.
+
+Once triggered, an order executes at the available market quote with applicable settings. A target does **not** guarantee the fill price or proceeds. Fixed take-profit and stop-loss orders can also react to a brief price wick and execute after the price has moved again.
+
+Trigger checks are typically around tens of seconds; network and market conditions can delay execution. Thin liquidity, slippage, fees, or token restrictions can prevent a fill.
+
+## Shared controls
+
+- Open a token → **Limit**, then choose **Limit**, **DCA**, or **Trailing SL**.
+- Buy orders use **USD spend**; sell orders use a **percentage of the holding**.
+- Default expiry is **30 days**, with a minimum of **1 minute** and maximum of **30 days**.
+- Native and launchpad panels do not offer these automated-order controls.
+- Manage pending orders in `/orders` within their profile.
+
+<Note>
+Manual alerts expire after 7 days by default; automatic alerts after 5 days. Alert expiry is different from order expiry.
+</Note>
+
+## Before placing several orders
+
+Check combined spending and sell allocation, selected wallets, the manual TP/SL basis, and existing active orders. Do not assume every pending order has funds reserved: keep sufficient spendable balance and review the actual panel.
+
+DCA orders are independent market-cap triggers, **not scheduled recurring purchases**. Several rungs can trigger close together.
+
+After placement, open [Manage orders](/features/managing-orders) to verify each order. Orders keep running when you close Telegram, switch profiles, or archive a profile.

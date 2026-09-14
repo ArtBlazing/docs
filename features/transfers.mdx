@@ -1,74 +1,87 @@
 ---
-title: Transfers & Withdrawals
-description: Move USDC between Cove accounts, Telegram users, and external wallets
-icon: arrow-right-arrow-left
+title: "Transfer, disperse, and collect"
+description: "Move USDC between wallets, across profiles, or to another Cove user."
+icon: "arrow-right-arrow-left"
 ---
 
-The Transfer and Withdraw panels expose separate flows. Review the destination, chain, amount, and fee before confirming.
+Send `/transfer` to open **Transfer USDC**. These transfers use **USDC on Solana**, with a minimum of **\$0.01**. Check available funds and any displayed cost before the final send action.
 
-## Transfer between Cove accounts
+| Your goal | Choose |
+|---|---|
+| One wallet to another, including another profile | **Simple transfer** |
+| One wallet to several of your wallets | **Disperse USDC** |
+| Several wallets into one | **Collect USDC** |
+| Send to another Cove user | **To Telegram user** |
+| Send a token other than USDC | [Transfer from Positions](/funds/token-transfers) |
+| Fund wallets using routed payments | [Private Disperse](/funds/private-disperse), if offered |
 
-1. Open `Transfer`.
-2. Select the internal account transfer flow.
-3. Choose a percentage preset or enter a custom amount.
-4. Select the destination Cove account.
-5. Review the transfer details.
-6. Confirm and check the receipt.
+{/* Screenshot: transfer-menu.png | The USDC transfer menu: simple transfer, disperse, collect, and other available options. */}
+<div className="cove-guide-figure">
+  <Frame caption="The USDC transfer menu: simple transfer, disperse, collect, and other available options.">
+    <img src="/assets/guide-screenshots/transfer-menu.png" alt="The USDC transfer menu: simple transfer, disperse, collect, and other available options." width={733} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-The current UI transfers USDC between Cove accounts and names the destination account in the success receipt.
+## Transfer between your wallets
 
-<Tabs>
-  <Tab title="Transfer">
-    <Frame><img src="/assets/current-ui/transfer-between-accounts.png" alt="Current transfer-between-accounts form" /></Frame>
-  </Tab>
-  <Tab title="Success">
-    <Frame><img src="/assets/current-ui/transfer-between-accounts-success.png" alt="Current successful internal transfer receipt" /></Frame>
-  </Tab>
-</Tabs>
+<Steps>
+  <Step title="Choose Simple transfer">
+    Open `/transfer` → **Simple transfer** and select the paying wallet.
+  </Step>
+  <Step title="Choose the receiving wallet">
+    Pick your destination wallet. The picker can browse another real profile for a cross-profile transfer.
+  </Step>
+  <Step title="Set the amount and send">
+    Enter the amount or percentage. Review source, destination, and total before the final send action.
+  </Step>
+  <Step title="Check the receipt">
+    Look for the completed result and check both wallets. A sent or processing message is not yet a completion.
+  </Step>
+</Steps>
 
-## Transfer to a Telegram user
+{/* Screenshot: transfer-simple-review.png | Review the amount and destination wallet before sending a simple USDC transfer. */}
+<div className="cove-guide-figure">
+  <Frame caption="Review the amount and destination wallet before sending a simple USDC transfer.">
+    <img src="/assets/guide-screenshots/transfer-simple-review.png" alt="Review the amount and destination wallet before sending a simple USDC transfer." width={733} height={698} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-1. Open `Transfer`.
-2. Select the Telegram user flow.
-3. Enter the exact Telegram username.
-4. Choose a percentage preset or custom amount.
-5. Review the destination and amount.
-6. Confirm and check the success receipt.
+## Send to another Cove user
 
-Enter the recipient's exact Telegram username.
+1. Open `/transfer` → **To Telegram user**.
+2. Select your paying wallet and enter the recipient's **@username**.
+3. Check that Cove resolves the intended recipient.
+4. Enter the amount and review the final send action.
+5. Check the receipt.
 
-<Tabs>
-  <Tab title="Recipient">
-    <Frame><img src="/assets/current-ui/transfer-to-user.png" alt="Current prompt for entering a Telegram transfer recipient" /></Frame>
-  </Tab>
-  <Tab title="Success">
-    <Frame><img src="/assets/current-ui/transfer-to-user-success.png" alt="Current successful Telegram user transfer receipt" /></Frame>
-  </Tab>
-</Tabs>
+The recipient must have started Cove and have a Telegram username. Funds arrive in their **primary wallet**, and they receive a **Transfer Received** notification.
 
-## Withdraw unified USDC
+## Disperse USDC
 
-1. Open `Withdraw`.
-2. Choose a percentage preset or custom amount.
-3. Select the destination chain.
-4. Enter the destination wallet.
-5. Review the network fee and final amount.
-6. Confirm and keep the explorer link from the receipt when one is provided.
+1. Choose **Disperse USDC**.
+2. Select one paying wallet and your receiving wallets in the same profile.
+3. Set the amount using the offered controls.
+4. Review the preview for **each destination**, then submit.
+5. Check the per-wallet results.
 
-<Frame><img src="/assets/current-ui/withdraw-usdc.png" alt="Current unified USDC withdrawal panel with the account balance" /></Frame>
+{/* Screenshot: transfer-disperse-preview.png | Review the source wallet, selected recipients, and allocation before sending a standard disperse. */}
+<div className="cove-guide-figure">
+  <Frame caption="Review the source wallet, selected recipients, and allocation before sending a standard disperse.">
+    <img src="/assets/guide-screenshots/transfer-disperse-preview.png" alt="Review the source wallet, selected recipients, and allocation before sending a standard disperse." width={733} height={654} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-Available destination chains and fees appear in the withdrawal panel.
+## Collect USDC
 
-## Withdraw a token
+1. Choose **Collect USDC** when at least two wallets hold funds.
+2. Select the source wallets and one receiving wallet.
+3. Review the amounts to collect, then submit.
+4. Check the combined result and each source.
 
-Token withdrawal is a separate flow from unified USDC withdrawal.
+Disperse and Collect stay within **one profile** and on the same chain. Use Simple transfer to move between profiles.
 
-1. Select the token and amount.
-2. Choose the destination chain.
-3. Enter the wallet address.
-4. Review the fee and asset details.
-5. Confirm and check the receipt.
+## Partial results and errors
 
-Do not reuse an address from a different chain. Verify the address format and destination chain in the final review.
+A multi-wallet operation can succeed for some destinations and fail for others. Read every ✅/❌ result and explorer link before retrying the missing part.
 
-<Frame><img src="/assets/current-ui/withdraw-token.png" alt="Current token withdrawal form with the balance and wallet address" /></Frame>
+If you see **User not found**, ask the recipient to start Cove. If a panel expires or the profile changes, reopen `/transfer`. Paper wallets cannot send real funds.

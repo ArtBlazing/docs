@@ -1,0 +1,104 @@
+---
+title: "Take-profit and stop-loss"
+description: "Set automatic exits, choose the percentage reference, and use breakeven."
+icon: "bullseye"
+---
+
+A **take-profit** attempts to sell after a rise. A **stop-loss** attempts to sell after a fall. Both use a market-cap target or percentage condition, then execute at the available market quote.
+
+You need a holding in the selected wallets.
+
+## Choose the percentage reference first
+
+Open **Settings → Trade panel settings → Manual TP/SL basis**.
+
+| Basis | A percentage starts from… |
+|---|---|
+| **Market price** — default | The market when you place the order |
+| **Entry price** | Each wallet's average entry when you place the order |
+
+For illustration, you bought at **1m** market cap and the market is now **1.5m**. A **20% down** target is **1.2m** with Market price or **0.8m** with Entry price.
+
+This reference is captured when you place a manual order; later buys do not move it. With multiple wallets, entry-based targets can differ. If entry is unavailable, Cove falls back to market and tells you.
+
+
+## Create an exit order
+
+<Tabs>
+  <Tab title="Take-profit">
+    <Steps>
+      <Step title="Open the holding">
+        Send `/positions`, check the profile, and open the token.
+      </Step>
+      <Step title="Choose the order">
+        Tap **Limit → Selling → Take profit**.
+      </Step>
+      <Step title="Set the trigger and sell size">
+        Choose **By % gain** or **By Market cap**. Enter the gain or capitalization target, then **Sell %** from 1–100.
+
+        For example, **50** as a gain means **+50%**, not 50×.
+      </Step>
+      <Step title="Review and create">
+        Check basis, target, wallets, size, and expiry. Tap **Create take profit** (or **Create orders** for multiple steps), then verify it in `/orders`.
+      </Step>
+    </Steps>
+
+{/* Screenshot: order-take-profit.png | An example two-step take-profit setup with sell percentages and expiry. */}
+<div className="cove-guide-figure">
+  <Frame caption="An example two-step take-profit setup with sell percentages and expiry.">
+    <img src="/assets/guide-screenshots/order-take-profit.png" alt="An example two-step take-profit setup with sell percentages and expiry." width={712} height={1005} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+<Accordion title="See the market-cap input mode">
+{/* Screenshot: take-profit-market-cap.png | Take-profit setup in By Market cap mode, before entering the target and sell size. */}
+<div className="cove-guide-figure">
+  <Frame caption="Take-profit setup in By Market cap mode, before entering the target and sell size.">
+    <img src="/assets/guide-screenshots/take-profit-market-cap.png" alt="Take-profit setup in By Market cap mode, before entering the target and sell size." width={712} height={774} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+</Accordion>
+  </Tab>
+  <Tab title="Stop-loss">
+    <Steps>
+      <Step title="Open the holding">
+        Send `/positions`, check the profile, and open the token.
+      </Step>
+      <Step title="Choose the order">
+        Tap **Limit → Selling → Stop loss**.
+      </Step>
+      <Step title="Set the trigger and sell size">
+        Choose **By % down** or **By Market cap**, set the loss or capitalization target, and enter **Sell %** from 1–100.
+      </Step>
+      <Step title="Review and create">
+        Check basis, target, wallets, size, and expiry. Tap **Create stop loss** (or **Create orders** for multiple steps), then verify it in `/orders`.
+      </Step>
+    </Steps>
+
+{/* Screenshot: order-stop-loss.png | An example two-step stop-loss setup with sell percentages and expiry. */}
+<div className="cove-guide-figure">
+  <Frame caption="An example two-step stop-loss setup with sell percentages and expiry.">
+    <img src="/assets/guide-screenshots/order-stop-loss.png" alt="An example two-step stop-loss setup with sell percentages and expiry." width={712} height={1005} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+  </Tab>
+</Tabs>
+
+
+## Use breakeven
+
+In the stop-loss **market-cap input**, enter **be** or **br** to use your entry market cap. Set the sell size, review, and create the stop. An entry value must be available and the target must be valid.
+
+Breakeven describes the trigger, not guaranteed net recovery after fees, slippage, and price movement.
+
+## Multiple levels and allocation
+
+Where available, add manual steps, up to three. Review the **Sell size** basis: **% of entry** allocates slices of the position; **% of remaining** applies each percentage to what is left. See [Auto TP/SL sell sizing](/features/settings/auto-tp-sl#understand-sell-size).
+
+If Cove says **Entry target already passed**, no orders were placed for those invalid targets. Adjust the percentages and review again.
+
+## Follow the outcome
+
+Default expiry is **30 days**. A brief price wick can trigger an order even if the market has already moved back by execution time. High impact or execution errors can prevent a fill.
+
+Check [Manage orders](/features/managing-orders) for status, edits, and cancellation. Use [Trailing stop](/features/trailing-stop) for a moving peak-based exit, or [Auto TP/SL](/features/settings/auto-tp-sl) for future buys.

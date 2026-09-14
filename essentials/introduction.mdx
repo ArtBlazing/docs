@@ -1,38 +1,53 @@
 ---
-title: Introduction
-description: Understand Cove's Telegram trading flow and unified balance
-icon: book-open
+title: "Introduction"
+description: "Learn to trade, manage wallets, and automate orders in Telegram."
+icon: "book-open"
 ---
 
-# Cove
+Cove is a Telegram trading bot. Buy and sell tokens across supported chains with a USDC trading balance, manage several wallets, and set orders to act when a token reaches a target.
 
-<img className="block dark:hidden" src="/assets/hero_banner.png" alt="Cove trading documentation banner" />
-<img className="hidden dark:block" src="/assets/hero_banner.png" alt="Cove trading documentation banner" />
+Open the [Cove Trading](https://t.me/cove_trading_bot) bot in Telegram. Send `/start` whenever you want to return to the main menu.
 
-Cove is a Telegram-native trading terminal for supported on-chain markets. It combines visual buy and sell panels with positions, orders, accounts, transfers, referrals, and group links.
+## Explore the essentials
 
-<CardGroup>
-  <Card title="Unified balance" icon="wallet" iconType="solid">
-    Deposit once and use a unified USDC balance for trading flows across the networks listed on [Supported Chains](/essentials/supported-chains).
-  </Card>
-  <Card title="Visual trading" icon="chart-line" iconType="solid">
-    Open a token panel from a contract address or supported link, review the token details, and submit a buy or sell.
-  </Card>
-  <Card title="Sponsored gas" icon="gas-pump" iconType="solid">
-    Cove sponsors gas up to a cap. A trade that needs more can ask for an approved gas surplus from your balance.
-  </Card>
-  <Card title="Privy wallet access" icon="shield-check" iconType="solid">
-    Cove uses Privy signing access and secure Mini App flows. Review the account and wallet pages before exporting or revoking access.
-  </Card>
-</CardGroup>
+<Columns cols={3}>
+  <Card title="Supported chains" icon="globe" href="/essentials/supported-chains">See where you can trade, deposit, and withdraw.</Card>
+  <Card title="Fees & gas" icon="receipt" href="/essentials/fees-structure">Understand fees, minimums, and sponsored network costs.</Card>
+  <Card title="Rewards" icon="trophy" href="/features/referrals">Explore cashback, referrals, and reward payouts.</Card>
+</Columns>
 
-## What you can do
+## What would you like to do?
 
-- Trade supported tokens from Telegram.
-- Set limit buys, take profits, stop losses, and DCA ladders.
-- Track positions, sort by Worth or Age, hide positions, and generate PnL cards.
-- Trade with multiple Cove accounts.
-- Deposit, transfer between Cove accounts, transfer to a Telegram user, and withdraw.
-- Configure guardrails and trade panel behavior.
+<Columns cols={2}>
+  <Card title="Make your first trade" icon="rocket" href="/essentials/getting-started">Start Cove, add funds, and buy a token.</Card>
+  <Card title="Add funds" icon="wallet" href="/funds/deposit">Find the right deposit address and understand your balance.</Card>
+  <Card title="Create an automated order" icon="crosshairs" href="/features/orders-overview">Choose a limit buy, take-profit, stop-loss, trailing stop, or DCA ladder.</Card>
+  <Card title="Organize your wallets" icon="layer-group" href="/essentials/profiles">Separate strategies with profiles and choose which wallets trade.</Card>
+</Columns>
 
-Start with [Getting Started](/essentials/getting-started).
+## How Cove fits together
+
+| Part | What you use it for |
+|---|---|
+| **Telegram bot** | Trading, orders, alerts, funding, settings, and support |
+| **Profiles** | Separate sets of wallets, positions, orders, and trading settings |
+| **Wallets** | Hold funds; select one or several for a trade |
+| **Mini Apps** | Visual positions, portfolio history, deposits, and wallet management |
+| **Agent MCP** | Connect an external agent through the [MCP guide](/builders/mcp-tools) |
+
+Your **Balance** is spendable USDC on Solana in the active profile. Stablecoins on other chains may be moving into that balance or waiting for your approval. See [Bridge and parked funds](/funds/bridge).
+
+Cove sponsors network fees within its limits. Trading fees and occasional additional network costs still apply; see [Fees and minimums](/essentials/fees-structure).
+
+## Learn at your own pace
+
+<Columns cols={2}>
+  <Card title="Practice with virtual funds" icon="flask" href="/essentials/paper-trading">Learn the flow in the Paper profile.</Card>
+  <Card title="Understand your results" icon="chart-line" href="/features/history">Read PnL, review past positions, and explore the calendar.</Card>
+  <Card title="Find a command" icon="list" href="/help/commands">Jump straight to the panel you need.</Card>
+  <Card title="Get unstuck" icon="life-ring" href="/help/troubleshooting">Find the next step for a missing balance or pending trade.</Card>
+</Columns>
+
+<Note>
+Some features appear only when enabled for your account. Their guides explain how to recognize availability. These docs use English button labels; a few panels still say **Account** where newer panels say **Wallet**.
+</Note>

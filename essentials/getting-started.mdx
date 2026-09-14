@@ -1,45 +1,106 @@
 ---
-title: Getting Started
-description: Open Cove, fund a unified balance, and execute your first trade
-icon: rocket
+title: "Getting Started"
+description: "Start the bot, fund a wallet, and follow a buy through to your positions."
+icon: "rocket"
 ---
 
-Cove gives you a unified balance for supported trading flows. You do not need to prepare a separate gas balance for every trade, but gas sponsorship has a cap and some deposit routes have their own requirements.
+Start the bot, add USDC on Solana, buy a token, and find it in your positions. Cove creates your first wallet for you; you do not need to create or import another one to get started.
 
-<Stepper steps={[{label: 'Start'}, {label: 'Deposit'}, {label: 'Trade'}]} currentStep={1} />
+To learn with virtual money first, use [Paper trading](/essentials/paper-trading).
 
-## 1. Start the bot
+<Note>Screenshots use different example accounts and tokens. Follow the steps in your own account and always copy your own deposit address. The amounts and settings shown are examples, not recommendations. Select an image to enlarge it.</Note>
 
-Open [Cove Bot](https://t.me/cove_trading_bot) in Telegram and select `Start`.
+<Steps>
+  <Step title="Start Cove">
+    Open the [Cove Trading](https://t.me/cove_trading_bot) bot in Telegram and tap **Start**, or send `/start`. Complete the age confirmation if shown.
 
-<Frame><img src="/assets/current-ui/home-menu.png" alt="Current Cove home screen with unified balance and position values" /></Frame>
+    Cove creates your **Main** profile and a wallet. The main menu gives you access to **Deposit**, **Positions**, and **Settings**.
 
-The home screen shows your unified balance, positions, and actions such as Deposit, Transfer, Withdraw, Accounts, Settings, and Contact.
+    {/* Screenshot: start-home.png | Cove's main menu with the active profile, balance, positions, and navigation buttons. */}
+    <div className="cove-guide-figure">
+      <Frame caption="Cove's main menu with the active profile, balance, positions, and navigation buttons.">
+        <img src="/assets/guide-screenshots/start-home.png" alt="Cove's main menu with the active profile, balance, positions, and navigation buttons." width={752} height={698} className="cove-guide-screenshot" />
+      </Frame>
+    </div>
+  </Step>
+  <Step title="Deposit USDC on Solana">
+    Tap **Deposit** or send `/deposit`. Copy your wallet's address under **Deposit SOL**.
 
-## 2. Deposit
+    In the wallet or exchange you are sending from, select **USDC** and the **Solana** network, then use that address. **Deposit SOL** labels the network address; for this guide, the asset you send is **USDC**.
 
-Select `Deposit` and review the address and network shown in the panel before sending funds.
+    Wait for **Deposit received**, then send `/start` and check that **Balance** has increased before continuing. For other funding options, see [Deposit funds](/funds/deposit).
 
-The current UI states that you can deposit any token, including memecoins. It also shows:
+    {/* Screenshot reuse: deposit-addresses.png */}
+    <div className="cove-guide-figure">
+      <Frame caption="Open Deposit and copy your own address under Deposit SOL to receive USDC on Solana.">
+        <img src="/assets/guide-screenshots/deposit-addresses.png" alt="The Deposit panel with the Deposit SOL address used for USDC on Solana." width={733} height={1002} className="cove-guide-screenshot" />
+      </Frame>
+    </div>
+  </Step>
+  <Step title="Open a token">
+    Paste the token's contract address or a supported token link into the bot. Select the intended chain if asked.
 
-- A dedicated Deposit SOL address.
-- A dedicated Deposit HyperEVM address.
-- A shared Deposit EVM address for other EVM chains.
-- USDC deposits that can route into the Solana trading balance.
-- Solana deposits described as instant in the current panel.
-- A displayed minimum of $25 on Ethereum and $1 on other chains.
-- Card Top Up through MoonPay.
+    Check the token address, chain, selected wallet, and any warnings. Make sure the panel is on **Buying**.
 
-Some chains use smart wallets, where funds sit in a contract wallet controlled by your wallet access. Review the current Deposit panel for the exact route, asset, minimum, and fee before sending.
+    {/* Screenshot: trade-buy-panel.png | An example Buying panel; presets and slippage are saved user settings, not recommendations. */}
+    <div className="cove-guide-figure">
+      <Frame caption="An example Buying panel; presets and slippage are saved user settings, not recommendations.">
+        <img src="/assets/guide-screenshots/trade-buy-panel.png" alt="An example Buying panel; presets and slippage are saved user settings, not recommendations." width={752} height={795} className="cove-guide-screenshot" />
+      </Frame>
+    </div>
+  </Step>
+  <Step title="Choose an amount and buy">
+    For a separate confirmation like the one below, first open `/settings` → **Trade panel settings** and enable **Buy confirm**, then return to the token panel.
 
-<Frame><img src="/assets/current-ui/deposit.png" alt="Current Cove Deposit panel with funding routes and deposit addresses" /></Frame>
+    Tap **\$x** to enter a custom USD amount, or choose a preset. Check the amount and wallet, then tap **Buy** with the displayed amount when ready. Read any additional warning or fee prompt before proceeding.
 
-## 3. Trade
+    <Warning>Buy confirm is off by default. Without it, choosing a preset or entering a custom amount can submit the purchase immediately.</Warning>
 
-Send a token contract address to the bot or open a supported token link.
+    {/* Screenshot reuse: trade-buy-confirm.png */}
+    <div className="cove-guide-figure">
+      <Frame caption="With Buy confirm enabled, the selected amount appears on the final Buy button.">
+        <img src="/assets/guide-screenshots/trade-buy-confirm.png" alt="A selected buy amount and the Buy confirmation button on the token panel." width={733} height={988} className="cove-guide-screenshot" />
+      </Frame>
+    </div>
+  </Step>
+  <Step title="Check the purchase result">
+    Wait for **Buy Executed** and check **Spent** and **Received**. **Spent** includes the trading fee. If the purchase is still processing, wait for its result before trying again.
 
-<Frame><img src="/assets/current-ui/trading-buy-panel.png" alt="Current Cove Buy panel after a token contract has been resolved" /></Frame>
+    The token panel now shows your holding: **Cost**, **Worth**, and **PnL**. The screenshot below shows this updated position, not the execution receipt.
 
-Review the chain, token data, account, amount, slippage, and confirmation settings. Then select a buy or sell action. Follow the receipt and open Positions to review the result.
+    {/* Screenshot reuse: trade-position-after-buy.png */}
+    <div className="cove-guide-figure">
+      <Frame caption="After a buy, the token panel shows your position's cost, current worth, and PnL.">
+        <img src="/assets/guide-screenshots/trade-position-after-buy.png" alt="The token position after a purchase, showing Cost, Worth, and PnL." width={733} height={700} className="cove-guide-screenshot" />
+      </Frame>
+    </div>
+  </Step>
+  <Step title="Find your token in Positions">
+    Send `/positions` or tap **Positions** in the main menu. Find your token in the list and check its **Worth** and **PnL**. Tap the token's ticker to reopen its trading panel.
 
-See [Trading](/features/trading) for the panel controls.
+    If it is missing, tap **Refresh** and check the selected profile and filters. See [View and manage positions](/features/positions) for more options.
+
+    {/* Screenshot reuse: positions-list.png */}
+    <div className="cove-guide-figure">
+      <Frame caption="The /positions list shows your holdings, their current worth, and PnL.">
+        <img src="/assets/guide-screenshots/positions-list.png" alt="The Telegram /positions list with token holdings, Worth, PnL, and Refresh." width={712} height={1184} className="cove-guide-screenshot" />
+      </Frame>
+    </div>
+  </Step>
+</Steps>
+
+
+## What next?
+
+- [Sell part or all of a position](/features/trading#sell-a-token).
+- [Set a take-profit or stop-loss](/features/take-profit-stop-loss).
+- [Create a price alert](/features/price-alerts) without placing a trade.
+- [Back up your wallet](/essentials/security).
+
+## If the buy does not go through
+
+| Message | Next step |
+|---|---|
+| Not enough USDC | Check the profile and selected wallets, or reduce the amount |
+| Scam warning | Read **Find out why** before deciding |
+| Previous order still processing | Wait for its result before sending another trade |

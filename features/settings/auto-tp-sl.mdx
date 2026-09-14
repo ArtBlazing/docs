@@ -1,43 +1,78 @@
 ---
-title: Auto TP/SL
-description: Add automatic take-profit and stop-loss levels to future market buys
-icon: wand-sparkles
+title: "Auto take-profit and stop-loss"
+description: "Set exit rules for future buys and understand how sell levels are sized."
+icon: "crosshairs"
 ---
 
-Auto TP/SL adds configured exit orders to future market buys.
+Auto TP/SL creates take-profit and/or stop-loss orders after eligible market buys in the active profile. Both sides are **off by default**.
 
-<Frame><img src="/assets/current-ui/auto-tp-sl-overview.png" alt="Current Auto TP or SL overview with take-profit, stop-loss, and sell-sizing controls" /></Frame>
+Targets use the purchase's entry, regardless of the **Manual TP/SL basis** setting.
 
-## How it works
+## Configure a ladder
 
-1. Open Trade panel settings and choose Auto TP/SL.
-2. Enable Auto take profit, Auto stop loss, or both.
-3. Add one or more levels for each side.
-4. Set a trigger percentage and the percentage to sell.
-5. Save the levels.
+<Steps>
+  <Step title="Open Auto TP/SL">
+    Choose **Settings → Trade panel settings → Auto TP/SL**.
+  </Step>
+  <Step title="Choose the side">
+    Open **Auto TP** for profit targets or **Auto SL** for loss targets.
+  </Step>
+  <Step title="Set a level">
+    Choose its trigger percentage and **Sell %**. Take-profit gains allow **1–100,000%**; stop-loss losses allow **1–99%**; sell size allows **1–100%**.
+  </Step>
+  <Step title="Choose sell sizing">
+    Check **Sell size → % of entry** or **% of remaining**. Read the examples below before adding several levels.
+  </Step>
+  <Step title="Add levels where available">
+    Use **Add level** or **Delete**. Review the total allocation and estimated return summary. Enable the intended side.
+  </Step>
+  <Step title="Verify after your next buy">
+    Open `/orders` after an eligible purchase to confirm the expected exits were created.
+  </Step>
+</Steps>
 
-Auto take profit triggers after the configured gain. Auto stop loss triggers after the configured loss.
+{/* Screenshot: settings-auto-tpsl.png | The Auto TP/SL hub explains sell sizing and shows the automation toggles. */}
+<div className="cove-guide-figure">
+  <Frame caption="The Auto TP/SL hub explains sell sizing and shows the automation toggles.">
+    <img src="/assets/guide-screenshots/settings-auto-tpsl.png" alt="The Auto TP/SL hub explains sell sizing and shows the automation toggles." width={712} height={1107} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: settings-auto-tp-levels.png | An Auto TP ladder with editable gain levels, sell sizes, and a total-sell summary. */}
+<div className="cove-guide-figure">
+  <Frame caption="An Auto TP ladder with editable gain levels, sell sizes, and a total-sell summary.">
+    <img src="/assets/guide-screenshots/settings-auto-tp-levels.png" alt="An Auto TP ladder with editable gain levels, sell sizes, and a total-sell summary." width={712} height={902} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-<Tabs>
-  <Tab title="Auto take profit">
-    <Frame><img src="/assets/current-ui/auto-take-profit.png" alt="Current Auto take profit level settings" /></Frame>
-  </Tab>
-  <Tab title="Auto stop loss">
-    <Frame><img src="/assets/current-ui/auto-stop-loss.png" alt="Current Auto stop loss level settings" /></Frame>
-  </Tab>
-</Tabs>
+<Note>Accounts with multi-level controls can configure up to **20 TP levels and 20 SL levels**. If Add level is absent, use the single level available in your account.</Note>
 
-## Sell sizing
+## Understand sell size
 
-The current UI offers two sizing modes.
+The default basis is **% of remaining**.
 
-| Mode | Meaning |
+| Basis | Two levels set to sell 50% each |
 |---|---|
-| `% of entry` | Each level sells a fixed percentage of the original position |
-| `% of remaining` | Each level sells a percentage of the position left when the level triggers |
+| **% of entry** | Each allocates half of the position used to size the ladder; the two levels allocate 100% |
+| **% of remaining** | First sells half; second sells half of what remains, leaving 25% of the original quantity |
 
-The UI warns that `% of entry` levels cannot total more than 100%. Levels can be added and deleted. Auto take profit and Auto stop loss can be enabled independently.
+Entry-based allocations cannot exceed 100%. The product may show **100% of entry allocated** when you need to reduce a level before adding another. This sell-size basis also affects manual multi-step limit sells.
 
-## Scope
+The **Total sell** and **Est. return on sold tokens** summary assumes fills at targets, nearest first, before fees/slippage, and excludes unsold tokens. It is not a forecast.
 
-Auto TP/SL applies to new market buys. Existing positions are not changed retroactively. Manual limit sells remain available separately.
+## Buying more and existing orders
+
+A later buy can re-anchor Auto TP/SL targets to the updated average entry. Cove avoids stacking another set when active sell orders already exist for the token.
+
+Some accounts offer live-position sizing for entry-based allocations. Review the actual order sizes after additional buys or manual sells; do not assume existing quantities rebalance automatically unless that behavior is confirmed for your account.
+
+USDC, native-token, and automatic bridge operations do not create these exits.
+
+## Disable or change the rules
+
+Turn **Auto TP** or **Auto SL** off to stop future automatic creation for that side. Edit levels for future setup, then separately inspect active orders in `/orders`. Do not assume changing the rule cancels protection already placed.
+
+## Missing or failed protection
+
+**Auto TP/SL Incomplete** means at least one expected order was not created. Add the missing order manually and verify it.
+
+A stop blocked by excess network cost may be **no longer armed**. Set an appropriate [Gas surplus budget](/features/settings/guardrails#gas-surplus-budget) if desired, then recreate it. Increasing the budget alone does not restore the stop.

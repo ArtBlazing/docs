@@ -1,7 +1,26 @@
 ---
-title: Language
-description: Change the Cove interface language
-icon: language
+title: "Language"
+description: "Switch Cove's bot interface between English and Chinese."
+icon: "language"
 ---
 
-Open Settings and select `Language`, then choose one of the languages shown in the menu.
+Cove supports **English** and **中文**. English is the documented default.
+
+## Change language
+
+1. Send `/language`, or open **Settings → Language**.
+2. Choose **English** or **中文**.
+3. Reopen the panel you want to use to see its localized labels.
+
+{/* Screenshot: settings-language.png | Choose English or Chinese for your own bot interface. */}
+<div className="cove-guide-figure">
+  <Frame caption="Choose English or Chinese for your own bot interface.">
+    <img src="/assets/guide-screenshots/settings-language.png" alt="Choose English or Chinese for your own bot interface." width={712} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+Language is shared across your account rather than set separately for each profile. Mini Apps use the account locale. The guides here quote the English labels.
+
+Telegram's own theme controls the bot appearance; Cove has no separate documented bot theme switch.
+
+Chinese token-name translation, where offered, is a token-panel feature and is separate from changing the whole interface language.

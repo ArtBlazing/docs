@@ -1,0 +1,52 @@
+---
+title: "Find your way around"
+description: "Understand the main menu, token panels, profile picker, and Mini Apps."
+icon: "compass"
+---
+
+Cove runs in Telegram messages with buttons. Send `/start` to return home or `/help` to see commands.
+
+## Main menu
+
+| Button or line | What it opens or means |
+|---|---|
+| **Active profile → Manage** | [Profiles](/essentials/profiles) |
+| **Balance** | Spendable USDC in this profile |
+| **Positions** | [Holdings and PnL](/features/positions) |
+| **Parked on other chains** | [Bridge approvals](/funds/bridge) |
+| **Limit orders** | [Active orders](/features/managing-orders) |
+| **Deposit / Transfer / Withdraw** | Add or send funds |
+| **Refer & Earn** | [Referrals and rewards](/features/referrals) |
+| **Wallets** | [Wallet management and trading selection](/essentials/accounts) |
+| **Settings** | [Trading and display preferences](/features/settings) |
+| **Contact** | [Support tickets](/features/support) |
+| **Refresh / Close** | Refresh values or dismiss the message |
+
+**Back** returns to the previous panel. **Close** dismisses a message; it does not cancel a trade or order. Telegram may not allow older messages to be deleted.
+
+## Token panel
+
+Paste an address or open a ticker in Positions. The panel contains buy/sell actions, slippage, charts, alerts, and **Limit**. The order builder has **Limit**, **DCA**, and **Trailing SL** tabs. **Manage Position** opens a Mini App when enabled.
+
+See [Read the token panel](/features/token-panel) for its fields.
+
+## Profiles versus wallet selection
+
+The **Active** profile button changes the wallets and settings you are using. The wallet picker selects which wallets *inside that profile* trade together.
+
+If you switch profiles, reopen old trading or transfer panels. Their controls may belong to the previous profile.
+
+{/* Screenshot: navigation-profile-picker.png | The Profiles menu shows balances, wallet counts, and the active profile. */}
+<div className="cove-guide-figure">
+  <Frame caption="The Profiles menu shows balances, wallet counts, and the active profile.">
+    <img src="/assets/guide-screenshots/navigation-profile-picker.png" alt="The Profiles menu shows balances, wallet counts, and the active profile." width={752} height={790} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Mini Apps, chains, and shortcuts
+
+[Mini Apps](/essentials/mini-apps) provide visual positions, history, funding, and wallet management.
+
+For ordinary token trading, the token determines the chain. If an address matches several networks, Cove asks which one you mean.
+
+Use [Commands](/help/commands) for direct shortcuts, [Settings](/features/settings) for layout changes, and `/bots` for the primary and backup bot handles. Telegram's theme controls the bot appearance.

@@ -202,3 +202,18 @@ html.light,
 .light main {
   background-color: var(--bg-light) !important;
 }
+/* Only the newly supplied guide images; published pages keep their styling. */
+.cove-guide-figure {
+  width: 100%;
+  max-width: 560px;
+  margin: 1.5rem auto 2rem;
+}
+
+.cove-guide-figure img.cove-guide-screenshot {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  border-radius: 8px !important;
+}

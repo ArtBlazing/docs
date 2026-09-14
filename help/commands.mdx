@@ -1,0 +1,62 @@
+---
+title: "Commands"
+description: "A quick reference for Cove's Telegram shortcuts and reply commands."
+icon: "terminal"
+---
+
+Send commands to the [Cove Trading](https://t.me/cove_trading_bot) bot in Telegram. Use `/help` for the list available to your account.
+
+## Navigation, wallets, and funds
+
+| Command | Opens |
+|---|---|
+| `/start` | Main menu and onboarding |
+| `/wallets` | Wallets and trading selection |
+| `/accounts` | Alias for Wallets |
+| `/profiles` or `/profile` | Profiles, where enabled |
+| `/deposit` | Deposit addresses |
+| `/bridge` | Parked funds and bridge approvals |
+| `/withdraw` | External stablecoin withdrawal |
+| `/transfer` | USDC transfer, disperse, and collect |
+| `/positions` | Holdings |
+| `/orders` | Orders in the active profile |
+| `/alerts` | Account-wide alerts and Auto alerts |
+| `/export` | Real-trade CSV export |
+| `/paper` | Paper trading; may be absent from the menu |
+
+## Settings and support
+
+| Command | Opens |
+|---|---|
+| `/settings` | Settings hub |
+| `/slippage` | Slippage control |
+| `/trade_panel_settings` | Trade panel preferences |
+| `/autobuy` | Auto-buy on paste |
+| `/language` | English / Chinese |
+| `/refer` | Referral link and rewards |
+| `/support` | Contact and tickets |
+| `/docs` | Documentation |
+| `/bots` | Primary and backup bots |
+| `/help` | Current command help |
+| `/agent` | Agent controls; see the [MCP guide](/builders/mcp-tools) |
+
+## Commands that reply to a token panel
+
+<Warning>Complete DCA and trailing commands place orders immediately. Sending the message is the confirmation. Alert commands create alerts immediately but do not trade. The examples are not trade recommendations.</Warning>
+
+First open the token, choose the intended profile/wallets, then use Telegram's **Reply** on that fresh panel.
+
+| Example | Action |
+|---|---|
+| `/dca B 800k - 1.5m 10 500` | Buy ladder, 800k–1.5m market cap, 10 rungs, \$500 total |
+| `/dca S 80k - 120k 10 100` | Sell ladder, 80k–120k, 10 rungs, 100% total |
+| `/trailing 50 100` | Trail by 50%, sell 100% |
+| `/alert 300k` | One market-cap alert, default seven-day expiry |
+
+Send `/dca`, `/trailing`, or `/alert` without arguments for a tutorial. If a reply says the panel expired, reopen the token. If it says the command was already received, check Orders or Alerts before sending again.
+
+## Conditional quick commands
+
+`/quickbuy` and `/quicksell` are available only where enabled and can execute without confirmation. Read the command's built-in help for the accepted arguments before using it. For a guided setup, use the [Buy and sell panels](/features/trading).
+
+For commands used by the separate community scanner, see [Cove Buy commands](/groups/cove-buy#available-features).

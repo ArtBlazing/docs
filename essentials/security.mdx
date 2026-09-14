@@ -1,27 +1,71 @@
 ---
-title: Security
-description: Understand wallet access, execution checks, and the limits of Cove's protections
-icon: shield-check
+title: "Wallet security and recovery"
+description: "Back up keys, manage Cove's access, and recover a deleted wallet."
+icon: "shield-halved"
 ---
 
-Cove combines wallet access controls, pre-trade checks, and execution routing. No single control removes the risks of token trading.
+Cove uses your Telegram identity and Privy-backed wallets. You own the wallet; Cove's permission to trade and move funds can be removed and restored.
 
-## Wallet access
+Protect access to Telegram and keep keys private. These wallets use individual private keys rather than a shared seed phrase.
 
-Cove uses Privy and secure Mini App flows for wallet access and signing. A wallet can remain under your control after Cove or Privy signing access is revoked. Smart-wallet and downgrade behavior depends on the account flow. See [Accounts & Wallets](/essentials/accounts).
+## Export a private key
 
-Do not share private keys, seed phrases, authentication codes, or export screenshots.
+<Steps>
+  <Step title="Open wallet management">
+    In the primary Cove bot, choose the intended profile, then `/wallets` → **Export Wallet**.
+  </Step>
+  <Step title="Select the wallet">
+    In **Cove Wallets → Active**, check the label and address. If it is in another profile, switch in Telegram and reopen the app.
+  </Step>
+  <Step title="Export securely">
+    Tap **Export Private Key**. Follow the Privy-hosted secure window and save the backup somewhere only you can access.
+  </Step>
+</Steps>
 
-## Execution protections
+{/* Screenshot: security-wallets-active.png | Active wallets with export controls. No private keys are displayed. */}
+<div className="cove-guide-figure">
+  <Frame caption="Active wallets with export controls. No private keys are displayed.">
+    <img src="/assets/guide-screenshots/security-wallets-active.png" alt="Active wallets with export controls. No private keys are displayed." width={502} height={920} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-The product includes slippage, liquidity protection, max-buy adjustment, high price-impact confirmation, token data checks, and gas surplus controls. These settings have different scopes and do not guarantee a successful or profitable trade.
+<Warning>Never share a private key or capture it in a screenshot. Losing a backup may leave you without independent access if you also lose access to your account.</Warning>
 
-Private routing and simulation can reduce certain execution risks, but they do not guarantee a fill or prevent loss.
+## Delete a wallet from Cove
 
-## Token risk
+Review its funds and orders first. Your **primary** wallet and **only** wallet cannot be deleted.
 
-Token checks can identify some contract or execution risks. They cannot prevent a legitimate token from losing value, becoming illiquid, or behaving differently after deployment. Verify the contract address and review the token and liquidity data before submitting a trade.
+1. Open `/wallets` → its **⚙️** → **Delete Wallet**.
+2. Open **Manage Wallets**.
+3. Review the wallet, then **Yes, Delete & Revoke** if you intend to remove access.
 
-## Gas sponsorship
+Deletion hides the wallet and removes Cove's ability to trade or move funds. It does not sell its tokens or erase the blockchain wallet.
 
-The UI describes Cove as gasless for supported flows, but sponsorship has a cap. If the network cost exceeds the sponsored amount, Cove can ask you to approve a gas surplus according to Settings, Guardrails.
+## Recover a deleted wallet
+
+Open **Cove Wallets → Deleted**, find the wallet, tap **Recover**, then **Yes, Recover**. Return to `/wallets` and check the wallet selection.
+
+Re-importing its key does not restore a deleted wallet; use **Recover**.
+
+{/* Screenshot: security-wallets-deleted.png | Deleted wallets with the Recover account option. No private keys are displayed. */}
+<div className="cove-guide-figure">
+  <Frame caption="Deleted wallets with the Recover account option. No private keys are displayed.">
+    <img src="/assets/guide-screenshots/security-wallets-deleted.png" alt="Deleted wallets with the Recover account option. No private keys are displayed." width={502} height={920} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Restore lost access
+
+If a wallet shows **Signing access lost**, open Cove Wallets → **Restore access** and confirm. Wait for **Signing access restored** before retrying.
+
+Until then, trades, transfers, and withdrawals may fail. If every wallet loses access, deposits may also be unavailable.
+
+## Downgrade a smart wallet
+
+Where available, `/wallets` → **⚙️ → Downgrade Smart Wallet** removes the smart-wallet authorization used on applicable chains. Review the prompt. A later Cove trade may enable it again. This differs from deleting the wallet and revoking Cove's access.
+
+## Wrong Telegram account in a Mini App
+
+Tap **Switch to this Telegram account**. If that fails, close the app and reopen it from the intended Telegram account. Use `/bots` to find the primary bot when a secure operation is unavailable on a backup.
+
+Manage external agents using the [MCP guide](/builders/mcp-tools). [Support](/features/support) never needs your keys or access tokens.

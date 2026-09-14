@@ -1,45 +1,69 @@
 ---
-title: Limit Orders
-description: Create and manage limit buys, take-profit orders, and stop-loss orders
-icon: crosshairs
+title: "Create a limit buy"
+description: "Buy automatically when a token reaches a market-cap or percentage target."
+icon: "crosshairs"
 ---
 
-Limit orders let you define an entry or exit condition and review the order later from the active orders view.
+A Cove limit buy waits for a market-cap target or percentage move, then attempts a market buy with your selected wallets and applicable settings.
 
-## Limit buy
+Use a **dip buy** below the current market or a **breakout buy** above it. You enter the amount to spend separately from the trigger.
 
-1. Open the Buy panel for a token.
-2. Select `Limit`.
-3. Enter the target and amount.
-4. Review the expected output.
-5. Confirm the order.
+## Buy a dip
 
-<Frame><img src="/assets/current-ui/limit-buy.png" alt="Current limit-buy order form with trigger and spend controls" /></Frame>
+<Steps>
+  <Step title="Open the token and choose wallets">
+    Paste the contract address. Check the chain, active profile, selected wallets, and available USDC.
+  </Step>
+  <Step title="Open the limit builder">
+    Tap **Limit** and choose **Buying** on the **Limit** tab.
+  </Step>
+  <Step title="Choose the trigger type">
+    Select **By Market cap** for a fixed capitalization, or **By %** for a move from the market when you place the order.
+  </Step>
+  <Step title="Set the target">
+    For market cap, enter a value below the current cap, such as **800k**. For a dip percentage, enter a negative move such as **-20**.
 
-Cove shows the order in the active orders list after it is created.
+    Accepted market-cap shorthand includes **45k** and **12.5M**.
+  </Step>
+  <Step title="Set spending and expiry">
+    Open **Spend** and enter the USD amount. Review **Expiry**; the default is **30 days** and the allowed range is 1 minute–30 days.
+  </Step>
+  <Step title="Place and verify">
+    Review the target, spend, wallets, and expiry, then tap **Place limit buy**. Open `/orders` and verify the new order in the correct profile.
+  </Step>
+</Steps>
 
-## Take profit
+{/* Screenshot: limit-buy-form.png | A limit-buy form with target, spend, expiry, and selected wallets. */}
+<div className="cove-guide-figure">
+  <Frame caption="A limit-buy form with target, spend, expiry, and selected wallets.">
+    <img src="/assets/guide-screenshots/limit-buy-form.png" alt="A limit-buy form with target, spend, expiry, and selected wallets." width={712} height={1066} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: limit-buy-created.png | Active limit buys shown on the token panel, with wallet, target, spend, Edit, and Cancel. */}
+<div className="cove-guide-figure">
+  <Frame caption="Active limit buys shown on the token panel, with wallet, target, spend, Edit, and Cancel.">
+    <img src="/assets/guide-screenshots/limit-buy-created.png" alt="Active limit buys shown on the token panel, with wallet, target, spend, Edit, and Cancel." width={712} height={680} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-1. Open the Sell panel for an active position.
-2. Select `Create Take Profit`.
-3. Enter the gain target and sell percentage.
-4. Review and confirm.
+## Example
 
-Multiple levels can appear in the position card.
+Assume a token's current market cap is **\$1 million**. You want to buy **\$100** if it falls to **\$800,000**.
 
-<Frame><img src="/assets/current-ui/take-profit.png" alt="Current take-profit order form with target and sell-percentage controls" /></Frame>
+Set **By Market cap → 800k** and **Spend → 100**, then review and place the order. An equivalent **-20%** target uses the market reference at placement; a fixed **800k** remains that specific target.
 
-## Stop loss
+This is an illustrative setup. The actual fill depends on the quote and liquidity when the order executes.
 
-1. Open the Sell panel for an active position.
-2. Select `Create Stop Loss`.
-3. Enter the loss target and sell percentage.
-4. Review and confirm.
+## Buy a breakout
 
-<Frame><img src="/assets/current-ui/stop-loss.png" alt="Current stop-loss order form with target and sell-percentage controls" /></Frame>
+Use the same flow with a target **above** current market cap or a positive change, such as **+10%**. Review the direction in the confirmation so you create a breakout order rather than a dip order.
 
-## Active orders
+## More than one target
 
-Open `Limit Orders` from the main menu to see active orders grouped by token. Each order exposes its trigger and target with Edit and Cancel where supported. The dashboard also includes `Cancel all orders` with a confirmation step.
+Where the builder offers **Add step**, you can configure up to **three steps**. Check each target and spend before placing the group. For an evenly spaced range of 2–10 targets, use [DCA](/features/dca-orders).
 
-<Frame><img src="/assets/current-ui/active-orders.png" alt="Current Active Orders panel with Edit and Cancel actions" /></Frame>
+## Why is the order still open?
+
+The target may not have been reached. A high-impact refusal can also leave the order active and waiting. A failed or expired order is different and may require a new order.
+
+Edit or cancel pending orders in [Manage orders](/features/managing-orders). To automate selling, use [Take-profit and stop-loss](/features/take-profit-stop-loss).

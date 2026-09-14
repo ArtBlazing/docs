@@ -1,0 +1,68 @@
+---
+title: "Private Disperse"
+description: "Fund your own wallets through separately routed USDC payments."
+icon: "shuffle"
+---
+
+Private Disperse routes one payment through an exchange-routing provider, Husher, to fund your own wallets separately. Each destination can have its own amount, exchange, and delay.
+
+<Note>This option appears in `/transfer` only where available. If it is absent, use standard [Disperse USDC](/features/transfers) or ask support about availability.</Note>
+
+## Set up a run
+
+Choose `/transfer` → **Private Disperse** to open Cove Wallets, then follow its four steps.
+
+<Steps>
+  <Step title="Choose Which wallet pays">
+    Select a wallet with enough **Solana USDC**. Wallets below the route minimum are marked.
+
+    {/* Screenshot: private-disperse-source.png | Step 1: choose the wallet that pays for the Private Disperse run. */}
+    <div className="cove-guide-figure">
+      <Frame caption="Step 1: choose the wallet that pays for the Private Disperse run.">
+        <img src="/assets/guide-screenshots/private-disperse-source.png" alt="Step 1: choose the wallet that pays for the Private Disperse run." width={693} height={1030} className="cove-guide-screenshot" />
+      </Frame>
+    </div>
+  </Step>
+  <Step title="Choose Which wallets receive">
+    Choose one profile and **1–10 of your own wallets**. Review each destination.
+
+    {/* Screenshot: private-disperse-recipients.png | Step 2: select the profile and the wallets that will receive funds. */}
+    <div className="cove-guide-figure">
+      <Frame caption="Step 2: select the profile and the wallets that will receive funds.">
+        <img src="/assets/guide-screenshots/private-disperse-recipients.png" alt="Step 2: select the profile and the wallets that will receive funds." width={693} height={889} className="cove-guide-screenshot" />
+      </Frame>
+    </div>
+  </Step>
+  <Step title="Set How much, and when">
+    Enter **Total to disperse**. Use **Randomize all**, **Spread**, and **Over** as needed. Review every row's amount, **Via** exchange, and **After** delay.
+
+    {/* Screenshot: private-disperse-amounts.png | Step 3: set the total, recipient allocations, exchanges, and delays before the final review. */}
+    <div className="cove-guide-figure">
+      <Frame caption="Step 3: set the total, recipient allocations, exchanges, and delays before the final review.">
+        <img src="/assets/guide-screenshots/private-disperse-amounts.png" alt="Step 3: set the total, recipient allocations, exchanges, and delays before the final review." width={693} height={1302} className="cove-guide-screenshot" />
+      </Frame>
+    </div>
+  </Step>
+  <Step title="Confirm the run">
+    Check **You send**, **They receive**, **Exchange fee**, and the estimated last arrival. Tap **Disperse** with the displayed USD amount only when ready.
+  </Step>
+</Steps>
+
+**Over** offers **Right away**, **30m**, **1h** (default), **3h**, **6h**, **12h**, and **24h**. Each exchange has its own minimum; the live preview shows any row that is too small.
+
+
+## Follow progress
+
+You can close the Mini App and follow Telegram notifications. Reopen the run for per-wallet **Queued**, **Scheduled**, **Sending**, **Funded**, **Failed**, or **Refunded** states.
+
+**Send now** skips a destination's remaining delay. **Track on Husher** opens provider tracking. A partial completion means some destinations were funded while others still need attention.
+
+For failed destinations, use **Get refund** to open support. Keep the run reference. Do not create a replacement run before reviewing completed destinations.
+
+## Costs and limitations
+
+The route is **Solana USDC to Solana USDC**. Destinations must be your own Cove wallets within one profile. Review the live exchange fee and each minimum rather than relying on a historical example.
+
+Routing changes how payments appear on-chain; it is not a guarantee of anonymity or the absence of provider records. Once payment is sent, it cannot be recalled.
+
+For an external destination, see [Private Withdraw](/funds/private-withdraw).

@@ -1,27 +1,66 @@
 ---
-title: Support
-description: Send feedback, ask for help, and reply to support tickets
-icon: headset
+title: "Contact support"
+description: "Create a ticket, attach a screenshot or recording, and follow replies."
+icon: "life-ring"
 ---
 
-Select `Contact` on the Cove home screen. The opened panel is titled `Support`.
+Open **Contact** on the main menu or send `/support`.
 
-<Frame><img src="/assets/current-ui/support-overview.png" alt="Current Cove Support panel with Send Feedback and Get Help actions" /></Frame>
+## Create a ticket
 
-## Send Feedback
+<Steps>
+  <Step title="Choose the request type">
+    Select **Get Help** for a problem or **Send Feedback** for a suggestion.
+  </Step>
+  <Step title="Describe the issue">
+    Include what you tried, what happened, the token/chain, and the profile involved. For a failed trade, forward its failure message with the reference.
+  </Step>
+  <Step title="Add an attachment if useful">
+    Send a Telegram photo or a supported video up to **20 MB**. A caption becomes the message text.
+  </Step>
+  <Step title="Track the ticket">
+    Check **Ticket created** and its number. Use **My Tickets** to view, reply, or close it.
+  </Step>
+</Steps>
 
-1. Select `Send Feedback`.
-2. Enter your feedback in the prompt.
-3. Submit it and review the delivery receipt.
+{/* Screenshot: support-menu.png | Support options: Send Feedback, Get Help, and My Tickets. */}
+<div className="cove-guide-figure">
+  <Frame caption="Support options: Send Feedback, Get Help, and My Tickets.">
+    <img src="/assets/guide-screenshots/support-menu.png" alt="Support options: Send Feedback, Get Help, and My Tickets." width={712} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: support-ticket.png | The Get Help prompt and confirmation that a support ticket was created. */}
+<div className="cove-guide-figure">
+  <Frame caption="The Get Help prompt and confirmation that a support ticket was created.">
+    <img src="/assets/guide-screenshots/support-ticket.png" alt="The Get Help prompt and confirmation that a support ticket was created." width={712} height={1021} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-## Get Help
+## Screenshots and screen recordings
 
-1. Select `Get Help`.
-2. Send a text description or photo.
-3. Review the support reply card when a response arrives.
-4. Select `Reply` to continue the ticket.
-5. Select `Close Ticket` when the issue is resolved.
+| Attachment | How to send |
+|---|---|
+| Screenshot/image | Send as a **Telegram photo**, not an image file |
+| Video/screen recording | **MP4, MOV, or WebM**, as video or file |
+| Size | Up to **20 MB per attachment** |
 
-<Frame><img src="/assets/current-ui/support-get-help.png" alt="Current Get Help prompt asking for a text description or photo" /></Frame>
+Use one attachment per message. Add more through **Add More Details** or by replying to a ticket notification. Trim an oversized recording before resending.
 
-Never include private keys, seed phrases, wallet-export secrets, authentication codes, or private support-ticket conversations in documentation screenshots or examples.
+If attachments are temporarily unavailable, send the text first and add the attachment later.
+
+## Information that helps
+
+- The expected result and actual result.
+- Approximate time, profile, wallet label, token, and network.
+- The failure message and its reference.
+- A screenshot of the complete error or a short recording.
+- For a marketplace purchase: **Copy reference and open chat**.
+- For a failed Private Disperse: **Get refund**.
+
+<Warning>Never send private keys, seed phrases, agent tokens, import CSVs containing keys, or login codes. Crop or mask sensitive information in attachments.</Warning>
+
+## Other help
+
+Use [Troubleshooting](/help/troubleshooting) for common problems, `/help` for commands, `/docs` for documentation, and `/bots` for Cove's primary and backup bot handles.
+
+Support replies arrive in Telegram and can be answered from the notification or **My Tickets**.

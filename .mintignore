@@ -1,5 +1,10 @@
 Telegram Desktop/
+Cove UI screenshots/
+.agent/
+review/
+design-system/cove-trading/
 COVE_KNOWLEDGE_FOR_AGENTS.md
+COVE_KNOWLEDGE_BASE_AGENT_PROMPT.md
 DOCS_PRODUCT_GAPS.md
 DOCS_UPDATE_REPORT.md
 mcp-tools 101.md

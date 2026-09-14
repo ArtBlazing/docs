@@ -1,68 +1,65 @@
 ---
-title: Trade panel settings
-description: Configure buy and sell presets, confirmations, panel behavior, links, and Auto TP/SL
-icon: sliders
+title: "Trade panel settings"
+description: "Customize buy/sell buttons, confirmations, charts, and position information."
+icon: "sliders"
 ---
 
-Trade panel settings change the controls shown when you open a token.
+Open `/settings` → **Trade panel settings**, or send `/trade_panel_settings`.
 
-<Frame><img src="/assets/current-ui/trade-panel-settings.png" alt="Current Trade panel settings with presets, confirmations, display controls, Auto TP or SL, and extra links" /></Frame>
+## Change buy presets
 
-## Presets and confirmations
+<Steps>
+  <Step title="Open Buy preset amounts">
+    Choose **Amount (\$)** or **Percent (%)** mode.
+  </Step>
+  <Step title="Edit a button">
+    Tap the preset to change, send the requested value, and check the updated list. Percent mode uses buying power, not token holdings.
+  </Step>
+  <Step title="Review or reset">
+    Reopen the token panel to see the new buttons. **Reset defaults** restores buy presets.
+  </Step>
+</Steps>
 
-| Setting | What it changes |
-|---|---|
-| Buy preset amounts | The five quick-buy buttons. Each preset can use an amount or percentage mode |
-| Sell preset amounts | The quick-sell percentage buttons. Each preset accepts a whole-number percentage in the observed UI |
-| Buy confirm | Adds a confirmation step before a buy |
-| Sell confirm | Adds a confirmation step before a sell |
-| Max buy button | Adds a `max` action that uses the selected wallets' available balance, with a confirmation step |
-| Nest accounts | Hides account choices behind an account button when enabled |
-| Show Mini App button | Shows or hides the Mini App action |
-| Show Chart button | Shows or hides the inline Chart action |
-| Capital at Risk / Profit Taken | Combines the separate Cost and Sold lines into capital still at risk and profit already taken |
-| Always open on Buy | Controls the opening side and the side shown after a buy fills |
-| Auto-buy on paste | Starts a buy as soon as you paste or forward a token contract |
-| Auto TP/SL | Adds configured take-profit and stop-loss orders to future market buys |
-| Extra links | Shows links such as DexS, Defined, GMGN, Basedbot, and X |
+Documented default buy buttons are **\$50 / \$100 / \$250 / \$500 / \$1000**, or **10 / 25 / 50 / 75 / 100%** in percentage mode. Existing profiles may have custom values.
 
-## Buy and sell presets
+For sells, open **Sell preset amounts**, choose a button, and enter its percentage. Defaults are **25 / 50 / 100%**. Follow the input's validation.
 
-Buy presets support amount and percent modes, editing, and Reset defaults. Defaults can depend on the selected chain and account.
+{/* Screenshot: settings-buy-presets.png | Buy preset amounts с Amount/Percent, редактируемыми значениями и Reset defaults. */}
+{/* Screenshot: settings-trade-panel.png | Trade panel settings, включая confirmations, buttons, text и automation. */}
 
-<Tabs>
-  <Tab title="Buy presets">
-    <Frame><img src="/assets/current-ui/trade-buy-presets.png" alt="Current Buy preset amount editor with amount and percentage modes" /></Frame>
-  </Tab>
-  <Tab title="Sell presets">
-    <Frame><img src="/assets/current-ui/trade-sell-presets.png" alt="Current Sell preset percentage editor" /></Frame>
-  </Tab>
-</Tabs>
+## Buttons and confirmations
 
-Sell presets use percentage values. Edit a preset and save it, or use Reset defaults.
+| Setting | Default | What it changes |
+|---|---|---|
+| **Buy confirm** | Off | Add a confirmation before a normal buy |
+| **Sell confirm** | Off | Add a confirmation before a normal sell |
+| **Max buy button** | Off | Show a full-buying-power button; Max always confirms |
+| **Nest accounts** | On | Put wallet selection behind a button |
+| **Show Mini App button** | On | Show **Manage Position** |
+| **Show Chart button** | On | Show the chart action |
+| **Use DexScreener charts** | Off | Choose DexScreener instead of Defined; shown when Chart is on |
 
-## Always open on Buy
+Normal confirmation preferences do not suppress mandatory risk or fee prompts. **Positions sell links** have their own [Sell confirmation setting](/features/settings/position-panel).
 
-The current label is `Always open on Buy`.
+## Position text and links
 
-- When enabled, a scanned token opens on Buy, including a token you already hold. The panel stays on Buy after a buy fills.
-- When disabled, a held token opens on Sell, and the panel switches to Sell after a buy fills.
-- An explicit sell action, including Sell 100%, still opens Sell.
+| Setting | Default | What it changes |
+|---|---|---|
+| **Total PnL per token** | Off | Show lifetime PnL rather than the current holding cycle |
+| **Capital at Risk / Profit Taken** | Off | Replace separate Cost/Sold lines with the summarized view |
+| **Extra links** | All off | Individually show Dex S, Defined, GMGN, Basedbot, or X |
+| **Sell link presets** | 25 / 50 / 100% | Add quick-sell percentages to the panel text |
 
-<Frame><img src="/assets/current-ui/trade-always-open-on-buy.png" alt="Current Always open on Buy setting with enabled and disabled behavior" /></Frame>
+Open **Extra links** and toggle each destination you want. These controls change display, not the token itself. Read [PnL and history](/features/history) before comparing different PnL views.
 
-## Auto-buy on paste
+## Opening side and automation
 
-Auto-buy on paste uses a fixed buy amount. When enabled, pasting or forwarding a token contract starts the buy immediately. The current UI warns that funds are spent at paste time. Choose `$10`, `$25`, `$50`, `$100`, or `Custom`. Normal slippage and pre-trade checks still apply.
+**Always open on Buy** is on by default. A scanned token opens on Buy even if you hold it, and stays on Buy after a purchase. With it off, held tokens can open on Sell and switch to Sell after buying. Explicit sell actions still open the sell side.
 
-<Frame><img src="/assets/current-ui/trade-auto-buy-on-paste.png" alt="Current Auto-buy on paste settings with amount choices and warning" /></Frame>
+Other entries have their own guides:
 
-## Extra links
+- [Auto-buy on paste](/features/settings/auto-buy): a standing immediate-buy rule.
+- [Auto TP/SL](/features/settings/auto-tp-sl): exit orders after buys.
+- [Manual TP/SL basis](/features/take-profit-stop-loss#choose-the-percentage-reference-first): market versus average entry for manual percentage targets.
 
-Extra links add shortcuts below the Buy and Sell panels. The observed options are DexS, Defined, GMGN, Basedbot, and X. Vendor availability can change.
-
-<Frame><img src="/assets/current-ui/trade-extra-links.png" alt="Current Extra links settings for trading panels" /></Frame>
-
-## Confirmations
-
-Buy Confirm and Sell Confirm are independent toggles. Enable either setting to add a confirmation step before the corresponding trade.
+Presets and execution preferences generally follow the profile; many chart/button display choices are account-wide. See [Settings scope](/features/settings#which-settings-change-with-a-profile).

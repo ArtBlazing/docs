@@ -1,57 +1,92 @@
 ---
-title: Trading
-description: Open token panels, review token data, and execute buys or sells
-icon: chart-line
+title: "Buy and sell tokens"
+description: "Place a market trade and understand its confirmation and receipt."
+icon: "arrow-right-arrow-left"
 ---
 
-Send a token contract address to Cove or open a supported token link. Cove resolves the token and chain, then opens the trading panel.
+A market trade buys or sells as soon as it can execute at the available quote. It differs from an [automated order](/features/orders-overview), which waits for a trigger.
 
-<Frame>
-  <img src="/assets/current-ui/trading-buy-panel.png" alt="Current Cove Buy panel with token data and quick-buy controls" />
-</Frame>
+## Before you trade
 
-## Before you submit
+Check the **active profile**, **selected wallets**, token address, chain, liquidity, and slippage. If several wallets are selected, check [Spend type](/features/multi-wallet-trading).
 
-Review the token name, ticker, chain, contract address, market cap, liquidity, token tax when available, and burned percentage when available. Cove also shows account context and the current token position when you hold it.
+<Warning>
+**Buy confirm** and **Sell confirm** are off by default. Selecting a preset or entering a custom size can submit a market trade. Enable these in **Settings → Trade panel settings** if you want a separate confirmation.
+</Warning>
 
-The panel can include:
+## Buy a token
 
-- Buy and Sell tabs.
-- Account selector, including multiple selected accounts.
-- Degen mode.
-- Configured buy and sell presets.
-- Custom amount.
-- Chart.
-- Limit action.
-- Extra links.
-- PnL, Cost, Worth, supply percentage, and entry market cap when a position exists.
+<Steps>
+  <Step title="Open the token">
+    Paste its contract address or a supported token link into Cove. Select the intended chain if prompted.
+  </Step>
+  <Step title="Choose Buying">
+    Check the panel's side. Open **Buying** if necessary.
+  </Step>
+  <Step title="Choose a size">
+    Select a USD preset, **\$x** for a custom amount, or a percentage preset if you use percentage mode. Percent buys use the selected wallets' buying power.
 
-<Tabs>
-  <Tab title="Buy">
-    Choose a buy preset or open the custom amount control. If Buy Confirm is enabled, review the confirmation card before submitting.
+    **Max**, when enabled, uses available buying power and always asks for confirmation.
+  </Step>
+  <Step title="Review any prompts">
+    Confirm the buy if enabled. Read any scam warning, price-impact confirmation, or additional network fee before continuing.
+  </Step>
+  <Step title="Read the receipt">
+    Progress moves through quoting, execution, and verification. **Buy Executed** confirms the fill. Check **Spent**, **Received**, and the wallet outcomes.
+  </Step>
+</Steps>
 
-    <Frame><img src="/assets/current-ui/trading-buy-panel.png" alt="Current Cove Buy panel with presets, Chart, Limit, and account controls" /></Frame>
+The documented minimum buy is **\$1**, but it must also clear the chain's sell floor. A token's purchase cap can reduce the actual buy if **Auto-adjust max buy** is on.
 
-    <Frame><img src="/assets/current-ui/trading-buy-receipt.png" alt="Current Cove Buy Executed receipt" /></Frame>
-  </Tab>
-  <Tab title="Sell">
-    Choose a sell preset or enter a custom amount. If Sell Confirm is enabled, review the confirmation card before submitting.
+{/* Screenshot: trade-buy-confirm.png | With Buy confirm enabled, review the selected amount before tapping Buy. */}
+<div className="cove-guide-figure">
+  <Frame caption="With Buy confirm enabled, review the selected amount before tapping Buy.">
+    <img src="/assets/guide-screenshots/trade-buy-confirm.png" alt="With Buy confirm enabled, review the selected amount before tapping Buy." width={733} height={988} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: trade-position-after-buy.png | The updated token panel after a buy, showing cost, worth, and position PnL. */}
+<div className="cove-guide-figure">
+  <Frame caption="The updated token panel after a buy, showing cost, worth, and position PnL.">
+    <img src="/assets/guide-screenshots/trade-position-after-buy.png" alt="The updated token panel after a buy, showing cost, worth, and position PnL." width={733} height={700} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-    <Frame><img src="/assets/current-ui/trading-sell-panel.png" alt="Current Cove Sell panel with position values, contract address, and balance" /></Frame>
+## Sell a token
 
-    <Frame><img src="/assets/current-ui/trading-sell-receipt.png" alt="Current Cove Sell Executed receipt" /></Frame>
-  </Tab>
-  <Tab title="Chart">
-    Select Chart to open the chart inside the Telegram flow.
-  </Tab>
-</Tabs>
+<Steps>
+  <Step title="Open your holding">
+    Send `/positions`, check the profile, and tap the token.
+  </Step>
+  <Step title="Choose Selling">
+    Select **25%**, **50%**, **100%**, **x%** for a custom percentage, or **\$x** for a custom USD value.
+  </Step>
+  <Step title="Check the scope">
+    With several wallets selected, a percentage applies to each wallet's holding. USD sells require a single wallet.
+  </Step>
+  <Step title="Submit and check the result">
+    Confirm if prompted. Wait for **Sell Executed** and check the USDC received. A full sell offers **Generate PnL**.
+  </Step>
+</Steps>
 
-## Receipts and routes
+{/* Screenshot: trade-sell-panel.png | The Selling panel with percentage presets, custom size, initials, and a confirmation button. */}
+<div className="cove-guide-figure">
+  <Frame caption="The Selling panel with percentage presets, custom size, initials, and a confirmation button.">
+    <img src="/assets/guide-screenshots/trade-sell-panel.png" alt="The Selling panel with percentage presets, custom size, initials, and a confirmation button." width={733} height={1042} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-After a submitted order, Cove can show Buy Executed, Sell Executed, or Stop Loss Executed. A receipt can include the route, positions, and a Close action. Multi-hop routes include a Learn more link.
+**Initials** calculates a sell percentage intended to recover the cost basis while leaving the rest of the position. Price movement and costs can change the actual proceeds.
 
-## More actions
+Minimum sells are **\$0.50** on most chains and **\$2.50 on Solana**; some token routes require more. To sell many tokens, use [Bulk sell](/features/bulk-sell).
 
-Use Limit for entry orders, take profit, stop loss, or DCA. Use View detailed to open the position details. Use Generate PnL to create a shareable PnL card. Active orders expose Edit and Cancel where supported.
+## Confirmations and results
 
-See [Limit Orders](/features/limit-orders), [DCA Orders](/features/dca-orders), [Positions](/features/positions), and [PnL Cards](/features/pnl-cards).
+High-impact **buys and sells** may need another confirmation even if normal confirmations are off. A worse refreshed quote can ask you to review again. See [Trading guardrails](/features/settings/guardrails).
+
+A multi-wallet trade can succeed for some wallets and fail for others. A partial fill is different from a full fill; read the amount filled and remaining funds before retrying.
+
+If **Previous order still processing** appears, wait. Closing the chat does not cancel an operation. For failed trades, keep the failure message and its reference for [Support](/features/support).
+
+## Faster entry methods
+
+[Auto-buy on paste](/features/settings/auto-buy) and [Group buy/sell links](/features/settings/group-links) can submit trades immediately when enabled. Quick commands may also be available; send the command without arguments for its current usage before using it.

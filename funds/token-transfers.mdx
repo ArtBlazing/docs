@@ -1,0 +1,52 @@
+---
+title: "Transfer a token position"
+description: "Send tokens to an external wallet or move them among your own Cove wallets."
+icon: "coins"
+---
+
+To send a token without selling it, use **Transfer** on its position. The regular `/withdraw` flow is for stablecoin withdrawals.
+
+## Send to an external wallet
+
+<Steps>
+  <Step title="Find the holding">
+    Open the correct profile and send `/positions`. Expand the token's wallet details if needed, then tap **Transfer**.
+  </Step>
+  <Step title="Check the source">
+    Verify **From** or **Account from**. Where a source picker is available, choose the wallet holding the tokens.
+  </Step>
+  <Step title="Choose the destination">
+    Select **Send to external wallet** and enter the recipient's address on the token's chain.
+  </Step>
+  <Step title="Set the amount">
+    Use the amount or percentage controls offered. Review the token, chain, source, destination, and any costs before sending.
+  </Step>
+  <Step title="Check completion">
+    Follow **Transfer sent**, then **Transfer complete** or **Transfer failed**. Use the explorer link where offered.
+  </Step>
+</Steps>
+
+{/* Screenshot: token-transfer-form.png | Choose an external recipient or transfer the token between your own accounts. */}
+<div className="cove-guide-figure">
+  <Frame caption="Choose an external recipient or transfer the token between your own accounts.">
+    <img src="/assets/guide-screenshots/token-transfer-form.png" alt="Choose an external recipient or transfer the token between your own accounts." width={733} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Move tokens between your wallets
+
+Choose **Transfer between my accounts**, then:
+
+- **Simple transfer:** one source and one destination.
+- **Disperse:** one source and several destinations.
+- **Collect:** several sources into one destination.
+
+Select wallets, enter the amount, review the preview, and check each result after sending. These moves keep the token on its existing chain.
+
+The source-wallet picker and profile controls appear only where available. If you change profiles, reopen the transfer from that profile's Positions list.
+
+## If the transfer cannot proceed
+
+**No token in this profile** means you should check the holding profile. **Panel expired** or **Out of date** means reopen the transfer. A token contract may restrict transfers, so a displayed balance does not guarantee the token can be moved.
+
+Paper wallets cannot transfer real tokens. Never use a token's contract address as the recipient wallet.

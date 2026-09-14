@@ -1,81 +1,156 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
   "name": "Cove Docs",
+  "theme": "mint",
   "colors": {
-    "primary": "#007aff",
-    "light": "#F4F7FF",
-    "dark": "#00061A"
+    "primary": "#007AFF",
+    "light": "#007AFF",
+    "dark": "#60A5FA"
   },
   "favicon": "/assets/favicon.svg",
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Essentials",
-        "pages": [
-          "essentials/introduction",
-          "essentials/supported-chains",
-          "essentials/getting-started",
-          "essentials/accounts",
-          "essentials/fees-structure",
-          "features/referrals"
-        ]
-      },
-      {
-        "group": "Trading Operations",
-        "pages": [
-          "features/trading",
-          "features/multi-wallet-trading",
+        "tab": "User guide",
+        "groups": [
           {
-            "group": "Orders",
-            "icon": "list-ol",
+            "group": "Essentials",
             "pages": [
-              "features/limit-orders",
-              "features/dca-orders"
+              "essentials/introduction",
+              "essentials/supported-chains",
+              "essentials/getting-started",
+              "essentials/accounts",
+              "essentials/fees-structure",
+              "features/referrals"
             ]
           },
           {
-            "group": "Positions",
-            "icon": "chart-pie",
+            "group": "Using Cove",
+            "pages": [
+              "essentials/navigating-cove",
+              "essentials/mini-apps",
+              "essentials/paper-trading"
+            ]
+          },
+          {
+            "group": "Wallets & funds",
+            "pages": [
+              {
+                "group": "Wallets & profiles",
+                "icon": "wallet",
+                "pages": [
+                  "essentials/profiles",
+                  "essentials/import-wallets",
+                  "essentials/security",
+                  "funds/wallet-marketplace"
+                ]
+              },
+              {
+                "group": "Move funds",
+                "icon": "arrow-right-arrow-left",
+                "pages": [
+                  "funds/deposit",
+                  "funds/bridge",
+                  "funds/withdraw",
+                  "features/transfers",
+                  "funds/token-transfers",
+                  "funds/private-disperse",
+                  "funds/private-withdraw"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Trading",
+            "pages": [
+              "features/trading",
+              "features/token-panel",
+              "features/multi-wallet-trading",
+              {
+                "group": "Order guides",
+                "icon": "crosshairs",
+                "pages": [
+                  "features/orders-overview",
+                  "features/limit-orders",
+                  "features/take-profit-stop-loss",
+                  "features/trailing-stop",
+                  "features/dca-orders",
+                  "features/managing-orders"
+                ]
+              },
+              {
+                "group": "Alerts",
+                "icon": "bell",
+                "pages": [
+                  "features/price-alerts",
+                  "features/auto-alerts"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Portfolio",
             "pages": [
               "features/positions",
-              "features/pnl-cards"
+              "features/bulk-sell",
+              "features/history",
+              "features/pnl-cards",
+              "features/export"
             ]
           },
           {
             "group": "Settings",
-            "icon": "sliders",
-            "root": "features/settings",
             "pages": [
+              "features/settings",
               "features/settings/guardrails",
               "features/settings/trade-panel",
+              "features/settings/auto-buy",
               "features/settings/auto-tp-sl",
               "features/settings/position-panel",
               "features/settings/group-links",
+              "features/settings/notifications",
               "features/settings/language"
             ]
           },
-          "features/transfers"
+          {
+            "group": "Help & reference",
+            "pages": [
+              "help/commands",
+              "help/troubleshooting",
+              "help/glossary",
+              "features/support"
+            ]
+          }
         ]
       },
       {
-        "group": "Support",
-        "pages": ["features/support"]
-      },
-      {
-        "group": "For Groups & Channels",
-        "pages": ["groups/cove-buy"]
-      },
-      {
-        "group": "For Builders",
-        "pages": [
-          "builders/deep-links",
-          "builders/mcp-tools"
+        "tab": "Cove Buy",
+        "groups": [
+          {
+            "group": "For groups & channels",
+            "pages": [
+              "groups/cove-buy"
+            ]
+          }
         ]
       },
       {
-        "group": "Brand Kit",
-        "pages": ["design-system/brand-kit"]
+        "tab": "MCP & Deep Links",
+        "groups": [
+          {
+            "group": "Integrations",
+            "pages": [
+              "builders/deep-links",
+              "builders/mcp-tools"
+            ]
+          },
+          {
+            "group": "Brand",
+            "pages": [
+              "design-system/brand-kit"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -97,5 +172,6 @@
       "x": "https://x.com/covetrade",
       "website": "https://cove.trade"
     }
-  }
+  },
+  "description": "Practical guides to wallets, trading, automated orders, and portfolio management in Cove."
 }

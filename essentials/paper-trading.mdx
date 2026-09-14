@@ -1,0 +1,40 @@
+---
+title: "Paper trading"
+description: "Practice with virtual USDC and real market prices."
+icon: "flask"
+---
+
+A Paper wallet starts with **\$10,000 in virtual USDC**. Use it to learn Cove's trading controls without spending real funds.
+
+<Steps>
+  <Step title="Open Paper">
+    Send `/paper` in your private Cove chat. This opens the **Paper** profile.
+  </Step>
+  <Step title="Create a practice wallet">
+    Choose **Create Paper Account** if needed. Some labels still use “Account.”
+  </Step>
+  <Step title="Check the mode and practice">
+    Verify the **⚠️ 📄 PAPER** label. Paste a token, choose a buy amount, and follow the result in `/positions`. Try the bot's trading and order controls.
+  </Step>
+</Steps>
+
+{/* Screenshot: paper-hub.png | Paper trading mode with a virtual balance and paper-account controls. */}
+<div className="cove-guide-figure">
+  <Frame caption="Paper trading mode with a virtual balance and paper-account controls.">
+    <img src="/assets/guide-screenshots/paper-hub.png" alt="Paper trading mode with a virtual balance and paper-account controls." width={733} height={702} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Add funds or reset
+
+Return to `/paper`. Funding choices include **+\$5k**, **+\$10k**, **+\$25k**, and **+\$50k**. **Reset to \$10k** resets the practice balance; follow any confirmation shown.
+
+Paper results are simulated and do not establish that a real trade would fill at the same price.
+
+## Return to real trading
+
+Open `/profiles`, choose a real profile such as **Main**, and check your wallet selection.
+
+Paper wallets cannot deposit, withdraw, transfer, or use money products. They are excluded from Mini Apps and CSV exports. They count toward the total wallet limit, not the five-real-profile limit.
+
+<Warning>Deleting or revoking a Paper wallet removes it permanently. Real-wallet recovery does not apply.</Warning>

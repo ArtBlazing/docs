@@ -1,27 +1,101 @@
 ---
-title: DCA Orders
-description: Create buy and sell DCA ladders from the trading panel
-icon: list-ol
+title: "Create a DCA ladder"
+description: "Spread a total buy or sell across 2–10 market-cap targets."
+icon: "stairs"
 ---
 
-DCA orders create a ladder of planned orders between two market-cap values.
+Cove DCA is a **ladder of limit orders across a market-cap range**. Each target, or “rung,” triggers independently. It is not an hourly, daily, or weekly recurring purchase.
 
-## Create a ladder
+## Create a buy ladder
 
-1. Open a token's Buy or Sell panel.
-2. Select `Limit` and then the DCA flow.
-3. Enter the starting market cap and ending market cap.
-4. Enter the number of orders.
-5. Enter the total spend for a buy ladder or the total sell amount for a sell ladder.
-6. Review the preview and expiry.
-7. Select `Place orders`.
+<Steps>
+  <Step title="Open the token and wallets">
+    Paste the token address in the intended profile and check the selected wallets.
+  </Step>
+  <Step title="Choose DCA and Buying">
+    Open **Limit → DCA**, then choose **Buying**.
+  </Step>
+  <Step title="Set the market-cap range">
+    Enter **From mcap** and **To mcap**. You can use shorthand such as **800k** or **1.5m**.
+  </Step>
+  <Step title="Set the order count and total">
+    Choose **2–10 orders** and enter **Total spend** in USD. This is the budget for the whole ladder, not each rung.
+  </Step>
+  <Step title="Review targets and expiry">
+    Check the preview, selected wallets, and expiry. The default is **30 days**; the allowed range is 1 minute–30 days.
 
-The preview lists the generated ladder, amount per order, and expiry.
+    If the range crosses the current market cap, review the mixed-ladder warning: some rungs buy dips and others buy breakouts.
+  </Step>
+  <Step title="Place and verify">
+    Tap **Place N buy orders**. Check the receipt, then open `/orders` to verify the rungs.
+  </Step>
+</Steps>
 
-<Frame><img src="/assets/current-ui/dca-orders.png" alt="Current Buy DCA ladder preview with market-cap range, order count, total spend, and expiry" /></Frame>
+{/* Screenshot: dca-buy-form.png | Example buy ladder: market-cap range, orders per wallet, total budget, and expiry. */}
+<div className="cove-guide-figure">
+  <Frame caption="Example buy ladder: market-cap range, orders per wallet, total budget, and expiry.">
+    <img src="/assets/guide-screenshots/dca-buy-form.png" alt="Example buy ladder: market-cap range, orders per wallet, total budget, and expiry." width={712} height={774} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-## Buy and sell DCA
+## Example: buy in three steps
 
-Buy DCA uses a total spend. Sell DCA uses a total sell amount. Active DCA orders appear in the position card and active order views.
+Assume the current market cap is **1m**. You choose **600k to 900k**, **3 orders**, and **\$300 total**.
 
-Review the generated ladder, per-order amount, and expiry before placing the orders.
+| Target | Illustrative allocation |
+|---|---|
+| 600k | \$100 |
+| 750k | \$100 |
+| 900k | \$100 |
+
+The targets are evenly spaced. Each rung waits for its own condition; the highest dip target may execute first.
+
+With multiple wallets, **DCA buys always split the total across wallets**, even if ordinary buys use **Per Wallet**. The rung count is **per wallet**: three rungs across two wallets can create six orders. Check the actual preview for allocation and any minimum-size restriction.
+
+## Create a sell ladder
+
+1. Open **Limit → DCA → Selling** on a holding.
+2. Enter **From mcap** and **To mcap**.
+3. Choose **2–10 orders**.
+4. Set **Sell total %**, from 1–100, for the whole ladder.
+5. Review targets, wallets, expiry, and any skipped rungs.
+6. Tap **Place up to N sell orders** and verify the receipt.
+
+Cove divides the sell allocation into equal absolute slices. A 100% sell across four rungs aims to allocate four equal quarters, not four sequential 25%-of-remaining sells.
+
+Rungs exactly at current market cap and wallets without a holding can be skipped. The receipt can therefore contain fewer orders than the maximum.
+
+{/* Screenshot: dca-sell-form.png | Sell-ladder setup: choose the range, order count, and total percentage to sell. */}
+<div className="cove-guide-figure">
+  <Frame caption="Sell-ladder setup: choose the range, order count, and total percentage to sell.">
+    <img src="/assets/guide-screenshots/dca-sell-form.png" alt="Sell-ladder setup: choose the range, order count, and total percentage to sell." width={712} height={774} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Create by replying to a panel
+
+<Warning>The complete command places the ladder immediately using the selected wallets. Sending it is the confirmation. The numbers below are examples, not recommended trade sizes.</Warning>
+
+Reply to the token's live panel:
+
+```text
+/dca B 800k - 1.5m 10 500
+```
+
+This means **buy**, range **800k–1.5m**, **10 rungs per wallet**, **\$500 total**.
+
+```text
+/dca S 80k - 120k 10 100
+```
+
+This means **sell**, range **80k–120k**, **10 rungs**, **100% total**.
+
+Send `/dca` alone for the tutorial. Use **B** or **S**, a range, a count from 2–10, then USD for buys or a holdings percentage for sells.
+
+## Edit, cancel, and follow results
+
+Open `/orders`. Edit a pending rung or cancel it individually. **Cancel DCA group** cancels the ladder's remaining orders; already executed trades are not undone.
+
+All rungs can trigger close together if the market moves through the range. A rung whose target is never met remains pending until expiry. Each fill has trading costs and can fail independently.
+
+For a duplicate-command warning, expired panel, or uncertain partial creation, check existing orders before retrying. See [Manage orders](/features/managing-orders).

@@ -1,39 +1,60 @@
 ---
-title: Settings
-description: Configure guardrails, trade panels, positions, group links, and language
-icon: sliders
+title: "Settings"
+description: "Find every trading, display, notification, and wallet preference."
+icon: "sliders"
 ---
 
-Settings follow the same five sections shown in the Cove UI.
+Send `/settings`. Open a category, tap a toggle or value, and check the new state. Toggles show on/off; numeric controls prompt for a value. Reopen the relevant panel to see display changes.
 
-<Frame><img src="/assets/current-ui/settings-overview.png" alt="Current Cove Settings panel with Guardrails, Trade panel settings, Position panel settings, Group buy or sell, and Language" /></Frame>
+{/* Screenshot: settings-hub.png | Settings categories and the profile-specific setting indicator. */}
+<div className="cove-guide-figure">
+  <Frame caption="Settings categories and the profile-specific setting indicator.">
+    <img src="/assets/guide-screenshots/settings-hub.png" alt="Settings categories and the profile-specific setting indicator." width={712} height={859} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-<CardGroup cols={2}>
-  <Card title="Guardrails" icon="shield-check">
-    Set slippage, liquidity protection, max-buy adjustment, price-impact confirmation, Degen mode, and the gas surplus budget.
-  </Card>
-  <Card title="Trade panel settings" icon="sliders">
-    Change buy and sell presets, confirmations, panel defaults, links, and Auto TP/SL.
-  </Card>
-  <Card title="Position panel settings" icon="chart-pie">
-    Control full-sell actions in Positions and position links.
-  </Card>
-  <Card title="Group buy/sell" icon="users">
-    Set the instant group-buy limit and control group-sell links.
-  </Card>
-  <Card title="Language" icon="language">
-    Open the language selector and choose an available interface language.
-  </Card>
-</CardGroup>
+## Choose a category
 
-## Find a setting
+<Columns cols={2}>
+  <Card title="Guardrails" icon="shield-halved" href="/features/settings/guardrails">Slippage, scam warnings, price impact, Degen mode, and gas budget.</Card>
+  <Card title="Trade panel" icon="sliders" href="/features/settings/trade-panel">Buy/sell presets, confirmations, buttons, text, and charts.</Card>
+  <Card title="Auto-buy on paste" icon="bolt" href="/features/settings/auto-buy">Set a standing buy amount and optional market filters.</Card>
+  <Card title="Auto TP/SL" icon="crosshairs" href="/features/settings/auto-tp-sl">Create take-profit and stop-loss levels after future buys.</Card>
+  <Card title="Positions" icon="chart-pie" href="/features/settings/position-panel">Sell links, confirmation, filters, and sorting.</Card>
+  <Card title="Group buy/sell" icon="users" href="/features/settings/group-links">Control trading actions opened from shared links.</Card>
+  <Card title="Notifications" icon="bell" href="/features/settings/notifications">Optional Pushover alerts in addition to Telegram.</Card>
+  <Card title="Language" icon="language" href="/features/settings/language">Switch between English and Chinese.</Card>
+</Columns>
 
-| UI section | Use it for |
+## Which settings change with a profile?
+
+When you have several profiles, a **👤** mark identifies profile settings. Check the profile named in the settings panel before editing.
+
+| Scope | Settings |
 |---|---|
-| Guardrails | Reduce avoidable execution risk and approve gas surplus behavior |
-| Trade panel settings | Change the controls and defaults shown while trading |
-| Position panel settings | Choose quick full-sell actions |
-| Group buy/sell | Control shared buy and sell links |
-| Language | Change the interface language when available |
+| **Active profile** | Guardrails, buy/sell presets and confirmations, Max buy, Auto TP/SL, manual TP/SL basis, auto-buy, Always open on Buy, Positions sell confirmation, trading-wallet selection and group-buy authorizations |
+| **Whole account** | Language, Nest accounts, Mini App/Chart/DexScreener display, extra links, Total PnL per token, group-buy maximum, Group sell, notifications, position filters/sort, and price alerts |
+| **Individual wallet** | Auto-bridge mode, label, and wallet-specific management |
 
-The current UI label is `Always open on Buy`. The older label `Stay on buy after buying` no longer matches the product and does not appear in the current Settings pages.
+For any control whose scope is not shown here, use its current 👤 indicator rather than assuming a change is device-only. Profiles can [copy trading settings](/essentials/profiles) from another profile when created.
+
+## Settings outside the Settings menu
+
+| Preference | Where to change it |
+|---|---|
+| Trading wallets | `/wallets` or the trading panel's wallet picker |
+| Split Total / Per Wallet, variance, delay, primary first | [Multi-wallet preferences](/features/multi-wallet-trading) |
+| Per-wallet auto-bridge | `/wallets` → **⚙️**, `/bridge`, or Deposit Mini App |
+| Auto-alert targets | `/alerts` → [Auto alerts](/features/auto-alerts) |
+| Position filters and sorting | `/positions` → **Filters / Sort** |
+| Primary wallet and labels | `/wallets` → **⚙️** |
+| Profile name, copying settings, archive/restore | `/profiles` |
+| Agent permissions and spending limits | [MCP guide](/builders/mcp-tools) |
+
+## Save, reset, and stale panels
+
+Follow the requested input and check the resulting value. Buy presets have **Reset defaults**. There is no documented single reset that restores every Cove setting.
+
+If a panel expires or belongs to another profile, reopen it before editing. A display setting changes what you see; an execution setting can change what happens on the next trade.
+
+For a deliberate review before trading, enable **Buy confirm**, **Sell confirm**, and **Positions → Sell confirmation**.

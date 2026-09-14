@@ -1,0 +1,65 @@
+---
+title: "Withdraw funds"
+description: "Send USDC or an offered stablecoin to an external wallet."
+icon: "arrow-up-from-bracket"
+---
+
+Use **Withdraw** for money going to an external address. Use [Transfer](/features/transfers) between your Cove wallets or to a Cove user. To send another token, use [Token transfers](/funds/token-transfers).
+
+## Make a withdrawal
+
+<Steps>
+  <Step title="Open Withdraw">
+    Choose the intended profile and send `/withdraw`. Check the source wallet and available balance.
+  </Step>
+  <Step title="Choose the network and asset">
+    Select the destination chain. Solana and BNB Chain may also offer **Send: USDT**. Make sure the recipient accepts the exact asset and network.
+  </Step>
+  <Step title="Enter the destination">
+    Paste the external wallet address. Review any address warning and check the full address yourself.
+  </Step>
+  <Step title="Enter an amount">
+    Choose a USD amount or percentage. The minimum withdrawal is **\$1.50**. Leave room for any fee when entering an amount below Max.
+  </Step>
+  <Step title="Review and submit">
+    Check the source, destination, chain, asset, fee, and recipient amount. If a fee confirmation appears, review it before **Withdraw anyway** or the final action shown.
+  </Step>
+  <Step title="Track completion">
+    **Withdrawal Submitted!** means processing has started. Wait for the completion or failure message and check the explorer link where provided.
+  </Step>
+</Steps>
+
+{/* Screenshot: withdraw-form.png | A withdrawal form with the source, network, recipient, amount, fee, and final action. */}
+<div className="cove-guide-figure">
+  <Frame caption="A withdrawal form with the source, network, recipient, amount, fee, and final action.">
+    <img src="/assets/guide-screenshots/withdraw-form.png" alt="A withdrawal form with the source, network, recipient, amount, fee, and final action." width={733} height={952} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: withdraw-review.png | Подтверждение: fee, сумма получателю, сеть и Withdraw anyway; адрес замаскировать. */}
+
+## Fees and Max
+
+Standard Solana withdrawals have no flat Cove withdrawal fee; a new recipient token account may have an account-creation cost. Other supported withdrawal chains have a documented **\$0.25** flat fee. Check the current prompt for the final amount.
+
+- Below **100%**, the fee is added on top of the entered amount.
+- At **100% / Max**, it is taken from the amount, reducing what arrives.
+- **Withdrawal Too Large to Sponsor** asks you to split the withdrawal into smaller amounts.
+
+See [Fees and minimums](/essentials/fees-structure).
+
+## Supported destinations
+
+See the withdrawal column in [Supported chains](/essentials/supported-chains). Trading support does not automatically mean a chain is available as a withdrawal destination.
+
+## If a withdrawal is blocked
+
+| Message or situation | Next step |
+|---|---|
+| Destination is your own Cove wallet | Use **Transfer** |
+| Invalid or unsupported destination | Recheck the address, network, and recipient requirements |
+| Address looks like a token contract | Use the recipient's wallet address |
+| Insufficient balance | Reduce the amount or add spendable funds |
+| Signing access lost | Restore access in Cove Wallets |
+| Submitted or pending | Follow the existing receipt before starting another withdrawal |
+
+[Private Withdraw](/funds/private-withdraw), where available, has a separate flow and fee quote.

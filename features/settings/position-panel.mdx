@@ -1,18 +1,53 @@
 ---
-title: Position panel settings
-description: Control full-sell actions in Positions and position links
-icon: chart-pie
+title: "Position display and filters"
+description: "Configure sell links, confirmation, hidden positions, and sorting."
+icon: "chart-pie"
 ---
 
-Position panel settings control quick actions shown next to positions.
+Open **Settings → Position panel settings** for sell-link preferences. Filters and sorting are inside `/positions`.
 
-<Frame><img src="/assets/current-ui/position-panel-settings.png" alt="Current Position panel settings with full-sell controls" /></Frame>
+## Sell links and confirmation
 
-| Setting | What it changes |
+| Setting | Default | Effect |
+|---|---|---|
+| **Sell 100% Links** | Off | Add full-sell links to position rows |
+| **Sell confirmation** | On | Ask before selling through Positions links |
+
+**Sell confirmation** is profile-specific and separate from the trading panel's **Sell confirm**. Keep it on if you want to review a position-list sell before sending.
+
+To change either, tap it and check the resulting on/off state. Reopen Positions to see the updated links.
+
+{/* Screenshot: settings-position-panel.png | Position panel settings: Sell 100% Links и Sell confirmation. */}
+
+## Filter your positions
+
+1. Send `/positions` → **Filters**.
+2. Select **Chains**, **Accounts** (wallets), or **Other**.
+3. Toggle the categories you want to hide.
+4. Use **Configure filters** for editable dust and liquidity thresholds.
+5. Return to the list and review the result.
+
+| Filter | Documented default |
 |---|---|
-| Sell 100% in Positions | Shows a full-sell action inside the Positions panel |
-| Sell 100% Links | Enables full-sell links for position actions |
+| **Hide dust** | On |
+| **Hide low liq** | On |
+| **Hide suspicious** | On |
+| **Hide natives & wrapped** | Off |
+| Dust and low-liquidity thresholds | Read the saved values in Configure filters |
 
-An explicit full-sell action opens the Sell flow. Verify the selected account or wallets before confirming a full sell.
+Do not assume the example values on a label are the saved thresholds. Filters hide rows; they do not sell tokens.
 
-<Frame><img src="/assets/current-ui/position-sell-100-confirmation.png" alt="Current confirmation shown before a full position sell" /></Frame>
+{/* Screenshot: positions-filters.png | Choose a filter category: Chains, Wallets, or Other. */}
+<div className="cove-guide-figure">
+  <Frame caption="Choose a filter category: Chains, Wallets, or Other.">
+    <img src="/assets/guide-screenshots/positions-filters.png" alt="Choose a filter category: Chains, Wallets, or Other." width={712} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Sort and hidden positions
+
+**Sort** offers **Worth** (default), **Age**, and **PnL**. Filters and sorting are shared with the account's Mini App view.
+
+Use **Hide** for an individual token and **View hidden** or the Mini App's **Hidden** list to **Unhide** it. If a holding is missing, check these filters and the active profile before assuming the balance is gone.
+
+See [Positions](/features/positions) and [Bulk sell](/features/bulk-sell).

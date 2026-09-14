@@ -1,54 +1,96 @@
 ---
-title: Guardrails
-description: Configure slippage, liquidity checks, max-buy adjustment, confirmations, and gas surplus
-icon: shield-check
+title: "Trading guardrails"
+description: "Control slippage, risky-token prompts, price impact, and additional gas costs."
+icon: "shield-halved"
 ---
 
-Guardrails control checks that run before or during a trade.
+Open `/settings` → **Guardrails**. These settings belong to the active profile. Check each current value before trading.
 
-<Frame><img src="/assets/current-ui/guardrails-overview.png" alt="Current Guardrails panel showing slippage, protection, confirmation, and gas surplus controls" /></Frame>
+{/* Screenshot: settings-guardrails.png | Guardrails and their current values in this example profile; these are not recommended settings. */}
+<div className="cove-guide-figure">
+  <Frame caption="Guardrails and their current values in this example profile; these are not recommended settings.">
+    <img src="/assets/guide-screenshots/settings-guardrails.png" alt="Guardrails and their current values in this example profile; these are not recommended settings." width={712} height={700} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-## Available controls
+## Slippage
 
-| Setting | Current UI behavior |
-|---|---|
-| Slippage | Choose a preset or enter a value from 1% to 100%, with up to two decimal places shown in the UI |
-| Degen mode | Reduces safeguards for the selected trade |
-| Auto-adjust max buy | Reduces a buy to the token contract's allowed maximum when the requested amount is too high |
-| Liquidity protection | Blocks buys that would consume too much reported liquidity |
-| High price-impact confirmation | Adds a confirmation step for high-impact trades |
-| Gas Surplus Budget | Sets the per-trade amount Cove can request from your USDC balance when sponsored gas is not enough |
+Slippage is the price movement you allow while a trade executes. It differs from **price impact**, which is how much the trade itself changes the market price.
 
-### Slippage
+1. Send `/slippage`, use **change** on a token panel, or open **Guardrails → Slippage**.
+2. Choose **10 / 20 / 40 / 80%**, or **Custom**.
+3. Enter a value from **1–100%** and check the updated slippage line.
 
-Choose 10%, 20%, 40%, or 80%, or enter a custom value from 1% to 100% with up to two decimal places. Higher slippage gives a volatile trade more room to fill, but it also accepts a wider price difference.
+New-user slippage starts at **15%**; existing settings may differ. Values above 20% show a warning. Raising tolerance can permit a worse fill, not just increase success.
 
-<Frame><img src="/assets/current-ui/guardrails-slippage.png" alt="Current slippage settings with preset and custom values" /></Frame>
+## Guardrail reference
 
-### Degen mode
+| Setting | Default | Effect |
+|---|---|---|
+| **Auto-adjust max buy** | On | Reduces a buy to fit the token's purchase cap; receipt shows actual versus requested spend |
+| **Liquidity protection** | On | Blocks buys that are too large relative to reported pool liquidity |
+| **Scam warning** | On | Requests confirmation for a 🚨-flagged token on the panel and blocks flagged panel-less buys |
+| **High price-impact confirmation** | On | Adds a review for high-impact buys and sells |
+| **Degen mode** | Off | Applies 100% slippage, disables liquidity protection, and enables max-buy adjustment |
+| **Gas surplus budget** | Off | Allows additional network cost within your chosen limit |
 
-Degen mode reduces safeguards for the selected trade. Review your slippage and guardrail settings before enabling it.
+## Scam warnings
 
-### Auto-adjust max buy
+If the panel shows **Scam warning**, select **Find out why** to read the concern. **Cancel** leaves the buy. **Buy anyway** accepts the flagged trade; **Disable scam warning** changes the standing profile setting.
 
-When a token contract limits the maximum buy, this setting reduces your order to the contract limit. It removes the need to calculate the maximum manually.
+With Scam warning on, flagged buys from **auto-buy on paste**, **quick-buy**, and **group links** are refused when no panel confirmation is available. Open the token manually to inspect it.
 
-<Frame><img src="/assets/current-ui/guardrails-auto-adjust-max-buy.png" alt="Current Auto-adjust max buy setting and explanation" /></Frame>
+A clean or pending scan is not a guarantee that a token can be safely bought or sold.
 
-### Liquidity protection
+{/* Screenshot: settings-scam-warning.png | The Scam warning setting explains flagged-token confirmation. */}
+<div className="cove-guide-figure">
+  <Frame caption="The Scam warning setting explains flagged-token confirmation.">
+    <img src="/assets/guide-screenshots/settings-scam-warning.png" alt="The Scam warning setting explains flagged-token confirmation." width={712} height={665} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-Liquidity protection checks the requested buy against reported pool liquidity and blocks buys that are too large for the pool.
+## Price-impact confirmations
 
-<Frame><img src="/assets/current-ui/guardrails-liquidity-protection.png" alt="Current Liquidity protection setting and explanation" /></Frame>
+Cove may request confirmation when estimated impact reaches **50%**, or when it cannot verify the impact. The prompt shows what you spend and expect to receive. Sells are covered too.
 
-### High price-impact confirmation
+- Turning the setting off skips only the **50–90%** confirmation band.
+- **Extreme impact at 90% or above** and unknown impact still require review.
+- If a refreshed quote is materially worse, **Quote changed** asks you to review again.
 
-Enable this setting to require an additional confirmation for trades with high price impact.
+A one-time **Buy anyway / Sell anyway** on an eligible single-wallet market refusal applies to that fresh attempt; it does not change saved settings. This option is not offered for Paper or multi-wallet market refusals.
 
-### Gas Surplus Budget
+{/* Screenshot: settings-price-impact.png | The High price-impact confirmation setting and the conditions that still require review. */}
+<div className="cove-guide-figure">
+  <Frame caption="The High price-impact confirmation setting and the conditions that still require review.">
+    <img src="/assets/guide-screenshots/settings-price-impact.png" alt="The High price-impact confirmation setting and the conditions that still require review." width={712} height={665} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-Gas Surplus Budget is a per-trade limit. Choose `Off`, `$1`, `$3`, `$5`, `$10`, or `Custom`.
 
-`Off` means Cove asks before charging a surplus. When the sponsored amount does not cover the network cost, an approved surplus can be deducted from the unified USDC balance.
+Automated orders can remain armed after **Didn't Fire**. Their override has a separate lifecycle; see [Manage orders](/features/managing-orders).
 
-<Frame><img src="/assets/current-ui/guardrails-gas-surplus-budget.png" alt="Current Gas Surplus Budget panel with preset and custom limits" /></Frame>
+## Degen mode
+
+Toggle **Degen mode** in Guardrails or the trading panel. It changes the three settings listed above while active. Turning it off restores saved values; editing slippage, liquidity protection, or max-buy adjustment exits Degen mode.
+
+Scam warning and high-impact confirmation remain independent.
+
+<Warning>Degen mode permits very large price movement and removes liquidity protection. It does not make a restricted token sellable or guarantee a fill.</Warning>
+
+## Gas surplus budget
+
+1. Open **Guardrails → Gas surplus budget**.
+2. Choose **Off**, **\$1**, **\$3**, **\$5**, **\$10**, or **Custom**.
+3. For Custom, enter **\$0–\$50**.
+4. Check the saved amount.
+
+With the budget off, extra network costs normally require approval. With a budget, eligible overages up to that amount can be charged automatically, subject to available USDC.
+
+**Auto-pay gas up to** on a failure message sets this future budget. It does not complete the current trade or recreate a failed stop.
+
+{/* Screenshot: settings-gas-budget.png | Gas surplus budget: choose Off, a preset, or a custom per-trade limit. */}
+<div className="cove-guide-figure">
+  <Frame caption="Gas surplus budget: choose Off, a preset, or a custom per-trade limit.">
+    <img src="/assets/guide-screenshots/settings-gas-budget.png" alt="Gas surplus budget: choose Off, a preset, or a custom per-trade limit." width={712} height={678} className="cove-guide-screenshot" />
+  </Frame>
+</div>

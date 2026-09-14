@@ -1,58 +1,78 @@
 ---
-title: Accounts & Wallets
-description: Manage Cove accounts, imports, exports, and access revocation
-icon: wallet
+title: "Accounts & Wallets"
+description: "Create wallets, choose which ones trade, and set your primary wallet."
+icon: "wallet"
 ---
 
-Open `Accounts` from the home screen to manage the wallets available to Cove.
+A Cove wallet includes an EVM address and a Solana address. Each belongs to one [profile](/essentials/profiles).
 
-<Frame><img src="/assets/current-ui/accounts-overview.png" alt="Current Cove Accounts panel with wallet addresses and balances" /></Frame>
+Send `/wallets` or choose **Wallets**. The older `/accounts` command opens the same panel.
 
-## Account roles
+## Read the wallet list
 
-The Accounts panel shows the account label, EVM address, Solana address, balances, and active account state.
+| Mark or value | Meaning |
+|---|---|
+| ✅ | Selected for trading |
+| ⭐ | Primary wallet |
+| **Balance / Positions** | Spendable USDC / token holdings value |
+| **Deployable (selected)** | Spendable balance across selected wallets |
+| 🔁 / ✋ | Automatic bridging / manual approval |
+| **Imported / Bought** | How the wallet was added |
 
-The `Primary account` receives funds from other users and future benefits shown by the product. Cove does not allow the primary account to be deleted. Use `Set as Primary` to change the primary account after reviewing the warning.
+{/* Screenshot: wallets-list.png | The wallet list with balances, selected wallets, primary status, and management controls. */}
+<div className="cove-guide-figure">
+  <Frame caption="The wallet list with balances, selected wallets, primary status, and management controls.">
+    <img src="/assets/guide-screenshots/wallets-list.png" alt="The wallet list with balances, selected wallets, primary status, and management controls." width={733} height={1095} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-Use `Rename` to give an account a recognizable label. Use `New Account` to create another Cove account.
+## Create a wallet
 
-<Frame><img src="/assets/current-ui/account-rename.png" alt="Current Rename Account prompt with the label length limit" /></Frame>
+<Steps>
+  <Step title="Choose the profile">
+    Open the intended profile in `/profiles`.
+  </Step>
+  <Step title="Create and configure">
+    Send `/wallets` → **New Wallet**. Choose **Auto-bridge ✅** or **I'll decide each time ✋** when prompted.
+  </Step>
+  <Step title="Check selection">
+    The new wallet appears with a name such as **Wallet 2**. Check its ✅ mark before trading; tap its row to change selection.
+  </Step>
+</Steps>
 
-## Import a wallet
+## Select trading wallets
 
-Cove supports EVM and Solana wallet imports. The current flow lets you choose a wallet format, confirm the import in the Telegram flow, and assign a label.
+Tap rows to include or exclude wallets. **Select all** includes eligible wallets in the profile. At least one must stay selected; **Deselect all** leaves one.
 
-1. Open `Accounts`.
-2. Select `Import Wallet`.
-3. Choose EVM, Solana, or the available combined option.
-4. Complete the secure import flow.
-5. Assign an account label.
+With several selected wallets, review [Split Total versus Per Wallet](/features/multi-wallet-trading) before buying.
 
-<Frame><img src="/assets/current-ui/account-import-wallet.png" alt="Current Import Wallet prompt for choosing EVM, Solana, or both wallet types" /></Frame>
+## Edit a wallet
 
-Never share a private key, seed phrase, authentication code, or other wallet secret.
+Open its **⚙️** menu.
 
-## Export and access removal
+| Action | Effect |
+|---|---|
+| **Rename** | Set a label up to 32 characters |
+| **Set as Primary** | Receive incoming user transfers and reward payouts here |
+| **Auto-bridge** | Change how other-chain stablecoins reach the trading balance |
+| **Move to other profile** | Move the wallet with its positions, orders, and history |
+| **Downgrade Smart Wallet** | Remove smart-wallet authorization on applicable chains; a later Cove trade may enable it again |
+| **Delete Wallet** | Open secure management to remove Cove's access |
 
-Use `Export Wallet` to open Cove's secure Mini App flow. Perform exports only in the trusted product surface and store the result offline.
+{/* Screenshot: wallets-edit.png | Wallet settings: rename, primary status, auto-bridge, profile, and access controls. */}
+<div className="cove-guide-figure">
+  <Frame caption="Wallet settings: rename, primary status, auto-bridge, profile, and access controls.">
+    <img src="/assets/guide-screenshots/wallets-edit.png" alt="Wallet settings: rename, primary status, auto-bridge, profile, and access controls." width={733} height={685} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
-Some accounts use Privy signing access and smart-wallet infrastructure. Removing Cove or Privy signing access revokes Cove's ability to trade through that account. The wallet itself remains under your control.
+There is **one primary wallet across all profiles**. It cannot be deleted. Changing it while a reward payout is pending cancels the request; review the destination before requesting again.
 
-## Delete or revoke an account
+Each profile holds up to **10 wallets**; the account-wide total is **160**, including archived and Paper wallets.
 
-The current flow can require a Privy wallet-management Mini App and a smart-wallet downgrade or revoke step before deletion.
+## More wallet tasks
 
-Before deleting an account:
-
-1. Withdraw or transfer the remaining funds.
-2. Review the account and wallet warning.
-3. Complete the Privy or Cove signing-access removal step.
-4. Confirm deletion in the secure product surface.
-
-<Frame><img src="/assets/current-ui/account-revoke-signing-access.png" alt="Current Cove and Privy signing-access removal warning" /></Frame>
-
-A deleted wallet can be re-imported if you still control it. Cove does not regain signing access until you explicitly import or reconnect it.
-
-<Warning>
-Never publish wallet addresses together with balances, usernames, private keys, seed phrases, or authentication codes.
-</Warning>
+- [Import one wallet or a CSV batch](/essentials/import-wallets).
+- [Export keys, recover a wallet, or restore access](/essentials/security).
+- [Buy an aged wallet, where available](/funds/wallet-marketplace).
+- [Transfer, disperse, or collect funds](/features/transfers).

@@ -1,0 +1,68 @@
+---
+title: "Auto-bridge and parked funds"
+description: "Choose whether other-chain stablecoins move automatically or wait for approval."
+icon: "bridge"
+---
+
+Your trading balance is USDC on Solana. **Bridging** moves supported stablecoins from another chain into that balance.
+
+| State | Where the funds are | What to do |
+|---|---|---|
+| **Spendable** | Available in the trading balance | Use them for a trade |
+| **Consolidating** | A bridge is in progress | Wait for completion, then refresh |
+| **Parked ⏸** | Waiting on another chain | Approve a bridge in `/bridge` |
+| **Below minimum** | Too little for that route | Check how much more the panel asks for |
+
+## Choose a wallet's bridge mode
+
+When a wallet is created or imported, it may ask:
+
+- **Auto-bridge ✅:** future eligible stablecoin deposits move into the trading balance automatically.
+- **I'll decide each time ✋:** they remain on the receiving chain until you approve.
+
+No answer means manual mode. Existing wallets from before this choice was introduced may already have auto-bridge on. Imported and marketplace wallets start manual unless you choose otherwise.
+
+## Approve parked funds once
+
+<Steps>
+  <Step title="Open Bridge">
+    Send `/bridge`, or tap **Parked on other chains** on the main menu, Positions, or Deposit.
+  </Step>
+  <Step title="Find the wallet and chain">
+    Check the wallet header and the row showing the amount, token, and network.
+  </Step>
+  <Step title="Approve the movement">
+    Tap **Approve** on that row. It moves that chain's eligible balance once; it does not turn on automatic bridging for later deposits.
+  </Step>
+  <Step title="Wait for completion">
+    Follow the moving-funds status and **Bridge complete** notification. The bot may estimate about a minute; network conditions can change the wait.
+  </Step>
+</Steps>
+
+{/* Screenshot: bridge-parked.png | Parked funds awaiting approval, with the wallet and network shown. */}
+<div className="cove-guide-figure">
+  <Frame caption="Parked funds awaiting approval, with the wallet and network shown.">
+    <img src="/assets/guide-screenshots/bridge-parked.png" alt="Parked funds awaiting approval, with the wallet and network shown." width={733} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Change the standing preference
+
+Open `/wallets` → the wallet's **⚙️** → **Auto-bridge**. You can also use the controls in `/bridge` or the Deposit Mini App. Check the resulting 🔁 or ✋ state.
+
+The preference belongs to the wallet. Changing it affects how eligible funds are handled, so check the wallet name first.
+
+{/* Screenshot: bridge-consent.png | Choose automatic bridging or approve each deposit yourself. */}
+<div className="cove-guide-figure">
+  <Frame caption="Choose automatic bridging or approve each deposit yourself.">
+    <img src="/assets/guide-screenshots/bridge-consent.png" alt="Choose automatic bridging or approve each deposit yourself." width={733} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Minimums and troubleshooting
+
+The documented bridge minimum is **\$25 for Ethereum** and **\$1 for other supported chains**. The live panel shows route-specific requirements. Below-minimum funds may not appear as an approvable parked row.
+
+**Nothing is parked** means there is nothing currently available for manual approval in the displayed wallets. Check other profiles, deposit addresses, and below-minimum balances if you expected funds.
+
+Paper wallets cannot bridge. If a trade says **Consolidating funds**, wait and refresh rather than approving or submitting the same action repeatedly.

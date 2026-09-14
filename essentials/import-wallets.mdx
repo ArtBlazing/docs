@@ -1,0 +1,82 @@
+---
+title: "Import wallets"
+description: "Bring an EVM or Solana wallet into Cove, individually or from CSV."
+icon: "file-import"
+---
+
+Imports go into your **active real profile**. If you import only an EVM or Solana key, Cove creates the missing side.
+
+<Warning>A private key controls the wallet. Enter it only in the official bot's active import flow. Never send it to support, another person, a group, or a screenshot.</Warning>
+
+## Import one wallet
+
+<Steps>
+  <Step title="Choose the wallet type">
+    In the intended profile, open `/wallets` → **Import Wallet** → **EVM Only**, **Solana Only**, or **Both**.
+  </Step>
+  <Step title="Provide the requested key">
+    Follow the private-key prompt. Cove removes the submitted message from the chat. Keep your own secure backup; message deletion does not replace careful handling.
+  </Step>
+  <Step title="Name and confirm">
+    Enter an optional **Wallet Label** or skip it. Review the wallet and tap **Confirm Import**.
+  </Step>
+  <Step title="Check the result">
+    Open `/wallets` and select the imported wallet if you want it to trade. Other-chain stablecoins stay where they are until you approve bridging or enable auto-bridge.
+  </Step>
+</Steps>
+
+{/* Screenshot: wallet-import-types.png | Choose EVM Only, Solana Only, Both, or Bulk (CSV). */}
+<div className="cove-guide-figure">
+  <Frame caption="Choose EVM Only, Solana Only, Both, or Bulk (CSV).">
+    <img src="/assets/guide-screenshots/wallet-import-types.png" alt="Choose EVM Only, Solana Only, Both, or Bulk (CSV)." width={733} height={797} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: wallet-import-review.png | Confirm a wallet import using its public address and label. No private key is displayed. */}
+<div className="cove-guide-figure">
+  <Frame caption="Confirm a wallet import using its public address and label. No private key is displayed.">
+    <img src="/assets/guide-screenshots/wallet-import-review.png" alt="Confirm a wallet import using its public address and label. No private key is displayed." width={733} height={767} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Import a CSV batch
+
+Choose **Bulk (CSV)** to paste rows or upload a **.csv** or **.txt** file. Limits: **10 wallets**, **64 KB**, and the free slots in your profile.
+
+Columns are an optional name, EVM key, and Solana key. The header is optional. Keep empty cells. Names can contain up to 32 characters and cannot contain commas.
+
+```text
+name,EVM_KEY,SOLANA_KEY
+Example EVM,REPLACE_WITH_EVM_KEY,
+Example Solana,,REPLACE_WITH_SOLANA_KEY
+Example Both,REPLACE_WITH_EVM_KEY,REPLACE_WITH_SOLANA_KEY
+```
+
+These placeholders show the format; they are not importable keys. EVM keys may start with `0x`; Solana keys use base58.
+
+1. Open **Import Wallet → Bulk (CSV)** in the intended profile.
+2. Paste or upload the batch. Correct any per-row validation errors.
+3. Review the labels, shortened addresses, and statuses in **Review wallet imports**.
+4. Tap **Import** with the displayed count.
+5. Wait for **Wallet import results** and check every row.
+
+Closing the message does not cancel an import already running. If there are too few slots, the whole batch is refused before importing. Bulk-imported wallets start with auto-bridge off.
+
+{/* Screenshot: wallet-import-csv-review.png | Review a CSV batch's wallet summaries and remaining slots before importing. */}
+<div className="cove-guide-figure">
+  <Frame caption="Review a CSV batch's wallet summaries and remaining slots before importing.">
+    <img src="/assets/guide-screenshots/wallet-import-csv-review.png" alt="Review a CSV batch's wallet summaries and remaining slots before importing." width={733} height={686} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Resolve import issues
+
+| Result | What to do |
+|---|---|
+| Already imported — skipped | Find the existing wallet in your profiles |
+| Recover instead | Use **Cove Wallets → Deleted → Recover** |
+| Import incomplete / provider busy | Check results before retrying the CSV as instructed |
+| Invalid key or duplicate address | Correct the named row |
+| Not enough slots | Reduce the batch or choose another profile |
+| Target profile changed / session expired | Start a new import in the intended profile |
+
+Secure your backups and remove temporary key files when no longer needed. Do not attach an import CSV to support.

@@ -1,112 +1,55 @@
 ---
-title: Supported Chains
-description: Networks currently supported by Cove
-icon: globe
+title: "Supported Chains"
+description: "Check trading networks, deposit addresses, and withdrawal destinations."
+icon: "globe"
 ---
 
-This page is the source of truth for networks currently shown in Cove. Availability for a specific token, order type, deposit route, or withdrawal route can depend on current product configuration.
+Cove uses a **USDC trading balance on Solana** to trade across supported networks. The token determines the trading chain; an ambiguous address opens a chain picker.
 
-<div className="chain-grid">
-  <div className="chain-card">
-    <img className="chain-logo" src="/assets/chains/sol.svg" alt="Solana logo" />
-    <div>
-      <div className="chain-code">SOL</div>
-      <div className="chain-name">Solana</div>
-    </div>
-  </div>
-  <div className="chain-card">
-    <img className="chain-logo" src="/assets/chains/base.svg" alt="Base logo" />
-    <div>
-      <div className="chain-code">BASE</div>
-      <div className="chain-name">Base</div>
-    </div>
-  </div>
-  <div className="chain-card">
-    <div className="chain-logo chain-mark chain-mark-ink" role="img" aria-label="Ink network mark">INK</div>
-    <div>
-      <div className="chain-code">INK</div>
-      <div className="chain-name">Ink</div>
-    </div>
-  </div>
-  <div className="chain-card">
-    <img className="chain-logo" src="/assets/chains/eth.svg" alt="Ethereum logo" />
-    <div>
-      <div className="chain-code">ETH</div>
-      <div className="chain-name">Ethereum</div>
-    </div>
-  </div>
-  <div className="chain-card">
-    <div className="chain-logo chain-mark chain-mark-arbitrum" role="img" aria-label="Arbitrum One network mark">ARB</div>
-    <div>
-      <div className="chain-code">ARBITRUM</div>
-      <div className="chain-name">Arbitrum One</div>
-    </div>
-  </div>
-  <div className="chain-card">
-    <img className="chain-logo" src="/assets/chains/bnb.svg" alt="BNB Chain logo" />
-    <div>
-      <div className="chain-code">BNB</div>
-      <div className="chain-name">BNB Chain</div>
-    </div>
-  </div>
-  <div className="chain-card">
-    <img className="chain-logo" src="/assets/chains/monad.svg" alt="Monad logo" />
-    <div>
-      <div className="chain-code">MONAD</div>
-      <div className="chain-name">Monad</div>
-    </div>
-  </div>
-  <div className="chain-card">
-    <img className="chain-logo" src="/assets/chains/story-logo.svg" alt="Story logo" />
-    <div>
-      <div className="chain-code">STORY</div>
-      <div className="chain-name">Story</div>
-    </div>
-  </div>
-  <div className="chain-card">
-    <img className="chain-logo" src="/assets/chains/megaeth.svg" alt="MegaETH logo" />
-    <div>
-      <div className="chain-code">MEGAETH</div>
-      <div className="chain-name">MegaETH</div>
-    </div>
-  </div>
-  <div className="chain-card">
-    <img className="chain-logo" src="/assets/chains/tempo.svg" alt="Tempo logo" />
-    <div>
-      <div className="chain-code">TEMPO</div>
-      <div className="chain-name">Tempo</div>
-    </div>
-  </div>
-  <div className="chain-card">
-    <img className="chain-logo" src="/assets/chains/plasma.svg" alt="Plasma logo" />
-    <div>
-      <div className="chain-code">PLASMA</div>
-      <div className="chain-name">Plasma</div>
-    </div>
-  </div>
-  <div className="chain-card">
-    <img className="chain-logo" src="/assets/chains/hyperevm.svg" alt="HyperEVM logo" />
-    <div>
-      <div className="chain-code">HYPEREVM</div>
-      <div className="chain-name">HyperEVM</div>
-    </div>
-  </div>
-  <div className="chain-card">
-    <div className="chain-logo chain-mark chain-mark-robinhood" role="img" aria-label="Robinhood Chain network mark">RH</div>
-    <div>
-      <div className="chain-code">ROBINHOOD</div>
-      <div className="chain-name">Robinhood Chain</div>
-    </div>
-  </div>
-  <div className="chain-card">
-    <div className="chain-logo chain-mark chain-mark-stable" role="img" aria-label="Stable network label shown in Cove">STABLE</div>
-    <div>
-      <div className="chain-code">STABLE</div>
-      <div className="chain-name">Shown in Cove UI</div>
-    </div>
-  </div>
-</div>
+This network overview was updated on **September 13, 2026**. A chain can be temporarily unavailable. Always check the current bot panel before depositing or withdrawing.
+
+## Network reference
+
+| Chain | Deposit address to use |
+|---|---|
+| Solana | Solana |
+| Ethereum | Deposit EVM |
+| Base | Deposit EVM |
+| BNB Chain | Deposit EVM |
+| Arbitrum | Deposit EVM |
+| MegaETH | Deposit EVM |
+| Plasma | Deposit EVM |
+| HyperEVM | **Show HyperEVM wallet** |
+| Monad | Deposit EVM |
+| Story | Deposit EVM |
+| RobinHood Chain | Deposit EVM |
+| Tempo | Deposit EVM |
+| Stable | Deposit EVM |
+| Ink | Deposit EVM |
+| X Layer | Deposit EVM, if available |
+| Avalanche | **Show Avalanche wallet** |
 
 <Note>
-Cove presents a unified balance and handles routing for supported flows. Gas sponsorship has a cap. If a trade needs more gas than the sponsored amount, Cove can ask for a gas surplus according to your settings.
+X Layer is available only where the matching route appears in your bot. Marketplace and private withdrawals have their own supported-network lists.
 </Note>
+
+{/* Screenshot: chains-live-menu.png | The trading networks listed in Cove's main menu. */}
+<div className="cove-guide-figure">
+  <Frame caption="The trading networks listed in Cove's main menu.">
+    <img src="/assets/guide-screenshots/chains-live-menu.png" alt="The trading networks listed in Cove's main menu." width={733} height={699} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: chains-withdraw-menu.png | The network picker for a withdrawal; available destinations are shown here. */}
+<div className="cove-guide-figure">
+  <Frame caption="The network picker for a withdrawal; available destinations are shown here.">
+    <img src="/assets/guide-screenshots/chains-withdraw-menu.png" alt="The network picker for a withdrawal; available destinations are shown here." width={733} height={1166} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Bridge minimums
+
+Other-chain stablecoins need **\$25 on Ethereum** or **\$1 on other supported chains** for the documented bridge routes. Smaller balances remain below the minimum until topped up. [Manual bridge mode](/funds/bridge) also requires approval.
+
+## Special addresses matter
+
+HyperEVM and Avalanche use chain-specific wallet addresses. Sending a different chain's asset to one of those addresses can make funds inaccessible. Always copy a fresh address from the matching deposit panel.

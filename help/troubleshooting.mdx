@@ -1,0 +1,85 @@
+---
+title: "Troubleshooting"
+description: "Find the next step for missing funds, failed trades, and unavailable controls."
+icon: "life-ring"
+---
+
+Start with the **latest receipt**, the **active profile**, and the **selected wallets**. A pending action, a failed action, and an action blocked before submission need different responses.
+
+## Funds and wallets
+
+<AccordionGroup>
+  <Accordion title="I deposited, but Balance is unchanged">
+    Check the receiving wallet and profile. **Parked** funds need approval in `/bridge`; **Consolidating** means a bridge is running. Below-minimum deposits need a top-up.
+
+    A non-stablecoin deposit is a token holding, not automatically spendable USDC. Check Positions and the **Convert to USDC** action. See [Deposit](/funds/deposit).
+  </Accordion>
+  <Accordion title="My wallet, position, or orders disappeared">
+    Open `/profiles` and check other profiles and **Archived**. In Positions, clear filters and review **View hidden**. A wallet not selected for trading can still hold funds.
+  </Accordion>
+  <Accordion title="Signing access lost or Deposits are paused">
+    Open Cove Wallets and use **Restore access**. For a deleted wallet, use **Deleted → Recover** instead of importing the key again. See [Wallet recovery](/essentials/security).
+  </Accordion>
+  <Accordion title="Withdrawal blocked or too large to sponsor">
+    Use Transfer for your own Cove wallets. Check the external address and network. If the amount exceeds sponsorship, split it as instructed. For insufficient balance, account for the fee as well as the amount.
+  </Accordion>
+  <Accordion title="A transfer or private payment only partly completed">
+    Check each destination's result. Some funds may already have arrived. Do not repeat the whole run.
+
+    For Private Disperse use **Get refund** on failed destinations; for Private Withdraw open support with the run reference.
+  </Accordion>
+  <Accordion title="A marketplace purchase is stuck">
+    Reopen the purchase. **Purchase complete — import pending** offers **Finish import**. **This purchase needs a hand** offers **Copy reference and open chat**. Check payment status before purchasing again.
+  </Accordion>
+</AccordionGroup>
+
+## Trading and orders
+
+| Message or symptom | What to check next |
+|---|---|
+| **Not enough USDC** | Spendable funds in selected wallets; parked funds; Split Total versus Per Wallet |
+| **Buy too small / sell below minimum** | [Minimum size](/essentials/fees-structure), including the Solana sell floor |
+| **Consolidating funds** | Wait for the bridge and refresh |
+| **Previous order still processing** | Follow the existing receipt before retrying |
+| **Scam warning / Auto-buy stopped** | Read **Find out why** and inspect the token |
+| **High price impact** | Review the expected output; consider a smaller size |
+| **Quote changed / quote stale** | Review a fresh quote before a new submission |
+| **Slippage too low** | Review volatility and size before changing [Slippage](/features/settings/guardrails) |
+| **Max-buy cap applied** | Receipt shows actual spend below requested spend |
+| **Not enough liquidity** | Check the market and reduce size |
+| **No swap route found** | A route may be temporarily unavailable; check token liquidity and retry only after reviewing status |
+| **Token blocked the transfer** | Its contract prevents movement; it may never become sellable |
+| **Launchpad bonding curve / migrating** | Wait for the supported trading route or graduation |
+| **Token too gas-heavy** | Check the quoted cost or use a smaller supported size |
+| **Trade stopped — cannot tell what you would get** | The quote could not be reliably assessed |
+| **Trade paused — bridge quote too low** | Check the refusal and try later; do not assume a trade filled |
+| **Generic Trade failed** | Forward the failure message with its reference to support |
+
+## Automated orders
+
+**Didn't Fire — still active** means an impact-blocked order remains armed. **No longer armed**, **Failed**, and **Expired** mean you should inspect whether a replacement is needed.
+
+For a gas-blocked stop, adjusting the budget does not recreate it. For **Auto TP/SL Incomplete**, add and verify missing orders manually.
+
+If `/dca`, `/trailing`, or `/alert` fails, reply to a fresh token panel. On duplicate-delivery or uncertain-partial-creation messages, inspect Orders/Alerts before resending.
+
+See [Manage orders](/features/managing-orders).
+
+## Panels, Mini Apps, and availability
+
+| Issue | Next step |
+|---|---|
+| Panel expired or belongs to another profile | Open a new panel in the intended profile |
+| Mini App signed into another Telegram account | **Switch to this Telegram account**, or reopen from the correct account |
+| Feature requires the main bot | Use `/bots` to find it |
+| Feature/button absent | Check relevant display settings and account availability |
+| Paper export/deposit/withdrawal blocked | Switch to a real profile; Paper cannot move real funds |
+| Unsupported support attachment | Send images as photos, or MP4/MOV/WebM up to 20 MB |
+| Invalid Pushover key | Use the complete 30-character User Key and an active device |
+| Payout pending / security hold | Follow the current reward-panel eligibility message |
+
+## When to contact support
+
+Use `/support` with the time, token, chain, profile, wallet label, and relevant receipt/reference. Describe what you expected and what you see. Do not send keys, tokens, or import CSVs.
+
+Cove may process delayed actions after you close the chat. An unresolved pending status should be investigated before a replacement operation.

@@ -1,0 +1,81 @@
+---
+title: "Deposit funds"
+description: "Find your deposit address and make funds available for trading."
+icon: "arrow-down-to-bracket"
+---
+
+Cove wallets can receive tokens, including tokens you did not buy through Cove. Your **trading balance**, however, is spendable **USDC on Solana**. Receiving another token does not automatically make its value spendable USDC.
+
+## Deposit from another wallet or exchange
+
+<Steps>
+  <Step title="Choose the receiving wallet">
+    Open the intended profile, then **Deposit** or `/deposit`. Check the wallet shown before copying an address.
+  </Step>
+  <Step title="Choose the correct network and address">
+    Use the **Solana** address for Solana assets and **Deposit EVM** for the listed standard EVM networks.
+
+    **HyperEVM** and **Avalanche**, when available, have separate wallet addresses behind **Show HyperEVM wallet** and **Show Avalanche wallet**. Deposit only the matching chain's assets to those addresses.
+  </Step>
+  <Step title="Review the asset, minimum, and bridge mode">
+    Check the live deposit panel. Other-chain stablecoins normally need at least **\$25 on Ethereum** or **\$1 on other supported chains** to bridge.
+
+    🔁 means auto-bridge is on. ✋ means you approve bridges yourself.
+  </Step>
+  <Step title="Send from your external wallet">
+    In the sending wallet or exchange, use the same network and asset as the deposit route. Review the address and any sender-side fees before sending.
+  </Step>
+  <Step title="Check arrival and trading balance">
+    Look for **Deposit received**. For other-chain stablecoins, wait for **Bridge complete**, or open `/bridge` and **Approve** if the wallet is manual.
+
+    Return to `/start` and refresh **Balance**.
+  </Step>
+</Steps>
+
+{/* Screenshot: deposit-addresses.png | Deposit addresses, the selected wallet, and the auto-bridge preference. */}
+<div className="cove-guide-figure">
+  <Frame caption="Deposit addresses, the selected wallet, and the auto-bridge preference.">
+    <img src="/assets/guide-screenshots/deposit-addresses.png" alt="Deposit addresses, the selected wallet, and the auto-bridge preference." width={733} height={1002} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: deposit-chain-wallet.png | Раскрытый Show HyperEVM wallet или Show Avalanche wallet с предупреждением о правильной сети. */}
+
+<Warning>
+Use the address displayed for the exact network. A matching-looking address on another network is not enough. Sending to a wrong network or address can make funds inaccessible.
+</Warning>
+
+## Deposit another token
+
+A non-stablecoin deposit can appear as a holding and offer **Convert to USDC**. Review the token and any conversion quote before acting; conversion is a trade, with its own fees and liquidity limits.
+
+For USDT or other stablecoin routes, check the current conversion and credited amount. Choose Solana USDC if you want to avoid an additional stablecoin conversion step.
+
+## Top up by card
+
+1. Open `/deposit` and select **Card Top Up via MoonPay**, when offered.
+2. In the Deposit Mini App, check the receiving wallet.
+3. Choose the purchase amount and follow MoonPay's checkout.
+4. Review the provider's fees, eligibility requirements, and delivery details.
+5. Return to Cove and check the deposit receipt and balance.
+
+The provider controls available payment methods and checkout requirements.
+
+{/* Screenshot: deposit-card-topup.png | The Deposit Mini App with wallet selection, card top-up, and auto-bridge controls. */}
+<div className="cove-guide-figure">
+  <Frame caption="The Deposit Mini App with wallet selection, card top-up, and auto-bridge controls.">
+    <img src="/assets/guide-screenshots/deposit-card-topup.png" alt="The Deposit Mini App with wallet selection, card top-up, and auto-bridge controls." width={573} height={937} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Why is my balance unchanged?
+
+| What you see | What it means |
+|---|---|
+| **Parked** | The deposit needs your approval in [Bridge](/funds/bridge) |
+| **Consolidating** | A bridge is still running |
+| **Deposit more to unlock** | Stablecoins are below the route's bridge minimum |
+| Token in Positions, no USDC increase | You received a token rather than spendable USDC |
+| No deposit in this profile | Check the receiving address and other profiles |
+| **Deposits are paused** / access lost | Restore wallet access in [Cove Wallets](/essentials/security) |
+
+See [Fees and minimums](/essentials/fees-structure) and [Troubleshooting](/help/troubleshooting).

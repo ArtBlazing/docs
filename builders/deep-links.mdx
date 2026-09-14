@@ -108,7 +108,7 @@ The `g_`, `b_`, and `gs_` token-action links use the same chain codes, address e
 
 This table is a deep-link-specific subset, not the complete Cove network list. See [Supported Chains](/essentials/supported-chains) for current product coverage.
 
-Deep-link codes are not currently published for Arbitrum One, Ink, Robinhood Chain, or Stable. Generate payloads only for the chain codes listed above.
+Deep-link codes for Arbitrum, Ink, RobinHood Chain, Stable, X Layer, and Avalanche are not documented here. Generate payloads only for the codes listed above; do not infer a code from trading-network support.
 
 ### Token address width
 
@@ -155,7 +155,7 @@ g_{amount}{chainCode}{base62Token}[{base62AffiliateId}{base62GroupId}]
 
 Behavior:
 
-- Onboarded users execute the buy immediately.
+- For onboarded users, an authorized link can execute immediately, subject to the user's group-buy cap, selected profile/wallets, and applicable trading checks.
 - New users enter onboarding first. If an affiliate is present, Cove can attach it during onboarding, but the buy does not auto-execute.
 - If affiliate or group metadata is present, Cove records it for attribution and reporting.
 
@@ -194,7 +194,7 @@ b_{chainCode}{base62Token}[{base62AffiliateId}{base62GroupId}]
 Behavior:
 
 - Onboarded users open the market panel in buy mode.
-- The user selects the amount and confirms from inside Cove.
+- The user selects the amount inside Cove. A separate confirmation depends on their Buy confirm setting; mandatory risk and fee prompts still apply.
 - New users enter onboarding first. If an affiliate is present, Cove can attach it during onboarding, then the user starts from the main menu.
 
 <Accordion title="Length limits">
@@ -232,7 +232,7 @@ gs_{percent}{chainCode}{base62Token}[{base62AffiliateId}{base62GroupId}]
 
 Behavior:
 
-- Cove sells the selected percentage of the clicker's own position from a real trading account.
+- Cove sells the selected percentage of the clicker's own position from the relevant real wallet context, subject to group-sell authorization and applicable checks.
 - If the user holds the token in one account, Cove can select that account automatically.
 - If the user holds the token in multiple accounts, Cove shows a wallet picker.
 - If the user does not hold the token, Cove shows that there is nothing to sell.
