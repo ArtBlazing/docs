@@ -12,7 +12,7 @@ Telegram limits the `/start` parameter to **64 characters**. Cove deep links use
 
 ## Quick reference
 
-For token links, encode the token address into Base62 first: **27 chars** for EVM tokens, **43 chars** for Solana tokens. Use the chain code table below to choose `e`, `b`, `n`, `m`, `s`, and other supported networks.
+For token links, encode the token address into Base62 first: **27 chars** for EVM tokens, **43 chars** for Solana tokens. Use the chain code table below to choose the network, such as `e` for Ethereum, `s` for Solana, or `c` for Arc.
 
 <CardGroup cols={3}>
   <Card title="Group buy" icon="cart-shopping">
@@ -93,22 +93,31 @@ The `g_`, `b_`, and `gs_` token-action links use the same chain codes, address e
 
 ### Chain codes
 
-| Code | Chain | Chain ID |
-|---|---|---:|
-| `e` | Ethereum | 1 |
-| `b` | Base | 8453 |
-| `n` | BNB Chain | 56 |
-| `m` | MegaETH | 4326 |
-| `s` | Solana | 1399811149 |
-| `t` | Tempo | 4217 |
-| `o` | Monad | 143 |
-| `y` | Story | 1514 |
-| `h` | HyperEVM | 999 |
-| `p` | Plasma | 9745 |
+| Code | Chain | Chain ID | Token width |
+|---|---|---:|---:|
+| `e` | Ethereum | 1 | 27 chars |
+| `b` | Base | 8453 | 27 chars |
+| `n` | BNB Chain | 56 | 27 chars |
+| `a` | Arbitrum | 42161 | 27 chars |
+| `m` | MegaETH | 4326 | 27 chars |
+| `s` | Solana | 1399811149 | 43 chars |
+| `t` | Tempo | 4217 | 27 chars |
+| `o` | Monad | 143 | 27 chars |
+| `y` | Story | 1514 | 27 chars |
+| `h` | HyperEVM | 999 | 27 chars |
+| `p` | Plasma | 9745 | 27 chars |
+| `r` | RobinHood Chain | 4663 | 27 chars |
+| `i` | Ink | 57073 | 27 chars |
+| `l` | Stable | 988 | 27 chars |
+| `x` | X Layer | 196 | 27 chars |
+| `v` | Avalanche | 43114 | 27 chars |
+| `c` | Arc | 5042 | 27 chars |
 
-This table is a deep-link-specific subset, not the complete Cove network list. See [Supported Chains](/essentials/supported-chains) for current product coverage.
+The same codes are used by group buy (`g_`), market buy panel (`b_`), and group sell (`gs_`) links. Solana is the only chain with a 43-character token segment; every other listed chain is EVM and uses 27 characters.
 
-Deep-link codes for Arbitrum, Ink, RobinHood Chain, Stable, X Layer, and Avalanche are not documented here. Generate payloads only for the codes listed above; do not infer a code from trading-network support.
+Chain codes are always a **single lowercase letter** and are case-sensitive: `E` is not Ethereum. Codes never use a digit or `d`, because `d` marks the decimal point in group buy amounts (for example, `0d5` = $0.50).
+
+An unknown chain code is rejected: the user lands on the Cove main menu instead of the token.
 
 ### Token address width
 
@@ -171,6 +180,7 @@ Examples:
 ```text
 https://t.me/cove_trading_bot?start=g_10s<43-char-base62-token>
 https://t.me/cove_trading_bot?start=g_0d5b<27-char-base62-token><7-char-affiliate>0000000
+https://t.me/cove_trading_bot?start=g_10c<27-char-base62-token>
 ```
 
 ---
@@ -209,6 +219,7 @@ Examples:
 ```text
 https://t.me/cove_trading_bot?start=b_s<43-char-base62-token><7-char-affiliate><7-char-group>
 https://t.me/cove_trading_bot?start=b_b<27-char-base62-token>
+https://t.me/cove_trading_bot?start=b_c<27-char-base62-token>
 ```
 
 ---
@@ -250,10 +261,11 @@ Group sell links are opt-in for users. The first time a user clicks one while gr
   ```
 </Accordion>
 
-Example:
+Examples:
 
 ```text
 https://t.me/cove_trading_bot?start=gs_50e<27-char-base62-token>
+https://t.me/cove_trading_bot?start=gs_50c<27-char-base62-token>
 ```
 
 ---

@@ -1,12 +1,12 @@
 ---
 title: "Supported Chains"
-description: "Check trading networks, deposit addresses, and withdrawal destinations."
+description: "See supported trading networks, including Arc, and find the right funding options."
 icon: "globe"
 ---
 
-Cove uses a **USDC trading balance on Solana** to trade across supported networks. The token determines the trading chain; an ambiguous address opens a chain picker.
+Cove supports token trading on **Arc** and the other networks listed below, using a **USDC trading balance on Solana**. The token determines the trading chain; an ambiguous address opens a chain picker.
 
-This network overview was updated on **September 13, 2026**. A chain can be temporarily unavailable. Always check the current bot panel before depositing or withdrawing.
+This network overview was updated on **September 16, 2026**. A chain can be temporarily unavailable. Always check the current bot panel before depositing or withdrawing.
 
 ## Network reference
 
@@ -28,15 +28,16 @@ This network overview was updated on **September 13, 2026**. A chain can be temp
 | Ink | Deposit EVM |
 | X Layer | Deposit EVM, if available |
 | Avalanche | **Show Avalanche wallet** |
+| Arc | Check the **Deposit** panel for available funding routes |
 
 <Note>
-X Layer is available only where the matching route appears in your bot. Marketplace and private withdrawals have their own supported-network lists.
+This table lists trading networks. Trading support does not automatically mean direct deposits or withdrawals are available on the same network. X Layer is available only where the matching route appears in your bot. Marketplace and private withdrawals have their own supported-network lists.
 </Note>
 
-{/* Screenshot: chains-live-menu.png | The trading networks listed in Cove's main menu. */}
+{/* Screenshot: chains-live-menu.png | Example main menu captured before Arc support was added; see the network reference above for the updated list. */}
 <div className="cove-guide-figure">
-  <Frame caption="The trading networks listed in Cove's main menu.">
-    <img src="/assets/guide-screenshots/chains-live-menu.png" alt="The trading networks listed in Cove's main menu." width={733} height={699} className="cove-guide-screenshot" />
+  <Frame caption="Example main menu captured before Arc support was added. The network reference above includes Arc.">
+    <img src="/assets/guide-screenshots/chains-live-menu.png" alt="An earlier Cove main menu showing trading networks before Arc was added." width={733} height={699} className="cove-guide-screenshot" />
   </Frame>
 </div>
 {/* Screenshot: chains-withdraw-menu.png | The network picker for a withdrawal; available destinations are shown here. */}
@@ -45,6 +46,14 @@ X Layer is available only where the matching route appears in your bot. Marketpl
     <img src="/assets/guide-screenshots/chains-withdraw-menu.png" alt="The network picker for a withdrawal; available destinations are shown here." width={733} height={1166} className="cove-guide-screenshot" />
   </Frame>
 </div>
+
+## Trade tokens on Arc
+
+1. [Add USDC on Solana](/essentials/getting-started) to your Cove trading balance.
+2. Paste the Arc token's contract address into Cove. If a chain picker appears, choose **Arc**.
+3. Check that the panel shows **Arc**, verify the token address, and follow the [buy and sell guide](/features/trading).
+
+You do not need to fund Arc directly to follow this trading flow. For links that open an Arc token panel, use chain code **`c`**; see [Deep Links](/builders/deep-links#chain-codes).
 
 ## Bridge minimums
 
