@@ -342,6 +342,106 @@ the Global tab, it isn't available on your account yet.
   </Step>
 </Steps>
 
+<Accordion title="Step-by-step visual walkthrough: Connecting Cove MCP to an AI agent" icon="robot">
+  <Steps>
+    <Step title="1. Enable AI App Connections in Telegram and copy your MCP URL">
+      Open Cove in Telegram and type `/agent`. Select the **Global agent token** tab. Toggle **Connect AI apps: ON**. Tap **Copy URL** to copy your global MCP server endpoint.
+
+      <Frame caption="Enable Connect AI apps: ON in the Global agent token tab and copy your MCP URL.">
+        <img src="/assets/mcp-guide/1.jpg" alt="Telegram Cove /agent menu showing Global agent token tab and Connect AI apps toggle." />
+      </Frame>
+    </Step>
+
+    <Step title="2. Open Plugins or Connectors in your AI application">
+      Launch your AI client (such as ChatGPT, SuperGrok, Claude, or OpenWebUI). Go to the settings or plugin section and select **Connectors**. Click **New Connector** in the top right corner.
+
+      <Frame caption="Navigate to Connectors in your AI client settings and click New Connector.">
+        <img src="/assets/mcp-guide/2.jpg" alt="AI application settings interface with Connectors tab and New Connector button." />
+      </Frame>
+    </Step>
+
+    <Step title="3. Add a custom connector">
+      In the connector options modal, choose **+ Custom: Add your own custom connector**.
+
+      <Frame caption="Select Custom to configure a new manual MCP server endpoint.">
+        <img src="/assets/mcp-guide/3.jpg" alt="New Connector dialog with option to add a custom connector." />
+      </Frame>
+    </Step>
+
+    <Step title="4. Name the connector and paste your MCP server URL">
+      Enter a recognizable name (for example, Cove Trading). Paste your copied MCP URL (`https://cove.trade/api/mcp`) into the **Server URL** input box, then click **Add Connector**.
+
+      <Frame caption="Enter your custom connector name and paste your copied Cove MCP URL.">
+        <img src="/assets/mcp-guide/4.jpg" alt="Custom Connector setup form with Name and Server URL fields." />
+      </Frame>
+    </Step>
+
+    <Step title="5. Initiate OAuth authorization">
+      Your AI client launches a Cove OAuth authorization pop-up window titled **Approve this connection in Telegram**. Note the **6-character verification code** (for example, `ASHM-U`) displayed on screen.
+
+      <Frame caption="The Cove OAuth window displays the requesting application name and verification code.">
+        <img src="/assets/mcp-guide/5.jpg" alt="Cove OAuth approval pop-up showing verification code and Telegram redirect button." />
+      </Frame>
+    </Step>
+
+    <Step title="6. Click Open Cove in Telegram">
+      Click **Open Cove in Telegram**. The pop-up window switches state to **Waiting for your approval in Telegram**.
+
+      <Frame caption="Click Open Cove in Telegram to send the approval request to your Telegram app.">
+        <img src="/assets/mcp-guide/6.jpg" alt="OAuth popup window showing waiting status for Telegram approval." />
+      </Frame>
+    </Step>
+
+    <Step title="7. Verify the code and approve in Telegram">
+      In Telegram, Cove displays a **Connect an AI app?** approval request. Confirm that the self-reported app name and 6-character verification code match your browser window, then tap **Connect**.
+
+      <Frame caption="Check that the verification code matches your browser window, then tap Connect in Telegram.">
+        <img src="/assets/mcp-guide/7.jpg" alt="Telegram chat prompt asking to confirm connection with matching verification code." />
+      </Frame>
+    </Step>
+
+    <Step title="8. Receive Telegram confirmation">
+      Telegram displays an approval confirmation: **AI app approved. Return to your browser to finish connecting.**
+
+      <Frame caption="Telegram confirms the AI app connection approval.">
+        <img src="/assets/mcp-guide/8.jpg" alt="Telegram chat message confirming successful AI app approval." />
+      </Frame>
+    </Step>
+
+    <Step title="9. Confirm active connection status in your AI app">
+      Return to your AI client window. Under the **Connected** connectors list, your Cove connector now displays a **✓ Added** badge.
+
+      <Frame caption="The Cove connector appears as connected with a ✓ Added indicator in your AI client.">
+        <img src="/assets/mcp-guide/9.jpg" alt="AI client connectors list showing Cove Staging as added." />
+      </Frame>
+    </Step>
+
+    <Step title="10. Execute trade commands using plain text prompts">
+      Prompt your AI agent with trading instructions in natural language (for example: "using my main wallet, buy $5 worth of [token address]"). The agent calls Cove MCP trading tools, executes the market order, and returns full transaction details.
+
+      <Frame caption="Prompt your AI agent to execute market buys and inspect the structured fill output.">
+        <img src="/assets/mcp-guide/10.jpg" alt="AI agent chat interface demonstrating an executed buy command with fill details." />
+      </Frame>
+    </Step>
+
+    <Step title="11. Review real-time Telegram execution alerts">
+      Cove sends an instant notification to your Telegram chat (`🤖 Agent Buy / Buy Executed`), updating your position card, PnL, and active order guardrails.
+
+      <Frame caption="Cove sends real-time execution receipts and live position tracking cards to Telegram.">
+        <img src="/assets/mcp-guide/11.jpg" alt="Telegram notification showing Agent Buy execution and updated token position card." />
+      </Frame>
+    </Step>
+
+    <Step title="12. Manage and exit positions through conversation">
+      To sell holdings or adjust positions, chat naturally with your agent (for example: "Ok, sell the balance"). The agent triggers the sell order via MCP and provides a complete net summary.
+
+      <Frame caption="Chat with your agent to sell balances and manage positions conversationally over MCP.">
+        <img src="/assets/mcp-guide/12.jpg" alt="AI agent chat showing a completed position sell command with return calculations." />
+      </Frame>
+    </Step>
+  </Steps>
+</Accordion>
+
 The request expires after **5 minutes**. The app name is self-reported by the app, so
 rely on the verification code, not the name.
 
