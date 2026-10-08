@@ -109,6 +109,8 @@
               "features/settings/position-panel",
               "features/settings/group-links",
               "features/settings/notifications",
+              "features/settings/receive-transfers",
+              "features/settings/security",
               "features/settings/language"
             ]
           },

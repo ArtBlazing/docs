@@ -4,13 +4,13 @@ description: "Customize buy/sell buttons, confirmations, charts, and position in
 icon: "sliders"
 ---
 
-Open `/settings` → **Trade panel settings**, or send `/trade_panel_settings`.
+Open `/settings` → **Trade panel settings**, or send `/trade_panel_settings`. The current menu has **Buttons and controls**, **Text panel**, **Auto TP/SL**, **Manual TP/SL basis**, **Always open on Buy**, and **Auto-buy on paste**.
 
 ## Change buy presets
 
 <Steps>
-  <Step title="Open Buy preset amounts">
-    Choose **Amount (\$)** or **Percent (%)** mode.
+  <Step title="Open market buy presets">
+    Choose **Buttons and controls → Market preset amounts → Buy preset amounts**, then **Amount (\$)** or **Percent (%)** mode.
   </Step>
   <Step title="Edit a button">
     Tap the preset to change, send the requested value, and check the updated list. Percent mode uses buying power, not token holdings.
@@ -22,12 +22,39 @@ Open `/settings` → **Trade panel settings**, or send `/trade_panel_settings`.
 
 Documented default buy buttons are **\$50 / \$100 / \$250 / \$500 / \$1000**, or **10 / 25 / 50 / 75 / 100%** in percentage mode. Existing profiles may have custom values.
 
-For sells, open **Sell preset amounts**, choose a button, and enter its percentage. Defaults are **25 / 50 / 100%**. Follow the input's validation.
+For sells, open **Buttons and controls → Market preset amounts → Sell preset amounts**, choose a button, and enter its percentage. Defaults are **25 / 50 / 100%**. Follow the input's validation.
 
 {/* Screenshot: settings-buy-presets.png | Buy preset amounts с Amount/Percent, редактируемыми значениями и Reset defaults. */}
 {/* Screenshot: settings-trade-panel.png | Trade panel settings, включая confirmations, buttons, text и automation. */}
 
+## Change limit-order presets
+
+Open **Buttons and controls → Limit preset amounts → Limit buy presets / Limit sell presets**. Each side has a **Triggers** tab with seven editable slots and an **Amounts** tab with three editable slots. Trigger presets accept upward or downward percentages or upward multiples such as **2x**. Buy amounts are USD; sell amounts are percentages of holdings. Use **Reset defaults** on the selected list if you want its original values.
+
+The Limit builder uses these presets. The DCA panel uses the same three amount choices. See [Create limit orders](/features/limit-orders#edit-limit-presets).
+
+{/* Screenshot: settings_buttons_controls.png | Buttons and controls with Market and Limit preset hubs. */}
+<div className="cove-guide-figure">
+  <Frame caption="Buttons and controls with Market and Limit preset hubs.">
+    <img src="/assets/guide-screenshots/settings_buttons_controls.png" alt="Buttons and controls with Market and Limit preset hubs." width={752} height={935} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: settings_limit_buy_presets.png | Editable Limit buy trigger presets. */}
+<div className="cove-guide-figure">
+  <Frame caption="Editable Limit buy trigger presets.">
+    <img src="/assets/guide-screenshots/settings_limit_buy_presets.png" alt="Editable Limit buy trigger presets." width={752} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: settings_limit_sell_presets.png | Editable Limit sell trigger presets. */}
+<div className="cove-guide-figure">
+  <Frame caption="Editable Limit sell trigger presets.">
+    <img src="/assets/guide-screenshots/settings_limit_sell_presets.png" alt="Editable Limit sell trigger presets." width={752} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
 ## Buttons and confirmations
+
+Open **Buttons and controls** for the switches below.
 
 | Setting | Default | What it changes |
 |---|---|---|
@@ -43,11 +70,13 @@ Normal confirmation preferences do not suppress mandatory risk or fee prompts. *
 
 ## Position text and links
 
+Open **Text panel** for the options below.
+
 | Setting | Default | What it changes |
 |---|---|---|
 | **Total PnL per token** | Off | Show lifetime PnL rather than the current holding cycle |
 | **Capital at Risk / Profit Taken** | Off | Replace separate Cost/Sold lines with the summarized view |
-| **Extra links** | All off | Individually show Dex S, Defined, GMGN, Basedbot, or X |
+| **Extra links** | Check your saved state | Individually show Dex S, Defined, GMGN, Basedbot, X, Pump.fun, or FOMO |
 | **Sell link presets** | 25 / 50 / 100% | Add quick-sell percentages to the panel text |
 
 Open **Extra links** and toggle each destination you want. These controls change display, not the token itself. Read [PnL and history](/features/history) before comparing different PnL views.
@@ -59,7 +88,7 @@ Open **Extra links** and toggle each destination you want. These controls change
 Other entries have their own guides:
 
 - [Auto-buy on paste](/features/settings/auto-buy): a standing immediate-buy rule.
-- [Auto TP/SL](/features/settings/auto-tp-sl): exit orders after buys.
+- [Auto TP/SL](/features/settings/auto-tp-sl): separate exit templates for Market buys and Limit & DCA fills, including Auto trailing stop and Dynamic take profit.
 - [Manual TP/SL basis](/features/take-profit-stop-loss#choose-the-percentage-reference-first): market versus average entry for manual percentage targets.
 
 Presets and execution preferences generally follow the profile; many chart/button display choices are account-wide. See [Settings scope](/features/settings#which-settings-change-with-a-profile).

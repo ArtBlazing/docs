@@ -1,0 +1,65 @@
+---
+title: "Two-factor authentication and trading lock"
+description: "Set up an authenticator code, control the optional trading lock, and recover access."
+icon: "shield-halved"
+---
+
+Open **/settings → Security → Open Security** in the primary Cove bot. This opens **Cove Wallets → Security**. The Security panel shows whether **2FA** is on and whether trading is locked. These controls cover **every wallet and profile** in your Cove account.
+
+## Set up 2FA
+
+1. Tap **Set up 2FA** and scan the QR code with an authenticator app. If scanning is unavailable, use **Can't scan?** to copy the setup key.
+2. Enter the **6-digit code** from that app and tap **Turn on 2FA**.
+3. Check that the Security page says **On**. Keep access to your authenticator; losing it can prevent key export, sends, wallet imports, and turning 2FA off.
+
+If the page says setup is temporarily unavailable, wait until **Set up 2FA** becomes available; the status shown in Security is the one to trust for your account.
+
+Once enrolled, Cove asks for a fresh code to export keys, send funds externally or to another user, import wallets, and approve wallet marketplace purchases or private payments. The approval for a send is tied to the amount and destination shown in its confirmation. Moving funds between your own Cove wallets also checks that the receiving wallet is trusted under the current enrollment.
+
+<Warning>Never send your setup key, authenticator code, private key, or a screenshot showing them to support or anyone else.</Warning>
+
+{/* Screenshot: security_settings_panel.png | Telegram Settings → Security showing 2FA and trading status, without codes. */}
+<div className="cove-guide-figure">
+  <Frame caption="Telegram Settings → Security showing 2FA and trading status, without codes.">
+    <img src="/assets/guide-screenshots/security_settings_panel.png" alt="Telegram Settings → Security showing 2FA and trading status, without codes." width={752} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: security_2fa_setup.png | Example 2FA setup screen; the QR, setup key, and code shown are no longer valid. */}
+<div className="cove-guide-figure">
+  <Frame caption="Example 2FA setup screen; the QR, setup key, and code shown are no longer valid.">
+    <img src="/assets/guide-screenshots/security_2fa_setup.png" alt="Example 2FA setup screen; the QR, setup key, and code shown are no longer valid." width={745} height={1173} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: security_2fa_on.png | Cove Wallets Security overview after setup, with no code visible. */}
+<div className="cove-guide-figure">
+  <Frame caption="Cove Wallets Security overview after setup, with no code visible.">
+    <img src="/assets/guide-screenshots/security_2fa_on.png" alt="Cove Wallets Security overview after setup, with no code visible." width={745} height={1218} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Optional trading lock
+
+**Trading lock** is a separate option and starts **off**. Turn it on in **Cove Wallets → Security → Trading lock** and choose how long Cove may stay inactive before locking. The available presets are **1, 4, 8, 12, or 24 hours, 3 days, or 7 days**. The starting selection is **4 hours**.
+
+Using the bot or trading in the app or extension restarts an active timer. Automated orders and agent requests do not keep it unlocked. When locked, Cove blocks new trades and changes to limit or DCA orders; **already placed orders continue running**. Viewing balances and navigating still work. A code used for a send does not unlock trading.
+
+To unlock, tap **Unlock trading** in **/settings → Security** or on a blocked-trade message, then enter a fresh 6-digit authenticator code in the chat. You can also unlock in Cove Wallets → Security. A blocked trade is not retried for you: review it and submit it again. **/lock** locks trading immediately when the option is enabled.
+
+{/* Screenshot: security_trading_lock.png | Trading lock controls and duration choices. */}
+<div className="cove-guide-figure">
+  <Frame caption="Trading lock controls and duration choices.">
+    <img src="/assets/guide-screenshots/security_trading_lock.png" alt="Trading lock controls and duration choices." width={745} height={1218} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: security_locked_bot.png | Telegram locked status and Unlock trading button, without a code. */}
+<div className="cove-guide-figure">
+  <Frame caption="Telegram locked status and Unlock trading button, without a code.">
+    <img src="/assets/guide-screenshots/security_locked_bot.png" alt="Telegram locked status and Unlock trading button, without a code." width={752} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Recovery and turning 2FA off
+
+Security can add a **recovery email** after 2FA is set up. It provides a way to reach key export if Telegram access is lost; it does **not** replace the authenticator. Review the recovery address carefully. To turn 2FA off, follow **Turn off 2FA** in Cove Wallets → Security and complete its code confirmation. Remove a recovery email first if the app asks you to. Turning off 2FA also turns off the trading lock.
+
+If your authenticator is lost, contact [Support](/features/support) from the account you can access. Avoid repeated guesses: verification can be temporarily rate limited. For wallet export and revoked signing access, see [Wallet security and recovery](/essentials/security).

@@ -56,6 +56,10 @@ Send `/transfer` to open **Transfer USDC**. These transfers use **USDC on Solana
 
 The recipient must have started Cove and have a Telegram username. Funds arrive in their **primary wallet**, and they receive a **Transfer Received** notification.
 
+The recipient can choose **Settings → Receive transfers → Everyone / Allow-list only / Off**. If receiving by handle is disabled or you are not on their allow-list, the send cannot proceed. Ask the recipient to review that setting; do not retry an uncertain send without checking its receipt.
+
+When [2FA](/features/settings/security) is on, a send to another user requires a fresh authenticator code for the reviewed amount and destination. Internal transfers between your own wallets use the trust check described in the Security guide.
+
 ## Disperse USDC
 
 1. Choose **Disperse USDC**.

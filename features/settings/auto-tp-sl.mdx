@@ -4,7 +4,7 @@ description: "Set exit rules for future buys and understand how sell levels are 
 icon: "crosshairs"
 ---
 
-Auto TP/SL creates take-profit and/or stop-loss orders after eligible market buys in the active profile. Both sides are **off by default**.
+Auto TP/SL can create take-profit, stop-loss, and trailing-stop orders after eligible buys in the active profile. **Market buys** and **Limit & DCA** have separate templates and on/off states. Review both tabs before relying on an exit rule.
 
 Targets use the purchase's entry, regardless of the **Manual TP/SL basis** setting.
 
@@ -14,11 +14,14 @@ Targets use the purchase's entry, regardless of the **Manual TP/SL basis** setti
   <Step title="Open Auto TP/SL">
     Choose **Settings → Trade panel settings → Auto TP/SL**.
   </Step>
+  <Step title="Choose the buy mode">
+    Open **Market buys** for immediate buys or **Limit & DCA** for a filled limit buy, DCA rung, or breakout buy. A green indicator on the other tab means it also has an armed rule.
+  </Step>
   <Step title="Choose the side">
-    Open **Auto TP** for profit targets or **Auto SL** for loss targets.
+    Open **Auto take profit**, **Auto stop loss**, or **Auto trailing stop**. Each is configured separately for the selected buy mode.
   </Step>
   <Step title="Set a level">
-    Choose its trigger percentage and **Sell %**. Take-profit gains allow **1–100,000%**; stop-loss losses allow **1–99%**; sell size allows **1–100%**.
+    For Auto TP or SL, choose a trigger percentage and **Sell %** for each level. Take-profit gains allow **1–100,000%**; stop-loss losses allow **1–99%**; sell size allows **1–100%**.
   </Step>
   <Step title="Choose sell sizing">
     Check **Sell size → % of entry** or **% of remaining**. Read the examples below before adding several levels.
@@ -27,24 +30,42 @@ Targets use the purchase's entry, regardless of the **Manual TP/SL basis** setti
     Use **Add level** or **Delete**. Review the total allocation and estimated return summary. Enable the intended side.
   </Step>
   <Step title="Verify after your next buy">
-    Open `/orders` after an eligible purchase to confirm the expected exits were created.
+    Open `/orders` after an eligible fill to confirm the expected exits were created. A Price ladder DCA arms its exit template once on the first rung, using that rung's fill price as the reference.
   </Step>
 </Steps>
 
-{/* Screenshot: settings-auto-tpsl.png | The Auto TP/SL hub explains sell sizing and shows the automation toggles. */}
+{/* Screenshot: settings_auto_tpsl_modes.png | Market buys and Limit & DCA tabs with armed indicators. */}
 <div className="cove-guide-figure">
-  <Frame caption="The Auto TP/SL hub explains sell sizing and shows the automation toggles.">
-    <img src="/assets/guide-screenshots/settings-auto-tpsl.png" alt="The Auto TP/SL hub explains sell sizing and shows the automation toggles." width={712} height={1107} className="cove-guide-screenshot" />
+  <Frame caption="Market buys and Limit & DCA tabs with armed indicators.">
+    <img src="/assets/guide-screenshots/settings_auto_tpsl_modes.png" alt="Market buys and Limit & DCA tabs with armed indicators." width={752} height={871} className="cove-guide-screenshot" />
   </Frame>
 </div>
-{/* Screenshot: settings-auto-tp-levels.png | An Auto TP ladder with editable gain levels, sell sizes, and a total-sell summary. */}
+{/* Screenshot: settings_auto_tp_dynamic.png | Auto TP level and Market / Dynamic sell style. */}
 <div className="cove-guide-figure">
-  <Frame caption="An Auto TP ladder with editable gain levels, sell sizes, and a total-sell summary.">
-    <img src="/assets/guide-screenshots/settings-auto-tp-levels.png" alt="An Auto TP ladder with editable gain levels, sell sizes, and a total-sell summary." width={712} height={902} className="cove-guide-screenshot" />
+  <Frame caption="Auto TP level and Market / Dynamic sell style.">
+    <img src="/assets/guide-screenshots/settings_auto_tp_dynamic.png" alt="Auto TP level and Market / Dynamic sell style." width={752} height={1077} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: settings_auto_trailing.png | Auto trailing stop trigger, sell size, and enabled state. */}
+<div className="cove-guide-figure">
+  <Frame caption="Auto trailing stop trigger, sell size, and enabled state.">
+    <img src="/assets/guide-screenshots/settings_auto_trailing.png" alt="Auto trailing stop trigger, sell size, and enabled state." width={752} height={632} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
 <Note>Accounts with multi-level controls can configure up to **20 TP levels and 20 SL levels**. If Add level is absent, use the single level available in your account.</Note>
+
+## Choose how a take-profit sells
+
+In **Auto take profit → Sell style**, choose **Market** or **Dynamic**. In thin liquidity, Dynamic can avoid a whole-level dump that pushes the price down: Cove sells smaller amounts when needed **at its target price or better** and waits with the remainder until the price allows. It sizes each trade from live quotes; there is no pieces or retry-interval setting. Market attempts to sell the entire level at once at the available market quote.
+
+Dynamic can be useful when a whole-position sale would move a thin market. It may take several fills and can remain pending if the target price cannot be met. The style belongs to take-profit levels, not stop-loss levels. Manual take-profit steps also offer Market and Dynamic in the Limit builder; see [Take-profit and stop-loss](/features/take-profit-stop-loss).
+
+## Set an automatic trailing stop
+
+In the selected buy-mode tab, open **Auto trailing stop**. Set a **Trail %** and **Sell %**, then enable it. Its reference starts at the buy fill, follows the highest price reached afterward, and attempts a sale after the selected drop from that peak. It always sells a percentage of what you still hold at that moment.
+
+A fixed Auto SL and Auto trailing stop may both be armed. Whichever fires first sells; the other is superseded. Check the active orders after a fill.
 
 ## Understand sell size
 
@@ -69,7 +90,7 @@ USDC, native-token, and automatic bridge operations do not create these exits.
 
 ## Disable or change the rules
 
-Turn **Auto TP** or **Auto SL** off to stop future automatic creation for that side. Edit levels for future setup, then separately inspect active orders in `/orders`. Do not assume changing the rule cancels protection already placed.
+Turn **Auto TP**, **Auto SL**, or **Auto trailing stop** off in each applicable buy-mode tab to stop future creation for that side. Edit levels for future setup, then separately inspect active orders in `/orders`. Do not assume changing the rule cancels protection already placed.
 
 ## Missing or failed protection
 

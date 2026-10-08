@@ -1,25 +1,32 @@
 ---
-title: "Create a DCA ladder"
-description: "Spread a total buy or sell across 2–10 market-cap targets."
+title: "Create DCA orders"
+description: "Choose a price ladder or a time interval for staged buys and sells."
 icon: "stairs"
 ---
 
-Cove DCA is a **ladder of limit orders across a market-cap range**. Each target, or “rung,” triggers independently. It is not an hourly, daily, or weekly recurring purchase.
+Cove offers two DCA strategies under **Limit → DCA**:
 
-## Create a buy ladder
+| Mode | How it works | Order count |
+|---|---|---|
+| **Price ladder** | Places separate limit orders across a required market-cap range. Each rung waits for its own price target. | 2–10 per wallet |
+| **Time Interval** | Starts a standing plan that attempts one market order per interval while the market is within your optional range. | 2–20 per wallet |
+
+Choose the mode before entering values. The two modes can produce very different timing and fills.
+
+## Create a price ladder
 
 <Steps>
   <Step title="Open the token and wallets">
     Paste the token address in the intended profile and check the selected wallets.
   </Step>
   <Step title="Choose DCA and Buying">
-    Open **Limit → DCA**, then choose **Buying**.
+    Open **Limit → DCA → Price ladder**, then choose **Buying**.
   </Step>
   <Step title="Set the market-cap range">
-    Enter **From mcap** and **To mcap**. You can use shorthand such as **800k** or **1.5m**.
+    Enter both **Min mcap** and **Max mcap**. You can use shorthand such as **800k** or **1.5m**.
   </Step>
   <Step title="Set the order count and total">
-    Choose **2–10 orders** and enter **Total spend** in USD. This is the budget for the whole ladder, not each rung.
+    Choose **2–10 orders** and select one of the three buy amount presets or **custom**. The amount is the total budget for the ladder, not each rung. These are the same amount presets used in the Limit builder.
   </Step>
   <Step title="Review targets and expiry">
     Check the preview, selected wallets, and expiry. The default is **30 days**; the allowed range is 1 minute–30 days.
@@ -27,14 +34,14 @@ Cove DCA is a **ladder of limit orders across a market-cap range**. Each target,
     If the range crosses the current market cap, review the mixed-ladder warning: some rungs buy dips and others buy breakouts.
   </Step>
   <Step title="Place and verify">
-    Tap **Place N buy orders**. Check the receipt, then open `/orders` to verify the rungs.
+    Tap the **Place … buy orders** button. It includes the order count and total spend. Check the receipt, then open `/orders` to verify the rungs.
   </Step>
 </Steps>
 
-{/* Screenshot: dca-buy-form.png | Example buy ladder: market-cap range, orders per wallet, total budget, and expiry. */}
+{/* Screenshot: dca_price_ladder_buy.png | Current Price ladder buy setup and preview. */}
 <div className="cove-guide-figure">
-  <Frame caption="Example buy ladder: market-cap range, orders per wallet, total budget, and expiry.">
-    <img src="/assets/guide-screenshots/dca-buy-form.png" alt="Example buy ladder: market-cap range, orders per wallet, total budget, and expiry." width={712} height={774} className="cove-guide-screenshot" />
+  <Frame caption="Current Price ladder buy setup and preview.">
+    <img src="/assets/guide-screenshots/dca_price_ladder_buy.png" alt="Current Price ladder buy setup and preview." width={752} height={1263} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
@@ -54,10 +61,10 @@ With multiple wallets, **DCA buys always split the total across wallets**, even 
 
 ## Create a sell ladder
 
-1. Open **Limit → DCA → Selling** on a holding.
-2. Enter **From mcap** and **To mcap**.
+1. Open **Limit → DCA → Price ladder → Selling** on a holding.
+2. Enter both **Min mcap** and **Max mcap**.
 3. Choose **2–10 orders**.
-4. Set **Sell total %**, from 1–100, for the whole ladder.
+4. Choose a sell amount preset or **custom** for the total percentage to sell, from 1–100, across the ladder.
 5. Review targets, wallets, expiry, and any skipped rungs.
 6. Tap **Place up to N sell orders** and verify the receipt.
 
@@ -65,10 +72,40 @@ Cove divides the sell allocation into equal absolute slices. A 100% sell across 
 
 Rungs exactly at current market cap and wallets without a holding can be skipped. The receipt can therefore contain fewer orders than the maximum.
 
-{/* Screenshot: dca-sell-form.png | Sell-ladder setup: choose the range, order count, and total percentage to sell. */}
+{/* Screenshot: dca_price_ladder_sell.png | Current Price ladder sell setup and preview. */}
 <div className="cove-guide-figure">
-  <Frame caption="Sell-ladder setup: choose the range, order count, and total percentage to sell.">
-    <img src="/assets/guide-screenshots/dca-sell-form.png" alt="Sell-ladder setup: choose the range, order count, and total percentage to sell." width={712} height={774} className="cove-guide-screenshot" />
+  <Frame caption="Current Price ladder sell setup and preview.">
+    <img src="/assets/guide-screenshots/dca_price_ladder_sell.png" alt="Current Price ladder sell setup and preview." width={752} height={1272} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Create a Time Interval plan
+
+1. Open the token in the intended profile and select the wallets, then choose **Limit → DCA → Time Interval** and **Buying** or **Selling**.
+2. Set **Order count** to 2–20. With several wallets, the field is **Orders per wallet**; the creation button shows the combined count.
+3. Select a **Buy amount** or **Sell amount** preset, or enter a custom total. Cove divides that total across the planned orders. A sell percentage applies to each selected wallet's own holding.
+4. Set **Interval**. The picker offers **1m, 5m, 15m, 1h, 4h, 24h**, plus **Custom** from 1 minute to 24 hours. The initial interval is **15m**.
+5. Optionally set **Min mcap**, **Max mcap**, both, or neither. Enter **none** to clear a bound. If both are set, Min must be below Max. Without a range, the plan follows the timer alone.
+6. Review the preview, expiry, wallet count, per-order size, and the side-specific bound. A buy with Max mcap never pays above that price; a sell with Min mcap never sells below it. Then tap the **Place … orders** button and check `/orders`.
+
+If the price is outside the range when a piece is due, the plan waits. Missed intervals are not piled into a burst; the next eligible evaluation attempts one piece and resumes the spacing. The duration estimate assumes the price remains in range, so the plan can take longer or expire before all pieces run. Each executed piece has its own trading costs; small orders can cost proportionally more.
+
+{/* Screenshot: dca_time_interval_buy.png | Time Interval buy panel with interval, optional range, and preview. */}
+<div className="cove-guide-figure">
+  <Frame caption="Time Interval buy panel with interval, optional range, and preview.">
+    <img src="/assets/guide-screenshots/dca_time_interval_buy.png" alt="Time Interval buy panel with interval, optional range, and preview." width={752} height={1077} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: dca_time_interval_sell.png | Time Interval sell panel with price floor and order count. */}
+<div className="cove-guide-figure">
+  <Frame caption="Time Interval sell panel with price floor and order count.">
+    <img src="/assets/guide-screenshots/dca_time_interval_sell.png" alt="Time Interval sell panel with price floor and order count." width={752} height={1117} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: dca_interval_picker.png | Interval presets and Custom button. */}
+<div className="cove-guide-figure">
+  <Frame caption="Interval presets and Custom button.">
+    <img src="/assets/guide-screenshots/dca_interval_picker.png" alt="Interval presets and Custom button." width={752} height={880} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
@@ -82,7 +119,7 @@ Reply to the token's live panel:
 /dca B 800k - 1.5m 10 500
 ```
 
-This means **buy**, range **800k–1.5m**, **10 rungs per wallet**, **\$500 total**.
+This means **buy**, range **800k–1.5m**, **10 price-ladder rungs per wallet**, **\$500 total**.
 
 ```text
 /dca S 80k - 120k 10 100
@@ -90,12 +127,12 @@ This means **buy**, range **800k–1.5m**, **10 rungs per wallet**, **\$500 tota
 
 This means **sell**, range **80k–120k**, **10 rungs**, **100% total**.
 
-Send `/dca` alone for the tutorial. Use **B** or **S**, a range, a count from 2–10, then USD for buys or a holdings percentage for sells.
+Send `/dca` alone for the tutorial. This reply-command grammar creates a **price ladder**: use **B** or **S**, a range, a count from 2–10, then USD for buys or a holdings percentage for sells. Use the panel to create a Time Interval plan.
 
 ## Edit, cancel, and follow results
 
-Open `/orders`. Edit a pending rung or cancel it individually. **Cancel DCA group** cancels the ladder's remaining orders; already executed trades are not undone.
+Open `/orders`. For a price ladder, edit or cancel a pending rung; **Cancel DCA group** cancels its remaining rungs. A Time Interval plan appears as its own plan in the token's order list; open it to inspect progress and cancel the remaining plan. Completed trades are not undone.
 
-All rungs can trigger close together if the market moves through the range. A rung whose target is never met remains pending until expiry. Each fill has trading costs and can fail independently.
+Price-ladder rungs can trigger close together if the market moves through the range. A rung whose target is never met remains pending until expiry. Each fill has trading costs and can fail independently.
 
 For a duplicate-command warning, expired panel, or uncertain partial creation, check existing orders before retrying. See [Manage orders](/features/managing-orders).

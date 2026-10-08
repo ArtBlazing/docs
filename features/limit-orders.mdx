@@ -1,10 +1,10 @@
 ---
-title: "Create a limit buy"
-description: "Buy automatically when a token reaches a market-cap or percentage target."
+title: "Create limit orders"
+description: "Use trigger and amount presets for dip, breakout, take-profit, and stop-loss orders."
 icon: "crosshairs"
 ---
 
-A Cove limit buy waits for a market-cap target or percentage move, then attempts a market buy with your selected wallets and applicable settings.
+A Cove limit order waits for a market-cap target or percentage move, then attempts a market trade with your selected wallets and applicable settings. The **Limit** builder has separate trigger and amount presets for buys and sells.
 
 Use a **dip buy** below the current market or a **breakout buy** above it. You enter the amount to spend separately from the trigger.
 
@@ -17,32 +17,32 @@ Use a **dip buy** below the current market or a **breakout buy** above it. You e
   <Step title="Open the limit builder">
     Tap **Limit** and choose **Buying** on the **Limit** tab.
   </Step>
-  <Step title="Choose the trigger type">
-    Select **By Market cap** for a fixed capitalization, or **By %** for a move from the market when you place the order.
+  <Step title="Choose a trigger">
+    Tap one of the seven trigger presets, or **custom** to enter a market cap, a signed percentage, or a multiple such as **2x**. The arrow on each preset shows whether the target is above or below the reference. The label above the presets shows the reference used for the preview.
   </Step>
   <Step title="Set the target">
-    For market cap, enter a value below the current cap, such as **800k**. For a dip percentage, enter a negative move such as **-20**.
+    For a dip, choose a downward preset or enter a market cap below the current cap, such as **800k**. A custom percentage such as **-20%** also sets a downward target.
 
     Accepted market-cap shorthand includes **45k** and **12.5M**.
   </Step>
   <Step title="Set spending and expiry">
-    Open **Spend** and enter the USD amount. Review **Expiry**; the default is **30 days** and the allowed range is 1 minute–30 days.
+    Tap one of the three USD amount presets or **custom**. Review **Expiry**; the default is **30 days** and the allowed range is 1 minute–30 days.
   </Step>
   <Step title="Place and verify">
-    Review the target, spend, wallets, and expiry, then tap **Place limit buy**. Open `/orders` and verify the new order in the correct profile.
+    Review the preview line for every step, spend, wallets, and expiry. Tap the creation button and open `/orders` to verify the new order in the correct profile.
   </Step>
 </Steps>
 
-{/* Screenshot: limit-buy-form.png | A limit-buy form with target, spend, expiry, and selected wallets. */}
+{/* Screenshot: limit_buy_presets.png | New Limit Buying panel with trigger and amount presets, expiry, and create button. */}
 <div className="cove-guide-figure">
-  <Frame caption="A limit-buy form with target, spend, expiry, and selected wallets.">
-    <img src="/assets/guide-screenshots/limit-buy-form.png" alt="A limit-buy form with target, spend, expiry, and selected wallets." width={712} height={1066} className="cove-guide-screenshot" />
+  <Frame caption="New Limit Buying panel with trigger and amount presets, expiry, and create button.">
+    <img src="/assets/guide-screenshots/limit_buy_presets.png" alt="New Limit Buying panel with trigger and amount presets, expiry, and create button." width={752} height={974} className="cove-guide-screenshot" />
   </Frame>
 </div>
-{/* Screenshot: limit-buy-created.png | Active limit buys shown on the token panel, with wallet, target, spend, Edit, and Cancel. */}
+{/* Screenshot: limit_order_created.png | A newly created order in /orders. */}
 <div className="cove-guide-figure">
-  <Frame caption="Active limit buys shown on the token panel, with wallet, target, spend, Edit, and Cancel.">
-    <img src="/assets/guide-screenshots/limit-buy-created.png" alt="Active limit buys shown on the token panel, with wallet, target, spend, Edit, and Cancel." width={712} height={680} className="cove-guide-screenshot" />
+  <Frame caption="A newly created order in /orders.">
+    <img src="/assets/guide-screenshots/limit_order_created.png" alt="A newly created order in /orders." width={752} height={632} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
@@ -50,13 +50,51 @@ Use a **dip buy** below the current market or a **breakout buy** above it. You e
 
 Assume a token's current market cap is **\$1 million**. You want to buy **\$100** if it falls to **\$800,000**.
 
-Set **By Market cap → 800k** and **Spend → 100**, then review and place the order. An equivalent **-20%** target uses the market reference at placement; a fixed **800k** remains that specific target.
+Choose **custom → 800k** for the trigger and **custom → $100** for the amount, then review and place the order. An equivalent **-20%** target uses the market reference at placement; a fixed **800k** remains that specific target.
 
 This is an illustrative setup. The actual fill depends on the quote and liquidity when the order executes.
 
 ## Buy a breakout
 
-Use the same flow with a target **above** current market cap or a positive change, such as **+10%**. Review the direction in the confirmation so you create a breakout order rather than a dip order.
+Use the same flow with an upward trigger preset or a custom target above the current market cap, such as **+10%** or **2x**. Review the direction and target preview before creating the order.
+
+## Enter a custom trigger
+
+Tap **custom** under **Trigger** to see the formats Cove accepts. The sell prompt groups examples by how Cove will interpret them:
+
+| Enter | Cove reads it as |
+|---|---|
+| **200k**, **2m**, or **14.5K** | A specific market-cap target |
+| **100%**, **+100%**, or **2x** | A take-profit trigger above the reference |
+| **-20** or **-20%** | A stop-loss trigger below the reference |
+
+The trigger sets **when** an order can run. Choose the buy or sell amount separately. Check the reference shown on the panel, the resulting target, and the order direction before creating it. On a sell, an unsigned **100%** is a positive trigger; it does not mean “sell 100%” until you select that in **Sell amount**.
+
+{/* Screenshot: limit_custom_trigger_menu.png | Sell custom-trigger prompt with market-cap, take-profit, and stop-loss input examples. */}
+<div className="cove-guide-figure">
+  <Frame caption="Sell custom-trigger prompt with market-cap, take-profit, and stop-loss input examples.">
+    <img src="/assets/guide-screenshots/limit_custom_trigger_menu.png" alt="Sell custom-trigger prompt with market-cap, take-profit, and stop-loss input examples." width={752} height={705} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Edit limit presets
+
+Open **Settings → Trade panel settings → Buttons and controls → Limit preset amounts**. Choose **Limit buy presets** or **Limit sell presets**, then switch between **Triggers** and **Buy amounts / Sell amounts**. Each side has seven trigger slots and three amount slots. Tap a slot to edit it; **Reset defaults** restores the selected list. These presets belong to the active profile.
+
+The default buy triggers are **+20%, +50%, +75%, +100%, -20%, -50%, -75%**, with **$200 / $500 / $1,000** amounts. The default sell triggers are **1.5x, 2x, 5x, 10x, -20%, -50%, -75%**, with **20 / 50 / 100%** amounts. Your saved choices may differ. A trigger preset can point up or down on either side.
+
+{/* Screenshot: settings_limit_buy_presets.png | Triggers tab and editable buy slots. */}
+<div className="cove-guide-figure">
+  <Frame caption="Triggers tab and editable buy slots.">
+    <img src="/assets/guide-screenshots/settings_limit_buy_presets.png" alt="Triggers tab and editable buy slots." width={752} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: settings_limit_sell_presets.png | Triggers tab and editable Limit sell trigger slots. */}
+<div className="cove-guide-figure">
+  <Frame caption="Triggers tab and editable Limit sell trigger slots.">
+    <img src="/assets/guide-screenshots/settings_limit_sell_presets.png" alt="Triggers tab and editable Limit sell trigger slots." width={752} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
 ## More than one target
 

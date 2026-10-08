@@ -6,18 +6,25 @@ icon: "bell"
 
 Cove sends trade, deposit, transfer, withdrawal, reward, and support updates in Telegram. Some progress messages update in place instead of creating new messages.
 
-Cove does not offer individual switches for these Telegram message categories. You can manage Telegram chat notifications in Telegram itself.
+Open **/settings → Notifications**. The **Telegram** tab includes an account-wide toggle for **auto-bridge completion** messages. Other Telegram trade and account receipts are still managed through Telegram's own chat notification controls. The **Pushover** tab appears where that integration is offered; it is hidden when the Pushover option is unavailable.
+
+{/* Screenshot: settings_notifications_telegram.png | Notifications Telegram tab and auto-bridge toggle. */}
+<div className="cove-guide-figure">
+  <Frame caption="Notifications Telegram tab and auto-bridge toggle.">
+    <img src="/assets/guide-screenshots/settings_notifications_telegram.png" alt="Notifications Telegram tab and auto-bridge toggle." width={752} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
 ## Optional phone alerts
 
-Where **Settings → Notifications → Push Notifications** is available, Pushover can mirror order and price-alert events to your phone.
+Where **Settings → Notifications → Pushover** is available, Pushover can mirror order and price-alert events to your phone.
 
 <Steps>
   <Step title="Prepare Pushover">
     Install the Pushover app, create or open your account, and copy its **User Key**. Check Pushover's current purchase/trial terms in its app.
   </Step>
   <Step title="Connect Cove">
-    Open **Settings → Notifications → Push Notifications → Connect Pushover**.
+    Open **Settings → Notifications → Pushover → Connect Pushover**.
   </Step>
   <Step title="Enter the key">
     Paste your 30-character User Key when prompted. Do not share it in screenshots. Cove removes the submitted message from the chat.
@@ -27,10 +34,10 @@ Where **Settings → Notifications → Push Notifications** is available, Pushov
   </Step>
 </Steps>
 
-{/* Screenshot: pushover-connect.png | The Push Notifications introduction and Connect Pushover button, before connecting an account. */}
+{/* Screenshot: settings_notifications_pushover.png | Current Pushover tab, with no User Key visible. */}
 <div className="cove-guide-figure">
-  <Frame caption="The Push Notifications introduction and Connect Pushover button, before connecting an account.">
-    <img src="/assets/guide-screenshots/pushover-connect.png" alt="The Push Notifications introduction and Connect Pushover button, before connecting an account." width={712} height={950} className="cove-guide-screenshot" />
+  <Frame caption="Current Pushover tab, with no User Key visible.">
+    <img src="/assets/guide-screenshots/settings_notifications_pushover.png" alt="Current Pushover tab, with no User Key visible." width={752} height={993} className="cove-guide-screenshot" />
   </Frame>
 </div>
 

@@ -4,7 +4,9 @@ description: "Set automatic exits, choose the percentage reference, and use brea
 icon: "bullseye"
 ---
 
-A **take-profit** attempts to sell after a rise. A **stop-loss** attempts to sell after a fall. Both use a market-cap target or percentage condition, then execute at the available market quote.
+A **take-profit** attempts to sell after a rise. A **stop-loss** attempts to sell after a fall. In the current **Limit → Selling** builder, the direction of each trigger determines which one you create; there is no separate global Stop loss / Take profit switch.
+
+For the exact values accepted by **custom**, see [Custom trigger examples](/features/limit-orders#enter-a-custom-trigger).
 
 You need a holding in the selected wallets.
 
@@ -31,33 +33,24 @@ This reference is captured when you place a manual order; later buys do not move
         Send `/positions`, check the profile, and open the token.
       </Step>
       <Step title="Choose the order">
-        Tap **Limit → Selling → Take profit**.
+        Tap **Limit → Selling** and stay on the **Limit** tab.
       </Step>
       <Step title="Set the trigger and sell size">
-        Choose **By % gain** or **By Market cap**. Enter the gain or capitalization target, then **Sell %** from 1–100.
+        Choose an upward trigger preset such as **1.5x** or **2x**, or tap **custom** for a positive percentage, multiple, or market-cap target. Choose a sell amount preset or custom percentage from 1–100.
 
-        For example, **50** as a gain means **+50%**, not 50×.
+        For example, **+50%** means a 50% rise; **2x** means twice the reference.
       </Step>
       <Step title="Review and create">
-        Check basis, target, wallets, size, and expiry. Tap **Create take profit** (or **Create orders** for multiple steps), then verify it in `/orders`.
+        Choose **Market** or **Dynamic** for this take-profit step. Check basis, target, wallets, size, and expiry. Tap **Create take profit** (or **Create orders** for multiple steps), then verify it in `/orders`.
       </Step>
     </Steps>
 
-{/* Screenshot: order-take-profit.png | An example two-step take-profit setup with sell percentages and expiry. */}
+{/* Screenshot: limit_sell_take_profit.png | Selling Limit panel with upward trigger, sell amount, and Market / Dynamic style. */}
 <div className="cove-guide-figure">
-  <Frame caption="An example two-step take-profit setup with sell percentages and expiry.">
-    <img src="/assets/guide-screenshots/order-take-profit.png" alt="An example two-step take-profit setup with sell percentages and expiry." width={712} height={1005} className="cove-guide-screenshot" />
+  <Frame caption="Selling Limit panel with upward trigger, sell amount, and Market / Dynamic style.">
+    <img src="/assets/guide-screenshots/limit_sell_take_profit.png" alt="Selling Limit panel with upward trigger, sell amount, and Market / Dynamic style." width={752} height={1007} className="cove-guide-screenshot" />
   </Frame>
 </div>
-
-<Accordion title="See the market-cap input mode">
-{/* Screenshot: take-profit-market-cap.png | Take-profit setup in By Market cap mode, before entering the target and sell size. */}
-<div className="cove-guide-figure">
-  <Frame caption="Take-profit setup in By Market cap mode, before entering the target and sell size.">
-    <img src="/assets/guide-screenshots/take-profit-market-cap.png" alt="Take-profit setup in By Market cap mode, before entering the target and sell size." width={712} height={774} className="cove-guide-screenshot" />
-  </Frame>
-</div>
-</Accordion>
   </Tab>
   <Tab title="Stop-loss">
     <Steps>
@@ -65,20 +58,20 @@ This reference is captured when you place a manual order; later buys do not move
         Send `/positions`, check the profile, and open the token.
       </Step>
       <Step title="Choose the order">
-        Tap **Limit → Selling → Stop loss**.
+        Tap **Limit → Selling** and stay on the **Limit** tab.
       </Step>
       <Step title="Set the trigger and sell size">
-        Choose **By % down** or **By Market cap**, set the loss or capitalization target, and enter **Sell %** from 1–100.
+        Choose a downward trigger preset such as **-20%**, or tap **custom** for a negative percentage or lower market-cap target. Choose a sell amount preset or custom percentage from 1–100.
       </Step>
       <Step title="Review and create">
         Check basis, target, wallets, size, and expiry. Tap **Create stop loss** (or **Create orders** for multiple steps), then verify it in `/orders`.
       </Step>
     </Steps>
 
-{/* Screenshot: order-stop-loss.png | An example two-step stop-loss setup with sell percentages and expiry. */}
+{/* Screenshot: limit_sell_stop_loss.png | Selling Limit panel with downward trigger and sell amount. */}
 <div className="cove-guide-figure">
-  <Frame caption="An example two-step stop-loss setup with sell percentages and expiry.">
-    <img src="/assets/guide-screenshots/order-stop-loss.png" alt="An example two-step stop-loss setup with sell percentages and expiry." width={712} height={1005} className="cove-guide-screenshot" />
+  <Frame caption="Selling Limit panel with downward trigger and sell amount.">
+    <img src="/assets/guide-screenshots/limit_sell_stop_loss.png" alt="Selling Limit panel with downward trigger and sell amount." width={752} height={960} className="cove-guide-screenshot" />
   </Frame>
 </div>
   </Tab>
@@ -87,13 +80,26 @@ This reference is captured when you place a manual order; later buys do not move
 
 ## Use breakeven
 
-In the stop-loss **market-cap input**, enter **be** or **br** to use your entry market cap. Set the sell size, review, and create the stop. An entry value must be available and the target must be valid.
+In the **custom trigger** input, enter **be** or **br** to use your entry market cap. Set the sell size, review, and create the stop. An entry value must be available and the target must be valid.
 
 Breakeven describes the trigger, not guaranteed net recovery after fees, slippage, and price movement.
 
 ## Multiple levels and allocation
 
-Where available, add manual steps, up to three. Review the **Sell size** basis: **% of entry** allocates slices of the position; **% of remaining** applies each percentage to what is left. See [Auto TP/SL sell sizing](/features/settings/auto-tp-sl#understand-sell-size).
+Add up to three manual steps. You can mix upward take-profit and downward stop-loss triggers in one setup; its button then says **Create orders**. Review each step's direction, amount, and sell style. The **Sell size** basis controls whether percentages allocate from entry or from what remains. See [Auto TP/SL sell sizing](/features/settings/auto-tp-sl#understand-sell-size).
+
+## Market or Dynamic take-profit
+
+In thin liquidity, selling an entire position at once can push the price down. **Dynamic** take-profit tries a smoother exit: Cove sells smaller amounts when needed, at the target price or better, and waits with the remainder until the price allows. The remainder may never fill before expiry. Cove chooses piece sizes from live quotes; you do not set a piece count or retry interval. **Market** instead tries to sell the whole take-profit allocation at the available quote when the target fires.
+
+The Dynamic option appears only for take-profit steps. Stop-loss steps remain Market. You can also select Dynamic for future automatic take-profit levels in [Auto TP/SL](/features/settings/auto-tp-sl#choose-how-a-take-profit-sells).
+
+{/* Screenshot: limit_sell_mixed_steps.png | One upward and one downward step with Create orders. */}
+<div className="cove-guide-figure">
+  <Frame caption="One upward and one downward step with Create orders.">
+    <img src="/assets/guide-screenshots/limit_sell_mixed_steps.png" alt="One upward and one downward step with Create orders." width={752} height={1017} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
 If Cove says **Entry target already passed**, no orders were placed for those invalid targets. Adjust the percentages and review again.
 

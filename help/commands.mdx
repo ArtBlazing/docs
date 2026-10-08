@@ -29,6 +29,7 @@ Send commands to the [Cove Trading](https://t.me/cove_trading_bot) bot in Telegr
 | Command | Opens |
 |---|---|
 | `/settings` | Settings hub |
+| `/lock` | Lock trading immediately when the optional trading lock is enabled; unlock from Security with an authenticator code |
 | `/slippage` | Slippage control |
 | `/trade_panel_settings` | Trade panel preferences |
 | `/autobuy` | Auto-buy on paste |
@@ -48,12 +49,12 @@ First open the token, choose the intended profile/wallets, then use Telegram's *
 
 | Example | Action |
 |---|---|
-| `/dca B 800k - 1.5m 10 500` | Buy ladder, 800k–1.5m market cap, 10 rungs, \$500 total |
-| `/dca S 80k - 120k 10 100` | Sell ladder, 80k–120k, 10 rungs, 100% total |
+| `/dca B 800k - 1.5m 10 500` | Buy **Price ladder**, 800k–1.5m market cap, 10 rungs, \$500 total |
+| `/dca S 80k - 120k 10 100` | Sell **Price ladder**, 80k–120k, 10 rungs, 100% total |
 | `/trailing 50 100` | Trail by 50%, sell 100% |
 | `/alert 300k` | One market-cap alert, default seven-day expiry |
 
-Send `/dca`, `/trailing`, or `/alert` without arguments for a tutorial. If a reply says the panel expired, reopen the token. If it says the command was already received, check Orders or Alerts before sending again.
+Send `/dca`, `/trailing`, or `/alert` without arguments for a tutorial. The `/dca` examples create price ladders; use **Limit → DCA → Time Interval** in the token panel for scheduled pieces. If a reply says the panel expired, reopen the token. If it says the command was already received, check Orders or Alerts before sending again.
 
 ## Conditional quick commands
 

@@ -18,21 +18,21 @@ Auto-buy on paste starts a buy when you paste or forward a token contract into C
     Choose an offered preset such as **\$10 / \$25 / \$50 / \$100**, or **Custom**. Check whether selected wallets use Split Total or Per Wallet.
   </Step>
   <Step title="Review optional guards">
-    Set the market-cap or liquidity safeguards offered in the panel. Review the saved values and any validation before enabling.
+    Set any **Min/Max Mcap** and **Min/Max Liq** bounds. **Skip holdings** can prevent an auto-buy when any wallet in this profile already holds the token, including hidden or dust positions. Review all saved values before enabling.
   </Step>
   <Step title="Turn it on">
     Check the active profile and toggle **Auto-buy on paste** on. The next eligible token paste can start a purchase.
   </Step>
 </Steps>
 
-{/* Screenshot: settings-autobuy.png | Auto-buy on paste is off in this example; review the amount and market-cap/liquidity limits before enabling it. */}
+{/* Screenshot: settings_auto_buy_2026_10.png | Amount, min/max market cap and liquidity, Skip holdings, and enabled state. */}
 <div className="cove-guide-figure">
-  <Frame caption="Auto-buy on paste is off in this example; review the amount and market-cap/liquidity limits before enabling it.">
-    <img src="/assets/guide-screenshots/settings-autobuy.png" alt="Auto-buy on paste is off in this example; review the amount and market-cap/liquidity limits before enabling it." width={712} height={762} className="cove-guide-screenshot" />
+  <Frame caption="Amount, min/max market cap and liquidity, Skip holdings, and enabled state.">
+    <img src="/assets/guide-screenshots/settings_auto_buy_2026_10.png" alt="Amount, min/max market cap and liquidity, Skip holdings, and enabled state." width={752} height={920} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
-Some accounts offer market-cap or liquidity limits for auto-buy. Read each field's description and accepted range in the current panel. These filters do not screen every risk.
+Read each market-cap and liquidity field's accepted range in the current panel. These filters do not screen every risk. **Skip holdings** does not stop a manual buy.
 
 ## What still applies?
 

@@ -1,6 +1,6 @@
 ---
 title: "Choose an order type"
-description: "Match your goal to a limit buy, take-profit, stop-loss, trailing stop, or DCA ladder."
+description: "Choose a limit order, a DCA strategy, or an automatic exit."
 icon: "list-ol"
 ---
 
@@ -15,7 +15,9 @@ Automated orders wait for a condition, then attempt a trade. In Cove, targets us
 | Sell after a gain | [Take-profit](/features/take-profit-stop-loss) |
 | Sell after a fall | [Stop-loss](/features/take-profit-stop-loss) |
 | Sell after a fall from a new peak | [Trailing stop](/features/trailing-stop) |
-| Spread buys or sells over a market-cap range | [DCA ladder](/features/dca-orders) |
+| Spread buys or sells over market-cap targets | [DCA Price ladder](/features/dca-orders#create-a-price-ladder) |
+| Buy or sell in timed pieces, with optional market-cap bounds | [DCA Time Interval](/features/dca-orders#create-a-time-interval-plan) |
+| Sell a take-profit level in smaller fills when the target price allows | [Dynamic take-profit](/features/take-profit-stop-loss#market-or-dynamic-take-profit) |
 | Add protective orders after future buys | [Auto TP/SL](/features/settings/auto-tp-sl) |
 | Receive a notification without trading | [Price alert](/features/price-alerts) |
 
@@ -29,7 +31,7 @@ Trigger checks are typically around tens of seconds; network and market conditio
 
 ## Shared controls
 
-- Open a token → **Limit**, then choose **Limit**, **DCA**, or **Trailing SL**.
+- Open a token → **Limit**, then choose **Limit**, **DCA**, or sell-side **Trailing SL**. DCA offers **Price ladder** and **Time Interval**.
 - Buy orders use **USD spend**; sell orders use a **percentage of the holding**.
 - Default expiry is **30 days**, with a minimum of **1 minute** and maximum of **30 days**.
 - Native and launchpad panels do not offer these automated-order controls.
@@ -43,6 +45,6 @@ Manual alerts expire after 7 days by default; automatic alerts after 5 days. Ale
 
 Check combined spending and sell allocation, selected wallets, the manual TP/SL basis, and existing active orders. Do not assume every pending order has funds reserved: keep sufficient spendable balance and review the actual panel.
 
-DCA orders are independent market-cap triggers, **not scheduled recurring purchases**. Several rungs can trigger close together.
+In **Price ladder**, DCA orders are independent market-cap triggers, and several rungs can trigger close together. In **Time Interval**, one piece is attempted per interval when the optional price range permits it. An active plan can remain waiting for price or expire before all pieces fill.
 
 After placement, open [Manage orders](/features/managing-orders) to verify each order. Orders keep running when you close Telegram, switch profiles, or archive a profile.

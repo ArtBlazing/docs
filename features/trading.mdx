@@ -36,7 +36,7 @@ Check the **active profile**, **selected wallets**, token address, chain, liquid
     Confirm the buy if enabled. Read any scam warning, price-impact confirmation, or additional network fee before continuing.
   </Step>
   <Step title="Read the receipt">
-    Progress moves through quoting, execution, and verification. **Buy Executed** confirms the fill. Check **Spent**, **Received**, and the wallet outcomes.
+    Progress moves through quoting, execution, and verification. **Buy Executed** confirms the fill. Check **Spent**, the actual **Received** token quantity, the approximate share of supply where shown, **Execution MC** where available, and each wallet's outcome.
   </Step>
 </Steps>
 
@@ -65,17 +65,17 @@ The documented minimum buy is **\$1**, but it must also clear the chain's sell f
     Select **25%**, **50%**, **100%**, **x%** for a custom percentage, or **\$x** for a custom USD value.
   </Step>
   <Step title="Check the scope">
-    With several wallets selected, a percentage applies to each wallet's holding. USD sells require a single wallet.
+    With several wallets selected, a percentage applies to each wallet's holding. A custom **$x** sell can also span several wallets: Cove uses the same sell fraction of each selected wallet's position, so the requested USD total is allocated in proportion to their holdings. Review the preview and any wallet without a sellable balance.
   </Step>
   <Step title="Submit and check the result">
-    Confirm if prompted. Wait for **Sell Executed** and check the USDC received. A full sell offers **Generate PnL**.
+    Confirm if prompted. Wait for **Sell Executed** and check the token quantity **Sold**, USDC **Received**, **Execution MC** where available, and any partial wallet results. A full sell offers **Generate PnL**.
   </Step>
 </Steps>
 
-{/* Screenshot: trade-sell-panel.png | The Selling panel with percentage presets, custom size, initials, and a confirmation button. */}
+{/* Screenshot: trade_sell_panel_2026_10.png | Current Selling panel with percentage and $x choices, wallet selector, and Initials. */}
 <div className="cove-guide-figure">
-  <Frame caption="The Selling panel with percentage presets, custom size, initials, and a confirmation button.">
-    <img src="/assets/guide-screenshots/trade-sell-panel.png" alt="The Selling panel with percentage presets, custom size, initials, and a confirmation button." width={733} height={1042} className="cove-guide-screenshot" />
+  <Frame caption="Current Selling panel with percentage and $x choices, wallet selector, and Initials.">
+    <img src="/assets/guide-screenshots/trade_sell_panel_2026_10.png" alt="Current Selling panel with percentage and $x choices, wallet selector, and Initials." width={752} height={1219} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
@@ -84,6 +84,21 @@ The documented minimum buy is **\$1**, but it must also clear the chain's sell f
 Minimum sells are **\$0.50** on most chains and **\$2.50 on Solana**; some token routes require more. To sell many tokens, use [Bulk sell](/features/bulk-sell).
 
 ## Confirmations and results
+
+A receipt may show **Execution MC: --** when Cove cannot measure it reliably. That is an unavailable value, not a zero market cap. The executed token quantity and settled amounts matter more than a pre-trade estimate. A multi-wallet receipt groups wallet outcomes; expand or review each wallet before retrying a failed part.
+
+{/* Screenshot: trade_buy_receipt_2026_10.png | Executed buy with token quantity, share of supply, and Execution MC. */}
+<div className="cove-guide-figure">
+  <Frame caption="Executed buy with token quantity, share of supply, and Execution MC.">
+    <img src="/assets/guide-screenshots/trade_buy_receipt_2026_10.png" alt="Executed buy with token quantity, share of supply, and Execution MC." width={752} height={632} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: trade_sell_receipt_2026_10.png | Executed sell with Sold quantity, Received USDC, and Execution MC. */}
+<div className="cove-guide-figure">
+  <Frame caption="Executed sell with Sold quantity, Received USDC, and Execution MC.">
+    <img src="/assets/guide-screenshots/trade_sell_receipt_2026_10.png" alt="Executed sell with Sold quantity, Received USDC, and Execution MC." width={752} height={669} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
 High-impact **buys and sells** may need another confirmation even if normal confirmations are off. A worse refreshed quote can ask you to review again. See [Trading guardrails](/features/settings/guardrails).
 

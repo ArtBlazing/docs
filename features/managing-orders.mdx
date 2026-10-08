@@ -10,21 +10,21 @@ Send `/orders` or open **Limit orders** from the main menu. The list is scoped t
 
 1. Check **Showing orders in** and the profile name.
 2. Open the token's order group.
-3. Select the order to inspect its type, trigger, amount, expiry, and status.
+3. Select an order or plan to inspect its type, trigger or schedule, amount, expiry, and status.
 4. Check all participating wallets for a multi-wallet setup.
 
 A token's trading panel can also show its **Active Orders**.
 
-{/* Screenshot: orders-list.png | The profile-scoped order list; open a token to inspect its orders. */}
+{/* Screenshot: orders_list_2026_10.png | /orders profile list with a token containing orders or plans. */}
 <div className="cove-guide-figure">
-  <Frame caption="The profile-scoped order list; open a token to inspect its orders.">
-    <img src="/assets/guide-screenshots/orders-list.png" alt="The profile-scoped order list; open a token to inspect its orders." width={712} height={632} className="cove-guide-screenshot" />
+  <Frame caption="/orders profile list with a token containing orders or plans.">
+    <img src="/assets/guide-screenshots/orders_list_2026_10.png" alt="/orders profile list with a token containing orders or plans." width={752} height={730} className="cove-guide-screenshot" />
   </Frame>
 </div>
-{/* Screenshot: token-orders-list.png | A token's order list, including DCA rungs and limit buys. */}
+{/* Screenshot: orders_token_plans.png | Token order list with an active Time Interval plan and ordinary orders. */}
 <div className="cove-guide-figure">
-  <Frame caption="A token's order list, including DCA rungs and limit buys.">
-    <img src="/assets/guide-screenshots/token-orders-list.png" alt="A token's order list, including DCA rungs and limit buys." width={712} height={1113} className="cove-guide-screenshot" />
+  <Frame caption="Token order list with an active Time Interval plan and ordinary orders.">
+    <img src="/assets/guide-screenshots/orders_token_plans.png" alt="Token order list with an active Time Interval plan and ordinary orders." width={752} height={683} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
@@ -35,6 +35,13 @@ While an order is **pending**, choose **Edit** to change its supported trigger, 
 Cancellation options include **Cancel** for one order, **Cancel all orders** for a token or broader list, and **Cancel DCA group** for a ladder's remaining rungs. Read the confirmation's scope before proceeding.
 
 Canceling an order does not reverse a completed fill. Closing a panel does not cancel anything.
+
+## Follow a Time Interval or Dynamic plan
+
+**Time Interval DCA** and **Dynamic sell** appear as plan entries in a token's order list. Open a plan to check its progress, remaining amount, next check, price range or floor, and expiry. A Time Interval plan may be waiting for its range or its next scheduled check; a Dynamic sell may be waiting for a quote that meets its floor.
+
+Use the plan's **Cancel** action and review its confirmation to stop remaining work. Already completed child trades remain completed. An expired plan may offer **Extend 7 days**; review its current status and budget before using that action. The ordinary **Edit** fields for a single limit order do not imply that the Telegram plan has the same controls.
+
 
 ## Understand statuses
 
