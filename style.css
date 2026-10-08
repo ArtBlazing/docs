@@ -217,3 +217,27 @@ html.light,
   margin: 0 auto !important;
   border-radius: 8px !important;
 }
+
+.cove-recovery-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin: 0.5rem 0 1rem;
+  padding: 0.7rem 1.1rem;
+  border-radius: 12px;
+  background: #007aff;
+  color: #fff !important;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+
+.cove-recovery-button:hover,
+.cove-recovery-button:focus-visible {
+  background: #0065d4;
+}
+
+.cove-recovery-button:focus-visible {
+  outline: 3px solid #82baff;
+  outline-offset: 3px;
+}

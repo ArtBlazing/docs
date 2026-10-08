@@ -1,6 +1,6 @@
 ---
 title: "Two-factor authentication and trading lock"
-description: "Set up an authenticator code, control the optional trading lock, and recover access."
+description: "Set up an authenticator code, control the optional trading lock, and use recovery email to export wallet keys."
 icon: "shield-halved"
 ---
 
@@ -58,8 +58,27 @@ To unlock, tap **Unlock trading** in **/settings → Security** or on a blocked-
   </Frame>
 </div>
 
-## Recovery and turning 2FA off
+## Add a recovery email before you lose Telegram access
 
-Security can add a **recovery email** after 2FA is set up. It provides a way to reach key export if Telegram access is lost; it does **not** replace the authenticator. Review the recovery address carefully. To turn 2FA off, follow **Turn off 2FA** in Cove Wallets → Security and complete its code confirmation. Remove a recovery email first if the app asks you to. Turning off 2FA also turns off the trading lock.
+Once 2FA shows **On**, open **Cove Wallets → Security → Recovery email** and tap **Add recovery email**. Complete the email-linking flow, then check that Security shows **Added** and the correct address. You can use **Copy recovery link** there, or open the same public link below later. The link contains no account-specific code; access depends on signing in with the email already linked to your Cove wallet account.
 
-If your authenticator is lost, contact [Support](/features/support) from the account you can access. Avoid repeated guesses: verification can be temporarily rate limited. For wallet export and revoked signing access, see [Wallet security and recovery](/essentials/security).
+A recovery email gives you another way to reach **wallet key export** if you lose Telegram access. It does not replace your authenticator, restore your Telegram account, or turn off 2FA. Add it while you can still open Cove Wallets from Telegram.
+
+## Export keys after losing Telegram access
+
+<a href="https://production.cove.trade/export-keys/" className="cove-recovery-button" target="_blank" rel="noopener noreferrer">Open wallet key recovery ↗</a>
+
+1. Open the link in a regular browser and choose **Sign in with recovery email**. Use the address you previously added in Cove Wallets → Security.
+2. Find the wallet under **Active**. If you previously deleted it from Cove, check **Deleted**. The recovery page can show wallets across your profiles, including deleted wallets that still belong to your account.
+3. Check the wallet address and chain, then choose **Export Private Key** for its EVM or Solana wallet. Complete the authenticator check and Privy's secure export flow when prompted. Keep the key somewhere only you can access.
+4. Choose **Sign out** when finished. Leaving or reloading the page also signs you out; sign in again to reopen it.
+
+This page exports keys; it does not restore Telegram access or re-add a deleted wallet to Cove. To re-add a deleted wallet inside Cove, use **Recover** in the Telegram wallet app when you have access again. See [Wallet security and recovery](/essentials/security) for normal wallet export and deleted-wallet recovery.
+
+<Warning>Recovery requires an email linked before you lose Telegram access. Email alone does not replace the authenticator needed for protected key export. Never share or screenshot a private key.</Warning>
+
+## Turn off 2FA or get help
+
+To turn 2FA off, remove a linked recovery email in **Cove Wallets → Security** first, then use **Turn off 2FA** and complete the code confirmation. Turning off 2FA also turns off the trading lock.
+
+If your authenticator is lost, contact [Support](/features/support) from an account you can access. Avoid repeated guesses: verification can be temporarily rate limited.
