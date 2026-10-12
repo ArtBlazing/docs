@@ -15,6 +15,7 @@ Automated orders wait for a condition, then attempt a trade. In Cove, targets us
 | Sell after a gain | [Take-profit](/features/take-profit-stop-loss) |
 | Sell after a fall | [Stop-loss](/features/take-profit-stop-loss) |
 | Sell after a fall from a new peak | [Trailing stop](/features/trailing-stop) |
+| React to a sale by the token's creator wallet | [Dev Sell](/features/dev-sell) |
 | Spread buys or sells over market-cap targets | [DCA Price ladder](/features/dca-orders#create-a-price-ladder) |
 | Buy or sell in timed pieces, with optional market-cap bounds | [DCA Time Interval](/features/dca-orders#create-a-time-interval-plan) |
 | Sell a take-profit level in smaller fills when the target price allows | [Dynamic take-profit](/features/take-profit-stop-loss#market-or-dynamic-take-profit) |
@@ -31,7 +32,7 @@ Trigger checks are typically around tens of seconds; network and market conditio
 
 ## Shared controls
 
-- Open a token → **Limit**, then choose **Limit**, **DCA**, or sell-side **Trailing SL**. DCA offers **Price ladder** and **Time Interval**.
+- Open a token → **Limit**, then choose **Limit**, **DCA**, or sell-side **Trailing SL** or **Dev Sell**. DCA offers **Price ladder** and **Time Interval**.
 - Buy orders use **USD spend**; sell orders use a **percentage of the holding**.
 - Default expiry is **30 days**, with a minimum of **1 minute** and maximum of **30 days**.
 - Native and launchpad panels do not offer these automated-order controls.

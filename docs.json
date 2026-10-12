@@ -75,6 +75,7 @@
                   "features/take-profit-stop-loss",
                   "features/trailing-stop",
                   "features/dca-orders",
+                  "features/dev-sell",
                   "features/managing-orders"
                 ]
               },

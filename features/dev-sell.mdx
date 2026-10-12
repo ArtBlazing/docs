@@ -1,0 +1,36 @@
+---
+title: "Dev Sell orders"
+description: "Set a sell rule for a token creator's sale and review what can prevent execution."
+icon: "chart-line"
+---
+
+**Dev Sell** is a pending sell order for a token you hold. It watches a sale attributed to the token's creator wallet after you place the order. It also checks how far that wallet's token balance has fallen from the balance saved at placement. A transfer alone is not a sale.
+
+<Warning>A Dev Sell order reacts after a creator sale. It cannot sell before that transaction, guarantee a price or prevent every loss. Route availability, liquidity, price impact, and your remaining position still determine whether an exit can execute.</Warning>
+
+## Choose the trigger and your sell size
+
+In the Telegram token panel, open **Limit → Selling → Dev Sell**. The two percentages refer to different wallets:
+
+| Control | Meaning |
+|---|---|
+| **Dev sells** | The creator wallet's net token-balance decrease relative to its balance when you placed the order. **Any** accepts a qualifying sale of any size; presets include **25%**, **50%**, **75%**, and **100%**. |
+| **Sell** | The percentage of **your remaining position** Cove attempts to sell once the trigger is met. |
+
+For example, **Dev sells 25%** and **Sell 50%** means Cove waits for the creator's net balance to fall by the threshold after a qualifying sale, then attempts to sell half of your position remaining at that point. The creator can reach the threshold across several sales. The percentage is measured from the creator's balance at order placement, not the token's total supply.
+
+The initial manual values are **Any** and **Sell 100%**. Review them, the selected wallets, token and expiry before tapping **Place order**. Cove attempts one order per selected wallet. If the creator wallet or a usable starting balance cannot be identified, the manual order is not placed and Cove gives a reason.
+
+## Check and manage the order
+
+Open `/orders` and find the pending **DS** entry. Its details let you edit **Trigger**, **Sell**, and **Expiry**, or cancel it. The creator address and starting balance were fixed at placement; editing the percentages does not change that baseline. If placement status is uncertain, check `/orders` before trying again.
+
+A trigger begins an execution attempt; it is not the same as a filled sale. A creator sale can move the market before Cove responds. Price-impact checks may require your decision, and a route or liquidity failure can leave the position unsold. Check the order's status, trade receipt and remaining holding before placing another exit.
+
+## Auto Dev Sell for future buys
+
+Open **Settings → Auto orders → Auto Dev Sell**. Market buys and Limit buys have separate settings; a filled DCA rung or breakout buy belongs to the latter group. **Auto Dev Sell starts Off**. When enabled, it tries to place a Dev Sell order after a future eligible buy fills. Turning it on does not add orders to holdings you already have.
+
+If the token has no usable creator-wallet information or balance, an automatic order may not be created. After a buy, open `/orders` and verify the actual DS order. An enabled setting alone does not prove protection is active.
+
+For other exit conditions, see [Take-profit and stop-loss](/features/take-profit-stop-loss), [Trailing stop](/features/trailing-stop), and [Manage orders](/features/managing-orders).
