@@ -197,7 +197,7 @@ Cove sponsors gas so you never need to manually manage native gas tokens on each
 
 For **buys**, the platform fee helps offset the sponsored gas cost.
 
-For **sells, withdrawals, and transfers**, gas can be harder to offset. If the estimated gas exceeds the \$5 cap, Cove asks you to approve a **gas surplus** before the transaction is submitted.
+For **sells, withdrawals, and transfers**, gas can be harder to offset. If an eligible network cost exceeds the \$5 cap, the qualifying surplus can use your saved per-trade budget; otherwise Cove asks for approval before submitting.
 
 ---
 
@@ -267,23 +267,23 @@ Cove fronts the rent deposit on-chain and recoups it as part of the withdrawal o
 
 ## Gas surplus
 
-A gas surplus is an extra amount you approve when network costs exceed Cove's sponsorship limit.
+A gas surplus is an eligible extra network cost above Cove's separate sponsorship limit. The current default **Gas surplus budget is \$10 per trade**: it authorizes up to that amount of eligible overage, but Cove charges only the qualifying rounded-up difference, not a flat \$10.
 
 <Steps>
   <Step title="Cove estimates gas">
     Before submitting your transaction, Cove checks the current network gas price.
   </Step>
   <Step title="Surplus required?">
-    If gas exceeds the \$5 sponsorship cap, Cove shows the extra cost — for example, a Telegram inline prompt like **"Pay \$X"**.
+    If eligible gas exceeds the \$5 sponsorship cap, Cove calculates the qualifying surplus. A separate Telegram prompt, such as **"Pay \$X"**, appears when the saved budget does not authorize it.
   </Step>
   <Step title="You approve or skip">
-    If you approve, the trade is submitted. If you decline, the trade is rejected **before** it hits the chain — you pay nothing.
+    If a separate prompt appears and you approve, the action can be submitted. If you decline, the action is rejected **before** it hits the chain — you pay nothing for that declined action.
   </Step>
 </Steps>
 
-<Warning>If you have already set a `gasSurplusBudgetUsd`, trades within that budget are approved automatically without an extra prompt.</Warning>
+<Warning>In October 2026, previously saved \$0 budgets were migrated to the \$10 default, including manually chosen zeros. If you want a separate approval prompt for eligible extra gas, set the budget back to \$0 in each relevant profile.</Warning>
 
-You can configure this in **Settings → Gas Surplus Budget**. Choose a preset or set a custom per-trade limit.
+Configure this in **Settings → Guardrails → Gas surplus budget**. Choose a preset or set a custom per-trade limit. Read the [guardrails guide](/features/settings/guardrails) for the current controls.
 
 <Frame><img src="/assets/gas-surplus-budget.png" alt="Gas Surplus Budget settings in Cove" /></Frame>
 
@@ -330,7 +330,7 @@ On-chain execution has real costs — gas can spike, small trades can be abused,
     Minimum order sizes and tiered fees filter out transactions that would be unprofitable to execute or could be used to exploit the system.
   </Accordion>
   <Accordion title="Protects against gas spikes">
-    The gas surplus system ensures no trade is submitted that would lose money for either side. You always see the cost before confirming.
+    The gas surplus system handles eligible costs above sponsorship. A saved budget can authorize an overage without a separate prompt, so review that setting before trading.
   </Accordion>
   <Accordion title="Sustainable gas sponsorship">
     Platform fees help offset the gas Cove sponsors on your behalf, keeping the free-gas experience viable long-term.
@@ -354,5 +354,5 @@ On-chain execution has real costs — gas can spike, small trades can be abused,
 | Gas sponsorship | Up to \$5 per trade / action |
 | EVM deposit bridge fee | Pass-through bridging cost, typically ~\$0.19 for an EVM-to-Solana deposit |
 | Solana rent deposit | ~\$0.36 one-time per new token account (withdrawals & transfers only) |
-| Over-cap gas | Requires gas surplus approval |
+| Over-cap gas | Eligible overage can use the saved per-trade budget (currently \$10 by default); otherwise a separate approval is requested |
 | Auto-bridge consolidation | No user fee, gas covered by Cove |
