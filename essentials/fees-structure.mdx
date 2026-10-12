@@ -25,7 +25,7 @@ Cove handles cross-chain execution behind the scenes so you can focus on trading
   <Card title="Minimum Trade" icon="arrow-down-1-9">
     From **1 USD** for buys
     <br />From **0.50 USD** for sells
-    <br />From **2.50 USD** for Solana sells
+    <br />Solana partial sells: from **2.50 USD**; full-position exits: from **0.50 USD**
   </Card>
 </CardGroup>
 
@@ -169,9 +169,10 @@ Minimums prevent spam, failed transactions, and trades that would cost more to e
 |---|---:|
 | Buys | **\$1** |
 | Sells | **\$0.50** |
-| Solana sells | **\$2.50** |
+| Solana partial sells | **\$2.50** |
+| Solana full-position exits (100%) | **\$0.50** |
 
-<Tip>Solana sells have a higher minimum because the tiered fee floor is designed to keep fees at roughly \$0.25.</Tip>
+<Tip>The higher Solana minimum applies to partial sells. A 100% exit can sell a position from \$0.50, so a small position is not stranded by the partial-sell minimum. The tiered fee still applies; below \$2.50, the fee can be less than \$0.25.</Tip>
 
 ---
 
