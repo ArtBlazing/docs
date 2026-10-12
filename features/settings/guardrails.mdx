@@ -32,7 +32,7 @@ New-user slippage starts at **15%**; existing settings may differ. Values above 
 | **Scam warning** | On | Requests confirmation for a 🚨-flagged token on the panel and blocks flagged panel-less buys |
 | **High price-impact confirmation** | On | Adds a review for high-impact buys and sells |
 | **Degen mode** | Off | Applies 100% slippage, disables liquidity protection, and enables max-buy adjustment |
-| **Gas surplus budget** | Off | Allows additional network cost within your chosen limit |
+| **Gas surplus budget** | \$10 per trade | Pre-authorizes eligible network cost above Cove's separate sponsorship cap, up to the saved limit |
 
 ## Scam warnings
 
@@ -84,7 +84,9 @@ Scam warning and high-impact confirmation remain independent.
 3. For Custom, enter **\$0–\$50**.
 4. Check the saved amount.
 
-With the budget off, extra network costs normally require approval. With a budget, eligible overages up to that amount can be charged automatically, subject to available USDC.
+The current default is **\$10 per trade**. Cove still sponsors eligible trading gas up to its separate **\$5 cap**. The gas-surplus budget is an authorization ceiling for an eligible cost above that cap, not a flat \$10 charge: only the qualifying rounded-up overage is charged, subject to available USDC.
+
+An October 2026 migration changed existing \$0 budgets to the \$10 default, including manually selected zero values. If you want Cove to ask before an eligible gas overage, set this budget to **\$0 again** in each relevant profile. An overage authorization does not guarantee a fill or fix an unavailable trading route.
 
 **Auto-pay gas up to** on a failure message sets this future budget. It does not complete the current trade or recreate a failed stop.
 
@@ -94,3 +96,5 @@ With the budget off, extra network costs normally require approval. With a budge
     <img src="/assets/guide-screenshots/settings-gas-budget.png" alt="Gas surplus budget: choose Off, a preset, or a custom per-trade limit." width={712} height={678} className="cove-guide-screenshot" />
   </Frame>
 </div>
+
+For a worked explanation of sponsorship, trading fees and route costs, read the [Cove gasless-trading guide](https://www.cove.trade/learn/gasless-crypto-trading).
