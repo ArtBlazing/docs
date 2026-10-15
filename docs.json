@@ -66,6 +66,7 @@
               "features/trading",
               "features/token-panel",
               "features/multi-wallet-trading",
+              "features/trader-alerts",
               {
                 "group": "Order guides",
                 "icon": "crosshairs",
@@ -85,7 +86,6 @@
                 "icon": "bell",
                 "pages": [
                   "features/price-alerts",
-                  "features/trader-alerts",
                   "features/auto-alerts"
                 ]
               }
