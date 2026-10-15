@@ -14,7 +14,7 @@ Cove runs in Telegram messages with buttons. Send `/start` to return home or `/h
 | **Balance** | Spendable USDC in this profile |
 | **Positions** | [Holdings and PnL](/features/positions) |
 | **Parked on other chains** | [Bridge approvals](/funds/bridge) |
-| **Limit orders** | [Active orders](/features/managing-orders) |
+| **Active orders** | [Active orders](/features/managing-orders) |
 | **Deposit / Transfer / Withdraw** | Add or send funds |
 | **Refer & Earn** | [Referrals and rewards](/features/referrals) |
 | **Wallets** | [Wallet management and trading selection](/essentials/accounts) |
@@ -27,7 +27,14 @@ Cove runs in Telegram messages with buttons. Send `/start` to return home or `/h
 
 ## Token panel
 
-Paste an address or open a ticker in Positions. The panel contains buy/sell actions, slippage, charts, alerts, and **Limit**. The order builder has **Limit**, **DCA**, and sell-side **Trailing SL** tabs. DCA has **Time Interval** and **Price ladder** modes. **Manage Position** opens a Mini App when enabled.
+Paste an address or open a ticker in Positions. The panel contains buy/sell actions, slippage, charts, alerts, **Limit**, and **Strategy**. On the sell side, Limit has **Limit**, **DCA** (Price ladder), **Dev Sell**, and **Trailing SL**. Strategy has **Counter Strategy** and **DCA Time Interval**. On the buy side, Limit has Limit and DCA; Strategy opens DCA Time Interval. **Manage Position** opens a Mini App when enabled.
+
+{/* Screenshot: main_menu_active_orders_2026_10.png | Main menu with Active orders. */}
+<div className="cove-guide-figure">
+  <Frame caption="Open Active orders from the main menu.">
+    <img src="/assets/guide-screenshots/main_menu_active_orders_2026_10.png" alt="Cove main menu with the Active orders button." width={713} height={718} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
 See [Read the token panel](/features/token-panel) for its fields.
 

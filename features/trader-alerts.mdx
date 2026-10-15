@@ -1,0 +1,51 @@
+---
+title: "Trader Tracker"
+description: "Follow selected traders' buys, sells, and theses in Telegram."
+icon: "users-viewfinder"
+---
+
+Send `/track` to open **Trader Tracker** if the feature is available on your account. It can send Telegram alerts when a trader you follow on **FOMO** or **Pump.fun** buys or sells a token, or publishes a thesis. Receiving an alert does not place a trade.
+
+<Note>Trader Tracker may be temporarily unavailable. If `/track` says so, your existing subscriptions are kept, but new alerts are not delivered while the feature is off.</Note>
+
+## Add a trader
+
+1. Send `/track` and tap **Add new Trader**.
+2. Enter a wallet address, an `@handle`, or a supported FOMO or Pump.fun profile link. A profile link searches that app; a handle searches both.
+3. If the trader appears on both apps, choose **Fomo**, **Pump.fun**, or **Both**. If no match is found, try a different handle or browse **Leaderboard**.
+4. Open **Manage** to review the subscription and its alert filters.
+
+The home screen shows your tracked traders and whether each is live or paused. **Pause All** and **Resume All** affect delivery for your list; they do not change your holdings or orders.
+
+{/* Screenshot: tracker_home_2026_10.png | Trader Tracker home. */}
+<div className="cove-guide-figure">
+  <Frame caption="Trader Tracker lists subscriptions and provides Add new Trader and Leaderboard.">
+    <img src="/assets/guide-screenshots/tracker_home_2026_10.png" alt="Trader Tracker home with tracked traders, Manage links, pause controls, and Add new Trader." width={713} height={694} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Choose what you receive
+
+Each trader has separate settings. In **Manage**, set **Theses** to Off, All, First on Token, or My Holdings. Set **Trades** to buys, first buys only, sells, or off. **Min buy** and **Token Filters** can narrow alerts by market cap, liquidity, volume, holders, top-holder share, and token age. Changes save as you make them; there is no separate Save button.
+
+Use **Pause** to stop that trader's alerts without deleting the subscription. **Delete** removes it after confirmation. The trader's public wallets and source app are shown for identification; check them before changing filters.
+
+{/* Screenshot: tracker_manage_2026_10.png | Per-trader management. */}
+<div className="cove-guide-figure">
+  <Frame caption="Manage one trader's alert types, minimum buy, token filters, and pause state.">
+    <img src="/assets/guide-screenshots/tracker_manage_2026_10.png" alt="Trader Tracker Manage panel with status, wallets, thesis and trade controls, token filters, Pause, and Delete." width={713} height={980} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Read an alert before acting
+
+An alert can show the trader, token, event, market data, and action buttons. The **Buy / Limit** choice changes how an eligible buy action is placed; switching the choice alone does not trade. Tapping an amount may submit a trade, so check the token, selected wallets, mode, and amount first. An alert is information about someone else's activity, not a promise that you will get their price.
+
+{/* Screenshot: tracker_alert_2026_10.png | Trader activity alerts. */}
+<div className="cove-guide-figure">
+  <Frame caption="Trader activity alerts may offer Buy and Limit actions.">
+    <img src="/assets/guide-screenshots/tracker_alert_2026_10.png" alt="Examples of trader buy and thesis alerts with token data and optional trade action buttons." width={713} height={861} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+Trader Tracker follows *people*. [Price alerts](/features/price-alerts) instead watch market-cap targets for a token you choose; neither type of notification trades on arrival.

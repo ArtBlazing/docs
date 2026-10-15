@@ -4,7 +4,7 @@ description: "Check, edit, cancel, and troubleshoot orders in the correct profil
 icon: "list-check"
 ---
 
-Send `/orders` or open **Limit orders** from the main menu. The list is scoped to the **active profile**.
+Send `/orders` or open **Active orders** from the main menu. The list is scoped to the **active profile**.
 
 ## Find and inspect an order
 
@@ -41,6 +41,12 @@ Canceling an order does not reverse a completed fill. Closing a panel does not c
 **Time Interval DCA** and **Dynamic sell** appear as plan entries in a token's order list. Open a plan to check its progress, remaining amount, next check, price range or floor, and expiry. A Time Interval plan may be waiting for its range or its next scheduled check; a Dynamic sell may be waiting for a quote that meets its floor.
 
 Use the plan's **Cancel** action and review its confirmation to stop remaining work. Already completed child trades remain completed. An expired plan may offer **Extend 7 days**; review its current status and budget before using that action. The ordinary **Edit** fields for a single limit order do not imply that the Telegram plan has the same controls.
+
+## Follow Counter Sell and Dev Sell
+
+The token panel's **Active Orders** block can open **View details** for an armed Counter Sell or Dev Sell. Counter Sell shows the amount already sold and its current settings; Dev Sell shows how far the creator's holding has fallen toward the trigger. Where the detail screen offers **Refresh**, use it for a new reading. An order's status can change without the open detail message updating itself.
+
+While running, the detail screen offers **Cancel** and **Edit**. Counter Sell can change its minimum buy, size relative to a buy, market-cap floor, and total sell amount; the selected wallets stay fixed. Dev Sell can change its trigger, your sell percentage, and expiry. A completed order can leave a summary on the token panel until you close or dismiss it. Closing a message is not a cancellation. See [Counter Sell](/features/counter-sell) and [Dev Sell](/features/dev-sell).
 
 
 ## Understand statuses

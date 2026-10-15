@@ -76,6 +76,7 @@
                   "features/trailing-stop",
                   "features/dca-orders",
                   "features/dev-sell",
+                  "features/counter-sell",
                   "features/managing-orders"
                 ]
               },
@@ -84,6 +85,7 @@
                 "icon": "bell",
                 "pages": [
                   "features/price-alerts",
+                  "features/trader-alerts",
                   "features/auto-alerts"
                 ]
               }

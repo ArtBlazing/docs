@@ -16,10 +16,11 @@ Automated orders wait for a condition, then attempt a trade. In Cove, targets us
 | Sell after a fall | [Stop-loss](/features/take-profit-stop-loss) |
 | Sell after a fall from a new peak | [Trailing stop](/features/trailing-stop) |
 | React to a sale by the token's creator wallet | [Dev Sell](/features/dev-sell) |
+| Sell part of your position into other traders' buys | [Counter Sell](/features/counter-sell) |
 | Spread buys or sells over market-cap targets | [DCA Price ladder](/features/dca-orders#create-a-price-ladder) |
 | Buy or sell in timed pieces, with optional market-cap bounds | [DCA Time Interval](/features/dca-orders#create-a-time-interval-plan) |
 | Sell a take-profit level in smaller fills when the target price allows | [Dynamic take-profit](/features/take-profit-stop-loss#market-or-dynamic-take-profit) |
-| Add protective orders after future buys | [Auto TP/SL](/features/settings/auto-tp-sl) |
+| Add protective orders after future buys | [Auto orders](/features/settings/auto-tp-sl) |
 | Receive a notification without trading | [Price alert](/features/price-alerts) |
 
 ## Understand triggers and execution
@@ -32,7 +33,8 @@ Trigger checks are typically around tens of seconds; network and market conditio
 
 ## Shared controls
 
-- Open a token → **Limit**, then choose **Limit**, **DCA**, or sell-side **Trailing SL** or **Dev Sell**. DCA offers **Price ladder** and **Time Interval**.
+- On the buy side, open **Limit → Limit / DCA** for a limit order or Price ladder. Open **Strategy → DCA Time Interval** for a timed plan.
+- On the sell side, **Limit** contains Limit, DCA Price ladder, Dev Sell, and Trailing SL. **Strategy** contains Counter Strategy and DCA Time Interval.
 - Buy orders use **USD spend**; sell orders use a **percentage of the holding**.
 - Default expiry is **30 days**, with a minimum of **1 minute** and maximum of **30 days**.
 - Native and launchpad panels do not offer these automated-order controls.
@@ -47,5 +49,12 @@ Manual alerts expire after 7 days by default; automatic alerts after 5 days. Ale
 Check combined spending and sell allocation, selected wallets, the manual TP/SL basis, and existing active orders. Do not assume every pending order has funds reserved: keep sufficient spendable balance and review the actual panel.
 
 In **Price ladder**, DCA orders are independent market-cap triggers, and several rungs can trigger close together. In **Time Interval**, one piece is attempted per interval when the optional price range permits it. An active plan can remain waiting for price or expire before all pieces fill.
+
+{/* Screenshot: limit_sell_tabs_2026_10.png | Four sell-side Limit tabs. */}
+<div className="cove-guide-figure">
+  <Frame caption="The sell-side Limit screen has four order types.">
+    <img src="/assets/guide-screenshots/limit_sell_tabs_2026_10.png" alt="Limit, DCA, Dev Sell, and Trailing SL tabs on the token sell screen." width={809} height={1380} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
 After placement, open [Manage orders](/features/managing-orders) to verify each order. Orders keep running when you close Telegram, switch profiles, or archive a profile.

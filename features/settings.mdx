@@ -17,7 +17,7 @@ Send `/settings`. Check the active profile, then open a category and review its 
 
 <Columns cols={2}>
   <Card title="Guardrails" icon="shield-halved" href="/features/settings/guardrails">Slippage, scam warnings, price impact, Degen mode, and gas budget.</Card>
-  <Card title="Trade panel" icon="sliders" href="/features/settings/trade-panel">Market and limit presets, confirmations, panel text, auto-buy, and Auto TP/SL.</Card>
+  <Card title="Trade panel" icon="sliders" href="/features/settings/trade-panel">Market and limit presets, confirmations, panel text, auto-buy, and Auto orders.</Card>
   <Card title="Positions" icon="chart-pie" href="/features/settings/position-panel">Sell links, confirmation, filters, and sorting.</Card>
   <Card title="Group buy/sell" icon="users" href="/features/settings/group-links">Control trading actions opened from shared links.</Card>
   <Card title="Notifications" icon="bell" href="/features/settings/notifications">Telegram auto-bridge updates and optional Pushover alerts.</Card>
@@ -33,7 +33,7 @@ Send `/settings`. Check the active profile, then open a category and review its 
 | **Guardrails** | Slippage and safety controls | Degen mode, Slippage, Auto-adjust max buy, Scam warning, Liquidity protection, High price-impact confirmation, Gas surplus budget |
 | **Trade panel settings** | **Buttons and controls** | Market preset amounts → Buy/Sell presets; Limit preset amounts → Buy/Sell triggers and amounts; Buy/Sell confirm, Max buy, Nest accounts, Mini App, Chart, DexScreener chart |
 | **Trade panel settings** | **Text panel** | Total PnL per token, Capital at Risk / Profit Taken, Extra links, Sell link presets |
-| **Trade panel settings** | Other entries | Auto TP/SL → Market buys or Limit & DCA → Auto TP, Auto SL, Auto trailing stop; Manual TP/SL basis; Always open on Buy; Auto-buy on paste |
+| **Trade panel settings** | Other entries | Auto orders → Market buys or Limit & DCA → Auto take profit, Auto stop loss, Auto trailing stop, Auto Dev Sell; Manual TP/SL basis; Always open on Buy; Auto-buy on paste |
 | **Position panel settings** | Position controls | Sell 100% links and Positions sell confirmation; position filters and sorting are in `/positions` |
 | **Group buy/sell** | Group controls | Group buy maximum and Group sell |
 | **Notifications** | Telegram / Pushover | Auto-bridge Telegram DM toggle; Pushover categories and delivery settings where offered |
@@ -41,7 +41,7 @@ Send `/settings`. Check the active profile, then open a category and review its 
 | **Security** | Open Security | 2FA, optional Trading lock, and recovery email in Cove Wallets |
 | **Language** | Language picker | English or Chinese |
 
-The **Limit** builder has **Limit**, **DCA**, and sell-side **Trailing SL** tabs. DCA then offers **Time Interval** and **Price ladder**. These are trading controls, reached from a token panel rather than from Settings.
+The token panel has separate **Limit** and **Strategy** buttons. Limit's DCA tab is the Price ladder; Strategy contains DCA Time Interval and, on the sell side, Counter Strategy. These are trading controls, reached from a token panel rather than from Settings.
 
 ## Which settings change with a profile?
 
@@ -49,7 +49,7 @@ When you have several profiles, a **👤** mark identifies profile settings. Che
 
 | Scope | Settings |
 |---|---|
-| **Active profile** | Guardrails, market and limit presets, buy/sell confirmations, Max buy, Auto TP/SL for each buy mode, manual TP/SL basis, auto-buy, Always open on Buy, Positions sell confirmation, trading-wallet selection, and group-buy authorizations |
+| **Active profile** | Guardrails, market and limit presets, buy/sell confirmations, Max buy, Auto orders for each buy mode, manual TP/SL basis, auto-buy, Always open on Buy, Positions sell confirmation, trading-wallet selection, and group-buy authorizations |
 | **Whole account** | 2FA, trading lock, receive-transfer policy, language, Nest accounts, Mini App/Chart/DexScreener display, extra links, Total PnL per token, group-buy maximum, Group sell, notifications, position filters/sort, and price alerts |
 | **Individual wallet** | Auto-bridge mode, label, and wallet-specific management |
 

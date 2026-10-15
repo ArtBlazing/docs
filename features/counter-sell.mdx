@@ -1,0 +1,54 @@
+---
+title: "Counter Sell"
+description: "Sell part of a holding in response to other traders' buys."
+icon: "arrows-rotate"
+---
+
+**Counter Sell** watches buys of a token by other traders. When a qualifying buy is observed, Cove attempts a market sale from the wallets you selected. It can respond to several buys until your total sell limit is reached or the order ends.
+
+<Warning>Counter Sell acts after another trader's buy. A buy is not a guaranteed sale: the signal, market-cap floor, minimum trade size, liquidity, slippage, and your remaining holding can prevent execution. The trigger is not a promised fill price.</Warning>
+
+## Set up a Counter Sell
+
+1. Open a token you hold in the intended profile. Choose the wallets to include, then tap **Selling → Strategy → Counter Strategy**.
+2. Set **Trigger — Sell into buys min**. The initial value is **\$50**: smaller buys are ignored. **Any** evaluates buys of any size, though a sale below the minimum trade size is still skipped.
+3. Set **Size — relative to trigger**. It starts at **75%**. For a qualifying **\$100** buy, that value asks Cove to sell roughly **\$75** of your tokens at the market quote, subject to the remaining sell limit and holdings.
+4. Optionally set **Mcap Floor — No sells below**. It starts at **Any**. The floor decides whether to attempt a sale; it does not set a minimum execution price.
+5. Set **Total sell amount**. It starts at **100%** and caps how much of the selected wallets' combined holding this strategy may sell. Review the **30-day** default expiry and tap **Create Counter** only when ready.
+
+Each value has quick presets and a row you can tap to enter a custom value. A 75% size is relative to *each other trader's buy*; a 100% total is a limit across the whole strategy. These controls answer different questions.
+
+{/* Screenshot: counter_sell_create_2026_10.png | Counter Strategy form and defaults. */}
+<div className="cove-guide-figure">
+  <Frame caption="Counter Strategy opens with editable trigger, size, market-cap floor, and total sell limit.">
+    <img src="/assets/guide-screenshots/counter_sell_create_2026_10.png" alt="Counter Sell form with trigger, size, market-cap floor, total sell amount, expiry, and Create Counter." width={713} height={1135} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Understand the total limit
+
+The total percentage applies to the bag held by the wallets selected for this Counter Sell. Sales made by hand or by another order also count toward it. Buying more tokens in those wallets can increase the amount available to the strategy; selling them reduces what remains. If a buy arrives while this Counter Sell is already attempting a sale, it is skipped rather than queued.
+
+Only one Counter Sell can run for a token. Its selected wallets are fixed; to change them, cancel and create a new strategy. Each attempted sale can have trading costs, so a low minimum buy on an active token may lead to many small trades.
+
+## Check, edit, or stop it
+
+Open the token's **Active Orders → Counter → View details**, or find it with `/orders`. The detail shows its status, settings, attempted trades, amount sold, and expiry. Use **Edit Counter** to change the four value controls; confirm the changes on the edit screen. **Cancel Counter** stops future attempts but does not undo sales already made.
+
+{/* Screenshot: counter_sell_active_2026_10.png | Running Counter Sell details. */}
+<div className="cove-guide-figure">
+  <Frame caption="A running Counter Sell shows its strategy and allocation already sold.">
+    <img src="/assets/guide-screenshots/counter_sell_active_2026_10.png" alt="Counter Sell detail with Running status, attempted sales, allocation sold, expiry, Cancel, and Edit." width={502} height={566} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+After completion, Cove sends a result with the tokens sold and proceeds. Review the trade receipt and remaining position. An ended order's summary can remain accessible until you dismiss it; **Close** on a message only closes that message.
+
+{/* Screenshot: counter_sell_finished_2026_10.png | Counter Sell completion message. */}
+<div className="cove-guide-figure">
+  <Frame caption="Example Counter Sell completion message.">
+    <img src="/assets/guide-screenshots/counter_sell_finished_2026_10.png" alt="Counter Sell done message with token amount sold, proceeds, and Close." width={436} height={190} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+For other exits, compare [Dev Sell](/features/dev-sell), [Trailing stop](/features/trailing-stop), and [DCA orders](/features/dca-orders). See [Manage orders](/features/managing-orders) for shared status and cancellation guidance.

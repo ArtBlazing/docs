@@ -20,6 +20,7 @@ Send commands to the [Cove Trading](https://t.me/cove_trading_bot) bot in Telegr
 | `/transfer` | USDC transfer, disperse, and collect |
 | `/positions` | Holdings |
 | `/orders` | Orders in the active profile |
+| `/track` | [Trader Tracker](/features/trader-alerts), when available for your account |
 | `/alerts` | Account-wide alerts and Auto alerts |
 | `/export` | Real-trade CSV export |
 | `/paper` | Paper trading; may be absent from the menu |
@@ -54,7 +55,7 @@ First open the token, choose the intended profile/wallets, then use Telegram's *
 | `/trailing 50 100` | Trail by 50%, sell 100% |
 | `/alert 300k` | One market-cap alert, default seven-day expiry |
 
-Send `/dca`, `/trailing`, or `/alert` without arguments for a tutorial. The `/dca` examples create price ladders; use **Limit → DCA → Time Interval** in the token panel for scheduled pieces. If a reply says the panel expired, reopen the token. If it says the command was already received, check Orders or Alerts before sending again.
+Send `/dca`, `/trailing`, or `/alert` without arguments for a tutorial. The `/dca` examples create price ladders; use **Strategy → DCA Time Interval** in the token panel for scheduled pieces. If a reply says the panel expired, reopen the token. If it says the command was already received, check Orders or Alerts before sending again.
 
 ## Conditional quick commands
 

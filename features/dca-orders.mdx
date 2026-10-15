@@ -4,14 +4,14 @@ description: "Choose a price ladder or a time interval for staged buys and sells
 icon: "stairs"
 ---
 
-Cove offers two DCA strategies under **Limit → DCA**:
+Cove offers two DCA strategies in different parts of the token panel: **Limit → DCA** opens a Price ladder; **Strategy → DCA Time Interval** opens a timed plan. Choose **Buying** or **Selling** first.
 
 | Mode | How it works | Order count |
 |---|---|---|
 | **Price ladder** | Places separate limit orders across a required market-cap range. Each rung waits for its own price target. | 2–10 per wallet |
 | **Time Interval** | Starts a standing plan that attempts one market order per interval while the market is within your optional range. | 2–20 per wallet |
 
-Choose the mode before entering values. The two modes can produce very different timing and fills.
+The two strategies can produce very different timing and fills. There is no longer a Price ladder / Time Interval toggle inside the DCA tab.
 
 ## Create a price ladder
 
@@ -20,7 +20,7 @@ Choose the mode before entering values. The two modes can produce very different
     Paste the token address in the intended profile and check the selected wallets.
   </Step>
   <Step title="Choose DCA and Buying">
-    Open **Limit → DCA → Price ladder**, then choose **Buying**.
+    Choose **Buying → Limit → DCA**.
   </Step>
   <Step title="Set the market-cap range">
     Enter both **Min mcap** and **Max mcap**. You can use shorthand such as **800k** or **1.5m**.
@@ -38,10 +38,10 @@ Choose the mode before entering values. The two modes can produce very different
   </Step>
 </Steps>
 
-{/* Screenshot: dca_price_ladder_buy.png | Current Price ladder buy setup and preview. */}
+{/* Screenshot: limit_dca_price_ladder_buy_2026_10.png | Current Price ladder buy form under Limit. */}
 <div className="cove-guide-figure">
-  <Frame caption="Current Price ladder buy setup and preview.">
-    <img src="/assets/guide-screenshots/dca_price_ladder_buy.png" alt="Current Price ladder buy setup and preview." width={752} height={1263} className="cove-guide-screenshot" />
+  <Frame caption="Buying → Limit → DCA opens the Price ladder form.">
+    <img src="/assets/guide-screenshots/limit_dca_price_ladder_buy_2026_10.png" alt="Price ladder buy form with market-cap range, order count, amount, and expiry controls." width={713} height={815} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
@@ -61,7 +61,7 @@ With multiple wallets, **DCA buys always split the total across wallets**, even 
 
 ## Create a sell ladder
 
-1. Open **Limit → DCA → Price ladder → Selling** on a holding.
+1. Open a holding and choose **Selling → Limit → DCA**.
 2. Enter both **Min mcap** and **Max mcap**.
 3. Choose **2–10 orders**.
 4. Choose a sell amount preset or **custom** for the total percentage to sell, from 1–100, across the ladder.
@@ -72,16 +72,16 @@ Cove divides the sell allocation into equal absolute slices. A 100% sell across 
 
 Rungs exactly at current market cap and wallets without a holding can be skipped. The receipt can therefore contain fewer orders than the maximum.
 
-{/* Screenshot: dca_price_ladder_sell.png | Current Price ladder sell setup and preview. */}
+{/* Screenshot: limit_dca_price_ladder_sell_2026_10.png | Current Price ladder sell form under Limit. */}
 <div className="cove-guide-figure">
-  <Frame caption="Current Price ladder sell setup and preview.">
-    <img src="/assets/guide-screenshots/dca_price_ladder_sell.png" alt="Current Price ladder sell setup and preview." width={752} height={1272} className="cove-guide-screenshot" />
+  <Frame caption="Selling → Limit → DCA opens the Price ladder form.">
+    <img src="/assets/guide-screenshots/limit_dca_price_ladder_sell_2026_10.png" alt="Price ladder sell form with market-cap range, order count, total sell amount, and expiry controls." width={711} height={814} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
 ## Create a Time Interval plan
 
-1. Open the token in the intended profile and select the wallets, then choose **Limit → DCA → Time Interval** and **Buying** or **Selling**.
+1. Open the token in the intended profile and select the wallets. Choose **Buying** or **Selling**, then **Strategy → DCA Time Interval**.
 2. Set **Order count** to 2–20. With several wallets, the field is **Orders per wallet**; the creation button shows the combined count.
 3. Select a **Buy amount** or **Sell amount** preset, or enter a custom total. Cove divides that total across the planned orders. A sell percentage applies to each selected wallet's own holding.
 4. Set **Interval**. The picker offers **1m, 5m, 15m, 1h, 4h, 24h**, plus **Custom** from 1 minute to 24 hours. The initial interval is **15m**.
@@ -90,16 +90,16 @@ Rungs exactly at current market cap and wallets without a holding can be skipped
 
 If the price is outside the range when a piece is due, the plan waits. Missed intervals are not piled into a burst; the next eligible evaluation attempts one piece and resumes the spacing. The duration estimate assumes the price remains in range, so the plan can take longer or expire before all pieces run. Each executed piece has its own trading costs; small orders can cost proportionally more.
 
-{/* Screenshot: dca_time_interval_buy.png | Time Interval buy panel with interval, optional range, and preview. */}
+{/* Screenshot: strategy_buy_time_interval_2026_10.png | Time Interval buy form under Strategy. */}
 <div className="cove-guide-figure">
-  <Frame caption="Time Interval buy panel with interval, optional range, and preview.">
-    <img src="/assets/guide-screenshots/dca_time_interval_buy.png" alt="Time Interval buy panel with interval, optional range, and preview." width={752} height={1077} className="cove-guide-screenshot" />
+  <Frame caption="Buying → Strategy opens DCA Time Interval.">
+    <img src="/assets/guide-screenshots/strategy_buy_time_interval_2026_10.png" alt="Time Interval buy form with market-cap bounds, order count, interval, amount, and expiry." width={711} height={814} className="cove-guide-screenshot" />
   </Frame>
 </div>
-{/* Screenshot: dca_time_interval_sell.png | Time Interval sell panel with price floor and order count. */}
+{/* Screenshot: strategy_sell_time_interval_2026_10.png | Time Interval sell form under Strategy. */}
 <div className="cove-guide-figure">
-  <Frame caption="Time Interval sell panel with price floor and order count.">
-    <img src="/assets/guide-screenshots/dca_time_interval_sell.png" alt="Time Interval sell panel with price floor and order count." width={752} height={1117} className="cove-guide-screenshot" />
+  <Frame caption="Selling → Strategy → DCA Time Interval.">
+    <img src="/assets/guide-screenshots/strategy_sell_time_interval_2026_10.png" alt="Time Interval sell form with market-cap bounds, order count, interval, sell amount, and expiry." width={713} height={815} className="cove-guide-screenshot" />
   </Frame>
 </div>
 {/* Screenshot: dca_interval_picker.png | Interval presets and Custom button. */}

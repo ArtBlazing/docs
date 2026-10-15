@@ -47,6 +47,9 @@ For a trade-specific walkthrough, see [Why did my crypto swap fail?](https://www
 | **High price impact** | Review the expected output; consider a smaller size |
 | **Quote changed / quote stale** | Review a fresh quote before a new submission |
 | **Slippage too low** | Review volatility and size before changing [Slippage](/features/settings/guardrails) |
+| **Retry @ X%** | This button submits a new attempt at the displayed slippage and saves that value as your default. Check the previous trade result, amount, and new tolerance before tapping. |
+| **Deposit / Buy \$X** after insufficient funds | Deposit opens funding; **Buy \$X** submits a smaller buy at the offered affordable amount. Check the amount before tapping. |
+| **Buy \$X instead** after a max-buy cap | Submits a new buy at the displayed capped amount. The original oversized buy did not proceed. |
 | **Max-buy cap applied** | Receipt shows actual spend below requested spend |
 | **Not enough liquidity** | Check the market and reduce size |
 | **No swap route found** | A route may be temporarily unavailable; check token liquidity and retry only after reviewing status |
@@ -55,11 +58,15 @@ For a trade-specific walkthrough, see [Why did my crypto swap fail?](https://www
 | **Token too gas-heavy** | Check the quoted cost or use a smaller supported size |
 | **Trade stopped — cannot tell what you would get** | The quote could not be reliably assessed |
 | **Trade paused — bridge quote too low** | Check the refusal and try later; do not assume a trade filled |
+| **Buying this token is paused** | Cove did not send the buy or charge a fee. Wait and check the token's current status before trying again. |
+| **Selling this token is paused** | Your tokens remain in your wallet; the blocked attempt sent no trade or fee. Check the message and current status before trying again. |
 | **Generic Trade failed** | Forward the failure message with its reference to support |
 
 ## Automated orders
 
 **Didn't Fire — still active** means an impact-blocked order remains armed. **No longer armed**, **Failed**, and **Expired** mean you should inspect whether a replacement is needed.
+
+If a token-specific pause stops an automated trade, inspect `/orders`: a still-active plan may wait for an eligible attempt after the pause ends. Do not treat a pending order as filled protection or assume the pause has a known end time.
 
 For a gas-blocked stop, adjusting the budget does not recreate it. For **Auto TP/SL Incomplete**, add and verify missing orders manually.
 

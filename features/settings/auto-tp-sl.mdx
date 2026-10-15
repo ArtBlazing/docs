@@ -1,24 +1,24 @@
 ---
-title: "Auto take-profit and stop-loss"
-description: "Set exit rules for future buys and understand how sell levels are sized."
+title: "Auto orders"
+description: "Set automatic exit rules for future buys and understand how sell levels are sized."
 icon: "crosshairs"
 ---
 
-Auto TP/SL can create take-profit, stop-loss, and trailing-stop orders after eligible buys in the active profile. **Market buys** and **Limit & DCA** have separate templates and on/off states. Review both tabs before relying on an exit rule.
+**Auto orders** can create take-profit, stop-loss, trailing-stop, and Dev Sell orders after eligible buys in the active profile. **Market buys** and **Limit & DCA** have separate templates and on/off states. Review both tabs before relying on an exit rule. Turning one on does not create an order for a holding you already have.
 
 Targets use the purchase's entry, regardless of the **Manual TP/SL basis** setting.
 
 ## Configure a ladder
 
 <Steps>
-  <Step title="Open Auto TP/SL">
-    Choose **Settings → Trade panel settings → Auto TP/SL**.
+  <Step title="Open Auto orders">
+    Choose **Settings → Trade panel settings → Auto orders**.
   </Step>
   <Step title="Choose the buy mode">
     Open **Market buys** for immediate buys or **Limit & DCA** for a filled limit buy, DCA rung, or breakout buy. A green indicator on the other tab means it also has an armed rule.
   </Step>
   <Step title="Choose the side">
-    Open **Auto take profit**, **Auto stop loss**, or **Auto trailing stop**. Each is configured separately for the selected buy mode.
+    Open **Auto take profit**, **Auto stop loss**, **Auto trailing stop**, or **Auto Dev Sell**. Each is configured separately for the selected buy mode. See [Dev Sell](/features/dev-sell#auto-dev-sell-for-future-buys) for how the fourth rule works.
   </Step>
   <Step title="Set a level">
     For Auto TP or SL, choose a trigger percentage and **Sell %** for each level. Take-profit gains allow **1–100,000%**; stop-loss losses allow **1–99%**; sell size allows **1–100%**.
@@ -34,10 +34,16 @@ Targets use the purchase's entry, regardless of the **Manual TP/SL basis** setti
   </Step>
 </Steps>
 
-{/* Screenshot: settings_auto_tpsl_modes.png | Market buys and Limit & DCA tabs with armed indicators. */}
+{/* Screenshot: settings_auto_orders_market_2026_10.png | Auto orders Market buys tab. */}
 <div className="cove-guide-figure">
-  <Frame caption="Market buys and Limit & DCA tabs with armed indicators.">
-    <img src="/assets/guide-screenshots/settings_auto_tpsl_modes.png" alt="Market buys and Limit & DCA tabs with armed indicators." width={752} height={871} className="cove-guide-screenshot" />
+  <Frame caption="Auto orders for Market buys, including Auto Dev Sell.">
+    <img src="/assets/guide-screenshots/settings_auto_orders_market_2026_10.png" alt="Auto orders Market buys tab with take profit, stop loss, trailing stop, and Dev Sell controls." width={713} height={942} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+{/* Screenshot: settings_auto_orders_limit_2026_10.png | Auto orders Limit and DCA tab. */}
+<div className="cove-guide-figure">
+  <Frame caption="Limit & DCA fills have their own Auto orders settings.">
+    <img src="/assets/guide-screenshots/settings_auto_orders_limit_2026_10.png" alt="Auto orders Limit and DCA tab with separate take profit, stop loss, trailing stop, and Dev Sell controls." width={713} height={982} className="cove-guide-screenshot" />
   </Frame>
 </div>
 {/* Screenshot: settings_auto_tp_dynamic.png | Auto TP level and Market / Dynamic sell style. */}

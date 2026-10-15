@@ -86,13 +86,13 @@ Breakeven describes the trigger, not guaranteed net recovery after fees, slippag
 
 ## Multiple levels and allocation
 
-Add up to three manual steps. You can mix upward take-profit and downward stop-loss triggers in one setup; its button then says **Create orders**. Review each step's direction, amount, and sell style. The **Sell size** basis controls whether percentages allocate from entry or from what remains. See [Auto TP/SL sell sizing](/features/settings/auto-tp-sl#understand-sell-size).
+Add up to three manual steps. You can mix upward take-profit and downward stop-loss triggers in one setup; its button then says **Create orders**. Review each step's direction, amount, and sell style. The **Sell size** basis controls whether percentages allocate from entry or from what remains. See [Auto orders sell sizing](/features/settings/auto-tp-sl#understand-sell-size).
 
 ## Market or Dynamic take-profit
 
 In thin liquidity, selling an entire position at once can push the price down. **Dynamic** take-profit tries a smoother exit: Cove sells smaller amounts when needed, at the target price or better, and waits with the remainder until the price allows. The remainder may never fill before expiry. Cove chooses piece sizes from live quotes; you do not set a piece count or retry interval. **Market** instead tries to sell the whole take-profit allocation at the available quote when the target fires.
 
-The Dynamic option appears only for take-profit steps. Stop-loss steps remain Market. You can also select Dynamic for future automatic take-profit levels in [Auto TP/SL](/features/settings/auto-tp-sl#choose-how-a-take-profit-sells).
+The Dynamic option appears only for take-profit steps. Stop-loss steps remain Market. You can also select Dynamic for future automatic take-profit levels in [Auto orders](/features/settings/auto-tp-sl#choose-how-a-take-profit-sells).
 
 {/* Screenshot: limit_sell_mixed_steps.png | One upward and one downward step with Create orders. */}
 <div className="cove-guide-figure">
@@ -107,4 +107,4 @@ If Cove says **Entry target already passed**, no orders were placed for those in
 
 Default expiry is **30 days**. A brief price wick can trigger an order even if the market has already moved back by execution time. High impact or execution errors can prevent a fill.
 
-Check [Manage orders](/features/managing-orders) for status, edits, and cancellation. Use [Trailing stop](/features/trailing-stop) for a moving peak-based exit, or [Auto TP/SL](/features/settings/auto-tp-sl) for future buys.
+Check [Manage orders](/features/managing-orders) for status, edits, and cancellation. Use [Trailing stop](/features/trailing-stop) for a moving peak-based exit, or [Auto orders](/features/settings/auto-tp-sl) for future buys.
