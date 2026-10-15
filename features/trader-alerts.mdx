@@ -1,51 +1,204 @@
 ---
 title: "Trader Tracker"
-description: "Follow selected traders' buys, sells, and theses in Telegram."
+description: "Follow traders, choose their activity alerts, and understand alert actions."
 icon: "users-viewfinder"
 ---
 
-Send `/track` to open **Trader Tracker** if the feature is available on your account. It can send Telegram alerts when a trader you follow on **FOMO** or **Pump.fun** buys or sells a token, or publishes a thesis. Receiving an alert does not place a trade.
+Send `/track` to open **Trader Tracker** if it is available on your account. Follow a trader on **Fomo** or **Pump.fun** to receive Telegram alerts about their buys, sells, and theses. An alert reports the trader's activity; receiving one does not trade for you.
 
-<Note>Trader Tracker may be temporarily unavailable. If `/track` says so, your existing subscriptions are kept, but new alerts are not delivered while the feature is off.</Note>
+<Note>If `/track` is temporarily unavailable, your saved traders remain in your list. Alerts are not delivered while the feature is off.</Note>
 
-## Add a trader
+## Add and find a trader
 
 1. Send `/track` and tap **Add new Trader**.
-2. Enter a wallet address, an `@handle`, or a supported FOMO or Pump.fun profile link. A profile link searches that app; a handle searches both.
-3. If the trader appears on both apps, choose **Fomo**, **Pump.fun**, or **Both**. If no match is found, try a different handle or browse **Leaderboard**.
-4. Open **Manage** to review the subscription and its alert filters.
+2. Send an EVM or Solana wallet address, an `@handle`, or a Fomo or Pump.fun profile link. A handle searches both apps; a profile link searches its own app.
+3. If the handle matches traders on both apps, choose **Fomo**, **Pump.fun**, or **Both**. **Both** creates two subscriptions with the same initial settings. They appear as separate entries when you return to the list.
+4. Cove opens **Manage** when tracking starts. Check the source and wallets to confirm that you found the right trader.
 
-The home screen shows your tracked traders and whether each is live or paused. **Pause All** and **Resume All** affect delivery for your list; they do not change your holdings or orders.
+If Cove has not found a wallet for that trader, try the handle again later or browse **Leaderboard**. A trader whose wallet is still being indexed cannot receive alerts yet.
 
 {/* Screenshot: tracker_home_2026_10.png | Trader Tracker home. */}
 <div className="cove-guide-figure">
-  <Frame caption="Trader Tracker lists subscriptions and provides Add new Trader and Leaderboard.">
-    <img src="/assets/guide-screenshots/tracker_home_2026_10.png" alt="Trader Tracker home with tracked traders, Manage links, pause controls, and Add new Trader." width={713} height={694} className="cove-guide-screenshot" />
+  <Frame caption="The /track list shows your traders, Manage links, pause controls, and Leaderboard.">
+    <img src="/assets/guide-screenshots/tracker_home_2026_10.png" alt="Trader Tracker home with tracked traders, Manage links, Add new Trader, Pause All, and Leaderboard." width={713} height={694} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
-## Choose what you receive
-
-Each trader has separate settings. In **Manage**, set **Theses** to Off, All, First on Token, or My Holdings. Set **Trades** to buys, first buys only, sells, or off. **Min buy** and **Token Filters** can narrow alerts by market cap, liquidity, volume, holders, top-holder share, and token age. Changes save as you make them; there is no separate Save button.
-
-Use **Pause** to stop that trader's alerts without deleting the subscription. **Delete** removes it after confirmation. The trader's public wallets and source app are shown for identification; check them before changing filters.
-
-{/* Screenshot: tracker_manage_2026_10.png | Per-trader management. */}
+{/* Screenshot: tracker_add_trader_prompt_2026_10.png | Add trader prompt. */}
 <div className="cove-guide-figure">
-  <Frame caption="Manage one trader's alert types, minimum buy, token filters, and pause state.">
-    <img src="/assets/guide-screenshots/tracker_manage_2026_10.png" alt="Trader Tracker Manage panel with status, wallets, thesis and trade controls, token filters, Pause, and Delete." width={713} height={980} className="cove-guide-screenshot" />
+  <Frame caption="Add new Trader asks for a wallet, handle, or supported profile link.">
+    <img src="/assets/guide-screenshots/tracker_add_trader_prompt_2026_10.png" alt="Trader Tracker prompt asking who to track, below the existing trader list." width={752} height={857} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
-## Read an alert before acting
+The list shows each subscription as **Live** or **Paused**. **Pause** stops that trader's alerts and keeps its settings; **Resume** restarts them. **Pause All / Resume All** apply to the whole list. These controls do not change your holdings or orders.
 
-An alert can show the trader, token, event, market data, and action buttons. The **Buy / Limit** choice changes how an eligible buy action is placed; switching the choice alone does not trade. Tapping an amount may submit a trade, so check the token, selected wallets, mode, and amount first. An alert is information about someone else's activity, not a promise that you will get their price.
+## Manage one trader
 
-{/* Screenshot: tracker_alert_2026_10.png | Trader activity alerts. */}
+Tap **Manage** beside the trader in `/track`. A new subscription starts with **Buys and Sells on**, **All theses**, **Only on my holdings off**, and no minimum or token filters. Changing a control saves it immediately. Existing subscriptions keep their own saved settings.
+
+The panel shows the trader's source app, public wallets, current status, alert types, **Min buy**, and **Token Filters**. **Share to Friend** shares a link to this trader; it does not share your private settings.
+
+{/* Screenshot: tracker_manage_2026_10.png | Trader management. */}
 <div className="cove-guide-figure">
-  <Frame caption="Trader activity alerts may offer Buy and Limit actions.">
-    <img src="/assets/guide-screenshots/tracker_alert_2026_10.png" alt="Examples of trader buy and thesis alerts with token data and optional trade action buttons." width={713} height={861} className="cove-guide-screenshot" />
+  <Frame caption="Manage shows the trader's status, wallets, event choices, and filters.">
+    <img src="/assets/guide-screenshots/tracker_manage_2026_10.png" alt="Trader Tracker Manage panel with event controls, minimum buy, token filters, Pause, Share to Friend, and Delete." width={713} height={980} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
-Trader Tracker follows *people*. [Price alerts](/features/price-alerts) instead watch market-cap targets for a token you choose; neither type of notification trades on arrival.
+### Choose thesis alerts
+
+Open **Theses** and select one option:
+
+| Option | Alerts you receive |
+|---|---|
+| **Off** | No thesis alerts from this trader. |
+| **All** | New theses and updates, subject to any applicable token filters. |
+| **First on Token** | Only the trader's first new thesis about a token, when Cove can identify it as their first. Updates do not pass. |
+| **My Holdings** | Theses about tokens you already hold in a real wallet. This choice does not use the market-cap and token filters; the holding itself is the condition. |
+
+**My Holdings** here controls theses. The separate **Only on my holdings** switch under Trades controls trade alerts.
+
+{/* Screenshot: tracker_manage_theses_options_2026_10.png | Thesis choices. */}
+<div className="cove-guide-figure">
+  <Frame caption="Theses offers Off, All, First on Token, and My Holdings.">
+    <img src="/assets/guide-screenshots/tracker_manage_theses_options_2026_10.png" alt="Expanded Theses menu showing its four choices and My Holdings selected." width={752} height={888} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+### Choose trade alerts
+
+Open **Trades** to set these controls separately:
+
+| Control | What it does |
+|---|---|
+| **First buys only** | Sends buys only when Cove knows this is the trader's first buy of that token. It can stay on together with **Sells**. |
+| **Buys: On / Off** | Sends every buy when On. Turning Buys on replaces First buys only. |
+| **Sells: On / Off** | Includes or excludes this trader's sales independently of the buy choice. |
+| **Only on my holdings** | Limits both buy and sell alerts to tokens you already hold in a real wallet. It does not change the thesis choice. |
+
+For example, turn on **First buys only** and **Sells** to hear about the trader's first entry into a token and later sales, without alerts for every additional buy. Turning all trade choices off leaves thesis alerts available if Theses is on.
+
+{/* Screenshot: tracker_manage_trades_options_2026_10.png | Trade choices. */}
+<div className="cove-guide-figure">
+  <Frame caption="First buys only, Buys, Sells, and Only on my holdings are separate trade controls.">
+    <img src="/assets/guide-screenshots/tracker_manage_trades_options_2026_10.png" alt="Expanded Trades menu showing First buys only, Buy and Sell toggles, Only on my holdings, and Add Token Filters." width={752} height={978} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+### Narrow alerts with Token Filters
+
+From **Trades**, tap **Add Token Filters**. A limit marked **Off** does not filter anything. These fields use the token's market data; **Min Buy** uses the trader's buy amount.
+
+| Filter | Alert passes when… |
+|---|---|
+| **Min Buy** | The trader bought at least this USD amount. Applies to **buy alerts only**; it never blocks a sell. |
+| **Market Cap Min** | The token's market cap is at or above the entered USD value. |
+| **Market Cap Max** | The token's market cap is at or below the entered USD value. |
+| **Liquidity Min** | Reported token liquidity is at or above the entered USD value. |
+| **Volume 24h Min** | Reported 24-hour token volume is at or above the entered USD value. |
+| **Holders Min** | The token has at least this many holders. |
+| **Top 10 Holders Max** | The ten largest holders own no more than the entered percentage of supply. |
+| **Token Age Min** | The token is at least this old. |
+| **Token Age Max** | The token is no older than this. |
+
+Market-cap and token filters apply to buy and sell alerts and to ordinary **All / First on Token** theses that name a token. If a required metric is unavailable, Cove does not send that event through the active filter. **My Holdings** theses use the holding check instead. Token Age Min cannot exceed Token Age Max; Market Cap Min must be below Market Cap Max.
+
+Tap a filter to open its value prompt. Money fields accept forms such as `50k`, `$1.5m`, or `1,000`; holder counts accept a number such as `500`; Top 10 takes a percentage such as `30%`; token age takes a duration such as `30m`, `6h`, `3d`, or `2w`. Send `off`, `none`, `any`, `clear`, or `0` to clear one field. An invalid value leaves the prompt open so you can correct it. **Cancel** leaves that value unchanged.
+
+Each valid change saves immediately. **Save & Go back** returns to the Trades menu; it is not a separate commit step. **Reset filters** clears all nine numeric fields together while retaining your thesis, trade, and holdings choices.
+
+{/* Screenshot: tracker_token_filters_all_2026_10.png | All nine filters and controls. */}
+<div className="cove-guide-figure">
+  <Frame caption="The filter menu has nine fields, Save & Go back, and Reset filters.">
+    <img src="/assets/guide-screenshots/tracker_token_filters_all_2026_10.png" alt="Trader Tracker Token Filters keyboard with Min Buy, market-cap bounds, liquidity, volume, holders, top-ten share, token-age bounds, Save and Reset." width={752} height={887} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Discover traders with Leaderboard
+
+Open `/track` → **Leaderboard**. Switch between **Fomo** and **Pump.fun**, and between **24h**, **7d**, and **30d**. The list shows ten traders per page. The signed PnL next to a trader's name belongs to the selected period; it is not a promise of future performance.
+
+| Source | What each leaderboard entry shows |
+|---|---|
+| **Fomo** | Period PnL, followers, trading volume, and trade count. |
+| **Pump.fun** | Period PnL, its realized and unrealized parts, and return percentage. |
+
+Tap a **name** to open that trader's card. **Enable Alerts** starts tracking a followable trader and opens Manage; **Edit Alerts** opens your existing saved settings. **Search by handle** opens the add-trader prompt. If a trader is marked **Indexing**, their wallet is not ready for alerts yet. Card figures may differ from the leaderboard: for example, a Fomo card can show all-time PnL rather than the list's selected-period PnL.
+
+{/* Screenshot: tracker_leaderboard_fomo_24h_2026_10.png | Fomo leaderboard. */}
+<div className="cove-guide-figure">
+  <Frame caption="Fomo Leaderboard at 24h: PnL, followers, volume, trades, and alert links.">
+    <img src="/assets/guide-screenshots/tracker_leaderboard_fomo_24h_2026_10.png" alt="Fomo 24-hour Trader Tracker leaderboard with ranked traders, PnL, followers, volume, trades, and period/source controls." width={752} height={1380} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+{/* Screenshot: tracker_leaderboard_pumpfun_7d_2026_10.png | Pump.fun leaderboard. */}
+<div className="cove-guide-figure">
+  <Frame caption="Pump.fun Leaderboard at 7d: PnL, realized and unrealized components, and return.">
+    <img src="/assets/guide-screenshots/tracker_leaderboard_pumpfun_7d_2026_10.png" alt="Pump.fun seven-day Trader Tracker leaderboard with ranked traders, PnL, realized and unrealized components, return, and period/source controls." width={752} height={1380} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Act on an alert
+
+An alert can show what the trader did, their token and position, the token's current market cap, and the market cap **at buy**, **at sell**, or **at post**. Those event values describe the trader's activity; they are not your execution price. The token symbol opens Cove's token panel.
+
+If trading actions are available, the alert shows the wallets it will use. **Buy** selects a market buy; **Limit** selects a pending limit buy. Switching modes changes the amount row and explanation; **switching modes does not place an order**. Tapping a dollar amount or sending a custom amount can submit a buy or limit order. Action buttons expire two hours after the alert is sent.
+
+### What the alert's Limit means
+
+For a **buy alert**, Limit uses the trader's **actual fill price**: the USD they spent divided by the number of tokens they received. Cove translates that price into a market-cap target using its live price and market-cap data. The pending buy then watches for the token's market cap to reach **that target or lower**. For example, if the converted entry target shown in the alert is **\$1m MC**, the order waits for **\$1m or below**; it does not buy just because you selected Limit. The order expires after **24 hours** if it has not filled.
+
+The alert can also show a separate **“MC … at buy”** figure supplied with the trader's event. The actual limit target is the **“fires at MC … or lower”** number shown after selecting Limit and in its receipt; those two market-cap figures can differ. If the market is already at or below the limit when you place it, the order can trigger on its next check. A trigger starts an execution attempt; available liquidity, slippage, and trading checks still determine whether it fills and at what effective price. Check `/orders` for the result.
+
+On a **sell alert**, Limit instead uses the trader's sell fill price and still creates a **buy** limit at that converted market cap or lower. On a **thesis alert**, it uses the market cap when the thesis was posted. If Cove lacks a usable price or market-cap basis, it hides Limit while Buy may remain available.
+
+### Where the dollar buttons come from
+
+| Alert mode | Amounts shown below the mode buttons | Where to change them |
+|---|---|---|
+| **Buy** | The first three eligible **USD market buy presets**. | `/settings` → **Trade panel settings → Buttons and controls → Market preset amounts → Buy preset amounts**. |
+| **Limit** | The first three eligible **Limit buy amount presets** in USD. | `/settings` → **Trade panel settings → Buttons and controls → Limit preset amounts → Limit buy presets → Buy amounts**. |
+
+The amounts come from the trading settings of the **profile containing your primary wallet**, along with that profile's selected trading wallets. They are the same preset values used by the normal Buy and Limit flows, not a second Trader Tracker setting. Cove omits buttons below the minimum buy size for the chain. Alert Buy buttons use dollar values even if the market panel's preset mode is set to percentages. The alert keeps the amounts, wallets, and **Split Total / Per Wallet** mode captured when it was sent; changing settings later affects new alerts, not an old button. In Split Total, the shown dollar amount is split across the displayed wallets; in Per Wallet, each displayed wallet uses that amount.
+
+The **`$x`** button at the end of Buy and Limit rows opens a prompt for your own USD amount. Check its minimum and wallet mode before replying. **Min Buy** in Manage is a filter on the *trader's* purchases; it does not set your order size.
+
+{/* Screenshot: tracker_alert_2026_10.png | Buy and thesis alerts. */}
+<div className="cove-guide-figure">
+  <Frame caption="Buy and thesis alerts show Buy/Limit modes and dollar amounts from your presets.">
+    <img src="/assets/guide-screenshots/tracker_alert_2026_10.png" alt="Trader buy and thesis alerts showing active wallet, Buy and Limit mode buttons, and dollar amount presets." width={713} height={861} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+{/* Screenshot: tracker_alert_custom_amount_prompt_2026_10.png | Custom amount button. */}
+<div className="cove-guide-figure">
+  <Frame caption="The $x button opens a custom USD amount prompt; this image shows the button before it is tapped.">
+    <img src="/assets/guide-screenshots/tracker_alert_custom_amount_prompt_2026_10.png" alt="Trader sell-event alert with Buy and Limit modes and a $x custom amount button at the end of the dollar row." width={511} height={342} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+### Alerts about the trader's sales
+
+A trader's sale can still offer **Buy** and **Limit**. If you hold that token in an eligible real wallet, the alert can also offer **Sell**; it starts selected when available. Its buttons use the first three of your profile's sell-percentage presets, and each percentage applies to each included wallet's own position. Depending on your sell confirmation setting, tapping a percentage either opens **Confirm / Cancel** or starts a sale. The example below has no Sell control because no eligible holding was available for that alert.
+
+{/* Screenshot: tracker_sell_alert_actions_2026_10.png | Trader sale without an own-position Sell action. */}
+<div className="cove-guide-figure">
+  <Frame caption="A trader's sell alert may show Buy and Limit only when you have no eligible holding to sell.">
+    <img src="/assets/guide-screenshots/tracker_sell_alert_actions_2026_10.png" alt="Trader sell alert with Buy and Limit choices and dollar presets, with no Sell action because no eligible holding is shown." width={414} height={344} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Pause or remove a trader
+
+Use **Pause** in Manage to stop alerts while keeping the trader and every setting. Use **Delete** only when you want to remove the subscription and its settings; Cove asks you to confirm. A shared trader link does not give someone access to your subscription controls.
+
+{/* Screenshot: tracker_delete_confirmation_2026_10.png | Confirm removal. */}
+<div className="cove-guide-figure">
+  <Frame caption="Delete requires confirmation and removes this trader's saved settings.">
+    <img src="/assets/guide-screenshots/tracker_delete_confirmation_2026_10.png" alt="Trader Tracker confirmation with Delete and Cancel buttons." width={546} height={163} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+Trader Tracker follows **people**. [Price alerts](/features/price-alerts) instead watch a market-cap target for a token you choose. Neither notification type places a trade when it arrives.

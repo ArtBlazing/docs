@@ -22,7 +22,7 @@ If an address exists on several chains, Cove can show a picker. Choose the netwo
 | **Mcap / MC** | Market capitalization; used for order and alert targets |
 | **Liquidity** | Liquidity available in the token's market |
 | **Mintable / Freezable** | Token controls that can affect supply or transfers |
-| **Tax B/S** | Buy/sell token taxes, where reported |
+| **Tax B/S** | Buy/sell token charges, where reported; an active Solana Token-2022 transfer-fee rate can appear here |
 | **Pool Tax** | A separate pool charge, shown for high-fee pools |
 | **🚨 warning / audit pending** | Scanner concern or an incomplete check |
 | Position/PnL block | Your holding and performance; may aggregate wallets |
@@ -31,6 +31,19 @@ If an address exists on several chains, Cove can show a picker. Choose the netwo
 | **Also held in** | A holding in another profile |
 
 Scanner data is information, not a guarantee that a token is safe or sellable. If **Find out why** appears, open it to read the concern.
+
+### Liquidity and transfer-fee notices
+
+When reported liquidity is positive but below **\$5,000**, the panel shows **LOW LIQUIDITY** above the token data. Below **\$1,000**, it shows **VERY LOW LIQUIDITY**. These are visible warnings about a thin market, not an estimate of what your trade will receive or a guarantee that a sale is possible. Review the live quote, price impact, and any trading confirmation before acting. If liquidity is unavailable or reported as zero, the panel does not infer one of these two warning levels from it.
+
+{/* Screenshot: token_panel_low_liquidity_2026_10.png | Very low liquidity warning. */}
+<div className="cove-guide-figure">
+  <Frame caption="A token with $685 reported liquidity shows VERY LOW LIQUIDITY above its market data.">
+    <img src="/assets/guide-screenshots/token_panel_low_liquidity_2026_10.png" alt="Solana token panel showing VERY LOW LIQUIDITY, $685 liquidity, market cap, and trade controls." width={615} height={676} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+For a Solana Token-2022 token with an active transfer-fee schedule, **Tax B/S** can show the current percentage. The token may also have a maximum fee per transfer, so the percentage alone does not determine the amount charged on a specific transfer. Use the current quote and final receipt for the transaction's actual amounts. If Cove cannot confirm which fee schedule is active, the panel omits that scheduled fee rather than showing an assumed rate.
 
 {/* Screenshot: token-panel-details.png | A token panel with market data, position values, slippage, and the active profile. */}
 <div className="cove-guide-figure">
