@@ -64,14 +64,17 @@
             "group": "Trading",
             "pages": [
               "features/trading",
+              "features/token-discovery",
               "features/token-panel",
               "features/multi-wallet-trading",
               "features/trader-alerts",
+              "features/wallet-tracker",
               {
                 "group": "Order guides",
                 "icon": "crosshairs",
                 "pages": [
                   "features/orders-overview",
+                  "features/order-presets",
                   "features/limit-orders",
                   "features/take-profit-stop-loss",
                   "features/trailing-stop",
@@ -97,6 +100,7 @@
               "features/positions",
               "features/bulk-sell",
               "features/history",
+              "features/account-pnl-report",
               "features/pnl-cards",
               "features/export"
             ]

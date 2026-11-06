@@ -19,12 +19,12 @@ In the Telegram token panel, open **Limit → Selling → Dev Sell**. The two pe
 
 For example, **Dev sells 25%** and **Sell 50%** means Cove waits for the creator's net balance to fall by the threshold after a qualifying sale, then attempts to sell half of your position remaining at that point. The creator can reach the threshold across several sales. The percentage is measured from the creator's balance at order placement, not the token's total supply.
 
-The form opens ready to place with **Any** and **Sell 100%**, and both rows show their editable presets. Those are starting values, not a recommendation. Review them, the selected wallets, token and expiry before tapping **Place order**. Cove attempts one order per selected wallet. If the creator wallet or a usable starting balance cannot be identified, the manual order is not placed and Cove gives a reason.
+Both required fields open blank unless you recalled [P1–P3 or Last used values](/features/order-presets). **Any** and **100%** are quick choices, not preselected values. Set both, then review the selected wallets, token, and expiry before tapping **Place order**. cove attempts one order per selected wallet. If the creator wallet or a usable starting balance cannot be identified, the manual order is not placed and cove gives a reason.
 
-{/* Screenshot: dev_sell_create_2026_10.png | Dev Sell form and defaults. */}
+{/* Screenshot: dev_sell_blank_p123_2026_11.png | Dev Sell blank fields and P1–P3. */}
 <div className="cove-guide-figure">
-  <Frame caption="Dev Sell opens with Any and Sell 100%; both can be changed.">
-    <img src="/assets/guide-screenshots/dev_sell_create_2026_10.png" alt="Dev Sell form with trigger and sell-size presets, expiry, and Place order." width={713} height={881} className="cove-guide-screenshot" />
+  <Frame caption="Dev Sell has empty required fields, quick choices, and P1–P3 slots.">
+    <img src="/assets/guide-screenshots/dev_sell_blank_p123_2026_11.png" alt="Blank Dev Sell form with creator-sale trigger, sell-size choices, expiry, and P1–P3." width={432} height={376} className="cove-guide-screenshot" />
   </Frame>
 </div>
 

@@ -13,6 +13,8 @@ Cove offers two DCA strategies in different parts of the token panel: **Limit �
 
 The two strategies can produce very different timing and fills. There is no longer a Price ladder / Time Interval toggle inside the DCA tab.
 
+Both forms have [P1–P3 Order Presets](/features/order-presets) for complete saved setups. With **Last used values** inactive, Min/Max, count, interval, and amount start blank until you select them. The quick amount buttons fill one field and are separate from P1–P3.
+
 ## Create a price ladder
 
 <Steps>
@@ -38,10 +40,10 @@ The two strategies can produce very different timing and fills. There is no long
   </Step>
 </Steps>
 
-{/* Screenshot: limit_dca_price_ladder_buy_2026_10.png | Current Price ladder buy form under Limit. */}
+{/* Screenshot: dca_ladder_presets_2026_11.png | Current Price ladder buy form under Limit. */}
 <div className="cove-guide-figure">
-  <Frame caption="Buying → Limit → DCA opens the Price ladder form.">
-    <img src="/assets/guide-screenshots/limit_dca_price_ladder_buy_2026_10.png" alt="Price ladder buy form with market-cap range, order count, amount, and expiry controls." width={713} height={815} className="cove-guide-screenshot" />
+  <Frame caption="Buying → Limit → DCA opens a blank Price ladder form with P1–P3 slots.">
+    <img src="/assets/guide-screenshots/dca_ladder_presets_2026_11.png" alt="Blank DCA price ladder buy form with P1–P3, market-cap range, order count, amount, and expiry." width={432} height={451} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
@@ -84,16 +86,16 @@ Rungs exactly at current market cap and wallets without a holding can be skipped
 1. Open the token in the intended profile and select the wallets. Choose **Buying** or **Selling**, then **Strategy → DCA Time Interval**.
 2. Set **Order count** to 2–20. With several wallets, the field is **Orders per wallet**; the creation button shows the combined count.
 3. Select a **Buy amount** or **Sell amount** preset, or enter a custom total. Cove divides that total across the planned orders. A sell percentage applies to each selected wallet's own holding.
-4. Set **Interval**. The picker offers **1m, 5m, 15m, 1h, 4h, 24h**, plus **Custom** from 1 minute to 24 hours. The initial interval is **15m**.
+4. Set **Interval**. The picker offers **1m, 5m, 15m, 1h, 4h, 24h**, plus **Custom** from 1 minute to 24 hours. Choose an interval explicitly unless you recalled a saved value.
 5. Optionally set **Min mcap**, **Max mcap**, both, or neither. Enter **none** to clear a bound. If both are set, Min must be below Max. Without a range, the plan follows the timer alone.
 6. Review the preview, expiry, wallet count, per-order size, and the side-specific bound. A buy with Max mcap never pays above that price; a sell with Min mcap never sells below it. Then tap the **Place … orders** button and check `/orders`.
 
 If the price is outside the range when a piece is due, the plan waits. Missed intervals are not piled into a burst; the next eligible evaluation attempts one piece and resumes the spacing. The duration estimate assumes the price remains in range, so the plan can take longer or expire before all pieces run. Each executed piece has its own trading costs; small orders can cost proportionally more.
 
-{/* Screenshot: strategy_buy_time_interval_2026_10.png | Time Interval buy form under Strategy. */}
+{/* Screenshot: strategy_dca_presets_2026_11.png | Time Interval buy form under Strategy. */}
 <div className="cove-guide-figure">
-  <Frame caption="Buying → Strategy opens DCA Time Interval.">
-    <img src="/assets/guide-screenshots/strategy_buy_time_interval_2026_10.png" alt="Time Interval buy form with market-cap bounds, order count, interval, amount, and expiry." width={711} height={814} className="cove-guide-screenshot" />
+  <Frame caption="Buying → Strategy opens DCA Time Interval with P1–P3 and blank required fields.">
+    <img src="/assets/guide-screenshots/strategy_dca_presets_2026_11.png" alt="Blank Time Interval buy form with P1–P3, market-cap bounds, order count, interval, amount, and expiry." width={432} height={490} className="cove-guide-screenshot" />
   </Frame>
 </div>
 {/* Screenshot: strategy_sell_time_interval_2026_10.png | Time Interval sell form under Strategy. */}

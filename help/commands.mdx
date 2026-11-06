@@ -11,6 +11,7 @@ Send commands to the [Cove Trading](https://t.me/cove_trading_bot) bot in Telegr
 | Command | Opens |
 |---|---|
 | `/start` | Main menu and onboarding |
+| `/chains` | Current list of recognized networks; check the relevant panel for route availability |
 | `/wallets` | Wallets and trading selection |
 | `/accounts` | Alias for Wallets |
 | `/profiles` or `/profile` | Profiles, where enabled |
@@ -20,7 +21,11 @@ Send commands to the [Cove Trading](https://t.me/cove_trading_bot) bot in Telegr
 | `/transfer` | USDC transfer, disperse, and collect |
 | `/positions` | Holdings |
 | `/orders` | Orders in the active profile |
-| `/track` | [Trader Tracker](/features/trader-alerts), when available for your account |
+| `/track` | [Unified Tracker](/features/trader-alerts) for traders and [public wallets](/features/wallet-tracker), when available |
+| `/trending` | [Trending tokens](/features/token-discovery#trending) by time window and chain |
+| `/runners` | [Token gainers](/features/token-discovery#runners) by time window and chain |
+| `/s` | [Search tokens](/features/token-discovery#search-by-ticker-or-name) by ticker or name |
+| `/pnl` | [Realized PnL report](/features/account-pnl-report) for selected wallets and period, when enabled |
 | `/alerts` | Account-wide alerts and Auto alerts |
 | `/export` | Real-trade CSV export |
 | `/paper` | Paper trading; may be absent from the menu |
@@ -51,6 +56,7 @@ First open the token, choose the intended profile/wallets, then use Telegram's *
 | Example | Action |
 |---|---|
 | `/dca B 800k - 1.5m 10 500` | Buy **Price ladder**, 800k–1.5m market cap, 10 rungs, \$500 total |
+| `/limit B -20% 200` | Place one limit buy from the replied-to panel immediately |
 | `/dca S 80k - 120k 10 100` | Sell **Price ladder**, 80k–120k, 10 rungs, 100% total |
 | `/trailing 50 100` | Trail by 50%, sell 100% |
 | `/alert 300k` | One market-cap alert, default seven-day expiry |

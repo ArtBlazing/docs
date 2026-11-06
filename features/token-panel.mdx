@@ -4,7 +4,7 @@ description: "Find tokens and understand market data, warnings, positions, and s
 icon: "magnifying-glass"
 ---
 
-Paste a token contract address to open its trading panel. You can also tap a ticker in Positions or paste a supported token link.
+Paste a token contract address to open its trading panel. You can also tap a ticker in Positions, paste a supported token link, or use [Discovery](/features/token-discovery) to browse Trending, Runners, and ticker/name search.
 
 ## Find the right token
 
@@ -66,8 +66,22 @@ For a Solana Token-2022 token with an active transfer-fee schedule, **Tax B/S** 
 | **Generate PnL** | Create a shareable performance card |
 | Wallet picker | Select trading wallets |
 | **Degen mode** | Enable or disable the high-risk trading preset |
+| **Positions Monitor**, when enabled | Switch among the open token and up to five positions from the first row of an ordinary market panel |
 
 Display preferences can hide buttons, nest wallets, add external links such as Pump.fun and FOMO, or translate Chinese token names where available. See [Trade panel settings](/features/settings/trade-panel).
+
+## Positions Monitor in the market panel
+
+The [Positions Monitor](/features/settings/trade-panel#positions-monitor) uses your `/positions` filters and sort order. In the example below, **PAXG** is the selected token, **FEESBACK** and **PROS** are other shortcuts, and **›** opens the next page of positions. The normal market trade buttons remain below this row. The row does not appear in Limit, DCA, Strategy, or sub-screens.
+
+{/* Screenshot: positions_monitor_panel_2026_11.png | Positions Monitor row above the market trade controls, with PAXG selected and a next-page arrow. */}
+<div className="cove-guide-figure">
+  <Frame caption="Positions Monitor appears above the ordinary market controls; PAXG is selected and the arrow opens more positions.">
+    <img src="/assets/guide-screenshots/positions_monitor_panel_2026_11.png" alt="Market token panel with Positions Monitor shortcuts for FEESBACK, selected PAXG, PROS, and a next-page arrow." width={656} height={919} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+The market **\$x** buy prompt also accepts a [percentage of token supply](/features/trading#enter-a-share-of-token-supply); the ordinary percent-mode buttons instead use buying power.
 
 {/* Screenshot: token_sell_limit_strategy_2026_10.png | Sell panel with separate Limit and Strategy buttons. */}
 <div className="cove-guide-figure">

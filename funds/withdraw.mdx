@@ -18,7 +18,7 @@ If [2FA](/features/settings/security) is on, confirm an external withdrawal with
     Select the destination chain. Solana and BNB Chain may also offer **Send: USDT**. Make sure the recipient accepts the exact asset and network.
   </Step>
   <Step title="Enter the destination">
-    Paste the external wallet address. Review any address warning and check the full address yourself.
+    Tap **Wallet to** to choose a saved address or **Add new**. You can also paste an external address for this withdrawal without saving it. Review any address warning and check the full address yourself.
   </Step>
   <Step title="Enter an amount">
     Choose a USD amount or percentage. The minimum withdrawal is **\$1.50**. Leave room for any fee when entering an amount below Max.
@@ -38,6 +38,32 @@ If [2FA](/features/settings/security) is on, confirm an external withdrawal with
   </Frame>
 </div>
 {/* Screenshot: withdraw-review.png | Подтверждение: fee, сумма получателю, сеть и Withdraw anyway; адрес замаскировать. */}
+
+## Save and reuse a destination
+
+After choosing a chain in `/withdraw`, tap **Wallet to**. The address book lists saved destinations for that chain with **Use**, **Rename**, and **Delete**. Tap **Add new** and send a public destination address to save it; cove then asks for a name. Pasting an address directly into the withdrawal flow uses it once without adding it to the book.
+
+<div className="cove-guide-figure">
+  <Frame caption="The Solana address book offers Use, Rename, Delete, and Add new. The saved address is hidden here.">
+    <img src="/assets/guide-screenshots/withdraw_address_book_2026_11.png" alt="Withdraw address book with a hidden saved address and management actions." width={394} height={210} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+<div className="cove-guide-figure">
+  <Frame caption="Use fills Wallet to with the saved label; the destination address is hidden in this example.">
+    <img src="/assets/guide-screenshots/withdraw_saved_destination_2026_11.png" alt="Withdraw form with Solana selected and a saved destination in Wallet to, with the address hidden." width={416} height={112} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+<div className="cove-guide-figure">
+  <Frame caption="Add new asks for a Solana address before it is saved; the existing destination is hidden.">
+    <img src="/assets/guide-screenshots/withdraw_address_add_2026_11.png" alt="Add new address prompt in the Solana withdraw address book." width={394} height={250} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+You can save up to **10 addresses per login** across all profiles and networks combined. An EVM address is shared among EVM withdrawal chains; a Solana address appears only on Solana. Names are unique within their EVM or Solana group. Choosing a different chain clears the selected destination, so select it again and check the asset and network. Deleting an EVM entry removes it from every EVM chain after confirmation.
+
+A saved address receives the **same address checks, fee review, and fresh 2FA code** as a pasted address. Saving it does not authorize a future withdrawal. The address book is for the Telegram USDC/stablecoin `/withdraw` flow; token transfers from `/positions` use their own destination flow.
 
 ## Fees and Max
 

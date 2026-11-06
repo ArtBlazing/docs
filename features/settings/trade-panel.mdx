@@ -22,7 +22,7 @@ Open `/settings` → **Trade panel settings**, or send `/trade_panel_settings`. 
 
 Documented default buy buttons are **\$50 / \$100 / \$250 / \$500 / \$1000**, or **10 / 25 / 50 / 75 / 100%** in percentage mode. Existing profiles may have custom values.
 
-For sells, open **Buttons and controls → Market preset amounts → Sell preset amounts**, choose a button, and enter its percentage. Defaults are **25 / 50 / 100%**. Follow the input's validation.
+For sells, open **Buttons and controls → Market preset amounts → Sell preset amounts**, choose a button, and enter its percentage. The current default is **25 / 50 / 75 / 100%** in one row. Saved custom values can differ. Follow the input's validation.
 
 {/* Screenshot: settings-buy-presets.png | Buy preset amounts с Amount/Percent, редактируемыми значениями и Reset defaults. */}
 {/* Screenshot: settings-trade-panel.png | Trade panel settings, включая confirmations, buttons, text и automation. */}
@@ -31,14 +31,14 @@ For sells, open **Buttons and controls → Market preset amounts → Sell preset
 
 Open **Buttons and controls → Limit preset amounts → Limit buy presets / Limit sell presets**. Each side has a **Triggers** tab with seven editable slots and an **Amounts** tab with three editable slots. Trigger presets accept upward or downward percentages or upward multiples such as **2x**. Buy amounts are USD; sell amounts are percentages of holdings. Use **Reset defaults** on the selected list if you want its original values.
 
-The Limit builder uses these presets. The DCA panel uses the same three amount choices. See [Create limit orders](/features/limit-orders#edit-limit-presets).
+The Limit builder uses these **quick** presets. The DCA panel uses the same three amount choices. [Order Presets P1–P3](/features/order-presets) save whole forms and have separate switches. See [Create limit orders](/features/limit-orders#edit-limit-presets).
 
 [Trader Tracker](/features/trader-alerts#where-the-dollar-buttons-come-from) uses the first three eligible USD **market buy presets** under Buy and the first three eligible **Limit buy amounts** under Limit. Its alert takes a snapshot of those amounts and the selected wallets when the message is sent; changing presets updates future alerts.
 
-{/* Screenshot: settings_buttons_controls.png | Buttons and controls with Market and Limit preset hubs. */}
+{/* Screenshot: settings_buttons_controls_2026_11.png | Buttons and controls with quick presets, Order Presets, Last used values, and Positions Monitor. */}
 <div className="cove-guide-figure">
-  <Frame caption="Buttons and controls with Market and Limit preset hubs.">
-    <img src="/assets/guide-screenshots/settings_buttons_controls.png" alt="Buttons and controls with Market and Limit preset hubs." width={752} height={935} className="cove-guide-screenshot" />
+  <Frame caption="Buttons and controls includes quick presets, Order Presets, Last used values, and Positions Monitor. This example shows saved choices, not defaults.">
+    <img src="/assets/guide-screenshots/settings_buttons_controls_2026_11.png" alt="Buttons and controls menu showing Order Presets, Last used values, and Positions Monitor." width={245} height={736} className="cove-guide-screenshot" />
   </Frame>
 </div>
 {/* Screenshot: settings_limit_buy_presets.png | Editable Limit buy trigger presets. */}
@@ -54,6 +54,22 @@ The Limit builder uses these presets. The DCA panel uses the same three amount c
   </Frame>
 </div>
 
+## Whole-form presets and last used values
+
+Open **Buttons and controls → Order Presets** to show or hide P1–P3 separately for Limit, DCA ladder, DCA interval, Counter trade, Trailing SL, and Dev Sell. **Last used values** controls whether each form reopens with the last complete values you entered. Both apply across the login; Paper has its own values. See [Save order presets](/features/order-presets) for the save and recall flow.
+
+## Positions Monitor
+
+Open **Buttons and controls → Positions Monitor**. It is **off by default per profile**. When enabled and position data is available, the first row of an ordinary market Buying or Selling panel shows the open token and up to **five** other positions for quick switching. The row uses your `/positions` wallet, chain, visibility, and sort choices. A row with five or six tokens has arrows to switch pages. It is not shown in Limit, DCA, Strategy, wallet pickers, alerts, or slippage screens. If cove cannot read a complete position list, it omits the row instead of showing a partial one.
+
+See the [Positions Monitor example in a live token panel](/features/token-panel#positions-monitor-in-the-market-panel) for the shortcut row and paging arrow.
+
+<div className="cove-guide-figure">
+  <Frame caption="Positions Monitor explains the top-five position shortcuts and shows the saved state for this profile.">
+    <img src="/assets/guide-screenshots/positions_monitor_settings_2026_11.png" alt="Positions Monitor setting with an explanation and enabled state." width={415} height={269} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
 ## Buttons and confirmations
 
 Open **Buttons and controls** for the switches below.
@@ -63,7 +79,7 @@ Open **Buttons and controls** for the switches below.
 | **Buy confirm** | Off | Add a confirmation before a normal buy |
 | **Sell confirm** | Off | Add a confirmation before a normal sell |
 | **Max buy button** | Off | Show a full-buying-power button; Max always confirms |
-| **Nest accounts** | On | Put wallet selection behind a button |
+| **Nest accounts** | Off | Put wallet selection behind a button |
 | **Show Mini App button** | On | Show **Manage Position** |
 | **Show Chart button** | On | Show the chart action |
 | **Use DexScreener charts** | Off | Choose DexScreener instead of Defined; shown when Chart is on |
@@ -93,4 +109,4 @@ Other entries have their own guides:
 - [Auto orders](/features/settings/auto-tp-sl): separate exit templates for Market buys and Limit & DCA fills, including Auto Dev Sell, Auto trailing stop, and Dynamic take profit.
 - [Manual TP/SL basis](/features/take-profit-stop-loss#choose-the-percentage-reference-first): market versus average entry for manual percentage targets.
 
-Presets and execution preferences generally follow the profile; many chart/button display choices are account-wide. See [Settings scope](/features/settings#which-settings-change-with-a-profile).
+Market and Limit quick presets follow the profile. P1–P3 and Last used values follow the login, while Paper keeps separate values. Positions Monitor follows the profile. Many chart and button display choices are account-wide. See [Settings scope](/features/settings#which-settings-change-with-a-profile).

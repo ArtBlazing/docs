@@ -4,34 +4,34 @@ description: "Follow traders, choose their activity alerts, and understand alert
 icon: "users-viewfinder"
 ---
 
-Send `/track` to open **Trader Tracker** if it is available on your account. Follow a trader on **Fomo** or **Pump.fun** to receive Telegram alerts about their buys, sells, and theses. An alert reports the trader's activity; receiving one does not trade for you.
+Send `/track` or choose **Tracker** from `/start`. The current unified screen has **All**, **Fomo**, **Pump.fun**, and **Wallets** tabs. Follow a Fomo or Pump.fun trader for buy, sell, and thesis alerts; use [Track public wallets](/features/wallet-tracker) for address-based alerts. Receiving an alert does not trade for you.
 
 <Note>If `/track` is temporarily unavailable, your saved traders remain in your list. Alerts are not delivered while the feature is off.</Note>
 
 ## Add and find a trader
 
-1. Send `/track` and tap **Add new Trader**.
-2. Send an EVM or Solana wallet address, an `@handle`, or a Fomo or Pump.fun profile link. A handle searches both apps; a profile link searches its own app.
+1. Send `/track` and tap **Add a trader or wallet**.
+2. Send an `@handle` or a Fomo or Pump.fun profile link. A handle searches both apps; a profile link searches its own app. A bare Solana or EVM address starts the **custom wallet** flow in the unified Tracker rather than adding a trader.
 3. If the handle matches traders on both apps, choose **Fomo**, **Pump.fun**, or **Both**. **Both** creates two subscriptions with the same initial settings. They appear as separate entries when you return to the list.
 4. Cove opens **Manage** when tracking starts. Check the source and wallets to confirm that you found the right trader.
 
-If Cove has not found a wallet for that trader, try the handle again later or browse **Leaderboard**. A trader whose wallet is still being indexed cannot receive alerts yet.
+If cove has not found a wallet for that trader, try the handle again later or browse **Leaderboard**. When live search is available, a previously unknown handle first shows **Searching**; you can leave the screen while it runs. After roughly two minutes it may say the search is taking longer, and it ends within a ten-minute search window. One confirmed profile opens its card with tracking on; two confirmed profiles ask you to choose **Fomo**, **Pump.fun**, or **Both** because they may be different people. **Profile found. Wallet unconfirmed** and **Profile not found** do not start alerts. A failed or timed-out search may offer **Retry**. Daily search limits and service availability can also prevent a new search; there is no later waitlist notification.
 
-{/* Screenshot: tracker_home_2026_10.png | Trader Tracker home. */}
+{/* Screenshot: tracker_entry_2026_11.png | Current unified Tracker on its Wallets tab. */}
 <div className="cove-guide-figure">
-  <Frame caption="The /track list shows your traders, Manage links, pause controls, and Leaderboard.">
-    <img src="/assets/guide-screenshots/tracker_home_2026_10.png" alt="Trader Tracker home with tracked traders, Manage links, Add new Trader, Pause All, and Leaderboard." width={713} height={694} className="cove-guide-screenshot" />
+  <Frame caption="The unified Tracker has All, Fomo, Pump.fun, and Wallets tabs, plus Leaderboard and shared add controls.">
+    <img src="/assets/guide-screenshots/tracker_entry_2026_11.png" alt="Unified Tracker Wallets tab with All, Fomo, Pump.fun, Wallets, Leaderboard, and Add a trader or wallet." width={432} height={308} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
-{/* Screenshot: tracker_add_trader_prompt_2026_10.png | Add trader prompt. */}
+{/* Screenshot: tracker_unified_add_wallets_2026_11.png | Unified add prompt. */}
 <div className="cove-guide-figure">
-  <Frame caption="Add new Trader asks for a wallet, handle, or supported profile link.">
-    <img src="/assets/guide-screenshots/tracker_add_trader_prompt_2026_10.png" alt="Trader Tracker prompt asking who to track, below the existing trader list." width={752} height={857} className="cove-guide-screenshot" />
+  <Frame caption="The add prompt explains trader handles and public wallet addresses separately.">
+    <img src="/assets/guide-screenshots/tracker_unified_add_wallets_2026_11.png" alt="Tracker prompt for Fomo or Pump.fun handles and public Solana or EVM wallet addresses." width={432} height={284} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
-The list shows each subscription as **Live** or **Paused**. **Pause** stops that trader's alerts and keeps its settings; **Resume** restarts them. **Pause All / Resume All** apply to the whole list. These controls do not change your holdings or orders.
+The list shows each subscription's enabled state. **Pause** stops that trader's alerts and keeps its settings; **Resume** restarts them. **Pause All / Resume All** apply to the current list. These controls do not change your holdings or orders.
 
 ## Manage one trader
 
@@ -145,6 +145,8 @@ Tap a **name** to open that trader's card. **Enable Alerts** starts tracking a f
 An alert can show what the trader did, their token and position, the token's current market cap, and the market cap **at buy**, **at sell**, or **at post**. Those event values describe the trader's activity; they are not your execution price. The token symbol opens Cove's token panel.
 
 If trading actions are available, the alert shows the wallets it will use. **Buy** selects a market buy; **Limit** selects a pending limit buy. Switching modes changes the amount row and explanation; **switching modes does not place an order**. Tapping a dollar amount or sending a custom amount can submit a buy or limit order. Action buttons expire two hours after the alert is sent.
+
+Trade alerts have a separate **freshness window**: the source trade must be no more than **60 seconds old** when cove sends it, including a retry. An older trade alert is dropped rather than delivered late. Thesis alerts do not use that 60-second rule. The two-hour action-button lifetime begins with an alert that was actually sent; it does not extend the trade event's freshness window.
 
 ### What the alert's Limit means
 

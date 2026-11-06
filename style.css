@@ -202,7 +202,7 @@ html.light,
 .light main {
   background-color: var(--bg-light) !important;
 }
-/* Only the newly supplied guide images; published pages keep their styling. */
+/* Keep guide captures at their native width when space allows. */
 .cove-guide-figure {
   width: 100%;
   max-width: 560px;
@@ -211,7 +211,7 @@ html.light,
 
 .cove-guide-figure img.cove-guide-screenshot {
   display: block;
-  width: 100% !important;
+  width: auto !important;
   height: auto !important;
   max-width: 100% !important;
   margin: 0 auto !important;

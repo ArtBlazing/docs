@@ -4,7 +4,7 @@ description: "Use trigger and amount presets for dip, breakout, take-profit, and
 icon: "crosshairs"
 ---
 
-A Cove limit order waits for a market-cap target or percentage move, then attempts a market trade with your selected wallets and applicable settings. The **Limit** builder has separate trigger and amount presets for buys and sells.
+A cove limit order waits for a market-cap target or percentage move, then attempts a market trade with your selected wallets and applicable settings. The **Limit** builder has separate quick trigger and amount buttons for buys and sells, plus optional [saved P1–P3 Order Presets](/features/order-presets) for complete forms.
 
 Use a **dip buy** below the current market or a **breakout buy** above it. You enter the amount to spend separately from the trigger.
 
@@ -15,7 +15,7 @@ Use a **dip buy** below the current market or a **breakout buy** above it. You e
     Paste the contract address. Check the chain, active profile, selected wallets, and available USDC.
   </Step>
   <Step title="Open the limit builder">
-    Tap **Limit** and choose **Buying** on the **Limit** tab.
+    Tap **Limit** and choose **Buying** on the **Limit** tab. The trigger and amount start blank unless **Last used values** is active or you recall P1–P3.
   </Step>
   <Step title="Choose a trigger">
     Tap one of the seven trigger presets, or **custom** to enter a market cap, a signed percentage, or a multiple such as **2x**. The arrow on each preset shows whether the target is above or below the reference. The label above the presets shows the reference used for the preview.
@@ -33,10 +33,10 @@ Use a **dip buy** below the current market or a **breakout buy** above it. You e
   </Step>
 </Steps>
 
-{/* Screenshot: limit_buy_presets.png | New Limit Buying panel with trigger and amount presets, expiry, and create button. */}
+{/* Screenshot: limit_buy_blank_p123_2026_11.png | Limit Buying panel with no trigger or amount selected. */}
 <div className="cove-guide-figure">
-  <Frame caption="New Limit Buying panel with trigger and amount presets, expiry, and create button.">
-    <img src="/assets/guide-screenshots/limit_buy_presets.png" alt="New Limit Buying panel with trigger and amount presets, expiry, and create button." width={752} height={974} className="cove-guide-screenshot" />
+  <Frame caption="The current Limit Buying form opens blank, with quick value buttons and P1–P3 slots.">
+    <img src="/assets/guide-screenshots/limit_buy_blank_p123_2026_11.png" alt="Blank Limit buy form showing quick trigger and amount buttons, P1–P3, expiry, and Add step." width={432} height={413} className="cove-guide-screenshot" />
   </Frame>
 </div>
 {/* Screenshot: limit_order_created.png | A newly created order in /orders. */}
@@ -50,7 +50,7 @@ Use a **dip buy** below the current market or a **breakout buy** above it. You e
 
 Assume a token's current market cap is **\$1 million**. You want to buy **\$100** if it falls to **\$800,000**.
 
-Choose **custom → 800k** for the trigger and **custom → $100** for the amount, then review and place the order. An equivalent **-20%** target uses the market reference at placement; a fixed **800k** remains that specific target.
+Choose **custom → 800k** for the trigger and **custom → \$100** for the amount, then review and place the order. An equivalent **-20%** target uses the market reference at placement; a fixed **800k** remains that specific target.
 
 This is an illustrative setup. The actual fill depends on the quote and liquidity when the order executes.
 
@@ -81,7 +81,9 @@ The trigger sets **when** an order can run. Choose the buy or sell amount separa
 
 Open **Settings → Trade panel settings → Buttons and controls → Limit preset amounts**. Choose **Limit buy presets** or **Limit sell presets**, then switch between **Triggers** and **Buy amounts / Sell amounts**. Each side has seven trigger slots and three amount slots. Tap a slot to edit it; **Reset defaults** restores the selected list. These presets belong to the active profile.
 
-The default buy triggers are **+20%, +50%, +75%, +100%, -20%, -50%, -75%**, with **$200 / $500 / $1,000** amounts. The default sell triggers are **1.5x, 2x, 5x, 10x, -20%, -50%, -75%**, with **20 / 50 / 100%** amounts. Your saved choices may differ. A trigger preset can point up or down on either side.
+These quick values are separate from **Order Presets P1–P3**, which store a complete Limit form across your login. [Save or recall a full order preset](/features/order-presets#save-and-recall-a-form) when you want to reuse triggers, amounts, steps, and expiry together.
+
+The default buy triggers are **+20%, +50%, +75%, +100%, -20%, -50%, -75%**, with **\$200 / \$500 / \$1,000** amounts. The default sell triggers are **1.5x, 2x, 5x, 10x, -20%, -50%, -75%**, with **20 / 50 / 100%** amounts. Your saved choices may differ. A trigger preset can point up or down on either side.
 
 {/* Screenshot: settings_limit_buy_presets.png | Triggers tab and editable buy slots. */}
 <div className="cove-guide-figure">

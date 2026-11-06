@@ -4,15 +4,22 @@ description: "See supported trading networks, including Arc, and find the right 
 icon: "globe"
 ---
 
-Cove supports token trading on **Arc** and the other networks listed below, using a **USDC trading balance on Solana**. The token determines the trading chain; an ambiguous address opens a chain picker.
+cove uses a **USDC trading balance on Solana** to trade supported tokens on multiple networks. Send `/chains` for the current list of networks the bot recognizes. The list shows **17 names** in the November 6, 2026 capture. Recognition does not mean that every token, deposit, withdrawal, or trading route is available on that network.
 
-This network overview was reviewed on **October 12, 2026**. Arc, Avalanche C-Chain and X Layer each had successful production trades during the September–October review, but availability can still vary by token and route. Always check the current bot panel before trading, depositing or withdrawing.
+The token determines the trading chain; an ambiguous address opens a chain picker. Check the current panel before trading, depositing, or withdrawing.
+
+<div className="cove-guide-figure">
+  <Frame caption="The /chains response on November 6, 2026, including Story and Arc.">
+    <img src="/assets/guide-screenshots/supported_chains_2026_11.png" alt="The 17 names in the current /chains list, with a Back button." width={130} height={373} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
 ## Network reference
 
 | Chain | Deposit address to use |
 |---|---|
 | Solana | Solana |
+| Story | Check the current bot; its trading route was not active in this review |
 | Ethereum | Deposit EVM |
 | Base | Deposit EVM |
 | BNB Chain | Deposit EVM |
@@ -30,19 +37,13 @@ This network overview was reviewed on **October 12, 2026**. Arc, Avalanche C-Cha
 | Arc | Check the **Deposit** panel for available funding routes |
 
 <Note>
-This table lists trading networks. Trading support does not automatically mean direct deposits or withdrawals are available on the same network. X Layer is available only where the matching route appears in your bot. Marketplace and private withdrawals have their own supported-network lists.
+This table is a funding orientation for the names shown in `/chains`, not a promise that each route is open. X Layer is available only where the matching route appears in your bot. Marketplace and private withdrawals have their own supported-network lists.
 </Note>
 
-Story was integrated earlier in 2026, but a current trading route was not verified in the October review. Its [historical network guide](https://www.cove.trade/chains/story) records the earlier integration and change in availability; do not treat it as an active route without checking the bot.
+Story appears in `/chains`, but the production route was gated off in the reviewed build. Its [historical network guide](https://www.cove.trade/chains/story) describes the earlier integration. Check the current token panel before assuming Story can be traded.
 
 For token-specific workflows and risk checks, browse the [Cove network guides](https://www.cove.trade/chains).
 
-{/* Screenshot: chains-live-menu.png | Example main menu captured before Arc support was added; see the network reference above for the updated list. */}
-<div className="cove-guide-figure">
-  <Frame caption="Example main menu captured before Arc support was added. The network reference above includes Arc.">
-    <img src="/assets/guide-screenshots/chains-live-menu.png" alt="An earlier Cove main menu showing trading networks before Arc was added." width={733} height={699} className="cove-guide-screenshot" />
-  </Frame>
-</div>
 {/* Screenshot: chains-withdraw-menu.png | The network picker for a withdrawal; available destinations are shown here. */}
 <div className="cove-guide-figure">
   <Frame caption="The network picker for a withdrawal; available destinations are shown here.">

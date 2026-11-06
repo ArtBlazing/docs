@@ -1,0 +1,71 @@
+---
+title: "Save order presets"
+description: "Save P1–P3 for Limit and Strategy forms, and control last used values."
+icon: "bookmark"
+---
+
+Order Presets save a complete set of order-form values under **P1**, **P2**, or **P3**. They are different from the quick trigger and amount buttons: those buttons enter one value, while a saved P1–P3 preset recalls a whole form. Open a token → **Limit** or **Strategy** to use them.
+
+## Where P1–P3 appear
+
+| Order form | Side | Values a preset can recall |
+|---|---|---|
+| **Limit** | Buy and sell | Up to three steps, triggers, amounts, sell style where relevant, and expiry |
+| **DCA** price ladder | Buy and sell | Minimum and maximum market cap, order count, total amount, and expiry |
+| **DCA Time Interval** | Buy and sell | Market-cap bounds, order count, interval, total amount, and expiry |
+| **Counter Strategy** | Sell | Minimum other-trader buy, sell size, market-cap floor, total sell amount, and expiry |
+| **Trailing SL** | Sell | Trail percentage, sell percentage, and expiry |
+| **Dev Sell** | Sell | Creator-sale threshold, your sell percentage, and expiry |
+
+Each side has its own P1–P3. The form opens without a selected preset. With **Last used values** inactive, its required fields start blank. The quick buttons below each field remain available, but they do not mean a value has been selected.
+
+<div className="cove-guide-figure">
+  <Frame caption="A Limit buy opens with P1–P3 and empty trigger and amount fields.">
+    <img src="/assets/guide-screenshots/limit_buy_blank_p123_2026_11.png" alt="Blank Limit buy form with P1, P2, P3, trigger, amount, and expiry controls." width={432} height={413} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Save and recall a form
+
+1. Tap **P1**, **P2**, or **P3**. An empty slot selects that slot and keeps the current form values. A saved slot loads its values.
+2. Complete every required field. **Save to P1** (or the selected slot) appears beside the create button when the form can be saved.
+3. Tap **Save to P1** to store the form. Tap the create button separately if you also want to place an order. Creating an order does **not** save a preset.
+4. When you revisit the form, tap the same P slot to recall it. Tapping the selected slot again restores its saved values if you edited them, or deselects it if nothing changed.
+
+The screenshot below stops before both actions. Selecting values for a screenshot did not place an order or save P1.
+
+<div className="cove-guide-figure">
+  <Frame caption="After choosing a trigger and amount, Save to P1 appears beside Create breakout buy.">
+    <img src="/assets/guide-screenshots/limit_buy_preset_edited_2026_11.png" alt="Selected P1 Limit buy form with an unsaved trigger and amount and Save to P1 button." width={432} height={413} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+**Expiry** and **Add step** are part of the Limit form. A saved Limit preset may contain up to three steps. Review every step after recall before creating orders.
+
+<div className="cove-guide-figure">
+  <Frame caption="P1–P3 also appear on DCA Time Interval, with market-cap bounds, order count, and interval.">
+    <img src="/assets/guide-screenshots/strategy_dca_presets_2026_11.png" alt="DCA Time Interval buy form with P1, P2, P3 and empty order fields." width={432} height={490} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Show or hide preset rows
+
+Open `/settings` → **Trade panel settings → Buttons and controls → Order Presets**. Switch **Counter trade**, **DCA interval**, **DCA ladder**, **Limit order**, **Trailing SL**, or **Dev Sell** separately. Turning one off hides its P1–P3 row; it does not delete saved values. The switches are on by default, but check your saved state.
+
+<div className="cove-guide-figure">
+  <Frame caption="Order Presets has one switch per order type.">
+    <img src="/assets/guide-screenshots/order_presets_settings_2026_11.png" alt="Order Presets settings with six separate order-type switches." width={424} height={353} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Last used values
+
+Open **Buttons and controls → Last used values**. When **Active**, each Limit or Strategy tab reopens with the last complete values you entered, even on another token; you do not need to place an order for those values to be remembered. When **Inactive**, the tab opens blank unless you choose P1–P3. Inactive is the default.
+
+<div className="cove-guide-figure">
+  <Frame caption="Last used values is a separate setting; this example is Inactive.">
+    <img src="/assets/guide-screenshots/last_used_values_2026_11.png" alt="Last used values setting explaining when order forms reopen with previous values." width={415} height={216} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+Presets and Last used values belong to your **login** across profiles; Paper has a separate set. A recalled fixed market cap keeps its dollar value on a different token. Check the new token's current market cap and the preview: an intended dip buy can become a **Breakout** buy when its target sits above the current market, and a DCA ladder can place rungs on a different side of the market. See [Limit orders](/features/limit-orders) and [DCA orders](/features/dca-orders) before submitting.

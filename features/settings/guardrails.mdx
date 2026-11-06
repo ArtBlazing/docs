@@ -33,6 +33,7 @@ New-user slippage starts at **15%**; existing settings may differ. Values above 
 | **High price-impact confirmation** | On | Adds a review for high-impact buys and sells |
 | **Degen mode** | Off | Applies 100% slippage, disables liquidity protection, and enables max-buy adjustment |
 | **Gas surplus budget** | \$10 per trade | Pre-authorizes eligible network cost above Cove's separate sponsorship cap, up to the saved limit |
+| **Large Buy/Sell confirm** | \$30,000 for each side | Asks before a market trade whose known total across selected wallets is above that side's threshold |
 
 ## Scam warnings
 
@@ -68,6 +69,20 @@ A one-time **Buy anyway / Sell anyway** on an eligible single-wallet market refu
 
 
 Automated orders can remain armed after **Didn't Fire**. Their override has a separate lifecycle; see [Manage orders](/features/managing-orders).
+
+## Large Buy/Sell confirmation
+
+Open **Guardrails → Large Buy/Sell confirm**. Choose **Large buy** or **Large sell** and set **\$10k**, **\$30k**, **\$50k**, **\$100k**, **Custom**, or **Disable** for that side. Custom accepts **\$1–\$10,000,000**. Each side starts at **\$30k**; your saved settings may differ.
+
+When the known **total across all selected wallets** is **above** the chosen threshold, cove asks for **Confirm Buy** or **Confirm Sell** before a market trade. With **Per Wallet** buying, count the amount for each selected wallet in that total. An eligible Trader Tracker Buy or Sell action uses the same check. If ordinary **Buy confirm** or **Sell confirm** already asks, cove does not add a duplicate size confirmation. An expired confirmation needs a fresh trade request.
+
+<div className="cove-guide-figure">
+  <Frame caption="Large buy and Large sell have separate thresholds. The values shown are this profile's saved settings.">
+    <img src="/assets/guide-screenshots/large_trade_guardrails_2026_11.png" alt="Large Buy/Sell confirm settings with separate buy and sell sides, preset thresholds, Custom, and Disable." width={432} height={344} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+This is a **confirmation threshold**, not a maximum trade size or a price-impact limit. It applies to market trades with a known amount, including supported bot and Positions Mini App flows. Limit, DCA, TP/SL, and other triggered orders do not use this size prompt. A sell whose value cannot be established before submission is not held by this check. Degen mode does not disable it; scam, slippage, liquidity, and price-impact checks still apply.
 
 ## Degen mode
 

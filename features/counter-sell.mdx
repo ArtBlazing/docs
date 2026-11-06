@@ -11,17 +11,17 @@ icon: "arrows-rotate"
 ## Set up a Counter Sell
 
 1. Open a token you hold in the intended profile. Choose the wallets to include, then tap **Selling → Strategy → Counter Strategy**.
-2. Set **Trigger — Sell into buys min**. The initial value is **\$50**: smaller buys are ignored. **Any** evaluates buys of any size, though a sale below the minimum trade size is still skipped.
-3. Set **Size — relative to trigger**. It starts at **75%**. For a qualifying **\$100** buy, that value asks Cove to sell roughly **\$75** of your tokens at the market quote, subject to the remaining sell limit and holdings.
-4. Optionally set **Mcap Floor — No sells below**. It starts at **Any**. The floor decides whether to attempt a sale; it does not set a minimum execution price.
-5. Set **Total sell amount**. It starts at **100%** and caps how much of the selected wallets' combined holding this strategy may sell. Review the **30-day** default expiry and tap **Create Counter** only when ready.
+2. Set **Trigger — Sell into buys min**. Choose **Any** to evaluate buys of any size, or enter a minimum such as **\$50**. A sale below the minimum trade size is still skipped.
+3. Set **Size — relative to trigger**. For example, **75%** of a qualifying **\$100** buy asks cove to sell roughly **\$75** of your tokens at the market quote, subject to the remaining sell limit and holdings.
+4. Set **Mcap Floor — No sells below** to **Any** or a market cap. The floor decides whether to attempt a sale; it does not set a minimum execution price.
+5. Set **Total sell amount** to cap how much of the selected wallets' combined holding this strategy may sell. Review the **30-day** default expiry and tap **Create Counter** only when ready. All four required values open blank unless you recalled [P1–P3 or Last used values](/features/order-presets).
 
 Each value has quick presets and a row you can tap to enter a custom value. A 75% size is relative to *each other trader's buy*; a 100% total is a limit across the whole strategy. These controls answer different questions.
 
-{/* Screenshot: counter_sell_create_2026_10.png | Counter Strategy form and defaults. */}
+{/* Screenshot: counter_strategy_blank_p123_2026_11.png | Counter Strategy blank fields and P1–P3. */}
 <div className="cove-guide-figure">
-  <Frame caption="Counter Strategy opens with editable trigger, size, market-cap floor, and total sell limit.">
-    <img src="/assets/guide-screenshots/counter_sell_create_2026_10.png" alt="Counter Sell form with trigger, size, market-cap floor, total sell amount, expiry, and Create Counter." width={713} height={1135} className="cove-guide-screenshot" />
+  <Frame caption="Counter Strategy opens with blank values for trigger, size, market-cap floor, and total sell limit.">
+    <img src="/assets/guide-screenshots/counter_strategy_blank_p123_2026_11.png" alt="Blank Counter Strategy form with four required values, quick choices, expiry, and P1–P3." width={432} height={527} className="cove-guide-screenshot" />
   </Frame>
 </div>
 

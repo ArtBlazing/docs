@@ -419,7 +419,7 @@ the Global tab, it isn't available on your account yet.
     </Step>
 
     <Step title="10. Execute trade commands using plain text prompts">
-      Prompt your AI agent with trading instructions in natural language (for example: "using my main wallet, buy $5 worth of [token address]"). The agent calls Cove MCP trading tools, executes the market order, and returns full transaction details.
+      Prompt your AI agent with trading instructions in natural language (for example: "using my main wallet, buy \$5 worth of [token address]"). The agent calls Cove MCP trading tools, executes the market order, and returns full transaction details.
 
       <Frame caption="Prompt your AI agent to execute market buys and inspect the structured fill output.">
         <img src="/assets/mcp-guide/10.jpg" alt="AI agent chat interface demonstrating an executed buy command with fill details." />
@@ -736,6 +736,58 @@ action may already have started. Read the matching status tool (`get_balance`,
 
 ---
 
+## Address-only buys, market guards, and warm quotes
+
+`buy_token` can omit `chainId` when you have a token contract address. Cove checks the
+candidate chains and selects one only when the tradeable chain can be established from
+liquidity. If the address trades on several chains, or another candidate's liquidity
+cannot be verified, it returns `ambiguous_chain` with candidate chains instead of
+choosing for you. `chain_resolution_unavailable` means the lookup failed; pass the
+intended `chainId` after checking it. Native assets can require `chainId` too.
+`prepare_trade` can resolve an address-only buy the same way. **Sells still require
+`chainId`.** The buy receipt identifies the chain used. Retrying the same
+`idempotencyKey` replays the first result, even if chain lookup later changes.
+
+For a buy, set any of `minMarketCapUsd`, `maxMarketCapUsd`, `minLiquidityUsd`,
+`maxLiquidityUsd`, or `maxTokenAgeSeconds` to check live market data **in the same
+trade call, before quoting or spending**. Token age is measured from contract creation,
+not pool creation. A value outside your bounds returns `market_guard_breach`. A value
+that cannot be determined returns `market_data_unknown` by default. You can explicitly
+set `onUnknownMarketData: "allow"` and cap each wallet's spend on that path with
+`unknownMarketDataMaxUsd`. The result reports `marketGuards` or a guard refusal code;
+if it reports neither, stop guarded trading and report that the server did not apply
+the requested guards.
+
+`prepare_trade` begins a quote for a planned `buy_token` or `sell_token` without
+creating an order, spending funds, or reserving a spending limit. Pass the same
+wallets, address, chain, side, and size as the subsequent trade. A buy uses
+`amountUsd`; a sell uses exactly one of `percent` or `amountUsd`, and the same
+`slippageBps` if supplied. Initials-based sells cannot be prepared. Pass the returned
+`quoteId` to the trade within about **10 seconds**. Each wallet's result shows
+`preparedQuote` as `used`, `expired`, `failed`, `mismatch`, or `none`. A missing or
+unusable prepared quote falls back to a fresh quote, so preparation does not guarantee
+the execution price or a fill.
+
+---
+
+## Confirming large agent trades
+
+The profile's [Large Buy/Sell confirm](/features/settings/guardrails#large-buysell-confirmation)
+threshold also applies to `buy_token`, `sell_token`, and `batch_order`. When the known
+USD **total** exceeds the lowest enabled threshold among the target wallets' profiles,
+the tool returns `large_trade_confirmation_required` with the side, total, and
+threshold. It creates no market order. Each side starts at **\$30,000** unless the
+profile has another saved value. A total exactly at the threshold does not trigger it.
+
+Show the amount and threshold to the wallet owner. Re-call with
+`confirmLargeTrade: true` **only after they approve**. Ordinary Buy/Sell confirmation
+toggles do not remove this agent check. Sells with no known USD total, including
+percentage or initials-based requests, proceed without this size prompt.
+`get_settings` and `update_settings` expose `largeBuyConfirmUsd` and
+`largeSellConfirmUsd` (**\$1–\$10,000,000**, or `null` for Off).
+
+---
+
 ## Gas-surplus offers
 
 Some trades cost more in network fees than Cove sponsors. Instead of failing silently,
@@ -834,13 +886,14 @@ Everything your agent can call, grouped by what it does. `tools/list` (and
 
 | Tool | What it does | Needs | Wallets |
 |---|---|---|---|
-| `buy_token` | Market-buy with USDC. `tokenAddress`, `chainId`, `amountUsd` (≥ \$1, per wallet), `idempotencyKey`; optional `transactionDelayMs`, confirmation and surplus fields. | RW | fan-out (1–25) |
-| `sell_token` | Market-sell by `percent` (1–100) **or** `amountUsd` — exactly one — plus `idempotencyKey`. | RW | fan-out (1–25) |
+| `buy_token` | Market-buy with USDC. `tokenAddress`, `amountUsd` (≥ \$1 per wallet), `idempotencyKey`; `chainId` can be omitted when the token's chain resolves unambiguously. Optional market guards, `quoteId`, `transactionDelayMs`, and confirmation fields. | RW | fan-out (1–25) |
+| `sell_token` | Market-sell by `percent` (1–100) **or** `amountUsd` — exactly one — plus `chainId` and `idempotencyKey`. Optional `slippageBps` and `quoteId`. | RW | fan-out (1–25) |
 | `batch_order` | Open a **new** position and attach a stop-loss and/or take-profit in one call. Refused on wallets already holding the token. | RW | fan-out (1–25) |
+| `prepare_trade` | Start a short-lived quote for a matching buy or sell; returns `quoteId` without placing an order. | RW | fan-out (1–25) |
 | `get_trade_surplus_offer` | Read the gas-surplus offer for a failed market order. | read | — (by order id) |
 
-There's no per-call slippage override — trades use the wallet profile's settings (check
-`get_settings`).
+Buys use the wallet profile's slippage setting; a sell can pass `slippageBps` for that
+call. Check `get_settings` for the stored and effective profile values.
 
 ### Automate (limit orders)
 
@@ -980,6 +1033,9 @@ Tools return a `code` alongside a readable message. The ones your agent will see
 | `confirmation_expired` / `confirmation_mismatch` | Confirmation no longer valid / didn't match | Re-call without `confirmHighImpact` for a fresh prompt / fix the class or prompt id. |
 | `invalid_input` | Bad arguments (e.g. both or neither of `percent` / `amountUsd`) | Fix the call. |
 | `token_not_found` | Token didn't resolve | Check the address and `chainId`. |
+| `ambiguous_chain`, `chain_required`, `chain_resolution_unavailable` | Address-only buy cannot choose a verified chain | Check the candidate chains, then pass the intended `chainId`. |
+| `market_guard_breach`, `market_data_unknown` | A buy's market guard failed or its input is unavailable | Inspect market data and the guard values; do not silently remove the guard. |
+| `large_trade_confirmation_required` | Known total exceeds a Large Buy/Sell confirm threshold | Show the total and threshold to the owner; re-call with `confirmLargeTrade: true` only after approval. |
 | `below_min`, `per_wallet_min`, `split_min` | Below a minimum | Raise the amount. |
 | `insufficient_balance` | Wallet can't afford its amount | Retry that wallet smaller, with a new key. |
 | `no_position`, `nothing_to_sell` | Nothing to sell | Stop; `nothing_to_sell` with a scanner link may mean a honeypot — tell the user. |
