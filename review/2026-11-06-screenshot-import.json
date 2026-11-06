@@ -1,0 +1,342 @@
+{
+  "capturedOn": "2026-11-06",
+  "source": "Production Telegram bot. Twenty-seven screenshots were recaptured with ShareX at native resolution, cropped and redacted where needed; nine were supplied by the documentation owner.",
+  "images": [
+    {
+      "filename": "account_pnl_report_card_2026_11.png",
+      "sha256": "7b201ca16c78eea129e73d8a70552c5b0b0b8f3312fe0f2f101e9a4165137c80",
+      "routes": [
+        "features/account-pnl-report"
+      ],
+      "source": "Screenshot supplied by the documentation owner on 2026-11-06",
+      "width": 752,
+      "height": 666
+    },
+    {
+      "filename": "account_pnl_report_panel_2026_11.png",
+      "sha256": "c3176eaaa3a2772469dceb6803ef3d6875ac66150a1b9c7c39cc39111081d0d9",
+      "routes": [
+        "features/account-pnl-report"
+      ],
+      "width": 637,
+      "height": 403
+    },
+    {
+      "filename": "buy_supply_percent_prompt_2026_11.png",
+      "sha256": "3c470e31ddbbe658a9785e243e8fe6d01ca77813928dd14a07b4834183b64ec8",
+      "routes": [
+        "features/trading"
+      ],
+      "width": 350,
+      "height": 268
+    },
+    {
+      "filename": "counter_strategy_blank_p123_2026_11.png",
+      "sha256": "d72ed7d12d813af2f4a7057ee2853316f355bc8b53925110b6e23342d6c8733b",
+      "routes": [
+        "features/counter-sell"
+      ],
+      "width": 538,
+      "height": 918
+    },
+    {
+      "filename": "dca_ladder_presets_2026_11.png",
+      "sha256": "082be3d966d7d1ef1351cb57b76975d3058f23920eb43fa9383fd39fac8ebdab",
+      "routes": [
+        "features/dca-orders"
+      ],
+      "width": 538,
+      "height": 783
+    },
+    {
+      "filename": "dev_sell_blank_p123_2026_11.png",
+      "sha256": "ce49d6fdd18b8ac8d9d5d1311cbe54c475e10500a3fa1dd341b0a1f356f58998",
+      "routes": [
+        "features/dev-sell"
+      ],
+      "width": 538,
+      "height": 713
+    },
+    {
+      "filename": "discovery_runners_2026_11.png",
+      "sha256": "e4514fd9836de01b29034df35da01703944e6b33f7d6508d7531f5334fd17dbe",
+      "routes": [
+        "features/token-discovery"
+      ],
+      "width": 490,
+      "height": 960
+    },
+    {
+      "filename": "discovery_search_2026_11.png",
+      "sha256": "b3a7507fd05618003411deafba989047e0b997a56c1ffc470d38b717ab723ed1",
+      "routes": [
+        "features/token-discovery"
+      ],
+      "width": 452,
+      "height": 1165
+    },
+    {
+      "filename": "discovery_trending_2026_11.png",
+      "sha256": "188d4592299c752308a68072433b63f3bbc397b45d67dcebc7c7dff5aa4445d7",
+      "routes": [
+        "features/token-discovery"
+      ],
+      "width": 490,
+      "height": 960
+    },
+    {
+      "filename": "large_trade_guardrails_2026_11.png",
+      "sha256": "77a966952936dcdf2a0d1739850d000039ee6fbc1128352a52b9678d3b7df6c0",
+      "routes": [
+        "features/settings/guardrails"
+      ],
+      "width": 540,
+      "height": 428
+    },
+    {
+      "filename": "last_used_values_2026_11.png",
+      "sha256": "051b2eabbbb5c855054831cb6b69776c636f01e7a231e26e17224e9de4ebbc6c",
+      "routes": [
+        "features/order-presets"
+      ],
+      "width": 515,
+      "height": 270
+    },
+    {
+      "filename": "limit_buy_blank_p123_2026_11.png",
+      "sha256": "c8749cd48b15639c91c181d0eed3a55ae02cf429243fb1e40c35057c66a8f620",
+      "routes": [
+        "features/limit-orders",
+        "features/order-presets"
+      ],
+      "width": 538,
+      "height": 1000
+    },
+    {
+      "filename": "limit_buy_preset_edited_2026_11.png",
+      "sha256": "cbdd7f949dc68c3c1ad7b7579c9a538de662a1582f5a890a4eaf7063fee96c85",
+      "routes": [
+        "features/order-presets"
+      ],
+      "width": 538,
+      "height": 1000
+    },
+    {
+      "filename": "order_presets_settings_2026_11.png",
+      "sha256": "f60d4f4ee12adfbd615f8cc512efddd85aa24e1e21a44d4dc3fa2f0c3e993b7b",
+      "routes": [
+        "features/order-presets"
+      ],
+      "width": 530,
+      "height": 438
+    },
+    {
+      "filename": "positions_monitor_panel_2026_11.png",
+      "sha256": "d36d7216e267ee81fc32dd2edee20085f22f16a2ac9f28528b94720ed122799d",
+      "routes": [
+        "features/token-panel"
+      ],
+      "source": "Screenshot supplied by the documentation owner on 2026-11-06",
+      "width": 656,
+      "height": 919
+    },
+    {
+      "filename": "positions_monitor_settings_2026_11.png",
+      "sha256": "26a177ba0d72db0e9a7340d036db45afb1aebd7c92e19a9cb3907c0a405b711d",
+      "routes": [
+        "features/settings/trade-panel"
+      ],
+      "width": 516,
+      "height": 336
+    },
+    {
+      "filename": "sell_presets_four_2026_11.png",
+      "sha256": "9ff4e327dd7116bfca9a1bf5fe77f308ef43ff11162bf75e27d367a9a7841eef",
+      "routes": [
+        "features/trading"
+      ],
+      "width": 538,
+      "height": 773
+    },
+    {
+      "filename": "settings_buttons_controls_2026_11.png",
+      "sha256": "d05cd4aaeaf047dddc13c0db2e2522b40bd0706c5629b07e6e67d7439e6c5f23",
+      "routes": [
+        "features/settings/trade-panel"
+      ],
+      "width": 307,
+      "height": 918
+    },
+    {
+      "filename": "settings_root_2026_11.png",
+      "sha256": "510fcb0f4920aca9458706a9f7b17d51032ecd3f2a387f06fd0f36847f2288d0",
+      "routes": [
+        "features/settings"
+      ],
+      "width": 520,
+      "height": 730
+    },
+    {
+      "filename": "start_menu_2026_11.png",
+      "sha256": "d6ddb036f01efb3e5631af88f7c5351a5cd38c3848f2dd578507019ed15f811c",
+      "routes": [
+        "essentials/getting-started",
+        "essentials/navigating-cove"
+      ],
+      "width": 495,
+      "height": 480
+    },
+    {
+      "filename": "strategy_dca_presets_2026_11.png",
+      "sha256": "39a4317dbbf657b31271b0397f26865a307f6b566ddf18a7dc1b4af60a14ca62",
+      "routes": [
+        "features/dca-orders",
+        "features/order-presets"
+      ],
+      "width": 538,
+      "height": 828
+    },
+    {
+      "filename": "supported_chains_2026_11.png",
+      "sha256": "f0b77bd57b511833c5040eca060cfbfacb799e68909d987913acc7b82f36c1db",
+      "routes": [
+        "essentials/supported-chains"
+      ],
+      "width": 165,
+      "height": 465
+    },
+    {
+      "filename": "tracker_custom_wallet_list_2026_11.png",
+      "sha256": "f52e99b9f430898825e2f8ee3ed32a7d0e84686f60c413fbb73f4016a8f15b28",
+      "routes": [
+        "features/wallet-tracker"
+      ],
+      "width": 540,
+      "height": 530
+    },
+    {
+      "filename": "tracker_entry_2026_11.png",
+      "sha256": "f52e99b9f430898825e2f8ee3ed32a7d0e84686f60c413fbb73f4016a8f15b28",
+      "routes": [
+        "features/trader-alerts"
+      ],
+      "width": 540,
+      "height": 530
+    },
+    {
+      "filename": "tracker_unified_add_wallets_2026_11.png",
+      "sha256": "253bab8c6e37144336f638b3ed5de960552f3d180c94399e6dde36bd7b6a70cf",
+      "routes": [
+        "features/trader-alerts"
+      ],
+      "width": 540,
+      "height": 355
+    },
+    {
+      "filename": "tracker_wallet_batch_choice_2026_11.png",
+      "sha256": "57949038b3d058dcf9ca58b10996c4ac3c3903c53bea1267700e7d159b37bbc3",
+      "routes": [
+        "features/wallet-tracker"
+      ],
+      "source": "Screenshot supplied by the documentation owner on 2026-11-06",
+      "width": 563,
+      "height": 372
+    },
+    {
+      "filename": "tracker_wallet_batch_input_2026_11.png",
+      "sha256": "cf7250a3d79e2ac760c6df5d8a3a8e7375526651a11b24a643903528a5f9359f",
+      "routes": [
+        "features/wallet-tracker"
+      ],
+      "source": "Screenshot supplied by the documentation owner on 2026-11-06",
+      "width": 671,
+      "height": 539
+    },
+    {
+      "filename": "tracker_wallet_group_manage_2026_11.png",
+      "sha256": "f387d6cb0e2438969711c6476744af9d62aba77cb449733a9fe18114f4e02d26",
+      "routes": [
+        "features/wallet-tracker"
+      ],
+      "source": "Screenshot supplied by the documentation owner on 2026-11-06",
+      "width": 516,
+      "height": 697
+    },
+    {
+      "filename": "tracker_wallet_group_members_2026_11.png",
+      "sha256": "80776532425a051c2d46b1d0aa2fdc81b291cff5e2826199b0cc3e9f28e8b713",
+      "routes": [
+        "features/wallet-tracker"
+      ],
+      "source": "Screenshot supplied by the documentation owner on 2026-11-06",
+      "width": 505,
+      "height": 791
+    },
+    {
+      "filename": "tracker_wallet_group_trades_2026_11.png",
+      "sha256": "154ecda00684d57aab45f66ca0a284777e83843029279f9e333c842eb6b60965",
+      "routes": [
+        "features/wallet-tracker"
+      ],
+      "source": "Screenshot supplied by the documentation owner on 2026-11-06",
+      "width": 504,
+      "height": 872
+    },
+    {
+      "filename": "tracker_wallet_name_prompt_2026_11.png",
+      "sha256": "f2ccbad66e5cc58eab6288e5d0ab685fc59cd24c6aea4206795873b6046be615",
+      "routes": [
+        "features/wallet-tracker"
+      ],
+      "source": "Screenshot supplied by the documentation owner on 2026-11-06",
+      "width": 634,
+      "height": 331
+    },
+    {
+      "filename": "tracker_wallets_grouped_list_2026_11.png",
+      "sha256": "4b52a97c22fd2ee874d662623ae02c928980e871cfa851da55944ea60817bebb",
+      "routes": [
+        "features/wallet-tracker"
+      ],
+      "source": "Screenshot supplied by the documentation owner on 2026-11-06",
+      "width": 501,
+      "height": 626
+    },
+    {
+      "filename": "trailing_blank_p123_2026_11.png",
+      "sha256": "c377c3f0cf01b88896d471bd419250db2ed9d552afcd6ef01e4f53028aa541d5",
+      "routes": [
+        "features/trailing-stop"
+      ],
+      "width": 538,
+      "height": 469
+    },
+    {
+      "filename": "withdraw_address_add_2026_11.png",
+      "sha256": "59b7b40fc950ea3fff2b766ad966f557a74fd95b111b85cc27a35913a8693873",
+      "routes": [
+        "funds/withdraw"
+      ],
+      "width": 495,
+      "height": 315
+    },
+    {
+      "filename": "withdraw_address_book_2026_11.png",
+      "sha256": "0331253e4be50b0bfb62e27dc0fec458f7743ba3d06e71b27d6fd25557452a3e",
+      "routes": [
+        "funds/withdraw"
+      ],
+      "width": 495,
+      "height": 265
+    },
+    {
+      "filename": "withdraw_saved_destination_2026_11.png",
+      "sha256": "139b4ae9e1e2336b20cd4a179866a5a40af3e0346078e89d593eabe5595cd5cf",
+      "routes": [
+        "funds/withdraw"
+      ],
+      "width": 520,
+      "height": 615
+    }
+  ]
+}
