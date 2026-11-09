@@ -1,6 +1,6 @@
 {
   "capturedOn": "2026-11-06",
-  "source": "Production Telegram bot. Twenty-seven screenshots were recaptured with ShareX at native resolution, cropped and redacted where needed; nine were supplied by the documentation owner.",
+  "source": "Production Telegram bot. Twenty-six current screenshots were recaptured with ShareX at native resolution, cropped and redacted where needed; nine were supplied by the documentation owner. The pre-Elysium /chains capture was retired on 2026-11-09.",
   "images": [
     {
       "filename": "account_pnl_report_card_2026_11.png",
@@ -195,15 +195,6 @@
       ],
       "width": 538,
       "height": 828
-    },
-    {
-      "filename": "supported_chains_2026_11.png",
-      "sha256": "f0b77bd57b511833c5040eca060cfbfacb799e68909d987913acc7b82f36c1db",
-      "routes": [
-        "essentials/supported-chains"
-      ],
-      "width": 165,
-      "height": 465
     },
     {
       "filename": "tracker_custom_wallet_list_2026_11.png",

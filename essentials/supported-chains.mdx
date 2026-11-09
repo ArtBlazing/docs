@@ -1,18 +1,12 @@
 ---
 title: "Supported Chains"
-description: "See supported trading networks, including Arc, and find the right funding options."
+description: "See supported trading networks, including Elysium, and find the right funding options."
 icon: "globe"
 ---
 
-cove uses a **USDC trading balance on Solana** to trade supported tokens on multiple networks. Send `/chains` for the current list of networks the bot recognizes. The list shows **17 names** in the November 6, 2026 capture. Recognition does not mean that every token, deposit, withdrawal, or trading route is available on that network.
+cove uses a **USDC trading balance on Solana** to trade supported tokens on multiple networks. Send `/chains` for the current list of networks the bot recognizes. **Elysium** means Kinetiq's EVM mainnet (chain ID **99901**), not the unrelated network with the same name. Recognition does not mean that every token, deposit, withdrawal, or trading route is available on that network.
 
 The token determines the trading chain; an ambiguous address opens a chain picker. Check the current panel before trading, depositing, or withdrawing.
-
-<div className="cove-guide-figure">
-  <Frame caption="The /chains response on November 6, 2026, including Story and Arc.">
-    <img src="/assets/guide-screenshots/supported_chains_2026_11.png" alt="The 17 names in the current /chains list, with a Back button." width={165} height={465} className="cove-guide-screenshot" />
-  </Frame>
-</div>
 
 ## Network reference
 
@@ -35,6 +29,7 @@ The token determines the trading chain; an ambiguous address opens a chain picke
 | X Layer | Deposit EVM, if available |
 | Avalanche | **Show Avalanche wallet** |
 | Arc | Check the **Deposit** panel for available funding routes |
+| Elysium (Kinetiq) | **Deposit EVM**, when the Elysium route is offered |
 
 <Note>
 This table is a funding orientation for the names shown in `/chains`, not a promise that each route is open. X Layer is available only where the matching route appears in your bot. Marketplace and private withdrawals have their own supported-network lists.
@@ -58,6 +53,20 @@ For token-specific workflows and risk checks, browse the [Cove network guides](h
 3. Check that the panel shows **Arc**, verify the token address, and follow the [buy and sell guide](/features/trading).
 
 You do not need to fund Arc directly to follow this trading flow. For links that open an Arc token panel, use chain code **`c`**; see [Deep Links](/builders/deep-links#chain-codes).
+
+## Trade tokens on Elysium
+
+<div style={{ backgroundColor: "#04181C", borderRadius: "12px", display: "inline-flex", padding: "12px" }}>
+  <img src="/assets/chains/elysium.svg" alt="Elysium network mark" width={56} height={56} />
+</div>
+
+Elysium uses **HYPE for network fees**, while your cove trading balance is still **USDC on Solana**. [cove sponsors eligible network gas](/essentials/fees-structure). Elysium is separate from HyperEVM (chain ID **999**): the two networks have separate balances, even when a wallet shows the same `0x` address.
+
+1. [Add USDC on Solana](/essentials/getting-started) to your cove trading balance.
+2. Paste the Elysium token's contract address. If a chain picker appears, choose **Elysium**.
+3. Confirm **Elysium**, the token address, selected wallet, and any warnings on the panel before choosing a trade action.
+
+To receive assets directly on Elysium, use only a route shown in the live **Deposit** panel and match both the asset and network. Sending to HyperEVM does not put those assets on Elysium. Token deep links use chain code **`k`**; see [Deep Links](/builders/deep-links#chain-codes).
 
 ## Bridge minimums
 

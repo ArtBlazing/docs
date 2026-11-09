@@ -12,7 +12,7 @@ Telegram limits the `/start` parameter to **64 characters**. Cove deep links use
 
 ## Quick reference
 
-For token links, encode the token address into Base62 first: **27 chars** for EVM tokens, **43 chars** for Solana tokens. Use the chain code table below to choose the network, such as `e` for Ethereum, `s` for Solana, or `c` for Arc.
+For token links, encode the token address into Base62 first: **27 chars** for EVM tokens, **43 chars** for Solana tokens. Use the chain code table below to choose the network, such as `e` for Ethereum, `s` for Solana, or `k` for Elysium.
 
 <CardGroup cols={3}>
   <Card title="Group buy" icon="cart-shopping">
@@ -112,6 +112,7 @@ The `g_`, `b_`, and `gs_` token-action links use the same chain codes, address e
 | `x` | X Layer | 196 | 27 chars |
 | `v` | Avalanche | 43114 | 27 chars |
 | `c` | Arc | 5042 | 27 chars |
+| `k` | Elysium (Kinetiq) | 99901 | 27 chars |
 
 The same codes are used by group buy (`g_`), market buy panel (`b_`), and group sell (`gs_`) links. Solana is the only chain with a 43-character token segment; every other listed chain is EVM and uses 27 characters.
 
