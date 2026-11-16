@@ -180,7 +180,16 @@
       "telegram": "https://t.me/cove_trading_bot",
       "x": "https://x.com/covetrade",
       "website": "https://cove.trade"
-    }
+    },
+    "links": [
+      {
+        "header": "Legal",
+        "items": [
+          { "label": "Privacy Policy", "href": "https://www.cove.trade/privacy" },
+          { "label": "Terms of Service", "href": "https://www.cove.trade/terms" }
+        ]
+      }
+    ]
   },
   "description": "Practical guides to wallets, trading, automated orders, and portfolio management in Cove."
 }
