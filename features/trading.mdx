@@ -13,7 +13,7 @@ Use this flow for tokens on **Elysium, Arc**, and other [supported chains](/esse
 Check the **active profile**, **selected wallets**, token address, chain, liquidity, and slippage. If several wallets are selected, check [Spend type](/features/multi-wallet-trading).
 
 <Warning>
-**Buy confirm** and **Sell confirm** are off by default. Selecting a preset or entering a custom size can submit a market trade. Enable these in **Settings → Trade panel settings** if you want a separate confirmation.
+**Buy confirm** and **Sell confirm** are off by default. Selecting a preset or entering a custom size can submit a market trade. Enable these in **Settings → Trade Panel** if you want a separate confirmation.
 </Warning>
 
 ## Buy a token
@@ -40,7 +40,7 @@ Check the **active profile**, **selected wallets**, token address, chain, liquid
   </Step>
 </Steps>
 
-The documented minimum buy is **\$1**, but it must also clear the chain's sell floor. A token's purchase cap can reduce the actual buy if **Auto-adjust max buy** is on.
+The documented minimum buy is **\$1**, but it must also clear the chain's sell floor. A token's purchase cap can reduce the actual buy if **Fit to max buy** is on.
 
 ### Enter a share of token supply
 
@@ -94,6 +94,8 @@ In the market Buying panel's **\$x** prompt, `100`, `$100`, or `100$` means USD.
 Minimum sells are **\$0.50** on most chains and **\$2.50 on Solana**; some token routes require more. To sell many tokens, use [Bulk sell](/features/bulk-sell).
 
 ## Confirmations and results
+
+A tapped trading panel can update in place into the trade's progress card and then its receipt. A completed buy can show its fill as soon as the tokens arrive, while additional panel details finish refreshing. Check the final status and wallet outcomes before sending another instruction.
 
 A receipt may show **Execution MC: --** when Cove cannot measure it reliably. That is an unavailable value, not a zero market cap. The executed token quantity and settled amounts matter more than a pre-trade estimate. A multi-wallet receipt groups wallet outcomes; expand or review each wallet before retrying a failed part.
 

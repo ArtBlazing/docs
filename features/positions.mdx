@@ -19,10 +19,9 @@ Send `/positions` or choose **Positions**. The list shows holdings in the **acti
 
 The footer shows spendable balance, positions value, any parked funds, and the profile you are viewing.
 
-{/* Screenshot: positions-list.png | The Telegram positions list with token values, PnL, and portfolio controls. */}
 <div className="cove-guide-figure">
-  <Frame caption="The Telegram positions list with token values, PnL, and portfolio controls.">
-    <img src="/assets/guide-screenshots/positions-list.png" alt="The Telegram positions list with token values, PnL, and portfolio controls." width={712} height={1184} className="cove-guide-screenshot" />
+  <Frame caption="Current Positions panel with token rows, portfolio totals, filters, sorting, hidden holdings, and Panel settings.">
+    <img src="/assets/guide-screenshots/positions-panel-refresh-2026-11.png" alt="Positions panel with holdings, PnL and worth, Positions Mini App, Sort by Worth, Filters, Chains, Wallets, History and PnL, Hidden, Panel settings, and Bulk Sell." width={538} height={627} className="cove-guide-screenshot" />
   </Frame>
 </div>
 {/* Screenshot: positions-wallet-detail.png | Detailed view of one token's holdings across wallets, with sell and transfer links. */}
@@ -34,7 +33,7 @@ The footer shows spendable balance, positions value, any parked funds, and the p
 
 ## Open or act on a holding
 
-1. Check the profile beside **Viewing**; use **Change profile** if needed.
+1. Check the profile shown in the list; switch profiles if needed.
 2. Tap the token to buy more, sell, or [create an order](/features/orders-overview).
 3. Expand **View detailed** for wallet-specific values and actions.
 4. Use **Transfer** to [send the token without selling](/funds/token-transfers).
@@ -44,11 +43,11 @@ The footer shows spendable balance, positions value, any parked funds, and the p
 
 ## Filter, sort, and hide
 
-Open **Filters** for chains, wallets, dust, liquidity, suspicious tokens, and native/wrapped tokens. **Sort** offers Worth, Age, and PnL. See [Position filters](/features/settings/position-panel).
+Use **Filters** for dust, liquidity, suspicious tokens, and native/wrapped tokens. **Chains** and **Wallets** narrow the visible list; their buttons show the current selection count. **Sort by Worth** opens the sort choices: Worth, Age, and PnL. **Hidden** opens tokens you concealed. **Panel settings** controls Sell 100% links and position sell confirmation. See [Position filters](/features/settings/position-panel).
 
-If [Positions Monitor](/features/settings/trade-panel#positions-monitor) is enabled for this profile, an ordinary market token panel can show the open token and up to five positions as quick switches. It follows the wallet and chain filters, hidden/dust choices, and sort order you use here. A missing or incomplete position list can leave the row absent; the setting itself does not change your holdings.
+If [Monitor → Positions](/features/settings/trade-panel#monitor) is enabled for this profile, an ordinary market token panel can show the open token and up to five positions as quick switches. It follows the wallet and chain filters, hidden/dust choices, and sort order you use here. A missing or incomplete position list can leave the row absent; the setting itself does not change your holdings.
 
-**Hide** removes a token from the visible list. **View hidden** or the Mini App's **Hidden** list lets you **Unhide** it. Hiding does not sell it.
+**Hide** removes a token from the visible list. **Hidden** or the Mini App's **Hidden** list lets you **Unhide** it. Hiding does not sell it.
 
 ## Understand incomplete numbers
 
@@ -62,7 +61,7 @@ Use [History and PnL](/features/history) for the difference between current-cycl
 
 - **Positions Mini App:** a visual holdings interface.
 - **History:** lifetime portfolio and PnL Calendar.
-- **SWITCH TO BULK SELL:** [sell selected positions in one run](/features/bulk-sell).
+- **Bulk Sell:** [sell selected positions in one run](/features/bulk-sell).
 - **Refresh:** update the list.
 
 If the list is empty, check profile, wallet/chain filters, and hidden positions before assuming a token is gone.

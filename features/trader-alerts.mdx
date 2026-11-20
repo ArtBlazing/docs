@@ -4,7 +4,7 @@ description: "Follow traders, choose their activity alerts, and understand alert
 icon: "users-viewfinder"
 ---
 
-Send `/track` or choose **Tracker** from `/start`. The current unified screen has **All**, **Fomo**, **Pump.fun**, and **Wallets** tabs. Follow a Fomo or Pump.fun trader for buy, sell, and thesis alerts; use [Track public wallets](/features/wallet-tracker) for address-based alerts. Receiving an alert does not trade for you.
+Send `/track` or choose **Tracker** from `/start`. The unified screen has **All**, **Fomo**, **Pump.fun**, and **Wallets** tabs, plus **Leaderboard** and **Confluence**. Follow a Fomo or Pump.fun trader for buy, sell, and thesis alerts; use [Track public wallets](/features/wallet-tracker) for address-based alerts. [Confluence](/features/confluence) can combine buys from selected tracked profiles into one alert. Receiving an alert does not trade for you.
 
 <Note>If `/track` is temporarily unavailable, your saved traders remain in your list. Alerts are not delivered while the feature is off.</Note>
 
@@ -17,10 +17,9 @@ Send `/track` or choose **Tracker** from `/start`. The current unified screen ha
 
 If cove has not found a wallet for that trader, try the handle again later or browse **Leaderboard**. When live search is available, a previously unknown handle first shows **Searching**; you can leave the screen while it runs. After roughly two minutes it may say the search is taking longer, and it ends within a ten-minute search window. One confirmed profile opens its card with tracking on; two confirmed profiles ask you to choose **Fomo**, **Pump.fun**, or **Both** because they may be different people. **Profile found. Wallet unconfirmed** and **Profile not found** do not start alerts. A failed or timed-out search may offer **Retry**. Daily search limits and service availability can also prevent a new search; there is no later waitlist notification.
 
-{/* Screenshot: tracker_entry_2026_11.png | Current unified Tracker on its Wallets tab. */}
 <div className="cove-guide-figure">
-  <Frame caption="The unified Tracker has All, Fomo, Pump.fun, and Wallets tabs, plus Leaderboard and shared add controls.">
-    <img src="/assets/guide-screenshots/tracker_entry_2026_11.png" alt="Unified Tracker Wallets tab with All, Fomo, Pump.fun, Wallets, Leaderboard, and Add a trader or wallet." width={540} height={530} className="cove-guide-screenshot" />
+  <Frame caption="The current Tracker includes source tabs, Leaderboard, and Confluence beneath the list.">
+    <img src="/assets/guide-screenshots/tracker-confluence-entry-2026-11.png" alt="Unified Tracker with Fomo profiles, All, Fomo, Pump, Wallets, Leaderboard, Confluence, and Add a trader or wallet." width={540} height={609} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
@@ -160,8 +159,8 @@ On a **sell alert**, Limit instead uses the trader's sell fill price and still c
 
 | Alert mode | Amounts shown below the mode buttons | Where to change them |
 |---|---|---|
-| **Buy** | The first three eligible **USD market buy presets**. | `/settings` → **Trade panel settings → Buttons and controls → Market preset amounts → Buy preset amounts**. |
-| **Limit** | The first three eligible **Limit buy amount presets** in USD. | `/settings` → **Trade panel settings → Buttons and controls → Limit preset amounts → Limit buy presets → Buy amounts**. |
+| **Buy** | The first three eligible **USD market buy presets**. | `/settings` → **Amounts → Buy amounts**. |
+| **Limit** | The first three eligible **Limit buy amount presets** in USD. | `/settings` → **Amounts → Limit amounts → Buy amounts**. |
 
 The amounts come from the trading settings of the **profile containing your primary wallet**, along with that profile's selected trading wallets. They are the same preset values used by the normal Buy and Limit flows, not a second Trader Tracker setting. Cove omits buttons below the minimum buy size for the chain. Alert Buy buttons use dollar values even if the market panel's preset mode is set to percentages. The alert keeps the amounts, wallets, and **Split Total / Per Wallet** mode captured when it was sent; changing settings later affects new alerts, not an old button. In Split Total, the shown dollar amount is split across the displayed wallets; in Per Wallet, each displayed wallet uses that amount.
 

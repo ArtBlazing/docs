@@ -1,6 +1,6 @@
 ---
 title: "Private Disperse"
-description: "Fund your own wallets through separately routed USDC payments."
+description: "Fund your own Solana wallets through separately routed USDC payments, with USDC or SOL delivery where offered."
 icon: "shuffle"
 ---
 
@@ -34,7 +34,7 @@ Choose `/transfer` → **Private Disperse** to open Cove Wallets, then follow it
     </div>
   </Step>
   <Step title="Set How much, and when">
-    Enter **Total to disperse**. Use **Randomize all**, **Spread**, and **Over** as needed. Review every row's amount, **Via** exchange, and **After** delay.
+    Enter **Total to disperse**. Where the output-asset choice is offered, select **USDC** or native **SOL** for the receiving wallets; USDC is the default. Use **Randomize all**, **Spread**, and **Over** as needed. Review every row's amount, **Via** exchange, and **After** delay.
 
     {/* Screenshot: private-disperse-amounts.png | Step 3: set the total, recipient allocations, exchanges, and delays before the final review. */}
     <div className="cove-guide-figure">
@@ -44,7 +44,7 @@ Choose `/transfer` → **Private Disperse** to open Cove Wallets, then follow it
     </div>
   </Step>
   <Step title="Confirm the run">
-    Check **You send**, **They receive**, **Exchange fee**, and the estimated last arrival. Tap **Disperse** with the displayed USD amount only when ready.
+    Check **You send** in Solana USDC, **They receive** in the selected asset, **Exchange fee**, and the estimated last arrival. Tap **Disperse** with the displayed payment amount only when ready.
   </Step>
 </Steps>
 
@@ -63,7 +63,7 @@ For failed destinations, use **Get refund** to open support. Keep the run refere
 
 ## Costs and limitations
 
-The route is **Solana USDC to Solana USDC**. Destinations must be your own Cove wallets within one profile. Review the live exchange fee and each minimum rather than relying on a historical example.
+The source is always **Solana USDC**. Destinations must be your own Cove **Solana** wallets within one profile. Where enabled, the receive asset can be **USDC** or native **SOL**; other assets and EVM destinations are not offered here. The asset choice applies to the run and changes the quote, receive amounts, and minimums. A SOL receipt is shown in SOL, not as a USDC amount. Review the live exchange fee and each minimum rather than relying on a historical example. The older screenshots above show the default USDC flow.
 
 Routing changes how payments appear on-chain; it is not a guarantee of anonymity or the absence of provider records. Once payment is sent, it cannot be recalled.
 

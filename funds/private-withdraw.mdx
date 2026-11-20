@@ -1,10 +1,10 @@
 ---
 title: "Private Withdraw"
-description: "Send USDC to one external address through separately routed payments."
+description: "Pay from Solana USDC and choose the receive network and asset for a routed external withdrawal."
 icon: "arrow-up-right-from-square"
 ---
 
-Private Withdraw routes a payment through exchanges, with optional splits and delays, to **one external address**.
+Private Withdraw routes a payment through exchanges, with optional splits and delays, to **one external address**. You pay from **Solana USDC**; where the output-asset choice is enabled, the recipient can receive a supported stablecoin or the network's native asset.
 
 <Note>This feature is available only on enabled accounts. Look for **Private Withdraw** in `/withdraw`. Standard [Withdraw](/funds/withdraw) remains the alternative.</Note>
 
@@ -15,7 +15,7 @@ Private Withdraw routes a payment through exchanges, with optional splits and de
     Open `/withdraw` → **Private Withdraw**. In Cove Wallets, choose a source holding **Solana USDC**.
   </Step>
   <Step title="Enter the destination">
-    Under **Where does it go?**, enter the address and select its network. Check both carefully.
+    Under **Where does it go?**, enter the address and select its network. Where offered, select the asset the recipient will receive. Check the address, network, and asset carefully.
   </Step>
   <Step title="Set the total and splits">
     Choose **1–5 splits**, the total amount, and any **Randomize**, **Spread**, or **Over** options. Review each exchange, minimum, and delay.
@@ -28,14 +28,24 @@ Private Withdraw routes a payment through exchanges, with optional splits and de
     </div>
   </Step>
   <Step title="Review and send">
-    Check destination, network, **You send**, **They receive**, **Exchange fee**, and final estimated delivery. Use **Withdraw** with the displayed amount to submit.
+    Check destination, network, receive asset, **You send** in Solana USDC, **They receive** in the selected asset, **Exchange fee**, and final estimated delivery. Use **Withdraw** with the displayed payment amount to submit.
   </Step>
 </Steps>
 
 
 ## Networks and fees
 
-The documented destination networks are **Solana, Base, Ethereum, BNB Chain, and Arbitrum**. Only matching address/network combinations are offered.
+The documented destination networks are **Solana, Base, Ethereum, BNB Chain, and Arbitrum**. Only matching address/network combinations are offered. **USDC** is the default receive asset. Where output assets are enabled, the supported choices are:
+
+| Network | Receive assets |
+|---|---|
+| Solana | USDC, SOL, USDT |
+| Ethereum | USDC, ETH, USDT |
+| Base | USDC, ETH |
+| BNB Chain | USDC, BNB, USDT |
+| Arbitrum | USDC, ETH, USDT |
+
+The live panel may offer fewer choices depending on feature availability. Changing the receive asset requires a fresh quote. Non-USDC receive amounts are shown in their own units; do not read a SOL, ETH, or BNB amount as dollars. The earlier screenshot below shows the default USDC route.
 
 Cove does not add an app fee for Private Withdraw. Exchange fees and route minimums are shown before confirmation and vary by network and provider. Check the final quote for the amount you will receive.
 

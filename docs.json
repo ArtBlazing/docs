@@ -68,6 +68,7 @@
               "features/token-panel",
               "features/multi-wallet-trading",
               "features/trader-alerts",
+              "features/confluence",
               "features/wallet-tracker",
               {
                 "group": "Order guides",

@@ -4,7 +4,7 @@ description: "Create notifications at multiples of a purchase's market cap."
 icon: "bell-on"
 ---
 
-Auto alerts create targets after each **real Cove token purchase**. They notify you without trading and apply across profiles.
+Auto alerts create targets after each **real Cove token purchase**, including eligible filled Limit and DCA buys. They notify you without trading and apply across profiles. A new buy can renew the token's active ladder.
 
 ## Set up future-buy alerts
 
@@ -38,8 +38,14 @@ Changing future-buy settings does **not** change alerts already created. Inspect
 
 For a token you want to rebase, choose **Reset from current MC** in its auto-alert controls. The notification will then refer to the reset rather than the original buy.
 
-## Expiry and cleanup
+## How long a ladder stays active
 
-Auto alerts expire after **5 days** and cover up to **30 tokens**. When that token limit is exceeded, the oldest token's ladder is dropped. The token's auto alerts retire after you fully exit the position.
+Each real buy grants its token's ladder an initial **five-day** term. At the term boundary, Cove renews it for another five days when the token is still **visible in `/positions`** and its displayed worth is at least **\$50**. The renewal check uses the position filters of the wallets that hold it. Hiding the token, filtering it out, or falling below the threshold can let the ladder expire at the next term boundary; a change in the middle of a term does not end it immediately. There is no backfill for missed triggers.
+
+Renewed ladders use a slower price check than first-term ladders, so an alert can arrive later than the instant a target is crossed. Auto alerts also retire after you fully exit a position.
+
+Cove covers up to **50 tokens** with active auto-alert ladders. If a new buy would exceed that cap, an older or lower-worth ladder can be displaced; the new buy's ladder is kept. Check `/alerts` to see which tokens remain armed.
+
+If the system ended a held token's ladder, the market token panel can show **Auto alerts off · Re-enable**. Tapping it arms a fresh ladder from the current targets and starts a new term. It does not replay earlier prices. A ladder you cancelled yourself does not get that one-tap recovery offer.
 
 Turning off Auto alerts stops future automatic creation; manage existing alerts in `/alerts` as needed. Use [manual price alerts](/features/price-alerts) when you want a specific independent target.

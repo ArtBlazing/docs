@@ -1,77 +1,50 @@
 ---
 title: "Settings"
-description: "Find every trading, display, notification, and wallet preference."
+description: "Use the current Settings menu to find trading controls, presets, alerts, security, and display options."
 icon: "sliders"
 ---
 
-Send `/settings`. Check the active profile, then open a category and review its saved values before changing them. Some settings apply to the whole account, including Security.
+Send `/settings` and check the active profile shown at the top. The main menu now places the most used controls directly in **Trading guardrails**, **Trade Panel**, **Auto orders**, **Amounts**, **Presets**, **Autobuy**, and **Monitor**. Security and notification choices are below them.
 
-{/* Screenshot: settings_root_2026_11.png | Settings menu, including Receive transfers and Security. */}
 <div className="cove-guide-figure">
-  <Frame caption="Settings categories, including Receive transfers and Security.">
-    <img src="/assets/guide-screenshots/settings_root_2026_11.png" alt="Settings menu with Guardrails, Trade panel settings, Position panel settings, and other categories." width={520} height={730} className="cove-guide-screenshot" />
+  <Frame caption="Current Settings menu. The values shown are saved choices for this account, not recommended defaults.">
+    <img src="/assets/guide-screenshots/settings-hub-refresh-2026-11.png" alt="Settings root with Trading guardrails, Trade Panel, Auto orders, Amounts, Presets, Autobuy, Monitor, Security and 2FA, Notifications, and Language." width={513} height={1052} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
-## Choose a category
+## Where to go
 
-<Columns cols={2}>
-  <Card title="Guardrails" icon="shield-halved" href="/features/settings/guardrails">Slippage, scam warnings, price impact, large-trade confirmation, and gas budget.</Card>
-  <Card title="Trade panel" icon="sliders" href="/features/settings/trade-panel">Market buttons, Order Presets, Last used values, Positions Monitor, and confirmations.</Card>
-  <Card title="Positions" icon="chart-pie" href="/features/settings/position-panel">Sell links, confirmation, filters, and sorting.</Card>
-  <Card title="Group buy/sell" icon="users" href="/features/settings/group-links">Control trading actions opened from shared links.</Card>
-  <Card title="Notifications" icon="bell" href="/features/settings/notifications">Telegram auto-bridge updates and optional Pushover alerts.</Card>
-  <Card title="Receive transfers" icon="arrow-down" href="/features/settings/receive-transfers">Choose who can send USDC to your Telegram handle.</Card>
-  <Card title="Security" icon="shield-halved" href="/features/settings/security">2FA, trading lock, and recovery email.</Card>
-  <Card title="Language" icon="language" href="/features/settings/language">Switch between English and Chinese.</Card>
-</Columns>
-
-## Current Settings tree
-
-| From `/settings` | Open next | What is inside |
-|---|---|---|
-| **Guardrails** | Slippage and safety controls | Degen mode, Slippage, Auto-adjust max buy, Scam warning, Liquidity protection, High price-impact confirmation, **Large Buy/Sell confirm**, Gas surplus budget |
-| **Trade panel settings** | **Buttons and controls** | Market preset amounts; Limit preset amounts; **Order Presets**; **Last used values**; **Positions Monitor**; Buy/Sell confirm, Max buy, Nest accounts, Mini App, Chart, DexScreener chart |
-| **Trade panel settings** | **Text panel** | Total PnL per token, Capital at Risk / Profit Taken, Extra links, Sell link presets |
-| **Trade panel settings** | Other entries | Auto orders → Market buys or Limit & DCA → Auto take profit, Auto stop loss, Auto trailing stop, Auto Dev Sell; Manual TP/SL basis; Always open on Buy; Auto-buy on paste |
-| **Position panel settings** | Position controls | Sell 100% links and Positions sell confirmation; position filters and sorting are in `/positions` |
-| **Group buy/sell** | Group controls | Group buy maximum and Group sell |
-| **Notifications** | Telegram / Pushover | Auto-bridge Telegram DM toggle; Pushover categories and delivery settings where offered |
-| **Receive transfers** | Recipient policy | On/off, Everyone or Allow-list only, and allowed Telegram handles |
-| **Security** | Open Security | 2FA, optional Trading lock, and recovery email in Cove Wallets |
-| **Language** | Language picker | English or Chinese |
-
-The token panel has separate **Limit** and **Strategy** buttons. Limit's DCA tab is the Price ladder; Strategy contains DCA Time Interval and, on the sell side, Counter Strategy. These are trading controls, reached from a token panel rather than from Settings.
-
-## Which settings change with a profile?
-
-When you have several profiles, a **👤** mark identifies profile settings. Check the profile named in the settings panel before editing.
-
-| Scope | Settings |
+| Button in `/settings` | What it opens |
 |---|---|
-| **Active profile** | Guardrails, market and limit quick presets, buy/sell confirmations, Max buy, **Positions Monitor**, Auto orders for each buy mode, manual TP/SL basis, auto-buy, Always open on Buy, Positions sell confirmation, trading-wallet selection, and group-buy authorizations |
-| **Whole login** | **Order Presets P1–P3 and Last used values** (Paper has a separate set), 2FA, trading lock, receive-transfer policy, language, Nest accounts, Mini App/Chart/DexScreener display, extra links, Total PnL per token, group-buy maximum, Group sell, notifications, position filters/sort, and price alerts |
-| **Individual wallet** | Auto-bridge mode, label, and wallet-specific management |
+| **Trading guardrails** | [Slippage, scam warnings, liquidity and impact checks, trade-size confirmations, gas surplus, and group-link trading](/features/settings/guardrails) |
+| **Trade Panel** | [Buy/Sell confirmation, wallet visibility, PnL display, Capital Display, chart and extra links](/features/settings/trade-panel) |
+| **Auto orders** | [Separate automatic exit templates for Market buys and Limit & DCA fills](/features/settings/auto-tp-sl) |
+| **Amounts** | [Market Buy/Sell buttons, Limit amounts and trigger presets, and quick Sell links](/features/settings/trade-panel#amounts-and-limit-triggers) |
+| **Presets** | [Saved P1–P3 order forms and Last used values](/features/order-presets) |
+| **Autobuy** | [Auto-buy on paste, its amount, market-cap and liquidity bounds, and Skip holdings](/features/settings/auto-buy) |
+| **Monitor** | [Recent-token or Positions shortcuts at the top of a market token panel](/features/settings/trade-panel#monitor) |
+| **Security & 2FA** | [Receive transfers, two-factor authentication, and Trading lock](/features/settings/security) |
+| **Notifications** | [Telegram updates and optional Pushover phone alerts](/features/settings/notifications) |
+| **Language** | [English or Chinese](/features/settings/language) |
 
-For any control whose scope is not shown here, use its current 👤 indicator rather than assuming a change is device-only. Profiles can [copy trading settings](/essentials/profiles) from another profile when created.
+The **Panel settings** button in `/positions` opens position-list controls, including Sell 100% links and confirmation. See [Position display and filters](/features/settings/position-panel). Token-panel **Customize** can open the same Trade Panel options in context.
 
-## Settings outside the Settings menu
+## Which settings follow your profile?
+
+Look for the profile mark beside a setting and check the profile name before editing. Trading risk controls, quick trade amounts, Auto orders, Autobuy, and Monitor can differ between profiles. Saved **P1–P3 order presets** and **Last used values** follow your login across profiles; Paper has its own set. Security and language apply to the login.
+
+Profiles can [copy trading settings](/essentials/profiles) when created. A display choice changes the panel you see; an execution choice can affect the next trade. Reopen a stale panel before changing it.
+
+## Settings reached elsewhere
 
 | Preference | Where to change it |
 |---|---|
-| Trading wallets | `/wallets` or the trading panel's wallet picker |
+| Trading wallets | `/wallets` or the trading panel's wallet selector |
 | Split Total / Per Wallet, variance, delay, primary first | [Multi-wallet preferences](/features/multi-wallet-trading) |
-| Per-wallet auto-bridge | `/wallets` → **⚙️**, `/bridge`, or Deposit Mini App |
-| Auto-alert targets | `/alerts` → [Auto alerts](/features/auto-alerts) |
-| Position filters and sorting | `/positions` → **Filters / Sort** |
-| Primary wallet and labels | `/wallets` → **⚙️** |
+| Position filters, hidden tokens, and sort order | `/positions` → **Filters**, **Hidden**, or **Sort** |
+| Manual and automatic token price alerts | `/alerts` → [Alerts](/features/price-alerts) or [Auto alerts](/features/auto-alerts) |
+| Trader and wallet notification rules | `/track` → [Tracker](/features/trader-alerts) or [Confluence](/features/confluence) |
 | Profile name, copying settings, archive/restore | `/profiles` |
 | Agent permissions and spending limits | [MCP guide](/builders/mcp-tools) |
 
-## Save, reset, and stale panels
-
-Follow the requested input and check the resulting value. Market and limit preset screens offer **Reset defaults** for their own lists. There is no documented single reset that restores every Cove setting.
-
-If a panel expires or belongs to another profile, reopen it before editing. A display setting changes what you see; an execution setting can change what happens on the next trade.
-
-For a deliberate review before trading, enable **Buy confirm**, **Sell confirm**, and **Positions → Sell confirmation**.
+Market and Limit amount screens offer **Reset defaults** for their own buttons. There is no single reset for every Cove setting. Check the resulting value after each edit.

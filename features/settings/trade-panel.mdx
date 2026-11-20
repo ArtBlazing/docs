@@ -1,112 +1,68 @@
 ---
-title: "Trade panel settings"
-description: "Customize buy/sell buttons, confirmations, charts, and position information."
+title: "Trade Panel and amounts"
+description: "Set confirmations, wallet visibility, trade buttons, charts, and the token shortcut row."
 icon: "sliders"
 ---
 
-Open `/settings` → **Trade panel settings**, or send `/trade_panel_settings`. The current menu has **Buttons and controls**, **Text panel**, **Auto orders**, **Manual TP/SL basis**, **Always open on Buy**, and **Auto-buy on paste**.
+Open `/settings` → **Trade Panel**. You can also use **Customize Trade Panel** from an open token. The current Settings menu puts **Amounts**, **Presets**, **Autobuy**, **Monitor**, and **Auto orders** on the root, so you can reach each directly.
 
-## Change buy presets
+<div className="cove-guide-figure">
+  <Frame caption="Trade Panel groups confirmations, panel behaviour, display, and links. Saved values may differ from this example.">
+    <img src="/assets/guide-screenshots/settings-trade-panel-refresh-2026-11.png" alt="Trade Panel settings with Buy and Sell confirmation, Max buy, Always open on Buy, Show wallets, Capital Display, PnL, links, and chart controls." width={534} height={909} className="cove-guide-screenshot" />
+  </Frame>
+</div>
+
+## Confirmations and panel behaviour
+
+| Control | What it changes |
+|---|---|
+| **Buy confirm / Sell confirm** | Adds a review before normal market buys or sells. Required safety checks can still appear when these are off. |
+| **Max buy** | Shows the option to use full selected-wallet buying power. Max always asks for confirmation. |
+| **Always open on Buy** | Opens token panels on Buy and stays there after buying. With it off, a held token may open on Sell. |
+| **Show wallets on panel** | Shows wallet rows on the panel instead of nesting them. **Accounts Shown** chooses which wallet rows appear; it does not change which wallets are selected to trade. |
+
+Use **Chart button** to choose **Defined**, **DexS**, or **Off**. **Extra links** controls individual destinations such as DexScreener, Defined, GMGN, Basedbot, X, Pump.fun, and FOMO. **Show Mini App button** controls the Manage Position shortcut.
+
+**Total PnL per token** can include earlier trades in the displayed PnL. **Capital Display** chooses the **Cost / Sold** lines or the summarized **Capital at Risk / Profit Taken** view. These affect the display, not the underlying trades. [PnL and history](/features/history) explains the measures.
+
+## Amounts and limit triggers
+
+Open `/settings` → **Amounts**. This page holds the one-tap values for market buys and sells, Limit orders, and Sell links in the token text. It also opens **Limit trigger presets**.
+
+<div className="cove-guide-figure">
+  <Frame caption="Amounts brings Market buttons, Limit-order buttons, trigger presets, and Sell link amounts into one menu.">
+    <img src="/assets/guide-screenshots/settings-amounts-2026-11.png" alt="Amounts menu with Buy amounts, Sell amounts, Limit amounts, Limit trigger presets, and Sell link amounts." width={485} height={536} className="cove-guide-screenshot" />
+  </Frame>
+</div>
 
 <Steps>
-  <Step title="Open market buy presets">
-    Choose **Buttons and controls → Market preset amounts → Buy preset amounts**, then **Amount (\$)** or **Percent (%)** mode.
+  <Step title="Edit market buttons">
+    Open **Buy amounts** or **Sell amounts**, tap a slot, send its new value, and check the updated buttons on a token panel. Buy buttons can use dollar or buying-power percentage mode; sell buttons use a share of the holding.
   </Step>
-  <Step title="Edit a button">
-    Tap the preset to change, send the requested value, and check the updated list. Percent mode uses buying power, not token holdings.
+  <Step title="Edit Limit buttons">
+    Open **Limit amounts** for buy USD or sell percentages. Open **Limit trigger presets** to edit the upward or downward market-cap shortcuts. The order form still needs you to review every selected field before creation.
   </Step>
-  <Step title="Review or reset">
-    Reopen the token panel to see the new buttons. **Reset defaults** restores buy presets.
+  <Step title="Edit Sell text links">
+    Open **Sell link amounts** to change the percentages printed as quick Sell links on token panels. These are separate from the market Sell buttons.
   </Step>
 </Steps>
 
-Documented default buy buttons are **\$50 / \$100 / \$250 / \$500 / \$1000**, or **10 / 25 / 50 / 75 / 100%** in percentage mode. Existing profiles may have custom values.
+The market Buy buttons start at **\$50 / \$100 / \$250 / \$500 / \$1,000**, or **10 / 25 / 50 / 75 / 100%** in percentage mode. Market Sell buttons start at **25 / 50 / 75 / 100%**. Your saved values may differ. Each relevant list has its own **Reset defaults** control.
 
-For sells, open **Buttons and controls → Market preset amounts → Sell preset amounts**, choose a button, and enter its percentage. The current default is **25 / 50 / 75 / 100%** in one row. Saved custom values can differ. Follow the input's validation.
+Limit Buy and Sell each provide editable trigger and amount slots. Trigger presets can use upward or downward percentages and upward multiples such as **2x**. Buy amounts are USD; sell amounts are percentages. [Order Presets P1–P3](/features/order-presets) save entire forms, rather than one trigger or amount.
 
-{/* Screenshot: settings-buy-presets.png | Buy preset amounts с Amount/Percent, редактируемыми значениями и Reset defaults. */}
-{/* Screenshot: settings-trade-panel.png | Trade panel settings, включая confirmations, buttons, text и automation. */}
+[Trader Tracker](/features/trader-alerts#where-the-dollar-buttons-come-from) and [Confluence](/features/confluence#read-and-act-on-the-alert) reuse eligible market Buy and Limit Buy amount buttons. Changing a value affects future alert messages; an already sent alert keeps its captured values.
 
-## Change limit-order presets
+## Monitor
 
-Open **Buttons and controls → Limit preset amounts → Limit buy presets / Limit sell presets**. Each side has a **Triggers** tab with seven editable slots and an **Amounts** tab with three editable slots. Trigger presets accept upward or downward percentages or upward multiples such as **2x**. Buy amounts are USD; sell amounts are percentages of holdings. Use **Reset defaults** on the selected list if you want its original values.
+Open `/settings` → **Monitor**. Turn it on to show a shortcut row with up to **six tokens** at the top of an ordinary market token panel. Choose **Recent** for tokens you recently opened or **Positions** for tokens you hold. The selection is saved even when Monitor is off.
 
-The Limit builder uses these **quick** presets. The DCA panel uses the same three amount choices. [Order Presets P1–P3](/features/order-presets) save whole forms and have separate switches. See [Create limit orders](/features/limit-orders#edit-limit-presets).
-
-[Trader Tracker](/features/trader-alerts#where-the-dollar-buttons-come-from) uses the first three eligible USD **market buy presets** under Buy and the first three eligible **Limit buy amounts** under Limit. Its alert takes a snapshot of those amounts and the selected wallets when the message is sent; changing presets updates future alerts.
-
-{/* Screenshot: settings_buttons_controls_2026_11.png | Buttons and controls with quick presets, Order Presets, Last used values, and Positions Monitor. */}
 <div className="cove-guide-figure">
-  <Frame caption="Buttons and controls includes quick presets, Order Presets, Last used values, and Positions Monitor. This example shows saved choices, not defaults.">
-    <img src="/assets/guide-screenshots/settings_buttons_controls_2026_11.png" alt="Buttons and controls menu showing Order Presets, Last used values, and Positions Monitor." width={307} height={918} className="cove-guide-screenshot" />
-  </Frame>
-</div>
-{/* Screenshot: settings_limit_buy_presets.png | Editable Limit buy trigger presets. */}
-<div className="cove-guide-figure">
-  <Frame caption="Editable Limit buy trigger presets.">
-    <img src="/assets/guide-screenshots/settings_limit_buy_presets.png" alt="Editable Limit buy trigger presets." width={752} height={632} className="cove-guide-screenshot" />
-  </Frame>
-</div>
-{/* Screenshot: settings_limit_sell_presets.png | Editable Limit sell trigger presets. */}
-<div className="cove-guide-figure">
-  <Frame caption="Editable Limit sell trigger presets.">
-    <img src="/assets/guide-screenshots/settings_limit_sell_presets.png" alt="Editable Limit sell trigger presets." width={752} height={632} className="cove-guide-screenshot" />
+  <Frame caption="Monitor can show recently opened tokens or current positions. This example uses Positions.">
+    <img src="/assets/guide-screenshots/settings-monitor-2026-11.png" alt="Monitor settings with on and off state and Recent and Positions token-list choices." width={501} height={384} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
-## Whole-form presets and last used values
+In **Positions** mode, the row follows your `/positions` wallet, chain, hidden/dust, and sort choices. When more tokens are available, use its arrow to see another set. The row appears on the ordinary market Buying or Selling panel, not in Limit, DCA, Strategy, or sub-screens. If the position list cannot be read completely, Cove omits the Positions row. See the [token-panel example](/features/token-panel#monitor-shortcuts).
 
-Open **Buttons and controls → Order Presets** to show or hide P1–P3 separately for Limit, DCA ladder, DCA interval, Counter trade, Trailing SL, and Dev Sell. **Last used values** controls whether each form reopens with the last complete values you entered. Both apply across the login; Paper has its own values. See [Save order presets](/features/order-presets) for the save and recall flow.
-
-## Positions Monitor
-
-Open **Buttons and controls → Positions Monitor**. It is **off by default per profile**. When enabled and position data is available, the first row of an ordinary market Buying or Selling panel shows the open token and up to **five** other positions for quick switching. The row uses your `/positions` wallet, chain, visibility, and sort choices. A row with five or six tokens has arrows to switch pages. It is not shown in Limit, DCA, Strategy, wallet pickers, alerts, or slippage screens. If cove cannot read a complete position list, it omits the row instead of showing a partial one.
-
-See the [Positions Monitor example in a live token panel](/features/token-panel#positions-monitor-in-the-market-panel) for the shortcut row and paging arrow.
-
-<div className="cove-guide-figure">
-  <Frame caption="Positions Monitor explains the top-five position shortcuts and shows the saved state for this profile.">
-    <img src="/assets/guide-screenshots/positions_monitor_settings_2026_11.png" alt="Positions Monitor setting with an explanation and enabled state." width={516} height={336} className="cove-guide-screenshot" />
-  </Frame>
-</div>
-
-## Buttons and confirmations
-
-Open **Buttons and controls** for the switches below.
-
-| Setting | Default | What it changes |
-|---|---|---|
-| **Buy confirm** | Off | Add a confirmation before a normal buy |
-| **Sell confirm** | Off | Add a confirmation before a normal sell |
-| **Max buy button** | Off | Show a full-buying-power button; Max always confirms |
-| **Nest accounts** | Off | Put wallet selection behind a button |
-| **Show Mini App button** | On | Show **Manage Position** |
-| **Show Chart button** | On | Show the chart action |
-| **Use DexScreener charts** | Off | Choose DexScreener instead of Defined; shown when Chart is on |
-
-Normal confirmation preferences do not suppress mandatory risk or fee prompts. **Positions sell links** have their own [Sell confirmation setting](/features/settings/position-panel).
-
-## Position text and links
-
-Open **Text panel** for the options below.
-
-| Setting | Default | What it changes |
-|---|---|---|
-| **Total PnL per token** | Off | Show lifetime PnL rather than the current holding cycle |
-| **Capital at Risk / Profit Taken** | Off | Replace separate Cost/Sold lines with the summarized view |
-| **Extra links** | Check your saved state | Individually show Dex S, Defined, GMGN, Basedbot, X, Pump.fun, or FOMO |
-| **Sell link presets** | 25 / 50 / 100% | Add quick-sell percentages to the panel text |
-
-Open **Extra links** and toggle each destination you want. These controls change display, not the token itself. Read [PnL and history](/features/history) before comparing different PnL views.
-
-## Opening side and automation
-
-**Always open on Buy** is on by default. A scanned token opens on Buy even if you hold it, and stays on Buy after a purchase. With it off, held tokens can open on Sell and switch to Sell after buying. Explicit sell actions still open the sell side.
-
-Other entries have their own guides:
-
-- [Auto-buy on paste](/features/settings/auto-buy): a standing immediate-buy rule.
-- [Auto orders](/features/settings/auto-tp-sl): separate exit templates for Market buys and Limit & DCA fills, including Auto Dev Sell, Auto trailing stop, and Dynamic take profit.
-- [Manual TP/SL basis](/features/take-profit-stop-loss#choose-the-percentage-reference-first): market versus average entry for manual percentage targets.
-
-Market and Limit quick presets follow the profile. P1–P3 and Last used values follow the login, while Paper keeps separate values. Positions Monitor follows the profile. Many chart and button display choices are account-wide. See [Settings scope](/features/settings#which-settings-change-with-a-profile).
+The related settings have separate guides: [Auto orders](/features/settings/auto-tp-sl), [Autobuy](/features/settings/auto-buy), [Order Presets](/features/order-presets), and [Trading guardrails](/features/settings/guardrails).

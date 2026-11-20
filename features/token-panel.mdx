@@ -45,10 +45,9 @@ When reported liquidity is positive but below **\$5,000**, the panel shows **LOW
 
 For a Solana Token-2022 token with an active transfer-fee schedule, **Tax B/S** can show the current percentage. The token may also have a maximum fee per transfer, so the percentage alone does not determine the amount charged on a specific transfer. Use the current quote and final receipt for the transaction's actual amounts. If Cove cannot confirm which fee schedule is active, the panel omits that scheduled fee rather than showing an assumed rate.
 
-{/* Screenshot: token-panel-details.png | A token panel with market data, position values, slippage, and the active profile. */}
 <div className="cove-guide-figure">
-  <Frame caption="A token panel with market data, position values, slippage, and the active profile.">
-    <img src="/assets/guide-screenshots/token-panel-details.png" alt="A token panel with market data, position values, slippage, and the active profile." width={733} height={696} className="cove-guide-screenshot" />
+  <Frame caption="Current token panel: market data, holding and PnL, alert controls, trading actions, and Monitor shortcuts.">
+    <img src="/assets/guide-screenshots/token-panel-refresh-2026-11.png" alt="Token panel with market cap, liquidity, position and PnL, alert state, recent-token shortcuts, wallet controls, Buying, Limit, and Strategy." width={540} height={811} className="cove-guide-screenshot" />
   </Frame>
 </div>
 
@@ -66,17 +65,17 @@ For a Solana Token-2022 token with an active transfer-fee schedule, **Tax B/S** 
 | **Generate PnL** | Create a shareable performance card |
 | Wallet picker | Select trading wallets |
 | **Degen mode** | Enable or disable the high-risk trading preset |
-| **Positions Monitor**, when enabled | Switch among the open token and up to five positions from the first row of an ordinary market panel |
+| **Monitor**, when enabled | Switch between recently opened tokens or current positions from the top of an ordinary market panel |
 
-Display preferences can hide buttons, nest wallets, add external links such as Pump.fun and FOMO, or translate Chinese token names where available. See [Trade panel settings](/features/settings/trade-panel).
+Display preferences can hide buttons, show or nest wallet rows, add external links such as Pump.fun and FOMO, or translate Chinese token names where available. See [Trade Panel settings](/features/settings/trade-panel).
 
-## Positions Monitor in the market panel
+## Monitor shortcuts
 
-The [Positions Monitor](/features/settings/trade-panel#positions-monitor) uses your `/positions` filters and sort order. In the example below, **PAXG** is the selected token, **FEESBACK** and **PROS** are other shortcuts, and **›** opens the next page of positions. The normal market trade buttons remain below this row. The row does not appear in Limit, DCA, Strategy, or sub-screens.
+Open [Settings → Monitor](/features/settings/trade-panel#monitor) to choose **Recent** tokens you opened or **Positions** you hold. Positions mode uses your `/positions` filters and sort order. In the example below, **PAXG** is the selected position, **FEESBACK** and **PROS** are other shortcuts, and **›** opens the next page. The normal market trade buttons remain below this row. The row does not appear in Limit, DCA, Strategy, or sub-screens.
 
 {/* Screenshot: positions_monitor_panel_2026_11.png | Positions Monitor row above the market trade controls, with PAXG selected and a next-page arrow. */}
 <div className="cove-guide-figure">
-  <Frame caption="Positions Monitor appears above the ordinary market controls; PAXG is selected and the arrow opens more positions.">
+  <Frame caption="Monitor in Positions mode appears above the ordinary market controls; PAXG is selected and the arrow opens more positions.">
     <img src="/assets/guide-screenshots/positions_monitor_panel_2026_11.png" alt="Market token panel with Positions Monitor shortcuts for FEESBACK, selected PAXG, PROS, and a next-page arrow." width={656} height={919} className="cove-guide-screenshot" />
   </Frame>
 </div>
